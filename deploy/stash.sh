@@ -20,46 +20,6 @@ function cleanup() {
 export APPSCODE_ENV=${APPSCODE_ENV:-prod}
 trap cleanup EXIT
 
-# ref: https://github.com/appscodelabs/libbuild/blob/master/common/lib.sh#L55
-inside_git_repo() {
-  git rev-parse --is-inside-work-tree >/dev/null 2>&1
-  inside_git=$?
-  if [ "$inside_git" -ne 0 ]; then
-    echo "Not inside a git repository"
-    exit 1
-  fi
-}
-
-detect_tag() {
-  inside_git_repo
-
-  # http://stackoverflow.com/a/1404862/3476121
-  git_tag=$(git describe --exact-match --abbrev=0 2>/dev/null || echo '')
-
-  commit_hash=$(git rev-parse --verify HEAD)
-  git_branch=$(git rev-parse --abbrev-ref HEAD)
-  commit_timestamp=$(git show -s --format=%ct)
-
-  if [ "$git_tag" != '' ]; then
-    TAG=$git_tag
-    TAG_STRATEGY='git_tag'
-  elif [ "$git_branch" != 'master' ] && [ "$git_branch" != 'HEAD' ] && [[ "$git_branch" != release-* ]]; then
-    TAG=$git_branch
-    TAG_STRATEGY='git_branch'
-  else
-    hash_ver=$(git describe --tags --always --dirty)
-    TAG="${hash_ver}"
-    TAG_STRATEGY='commit_hash'
-  fi
-
-  export TAG
-  export TAG_STRATEGY
-  export git_tag
-  export git_branch
-  export commit_hash
-  export commit_timestamp
-}
-
 onessl_found() {
   # https://stackoverflow.com/a/677212/244009
   if [ -x "$(command -v onessl)" ]; then
@@ -117,9 +77,9 @@ export STASH_SERVICE_NAME=stash-operator
 export STASH_RUN_ON_MASTER=0
 export STASH_ENABLE_VALIDATING_WEBHOOK=false
 export STASH_ENABLE_MUTATING_WEBHOOK=false
-export STASH_DOCKER_REGISTRY=appscode
+export STASH_DOCKER_REGISTRY=${STASH_DOCKER_REGISTRY:-appscode}
 export PUSHGATEWAY_DOCKER_REGISTRY=prom
-export STASH_IMAGE_TAG=0.8.3
+export STASH_IMAGE_TAG=${STASH_IMAGE_TAG:-0.8.3}
 export STASH_IMAGE_PULL_SECRET=
 export STASH_IMAGE_PULL_POLICY=IfNotPresent
 export STASH_ENABLE_STATUS_SUBRESOURCE=false
@@ -130,11 +90,9 @@ export STASH_BYPASS_VALIDATING_WEBHOOK_XRAY=false
 export STASH_USE_KUBEAPISERVER_FQDN_FOR_AKS=true
 export STASH_PRIORITY_CLASS=system-cluster-critical
 
-export SCRIPT_LOCATION="curl -fsSL https://raw.githubusercontent.com/stashed/stash/0.8.3/"
+export SCRIPT_LOCATION="curl -fsSL https://raw.githubusercontent.com/stashed/installer/0.8.3/"
 if [[ "$APPSCODE_ENV" == "dev" ]]; then
-  detect_tag
   export SCRIPT_LOCATION="cat "
-  export STASH_IMAGE_TAG=$TAG
   export STASH_IMAGE_PULL_POLICY=Always
 fi
 
@@ -431,31 +389,31 @@ export SERVICE_SERVING_CERT_CA=$(cat ca.crt | $ONESSL base64)
 export TLS_SERVING_CERT=$(cat server.crt | $ONESSL base64)
 export TLS_SERVING_KEY=$(cat server.key | $ONESSL base64)
 
-${SCRIPT_LOCATION}hack/deploy/operator.yaml | $ONESSL envsubst | kubectl apply -f -
+${SCRIPT_LOCATION}deploy/operator.yaml | $ONESSL envsubst | kubectl apply -f -
 
-${SCRIPT_LOCATION}hack/deploy/service-account.yaml | $ONESSL envsubst | kubectl apply -f -
-${SCRIPT_LOCATION}hack/deploy/rbac-list.yaml | $ONESSL envsubst | kubectl auth reconcile -f -
-${SCRIPT_LOCATION}hack/deploy/user-roles.yaml | $ONESSL envsubst | kubectl auth reconcile -f -
+${SCRIPT_LOCATION}deploy/service-account.yaml | $ONESSL envsubst | kubectl apply -f -
+${SCRIPT_LOCATION}deploy/rbac-list.yaml | $ONESSL envsubst | kubectl auth reconcile -f -
+${SCRIPT_LOCATION}deploy/user-roles.yaml | $ONESSL envsubst | kubectl auth reconcile -f -
 
 if [ "$STASH_RUN_ON_MASTER" -eq 1 ]; then
   kubectl patch deploy stash-operator -n $STASH_NAMESPACE \
-    --patch="$(${SCRIPT_LOCATION}hack/deploy/run-on-master.yaml)"
+    --patch="$(${SCRIPT_LOCATION}deploy/run-on-master.yaml)"
 fi
 
 echo "Applying Pod Sucurity Policies"
-${SCRIPT_LOCATION}hack/deploy/psp/operator.yaml | $ONESSL envsubst | kubectl apply -f -
-${SCRIPT_LOCATION}hack/deploy/psp/backupsession-cron.yaml | $ONESSL envsubst | kubectl apply -f -
-${SCRIPT_LOCATION}hack/deploy/psp/backup-job.yaml | $ONESSL envsubst | kubectl apply -f -
-${SCRIPT_LOCATION}hack/deploy/psp/restore-job.yaml | $ONESSL envsubst | kubectl apply -f -
+${SCRIPT_LOCATION}deploy/psp/operator.yaml | $ONESSL envsubst | kubectl apply -f -
+${SCRIPT_LOCATION}deploy/psp/backupsession-cron.yaml | $ONESSL envsubst | kubectl apply -f -
+${SCRIPT_LOCATION}deploy/psp/backup-job.yaml | $ONESSL envsubst | kubectl apply -f -
+${SCRIPT_LOCATION}deploy/psp/restore-job.yaml | $ONESSL envsubst | kubectl apply -f -
 
 if [ "$STASH_ENABLE_APISERVER" = true ]; then
-  ${SCRIPT_LOCATION}hack/deploy/apiservices.yaml | $ONESSL envsubst | kubectl apply -f -
+  ${SCRIPT_LOCATION}deploy/apiservices.yaml | $ONESSL envsubst | kubectl apply -f -
 fi
 if [ "$STASH_ENABLE_VALIDATING_WEBHOOK" = true ]; then
-  ${SCRIPT_LOCATION}hack/deploy/validating-webhook.yaml | $ONESSL envsubst | kubectl apply -f -
+  ${SCRIPT_LOCATION}deploy/validating-webhook.yaml | $ONESSL envsubst | kubectl apply -f -
 fi
 if [ "$STASH_ENABLE_MUTATING_WEBHOOK" = true ]; then
-  ${SCRIPT_LOCATION}hack/deploy/mutating-webhook.yaml | $ONESSL envsubst | kubectl apply -f -
+  ${SCRIPT_LOCATION}deploy/mutating-webhook.yaml | $ONESSL envsubst | kubectl apply -f -
 fi
 
 echo
@@ -510,7 +468,7 @@ if [ "$MONITORING_AGENT" != "$MONITORING_AGENT_NONE" ]; then
   # if operator monitoring is enabled and prometheus-namespace is provided,
   # create stash-apiserver-cert there. this will be mounted on prometheus pod.
   if [ "$MONITORING_OPERATOR" = "true" ] && [ "$PROMETHEUS_NAMESPACE" != "$STASH_NAMESPACE" ]; then
-    ${SCRIPT_LOCATION}hack/deploy/monitor/apiserver-cert.yaml | $ONESSL envsubst | kubectl apply -f -
+    ${SCRIPT_LOCATION}deploy/monitor/apiserver-cert.yaml | $ONESSL envsubst | kubectl apply -f -
   fi
 
   case "$MONITORING_AGENT" in
@@ -536,11 +494,11 @@ if [ "$MONITORING_AGENT" != "$MONITORING_AGENT_NONE" ]; then
       ;;
     "$MONITORING_AGENT_COREOS_OPERATOR")
       if [ "$MONITORING_BACKUP" = "true" ] && [ "$MONITORING_OPERATOR" = "true" ]; then
-        ${SCRIPT_LOCATION}hack/deploy/monitor/servicemonitor.yaml | $ONESSL envsubst | kubectl apply -f -
+        ${SCRIPT_LOCATION}deploy/monitor/servicemonitor.yaml | $ONESSL envsubst | kubectl apply -f -
       elif [ "$MONITORING_BACKUP" = "true" ] && [ "$MONITORING_OPERATOR" = "false" ]; then
-        ${SCRIPT_LOCATION}hack/deploy/monitor/servicemonitor-backup.yaml | $ONESSL envsubst | kubectl apply -f -
+        ${SCRIPT_LOCATION}deploy/monitor/servicemonitor-backup.yaml | $ONESSL envsubst | kubectl apply -f -
       elif [ "$MONITORING_BACKUP" = "false" ] && [ "$MONITORING_OPERATOR" = "true" ]; then
-        ${SCRIPT_LOCATION}hack/deploy/monitor/servicemonitor-operator.yaml | $ONESSL envsubst | kubectl apply -f -
+        ${SCRIPT_LOCATION}deploy/monitor/servicemonitor-operator.yaml | $ONESSL envsubst | kubectl apply -f -
       fi
       ;;
   esac
