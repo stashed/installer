@@ -1,7 +1,8 @@
 #!/bin/bash
 set -eou pipefail
 
-crds=(restics repositories recoveries backupconfigurations backupsessions backupconfigurationtemplates functions restoresessions tasks)
+crds=(restics repositories recoveries backupconfigurations backupsessions restoresessions)
+non_namespaced_crds=(backupconfigurationtemplates functions tasks)
 
 echo "checking kubeconfig context"
 kubectl config current-context || {
@@ -323,6 +324,7 @@ if [ "$STASH_UNINSTALL" -eq 1 ]; then
 
   # https://github.com/kubernetes/kubernetes/issues/60538
   if [ "$STASH_PURGE" -eq 1 ]; then
+    # delete namespaced crds
     for crd in "${crds[@]}"; do
       pairs=($(kubectl get ${crd}.stash.appscode.com --all-namespaces -o jsonpath='{range .items[*]}{.metadata.name} {.metadata.namespace} {end}' || true))
       total=${#pairs[*]}
@@ -343,6 +345,31 @@ if [ "$STASH_UNINSTALL" -eq 1 ]; then
         # delete crd object
         echo "deleting ${crd} $namespace/$name"
         kubectl delete ${crd}.stash.appscode.com $name -n $namespace
+      done
+
+      # delete crd
+      kubectl delete crd ${crd}.stash.appscode.com || true
+    done
+    # delete non-namespaced crds
+    for crd in "${non_namespaced_crds[@]}"; do
+      pairs=($(kubectl get ${crd}.stash.appscode.com -o jsonpath='{range .items[*]}{.metadata.name} {end}' || true))
+      total=${#pairs[*]}
+
+      # save objects
+      if [ $total -gt 0 ]; then
+        echo "dumping ${crd} objects into ${crd}.yaml"
+        kubectl get ${crd}.stash.appscode.com -o yaml >${crd}.yaml
+      fi
+
+      for ((i = 0; i < $total; i += 1)); do
+        name=${pairs[$i]}
+
+         # remove finalizers
+        kubectl patch ${crd} $name -p '{"metadata":{"finalizers":[]}}' --type=merge || true
+
+        # delete crd object
+        echo "deleting ${crd} $name"
+        kubectl delete ${crd}.stash.appscode.com $name
       done
 
       # delete crd
@@ -433,6 +460,12 @@ fi
 
 echo "waiting until stash crds are ready"
 for crd in "${crds[@]}"; do
+  $ONESSL wait-until-ready crd ${crd}.stash.appscode.com || {
+    echo "$crd crd failed to be ready"
+    exit 1
+  }
+done
+for crd in "${non_namespaced_crds[@]}"; do
   $ONESSL wait-until-ready crd ${crd}.stash.appscode.com || {
     echo "$crd crd failed to be ready"
     exit 1
