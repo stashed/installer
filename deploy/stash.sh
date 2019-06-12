@@ -13,9 +13,61 @@ kubectl config current-context || {
 }
 echo ""
 
+OS=""
+ARCH=""
+DOWNLOAD_URL=""
+DOWNLOAD_DIR=""
+TEMP_DIRS=()
+ONESSL=""
+HELM=""
+
 # http://redsymbol.net/articles/bash-exit-traps/
 function cleanup() {
-  rm -rf $ONESSL ca.crt ca.key server.crt server.key
+  rm -rf ca.crt ca.key server.crt server.key
+  # remove temporary directories
+  for dir in "${TEMP_DIRS[@]}"; do
+    rm -rf "${dir}"
+  done
+}
+
+# detect operating system
+function detectOS() {
+  OS=$(echo `uname`|tr '[:upper:]' '[:lower:]')
+
+  case "$OS" in
+    # Minimalist GNU for Windows
+    cygwin* | mingw* | msys*) OS='windows';;
+  esac
+}
+
+# detect machine architecture
+function detectArch() {
+  ARCH=$(uname -m)
+  case $ARCH in
+    armv5*) ARCH="armv5";;
+    armv6*) ARCH="armv6";;
+    armv7*) ARCH="arm";;
+    aarch64) ARCH="arm64";;
+    x86) ARCH="386";;
+    x86_64) ARCH="amd64";;
+    i686) ARCH="386";;
+    i386) ARCH="386";;
+  esac
+}
+
+detectOS
+detectArch
+
+# download file pointed by DOWNLOAD_URL variable
+# store download file to the directory pointed by DOWNLOAD_DIR variable
+# you have to sent the output file name as argument. i.e. downloadFile myfile.tar.gz
+function downloadFile() {
+  if curl --output /dev/null --silent --head --fail "$DOWNLOAD_URL"; then
+    curl -fsSL ${DOWNLOAD_URL} -o $DOWNLOAD_DIR/$1
+  else
+    echo "File does not exist"
+    exit 1
+  fi
 }
 
 export APPSCODE_ENV=${APPSCODE_ENV:-prod}
@@ -35,37 +87,26 @@ onessl_found() {
   return 1
 }
 
+# download onessl if it does not exist
 onessl_found || {
   echo "Downloading onessl ..."
-  if [[ "$(uname -m)" == "aarch64" ]]; then
-    curl -fsSL -o onessl https://github.com/kubepack/onessl/releases/download/0.10.0/onessl-linux-arm64
-    chmod +x onessl
-    export ONESSL=./onessl
-  else
-    # ref: https://stackoverflow.com/a/27776822/244009
-    case "$(uname -s)" in
-      Darwin)
-        curl -fsSL -o onessl https://github.com/kubepack/onessl/releases/download/0.10.0/onessl-darwin-amd64
-        chmod +x onessl
-        export ONESSL=./onessl
-        ;;
 
-      Linux)
-        curl -fsSL -o onessl https://github.com/kubepack/onessl/releases/download/0.10.0/onessl-linux-amd64
-        chmod +x onessl
-        export ONESSL=./onessl
-        ;;
+  ARTIFACT="https://github.com/kubepack/onessl/releases/download/0.10.0"
+  ONESSL_BIN=onessl-${OS}-${ARCH}
+  case "$OS" in
+    cygwin* | mingw* | msys*)
+      ONESSL_BIN=${ONESSL_BIN}.exe
+    ;;
+  esac
 
-      CYGWIN* | MINGW* | MSYS*)
-        curl -fsSL -o onessl.exe https://github.com/kubepack/onessl/releases/download/0.10.0/onessl-windows-amd64.exe
-        chmod +x onessl.exe
-        export ONESSL=./onessl.exe
-        ;;
-      *)
-        echo 'other OS'
-        ;;
-    esac
-  fi
+  DOWNLOAD_URL=${ARTIFACT}/${ONESSL_BIN}
+  DOWNLOAD_DIR="$(mktemp -dt onessl-XXXXXX)"
+  TEMP_DIRS+=($DOWNLOAD_DIR) # store DOWNLOAD_DIR to cleanup later
+
+  downloadFile $ONESSL_BIN # downloaded file name will be saved as the value of ONESSL_BIN variable
+
+  export ONESSL=${DOWNLOAD_DIR}/${ONESSL_BIN}
+  chmod +x $ONESSL
 }
 
 # ref: https://stackoverflow.com/a/7069755/244009
@@ -477,23 +518,41 @@ done
 # we can't use onessl to resolve the variables as it will try to resolve all the variables.
 # we will use helm to generate yaml from template then apply it.
 if [ -x "$(command -v helm)" ]; then
-  echo "Helm found! Installing update-status Function."
-  export STASH_CHART=$SCRIPT_LOCATION
-
-  if [[ "$SCRIPT_LOCATION" == "cat " ]]; then
-    export STASH_CHART="chart/stash"
-  fi
-
-  helm template ${STASH_CHART} -x templates/update-status-function.yaml \
-  --set operator.registry=${STASH_DOCKER_REGISTRY} \
-  --set operator.tag=${STASH_IMAGE_TAG} \
-  | kubectl apply -f -
+  export HELM=helm
 else
-  echo "Skipping Installing update-status Function. \
-  Reason: Helm is not installed. \
-  You won't be able to backup Database. \
-  Install helm and try again."
+  echo "Helm is not installed!. Downloading Helm."
+  ARTIFACT="https://get.helm.sh"
+  HELM_VERSION="v2.14.1"
+  HELM_BIN=helm
+  HELM_DIST=${HELM_BIN}-${HELM_VERSION}-${OS}-${ARCH}.tar.gz
+
+  case "$OS" in
+    cygwin* | mingw* | msys*)
+      HELM_BIN=${HELM_BIN}.exe
+    ;;
+  esac
+
+  DOWNLOAD_URL=${ARTIFACT}/${HELM_DIST}
+  DOWNLOAD_DIR="$(mktemp -dt helm-XXXXXX)"
+  TEMP_DIRS+=($DOWNLOAD_DIR)
+
+  downloadFile $HELM_DIST
+
+  tar xf ${DOWNLOAD_DIR}/${HELM_DIST} -C ${DOWNLOAD_DIR}
+  export HELM=${DOWNLOAD_DIR}/${OS}-${ARCH}/${HELM_BIN}
+  chmod +x $HELM
 fi
+
+export STASH_CHART=$SCRIPT_LOCATION
+
+if [[ "$SCRIPT_LOCATION" == "cat " ]]; then
+  export STASH_CHART="chart/stash"
+fi
+
+$HELM template ${STASH_CHART} -x templates/update-status-function.yaml \
+--set operator.registry=${STASH_DOCKER_REGISTRY} \
+--set operator.tag=${STASH_IMAGE_TAG} \
+| kubectl apply -f -
 
 if [ "$STASH_ENABLE_VALIDATING_WEBHOOK" = true ]; then
   echo "checking whether admission webhook(s) are activated or not"
