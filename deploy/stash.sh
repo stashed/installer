@@ -472,6 +472,29 @@ for crd in "${non_namespaced_crds[@]}"; do
   }
 done
 
+# Install "update-status" Function.
+# we only need to resolve the variables of 'spec.image' part and keep others.
+# we can't use onessl to resolve the variables as it will try to resolve all the variables.
+# we will use helm to generate yaml from template then apply it.
+if [ -x "$(command -v helm)" ]; then
+  echo "Helm found! Installing update-status Function."
+  export STASH_CHART=$SCRIPT_LOCATION
+
+  if [[ "$SCRIPT_LOCATION" == "cat " ]]; then
+    export STASH_CHART="chart/stash"
+  fi
+
+  helm template ${STASH_CHART} -x templates/update-status-function.yaml \
+  --set operator.registry=${STASH_DOCKER_REGISTRY} \
+  --set operator.tag=${STASH_IMAGE_TAG} \
+  | kubectl apply -f -
+else
+  echo "Skipping Installing update-status Function. \
+  Reason: Helm is not installed. \
+  You won't be able to backup Database. \
+  Install helm and try again."
+fi
+
 if [ "$STASH_ENABLE_VALIDATING_WEBHOOK" = true ]; then
   echo "checking whether admission webhook(s) are activated or not"
   active=$($ONESSL wait-until-has annotation \
