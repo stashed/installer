@@ -27,6 +27,7 @@ spec:
         - run
         - --v=3
         - --docker-registry=${STASH_DOCKER_REGISTRY}
+        - --image-tag=${STASH_IMAGE_TAG}
         - --secure-port=8443
         - --audit-log-path=-
         - --tls-cert-file=/var/serving-cert/tls.crt
