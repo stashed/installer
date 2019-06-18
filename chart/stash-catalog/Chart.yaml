@@ -1,0 +1,12 @@
+apiVersion: v1
+description: 'stash-catalog by AppsCode - A parent chart for all the individual backup/restore plugin charts for Stash'
+name: stash-catalog
+version: 0.1.0
+appVersion: 0.1.0
+home: https://github.com/stashed/catalog
+icon: https://cdn.appscode.com/images/icon/stash.png
+sources:
+  - https://github.com/stashed/catalog
+maintainers:
+  - name: appscode
+    email: support@appscode.com

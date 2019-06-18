@@ -1,0 +1,13 @@
+# common values for the childs
+global:
+  registry: appscode
+  # default values for prometheus metrics
+  metrics:
+    enabled: true
+    labels: []
+
+  # optional argument to backup or restore command
+  backup:
+    pgArgs: ""
+  restore:
+    pgArgs: ""

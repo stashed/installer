@@ -1,0 +1,12 @@
+dependencies:
+- name: postgres-stash
+  repository: http://127.0.0.1:8080
+  version: "11"
+- name: postgres-stash
+  repository: http://127.0.0.1:8080
+  version: "10"
+- name: postgres-stash
+  repository: http://127.0.0.1:8080
+  version: "9"
+digest: sha256:c56afe03c8a7b5f8f17dfbfecdbba6ae82248d2663ff521609fb8c44ed0f6e1b
+generated: "2019-06-18T17:51:41.745535319+06:00"

@@ -1,0 +1,21 @@
+dependencies:
+# ======== PostgreSQL ===========
+- name: postgres-stash
+  version: 11
+  repository: "@appscode"
+  alias: postgres-stash-11
+- name: postgres-stash
+  version: 10
+  repository: "@appscode"
+  alias: postgres-stash-10
+- name: postgres-stash
+  version: 9
+  repository: "@appscode"
+  alias: postgres-stash-9
+# ======== MongoDB ==============
+# ======== MySQL ================
+# ======== Percona ==============
+# ======== MariaDB ==============
+# ======== Elasticsearch ========
+# ======== Cluster ==============
+# ========  PVC =================
