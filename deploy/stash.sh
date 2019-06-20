@@ -19,7 +19,10 @@ DOWNLOAD_URL=""
 DOWNLOAD_DIR=""
 TEMP_DIRS=()
 ONESSL=""
+
 HELM=""
+CHART_NAME="stash"
+CHART_LOCATION="chart"
 
 # http://redsymbol.net/articles/bash-exit-traps/
 function cleanup() {
@@ -352,7 +355,8 @@ if [ "$STASH_UNINSTALL" -eq 1 ]; then
   kubectl delete secret stash-apiserver-cert --namespace $PROMETHEUS_NAMESPACE || true
   # delete psp resources
   kubectl delete psp stash-operator-psp stash-backup-job stash-backupsession-cron stash-restore-job || true
-
+  # delete update-status function
+  kubectl delete function update-status || true
   echo "waiting for stash operator pod to stop running"
   for (( ; ; )); do
     pods=($(kubectl get pods --namespace $STASH_NAMESPACE -l app=stash -o jsonpath='{range .items[*]}{.metadata.name} {end}'))
@@ -543,13 +547,19 @@ else
   chmod +x $HELM
 fi
 
-export STASH_CHART=$SCRIPT_LOCATION
-
-if [[ "$SCRIPT_LOCATION" == "cat " ]]; then
-  export STASH_CHART="chart/stash"
+if [[ "$APPSCODE_ENV" == "dev" ]]; then
+  CHART_LOCATION="chart"
+else
+  # download chart from remove repository and extract into a temporary directory
+  CHART_LOCATION="$(mktemp -dt appscode-XXXXXX)"
+  TEMP_DIRS+=(${CHART_LOCATION})
+  TEMP_INSTALLER_REPO="${CHART_NAME}-installer"
+  $HELM repo add "${TEMP_INSTALLER_REPO}" "https://charts.appscode.com/stable"
+  $HELM fetch --untar --untardir ${CHART_LOCATION} "${TEMP_INSTALLER_REPO}/${CHART_NAME}"
+  $HELM repo remove "${TEMP_INSTALLER_REPO}"
 fi
 
-$HELM template ${STASH_CHART} -x templates/update-status-function.yaml \
+$HELM template ${CHART_LOCATION}/${CHART_NAME} -x templates/update-status-function.yaml \
 --set operator.registry=${STASH_DOCKER_REGISTRY} \
 --set operator.tag=${STASH_IMAGE_TAG} \
 | kubectl apply -f -
