@@ -351,8 +351,11 @@ if [ "$STASH_UNINSTALL" -eq 1 ]; then
   kubectl delete secret stash-apiserver-cert --namespace $PROMETHEUS_NAMESPACE || true
   # delete psp resources
   kubectl delete psp stash-operator-psp stash-backup-job stash-backupsession-cron stash-restore-job || true
-  # delete update-status function
-  kubectl delete function update-status || true
+  # delete default functions
+  kubectl delete function update-status pvc-backup pvc-restore || true
+  # delete default tasks
+  kubectl delete task pvc-backup pvc-restore || true
+
   echo "waiting for stash operator pod to stop running"
   for (( ; ; )); do
     pods=($(kubectl get pods --namespace $STASH_NAMESPACE -l app=stash -o jsonpath='{range .items[*]}{.metadata.name} {end}'))
