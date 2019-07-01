@@ -20,10 +20,6 @@ DOWNLOAD_DIR=""
 TEMP_DIRS=()
 ONESSL=""
 
-HELM=""
-CHART_NAME="stash"
-CHART_LOCATION="chart"
-
 # http://redsymbol.net/articles/bash-exit-traps/
 function cleanup() {
   rm -rf ca.crt ca.key server.crt server.key
@@ -516,53 +512,6 @@ for crd in "${non_namespaced_crds[@]}"; do
     exit 1
   }
 done
-
-# Install "update-status" Function.
-# we only need to resolve the variables of 'spec.image' part and keep others.
-# we can't use onessl to resolve the variables as it will try to resolve all the variables.
-# we will use helm to generate yaml from template then apply it.
-if [ -x "$(command -v helm)" ]; then
-  export HELM=helm
-else
-  echo "Helm is not installed!. Downloading Helm."
-  ARTIFACT="https://get.helm.sh"
-  HELM_VERSION="v2.14.1"
-  HELM_BIN=helm
-  HELM_DIST=${HELM_BIN}-${HELM_VERSION}-${OS}-${ARCH}.tar.gz
-
-  case "$OS" in
-    cygwin* | mingw* | msys*)
-      HELM_BIN=${HELM_BIN}.exe
-    ;;
-  esac
-
-  DOWNLOAD_URL=${ARTIFACT}/${HELM_DIST}
-  DOWNLOAD_DIR="$(mktemp -dt helm-XXXXXX)"
-  TEMP_DIRS+=($DOWNLOAD_DIR)
-
-  downloadFile $HELM_DIST
-
-  tar xf ${DOWNLOAD_DIR}/${HELM_DIST} -C ${DOWNLOAD_DIR}
-  export HELM=${DOWNLOAD_DIR}/${OS}-${ARCH}/${HELM_BIN}
-  chmod +x $HELM
-fi
-
-if [[ "$APPSCODE_ENV" == "dev" ]]; then
-  CHART_LOCATION="chart"
-else
-  # download chart from remove repository and extract into a temporary directory
-  CHART_LOCATION="$(mktemp -dt appscode-XXXXXX)"
-  TEMP_DIRS+=(${CHART_LOCATION})
-  TEMP_INSTALLER_REPO="${CHART_NAME}-installer"
-  $HELM repo add "${TEMP_INSTALLER_REPO}" "https://charts.appscode.com/stable"
-  $HELM fetch --untar --untardir ${CHART_LOCATION} "${TEMP_INSTALLER_REPO}/${CHART_NAME}"
-  $HELM repo remove "${TEMP_INSTALLER_REPO}"
-fi
-
-$HELM template ${CHART_LOCATION}/${CHART_NAME} -x templates/update-status-function.yaml \
---set operator.registry=${STASH_DOCKER_REGISTRY} \
---set operator.tag=${STASH_IMAGE_TAG} \
-| kubectl apply -f -
 
 if [ "$STASH_ENABLE_VALIDATING_WEBHOOK" = true ]; then
   echo "checking whether admission webhook(s) are activated or not"
