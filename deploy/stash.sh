@@ -89,7 +89,7 @@ onessl_found() {
 onessl_found || {
   echo "Downloading onessl ..."
 
-  ARTIFACT="https://github.com/kubepack/onessl/releases/download/0.10.0"
+  ARTIFACT="https://github.com/kubepack/onessl/releases/download/0.12.0"
   ONESSL_BIN=onessl-${OS}-${ARCH}
   case "$OS" in
     cygwin* | mingw* | msys*)
