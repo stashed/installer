@@ -352,9 +352,9 @@ if [ "$STASH_UNINSTALL" -eq 1 ]; then
   # delete psp resources
   kubectl delete psp stash-operator-psp stash-backup-job stash-backupsession-cron stash-restore-job || true
   # delete default functions
-  kubectl delete function update-status pvc-backup pvc-restore || true
+  kubectl delete functions.stash.appscode.com update-status pvc-backup pvc-restore || true
   # delete default tasks
-  kubectl delete task pvc-backup pvc-restore || true
+  kubectl delete tasks.stash.appscode.com pvc-backup pvc-restore || true
 
   echo "waiting for stash operator pod to stop running"
   for (( ; ; )); do
