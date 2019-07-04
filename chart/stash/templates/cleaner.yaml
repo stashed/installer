@@ -26,7 +26,7 @@ spec:
           - "sleep 2; \
            kubectl delete validatingwebhookconfigurations admission.stash.appscode.com || true; \
            kubectl delete mutatingwebhookconfiguration admission.stash.appscode.com || true; \
-           kubectl delete function update-status pvc-backup pvc-restore || true; \
-           kubectl delete task pvc-backup pvc-restore"
+           kubectl delete functions.stash.appscode.com update-status pvc-backup pvc-restore || true; \
+           kubectl delete tasks.stash.appscode.com pvc-backup pvc-restore"
         imagePullPolicy: {{ .Values.imagePullPolicy }}
       restartPolicy: Never
