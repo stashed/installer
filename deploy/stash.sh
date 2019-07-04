@@ -30,6 +30,7 @@ function cleanup() {
 }
 
 # detect operating system
+# ref: https://raw.githubusercontent.com/helm/helm/master/scripts/get
 function detectOS() {
   OS=$(echo `uname`|tr '[:upper:]' '[:lower:]')
 
@@ -43,8 +44,6 @@ function detectOS() {
 function detectArch() {
   ARCH=$(uname -m)
   case $ARCH in
-    armv5*) ARCH="armv5";;
-    armv6*) ARCH="armv6";;
     armv7*) ARCH="arm";;
     aarch64) ARCH="arm64";;
     x86) ARCH="386";;
