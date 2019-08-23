@@ -91,6 +91,8 @@ spec:
         secret:
           defaultMode: 420
           secretName: stash-apiserver-cert
+      securityContext:
+        fsGroup: 65535
       tolerations:
       - key: CriticalAddonsOnly
         operator: Exists

@@ -112,6 +112,8 @@ spec:
         secret:
           defaultMode: 420
           secretName: {{ template "stash.fullname" . }}-apiserver-cert
+      securityContext:
+        fsGroup: 65535
 {{- if or .Values.tolerations (and .Values.criticalAddon (eq .Release.Namespace "kube-system")) }}
       tolerations:
 {{- if .Values.tolerations }}
