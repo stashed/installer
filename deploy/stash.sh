@@ -19,6 +19,7 @@ DOWNLOAD_URL=""
 DOWNLOAD_DIR=""
 TEMP_DIRS=()
 ONESSL=""
+ONESSL_VERSION=v0.13.1
 
 # http://redsymbol.net/articles/bash-exit-traps/
 function cleanup() {
@@ -74,7 +75,7 @@ trap cleanup EXIT
 onessl_found() {
   # https://stackoverflow.com/a/677212/244009
   if [ -x "$(command -v onessl)" ]; then
-    onessl version --check='>=0.13.1' >/dev/null 2>&1 || {
+    onessl version --check=">=${ONESSL_VERSION}" >/dev/null 2>&1 || {
       # old version of onessl found
       echo "Found outdated onessl"
       return 1
@@ -89,7 +90,7 @@ onessl_found() {
 onessl_found || {
   echo "Downloading onessl ..."
 
-  ARTIFACT="https://github.com/kubepack/onessl/releases/download/0.12.0"
+  ARTIFACT="https://github.com/kubepack/onessl/releases/download/${ONESSL_VERSION}"
   ONESSL_BIN=onessl-${OS}-${ARCH}
   case "$OS" in
     cygwin* | mingw* | msys*)
