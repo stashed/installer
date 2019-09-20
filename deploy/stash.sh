@@ -74,7 +74,7 @@ trap cleanup EXIT
 onessl_found() {
   # https://stackoverflow.com/a/677212/244009
   if [ -x "$(command -v onessl)" ]; then
-    onessl wait-until-has -h >/dev/null 2>&1 || {
+    onessl version --check='>=0.13.1' >/dev/null 2>&1 || {
       # old version of onessl found
       echo "Found outdated onessl"
       return 1
