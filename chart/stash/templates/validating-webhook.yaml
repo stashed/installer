@@ -96,4 +96,45 @@ webhooks:
 {{- if and (ge $major 1) (ge $minor 12) }}
   sideEffects: None
 {{- end }}
+- name: backupconfiguration.admission.stash.appscode.com
+  clientConfig:
+    service:
+      namespace: default
+      name: kubernetes
+      path: /apis/admission.stash.appscode.com/v1beta1/backupconfigurationvalidators
+    caBundle: {{ b64enc .Values.apiserver.ca }}
+  rules:
+  - operations:
+    - CREATE
+    apiGroups:
+    - stash.appscode.com
+    apiVersions:
+    - "*"
+    resources:
+    - backupconfigurations
+  failurePolicy: Fail
+{{- if and (ge $major 1) (ge $minor 12) }}
+  sideEffects: None
+{{- end }}
+- name: backupblueprint.admission.stash.appscode.com
+  clientConfig:
+      service:
+        namespace: default
+        name: kubernetes
+        path: /apis/admission.stash.appscode.com/v1beta1/backupblueprintvalidators
+    caBundle: {{ b64enc .Values.apiserver.ca }}
+  rules:
+  - operations:
+    - CREATE
+    apiGroups:
+    - stash.appscode.com
+    apiVersions:
+    - "*"
+    resources:
+    - backupblueprints
+  failurePolicy: Fail
+{{- if and (ge $major 1) (ge $minor 12) }}
+  sideEffects: None
+{{- end }}
 {{ end }}
+

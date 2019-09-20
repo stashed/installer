@@ -2,7 +2,7 @@
 set -eou pipefail
 
 crds=(restics repositories recoveries backupconfigurations backupsessions restoresessions)
-non_namespaced_crds=(backupconfigurationtemplates functions tasks)
+non_namespaced_crds=(backupblueprints functions tasks)
 
 echo "checking kubeconfig context"
 kubectl config current-context || {
