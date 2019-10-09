@@ -2,7 +2,7 @@
 set -eou pipefail
 
 crds=(restics repositories recoveries backupconfigurations backupsessions restoresessions)
-non_namespaced_crds=(backupconfigurationtemplates functions tasks)
+non_namespaced_crds=(backupblueprints functions tasks)
 
 echo "checking kubeconfig context"
 kubectl config current-context || {
@@ -13,9 +13,60 @@ kubectl config current-context || {
 }
 echo ""
 
+OS=""
+ARCH=""
+DOWNLOAD_URL=""
+DOWNLOAD_DIR=""
+TEMP_DIRS=()
+ONESSL=""
+ONESSL_VERSION=v0.13.1
+
 # http://redsymbol.net/articles/bash-exit-traps/
 function cleanup() {
-  rm -rf $ONESSL ca.crt ca.key server.crt server.key
+  rm -rf ca.crt ca.key server.crt server.key
+  # remove temporary directories
+  for dir in "${TEMP_DIRS[@]}"; do
+    rm -rf "${dir}"
+  done
+}
+
+# detect operating system
+# ref: https://raw.githubusercontent.com/helm/helm/master/scripts/get
+function detectOS() {
+  OS=$(echo `uname`|tr '[:upper:]' '[:lower:]')
+
+  case "$OS" in
+    # Minimalist GNU for Windows
+    cygwin* | mingw* | msys*) OS='windows';;
+  esac
+}
+
+# detect machine architecture
+function detectArch() {
+  ARCH=$(uname -m)
+  case $ARCH in
+    armv7*) ARCH="arm";;
+    aarch64) ARCH="arm64";;
+    x86) ARCH="386";;
+    x86_64) ARCH="amd64";;
+    i686) ARCH="386";;
+    i386) ARCH="386";;
+  esac
+}
+
+detectOS
+detectArch
+
+# download file pointed by DOWNLOAD_URL variable
+# store download file to the directory pointed by DOWNLOAD_DIR variable
+# you have to sent the output file name as argument. i.e. downloadFile myfile.tar.gz
+function downloadFile() {
+  if curl --output /dev/null --silent --head --fail "$DOWNLOAD_URL"; then
+    curl -fsSL ${DOWNLOAD_URL} -o $DOWNLOAD_DIR/$1
+  else
+    echo "File does not exist"
+    exit 1
+  fi
 }
 
 export APPSCODE_ENV=${APPSCODE_ENV:-prod}
@@ -24,7 +75,7 @@ trap cleanup EXIT
 onessl_found() {
   # https://stackoverflow.com/a/677212/244009
   if [ -x "$(command -v onessl)" ]; then
-    onessl wait-until-has -h >/dev/null 2>&1 || {
+    onessl version --check=">=${ONESSL_VERSION}" >/dev/null 2>&1 || {
       # old version of onessl found
       echo "Found outdated onessl"
       return 1
@@ -35,37 +86,26 @@ onessl_found() {
   return 1
 }
 
+# download onessl if it does not exist
 onessl_found || {
   echo "Downloading onessl ..."
-  if [[ "$(uname -m)" == "aarch64" ]]; then
-    curl -fsSL -o onessl https://github.com/kubepack/onessl/releases/download/0.10.0/onessl-linux-arm64
-    chmod +x onessl
-    export ONESSL=./onessl
-  else
-    # ref: https://stackoverflow.com/a/27776822/244009
-    case "$(uname -s)" in
-      Darwin)
-        curl -fsSL -o onessl https://github.com/kubepack/onessl/releases/download/0.10.0/onessl-darwin-amd64
-        chmod +x onessl
-        export ONESSL=./onessl
-        ;;
 
-      Linux)
-        curl -fsSL -o onessl https://github.com/kubepack/onessl/releases/download/0.10.0/onessl-linux-amd64
-        chmod +x onessl
-        export ONESSL=./onessl
-        ;;
+  ARTIFACT="https://github.com/kubepack/onessl/releases/download/${ONESSL_VERSION}"
+  ONESSL_BIN=onessl-${OS}-${ARCH}
+  case "$OS" in
+    cygwin* | mingw* | msys*)
+      ONESSL_BIN=${ONESSL_BIN}.exe
+    ;;
+  esac
 
-      CYGWIN* | MINGW* | MSYS*)
-        curl -fsSL -o onessl.exe https://github.com/kubepack/onessl/releases/download/0.10.0/onessl-windows-amd64.exe
-        chmod +x onessl.exe
-        export ONESSL=./onessl.exe
-        ;;
-      *)
-        echo 'other OS'
-        ;;
-    esac
-  fi
+  DOWNLOAD_URL=${ARTIFACT}/${ONESSL_BIN}
+  DOWNLOAD_DIR="$(mktemp -dt onessl-XXXXXX)"
+  TEMP_DIRS+=($DOWNLOAD_DIR) # store DOWNLOAD_DIR to cleanup later
+
+  downloadFile $ONESSL_BIN # downloaded file name will be saved as the value of ONESSL_BIN variable
+
+  export ONESSL=${DOWNLOAD_DIR}/${ONESSL_BIN}
+  chmod +x $ONESSL
 }
 
 # ref: https://stackoverflow.com/a/7069755/244009
@@ -80,7 +120,7 @@ export STASH_ENABLE_VALIDATING_WEBHOOK=false
 export STASH_ENABLE_MUTATING_WEBHOOK=false
 export STASH_DOCKER_REGISTRY=${STASH_DOCKER_REGISTRY:-appscode}
 export PUSHGATEWAY_DOCKER_REGISTRY=prom
-export STASH_IMAGE_TAG=${STASH_IMAGE_TAG:-0.8.3}
+export STASH_IMAGE_TAG=${STASH_IMAGE_TAG:-v0.9.0-rc.1}
 export STASH_IMAGE_PULL_SECRET=
 export STASH_IMAGE_PULL_POLICY=IfNotPresent
 export STASH_ENABLE_STATUS_SUBRESOURCE=false
@@ -91,7 +131,7 @@ export STASH_BYPASS_VALIDATING_WEBHOOK_XRAY=false
 export STASH_USE_KUBEAPISERVER_FQDN_FOR_AKS=true
 export STASH_PRIORITY_CLASS=system-cluster-critical
 
-export SCRIPT_LOCATION="curl -fsSL https://raw.githubusercontent.com/stashed/installer/0.8.3/"
+export SCRIPT_LOCATION="curl -fsSL https://raw.githubusercontent.com/stashed/installer/v0.9.0-rc.1/"
 if [[ "$APPSCODE_ENV" == "dev" ]]; then
   export SCRIPT_LOCATION="cat "
   export STASH_IMAGE_PULL_POLICY=Always
@@ -311,6 +351,10 @@ if [ "$STASH_UNINSTALL" -eq 1 ]; then
   kubectl delete secret stash-apiserver-cert --namespace $PROMETHEUS_NAMESPACE || true
   # delete psp resources
   kubectl delete psp stash-operator-psp stash-backup-job stash-backupsession-cron stash-restore-job || true
+  # delete default functions
+  kubectl delete functions.stash.appscode.com update-status pvc-backup pvc-restore || true
+  # delete default tasks
+  kubectl delete tasks.stash.appscode.com pvc-backup pvc-restore || true
 
   echo "waiting for stash operator pod to stop running"
   for (( ; ; )); do

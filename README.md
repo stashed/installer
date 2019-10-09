@@ -7,13 +7,13 @@
 Stash Helm chart and deployment scripts
 
 ## Installation
-To install Stash, please follow the guide [here](https://appscode.com/products/stash/0.8.3/setup/install).
+To install Stash, please follow the guide [here](https://appscode.com/products/stash/latest/setup/install).
 
 ## Using Stash
-Want to learn how to use Stash? Please start [here](https://appscode.com/products/stash/0.8.3).
+Want to learn how to use Stash? Please start [here](https://appscode.com/products/stash/latest/).
 
 ## Contribution guidelines
-Want to help improve Stash? Please start [here](https://appscode.com/products/stash/0.8.3/welcome/contributing).
+Want to help improve Stash? Please start [here](https://appscode.com/products/stash/latest/welcome/contributing).
 
 ---
 
