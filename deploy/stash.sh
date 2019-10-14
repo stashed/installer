@@ -335,17 +335,17 @@ if [ "$STASH_UNINSTALL" -eq 1 ]; then
   # delete webhooks and apiservices
   kubectl delete validatingwebhookconfiguration -l app=stash || true
   kubectl delete mutatingwebhookconfiguration -l app=stash || true
-  kubectl delete apiservice -l app=stash
+  kubectl delete apiservice -l app=stash || true
   # delete stash operator
-  kubectl delete deployment -l app=stash --namespace $STASH_NAMESPACE
-  kubectl delete service -l app=stash --namespace $STASH_NAMESPACE
-  kubectl delete secret -l app=stash --namespace $STASH_NAMESPACE
+  kubectl delete deployment -l app=stash --namespace $STASH_NAMESPACE || true
+  kubectl delete service -l app=stash --namespace $STASH_NAMESPACE || true
+  kubectl delete secret -l app=stash --namespace $STASH_NAMESPACE || true
   # delete RBAC objects, if --rbac flag was used.
-  kubectl delete serviceaccount -l app=stash --namespace $STASH_NAMESPACE
-  kubectl delete clusterrolebindings -l app=stash
-  kubectl delete clusterrole -l app=stash
-  kubectl delete rolebindings -l app=stash --namespace $STASH_NAMESPACE
-  kubectl delete role -l app=stash --namespace $STASH_NAMESPACE
+  kubectl delete serviceaccount -l app=stash --namespace $STASH_NAMESPACE || true
+  kubectl delete clusterrolebindings -l app=stash || true
+  kubectl delete clusterrole -l app=stash || true
+  kubectl delete rolebindings -l app=stash --namespace $STASH_NAMESPACE || true
+  kubectl delete role -l app=stash --namespace $STASH_NAMESPACE || true
   # delete servicemonitor and stash-apiserver-cert secret. ignore error as they might not exist
   kubectl delete servicemonitor stash-servicemonitor --namespace $PROMETHEUS_NAMESPACE || true
   kubectl delete secret stash-apiserver-cert --namespace $PROMETHEUS_NAMESPACE || true
@@ -388,7 +388,7 @@ if [ "$STASH_UNINSTALL" -eq 1 ]; then
 
         # delete crd object
         echo "deleting ${crd} $namespace/$name"
-        kubectl delete ${crd}.stash.appscode.com $name -n $namespace
+        kubectl delete ${crd}.stash.appscode.com $name -n $namespace || true
       done
 
       # delete crd
@@ -413,7 +413,7 @@ if [ "$STASH_UNINSTALL" -eq 1 ]; then
 
         # delete crd object
         echo "deleting ${crd} $name"
-        kubectl delete ${crd}.stash.appscode.com $name
+        kubectl delete ${crd}.stash.appscode.com $name || true
       done
 
       # delete crd
@@ -421,7 +421,7 @@ if [ "$STASH_UNINSTALL" -eq 1 ]; then
     done
 
     # delete user roles
-    kubectl delete clusterroles appscode:stash:edit appscode:stash:view
+    kubectl delete clusterroles appscode:stash:edit appscode:stash:view || true
   fi
 
   echo
