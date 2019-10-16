@@ -117,7 +117,7 @@ rules:
     - volumesnapshots
     - volumesnapshotcontents
     - volumesnapshotclasses
-  verbs: ["create", "get", "list", "watch", "patch"]
+  verbs: ["create", "get", "list", "watch", "patch", "delete"]
 - apiGroups:
     - storage.k8s.io
   resources:
