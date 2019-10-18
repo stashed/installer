@@ -36,7 +36,6 @@ spec:
         - --enable-mutating-webhook=${STASH_ENABLE_MUTATING_WEBHOOK}
         - --enable-validating-webhook=${STASH_ENABLE_VALIDATING_WEBHOOK}
         - --bypass-validating-webhook-xray=${STASH_BYPASS_VALIDATING_WEBHOOK_XRAY}
-        - --enable-status-subresource=${STASH_ENABLE_STATUS_SUBRESOURCE}
         - --use-kubeapiserver-fqdn-for-aks=${STASH_USE_KUBEAPISERVER_FQDN_FOR_AKS}
         - --enable-analytics=${STASH_ENABLE_ANALYTICS}
         ports:
