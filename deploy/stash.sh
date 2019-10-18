@@ -123,7 +123,6 @@ export PUSHGATEWAY_DOCKER_REGISTRY=prom
 export STASH_IMAGE_TAG=${STASH_IMAGE_TAG:-v0.9.0-rc.1}
 export STASH_IMAGE_PULL_SECRET=
 export STASH_IMAGE_PULL_POLICY=IfNotPresent
-export STASH_ENABLE_STATUS_SUBRESOURCE=false
 export STASH_ENABLE_ANALYTICS=true
 export STASH_UNINSTALL=0
 export STASH_PURGE=0
@@ -142,7 +141,6 @@ $ONESSL semver --check='<1.9.0' $KUBE_APISERVER_VERSION || {
   export STASH_ENABLE_VALIDATING_WEBHOOK=true
   export STASH_ENABLE_MUTATING_WEBHOOK=true
 }
-$ONESSL semver --check='<1.11.0' $KUBE_APISERVER_VERSION || { export STASH_ENABLE_STATUS_SUBRESOURCE=true; }
 
 export STASH_WEBHOOK_SIDE_EFFECTS=
 $ONESSL semver --check='<1.12.0' $KUBE_APISERVER_VERSION || { export STASH_WEBHOOK_SIDE_EFFECTS='sideEffects: None'; }
@@ -172,7 +170,6 @@ show_help() {
   echo "    --enable-mutating-webhook          enable/disable mutating webhooks for Kubernetes workloads"
   echo "    --enable-validating-webhook        enable/disable validating webhooks for Stash crds"
   echo "    --bypass-validating-webhook-xray   if true, bypasses validating webhook xray checks"
-  echo "    --enable-status-subresource        if enabled, uses status sub resource for crds"
   echo "    --use-kubeapiserver-fqdn-for-aks   if true, uses kube-apiserver FQDN for AKS cluster to workaround https://github.com/Azure/AKS/issues/522 (default true)"
   echo "    --enable-analytics                 send usage events to Google Analytics (default: true)"
   echo "    --uninstall                        uninstall stash"
@@ -237,13 +234,6 @@ while test $# -gt 0; do
         export STASH_BYPASS_VALIDATING_WEBHOOK_XRAY=false
       else
         export STASH_BYPASS_VALIDATING_WEBHOOK_XRAY=true
-      fi
-      shift
-      ;;
-    --enable-status-subresource*)
-      val=$(echo $1 | sed -e 's/^[^=]*=//g')
-      if [ "$val" = "false" ]; then
-        export STASH_ENABLE_STATUS_SUBRESOURCE=false
       fi
       shift
       ;;
