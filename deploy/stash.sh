@@ -120,7 +120,7 @@ export STASH_ENABLE_VALIDATING_WEBHOOK=false
 export STASH_ENABLE_MUTATING_WEBHOOK=false
 export STASH_DOCKER_REGISTRY=${STASH_DOCKER_REGISTRY:-appscode}
 export PUSHGATEWAY_DOCKER_REGISTRY=prom
-export STASH_IMAGE_TAG=${STASH_IMAGE_TAG:-v0.9.0-rc.1}
+export STASH_IMAGE_TAG=${STASH_IMAGE_TAG:-v0.9.0-rc.2}
 export STASH_IMAGE_PULL_SECRET=
 export STASH_IMAGE_PULL_POLICY=IfNotPresent
 export STASH_ENABLE_ANALYTICS=true
@@ -130,7 +130,7 @@ export STASH_BYPASS_VALIDATING_WEBHOOK_XRAY=false
 export STASH_USE_KUBEAPISERVER_FQDN_FOR_AKS=true
 export STASH_PRIORITY_CLASS=system-cluster-critical
 
-export SCRIPT_LOCATION="curl -fsSL https://raw.githubusercontent.com/stashed/installer/v0.9.0-rc.1/"
+export SCRIPT_LOCATION="curl -fsSL https://raw.githubusercontent.com/stashed/installer/v0.9.0-rc.2/"
 if [[ "$APPSCODE_ENV" == "dev" ]]; then
   export SCRIPT_LOCATION="cat "
   export STASH_IMAGE_PULL_POLICY=Always
