@@ -4,7 +4,7 @@ name: stash
 version: v0.9.0-rc.2
 appVersion: v0.9.0-rc.2
 home: https://github.com/stashed/stash
-icon: https://cdn.appscode.com/images/icon/stash.png
+icon: https://cdn.appscode.com/images/products/stash/icons/android-icon-192x192.png
 sources:
   - https://github.com/stashed/stash
 maintainers:
