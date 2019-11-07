@@ -60,7 +60,7 @@ rules:
   - ""
   resources:
   - persistentvolumeclaims
-  verbs: ["get","list","watch"]
+  verbs: ["get","list","watch", "create", "patch"]
 - apiGroups:
   - ""
   resources:
