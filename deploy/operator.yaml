@@ -52,7 +52,7 @@ spec:
         - name: STASH_LICENSE_KEY
           valueFrom:
             secretKeyRef:
-              key: license_key
+              key: license-key
               name: stash-license
         resources:
           requests:
@@ -122,7 +122,7 @@ metadata:
   namespace: ${STASH_NAMESPACE}
   labels:
     app: stash
-type: opaque
+type: Opaque
 data:
   license-key: ${STASH_LICENSE_KEY}
 ---

@@ -326,7 +326,8 @@ while test $# -gt 0; do
             shift
             ;;
         --license-key*)
-            export STASH_LICENSE_KEY=$(echo $1 | sed -e 's/^[^=]*=//g')
+            val=$(echo $1 | sed -e 's/^[^=]*=//g')
+            export STASH_LICENSE_KEY=$(echo $val | $ONESSL base64)
             shift
             ;;
         *)
