@@ -144,6 +144,7 @@ export STASH_PURGE=0
 export STASH_BYPASS_VALIDATING_WEBHOOK_XRAY=false
 export STASH_USE_KUBEAPISERVER_FQDN_FOR_AKS=true
 export STASH_PRIORITY_CLASS=system-cluster-critical
+export STASH_LICENSE_KEY=
 
 export SCRIPT_LOCATION="curl -fsSL https://raw.githubusercontent.com/stashed/installer/v0.9.0-rc.2/"
 if [[ "$APPSCODE_ENV" == "dev" ]]; then
@@ -194,6 +195,7 @@ show_help() {
     echo "    --monitoring-operator              specify whether to monitor stash operator (default: false)"
     echo "    --prometheus-namespace             specify the namespace where Prometheus server is running or will be deployed (default: same namespace as stash-operator)"
     echo "    --servicemonitor-label             specify the label for ServiceMonitor crd. Prometheus crd will use this label to select the ServiceMonitor. (default: 'app: stash')"
+    echo "    --license-key                       specify the license key for Stash operator"
 }
 
 while test $# -gt 0; do
@@ -321,6 +323,10 @@ while test $# -gt 0; do
             fi
             export SERVICE_MONITOR_LABEL_KEY="${pair[0]}"
             export SERVICE_MONITOR_LABEL_VALUE="${pair[1]}"
+            shift
+            ;;
+        --license-key*)
+            export STASH_LICENSE_KEY=$(echo $1 | sed -e 's/^[^=]*=//g')
             shift
             ;;
         *)

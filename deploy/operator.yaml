@@ -49,6 +49,11 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
+        - name: STASH_LICENSE_KEY
+          valueFrom:
+            secretKeyRef:
+              key: license_key
+              name: stash-license
         resources:
           requests:
             cpu: "100m"
@@ -109,6 +114,17 @@ type: kubernetes.io/tls
 data:
   tls.crt: ${TLS_SERVING_CERT}
   tls.key: ${TLS_SERVING_KEY}
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: stash-license
+  namespace: ${STASH_NAMESPACE}
+  labels:
+    app: stash
+type: opaque
+data:
+  license-key: ${STASH_LICENSE_KEY}
 ---
 # to be able to expose TSB inside the cluster
 apiVersion: v1
