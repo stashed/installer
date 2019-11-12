@@ -2,6 +2,9 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 replicaCount: 1
+# License key to use activate the product
+product:
+  licenseKey: "not-a-license-key"
 # Docker registry containing Stash images
 operator:
   registry: appscode

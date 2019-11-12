@@ -67,6 +67,11 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
+        - name: STASH_LICENSE_KEY
+          valueFrom:
+            secretKeyRef:
+              key: license-key
+              name: stash-license
 {{- if .Values.apiserver.healthcheck.enabled }}
         readinessProbe:
           httpGet:
