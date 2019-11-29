@@ -94,6 +94,7 @@ rules:
   - clusterroles
   - roles
   - rolebindings
+  - clusterrolebindings
   verbs: ["get", "create", "delete", "patch"]
 - apiGroups:
   - apps.openshift.io
@@ -119,4 +120,9 @@ rules:
     - volumesnapshots
     - volumesnapshotcontents
     - volumesnapshotclasses
-  verbs: ["create", "get", "list", "watch", "patch"]
+  verbs: ["create", "get", "list", "watch", "patch", "delete"]
+- apiGroups:
+    - storage.k8s.io
+  resources:
+    - storageclasses
+  verbs: ["get"]
