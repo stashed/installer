@@ -9,14 +9,16 @@ require (
 	github.com/go-openapi/swag v0.19.4 // indirect
 	github.com/gogo/protobuf v1.2.2-0.20190730201129-28a6bbf47e48 // indirect
 	github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b
+	github.com/google/gofuzz v1.0.0
 	github.com/stretchr/testify v1.4.0 // indirect
 	gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15 // indirect
 	k8s.io/api v0.0.0-20191114100352-16d7abae0d2a
 	k8s.io/apiextensions-apiserver v0.0.0-20191114105449-027877536833
 	k8s.io/apimachinery v0.0.0-20191028221656-72ed19daf4bb
-	k8s.io/client-go v12.0.0+incompatible // indirect
+	k8s.io/client-go v12.0.0+incompatible
 	k8s.io/kube-openapi v0.0.0-20190816220812-743ec37842bf
 	kmodules.xyz/client-go v0.0.0-20191127054604-26981530831d
+	kmodules.xyz/crd-schema-fuzz v0.0.0-20191129174258-81f984340891
 	sigs.k8s.io/yaml v1.1.0
 )
 
