@@ -136,7 +136,7 @@ export STASH_ENABLE_MUTATING_WEBHOOK=false
 export STASH_DOCKER_REGISTRY=${STASH_DOCKER_REGISTRY:-appscode}
 export PUSHGATEWAY_DOCKER_REGISTRY=prom
 export STASH_IMAGE_TAG=${STASH_IMAGE_TAG:-v0.9.0-rc.2}
-export STASH_IMAGE_PULL_SECRET=
+export STASH_IMAGE_PULL_SECRET_NAME=
 export STASH_IMAGE_PULL_POLICY=IfNotPresent
 export STASH_ENABLE_ANALYTICS=true
 export STASH_UNINSTALL=0
@@ -225,8 +225,7 @@ while test $# -gt 0; do
             shift
             ;;
         --image-pull-secret*)
-            secret=$(echo $1 | sed -e 's/^[^=]*=//g')
-            export STASH_IMAGE_PULL_SECRET="name: '$secret'"
+            export STASH_IMAGE_PULL_SECRET_NAME=$(echo $1 | sed -e 's/^[^=]*=//g')
             shift
             ;;
         --enable-mutating-webhook*)
@@ -329,6 +328,11 @@ while test $# -gt 0; do
             ;;
     esac
 done
+
+export STASH_IMAGE_PULL_SECRET=
+if [ -n "$STASH_IMAGE_PULL_SECRET_NAME" ]; then
+    export STASH_IMAGE_PULL_SECRET="name: '$STASH_IMAGE_PULL_SECRET_NAME'"
+fi
 
 export PROMETHEUS_NAMESPACE=${PROMETHEUS_NAMESPACE:-$STASH_NAMESPACE}
 
