@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "KubeDB",
+    "title": "Stash",
     "contact": {
       "name": "AppsCode Inc.",
       "url": "https://appscode.com",
