@@ -674,6 +674,7 @@ spec:
                     enableValidatingWebhook:
                       type: boolean
                     groupPriorityMinimum:
+                      format: int32
                       type: integer
                     healthcheck:
                       properties:
@@ -685,6 +686,7 @@ spec:
                     useKubeapiserverFqdnForAks:
                       type: boolean
                     versionPriority:
+                      format: int32
                       type: integer
                   required:
                   - bypassValidatingWebhookXray
@@ -716,6 +718,7 @@ spec:
                 imagePullPolicy:
                   type: string
                 logLevel:
+                  format: int32
                   type: integer
                 monitoring:
                   properties:
@@ -786,6 +789,7 @@ spec:
                   - tag
                   type: object
                 replicaCount:
+                  format: int32
                   type: integer
                 serviceAccount:
                   properties:
