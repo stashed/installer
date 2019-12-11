@@ -59,13 +59,13 @@ type StashOperatorSpec struct {
 }
 
 type StashOperatorChartValues struct {
-	ReplicaCount    int               `json:"replicaCount"`
+	ReplicaCount    int32             `json:"replicaCount"`
 	Operator        ImageRef          `json:"operator"`
 	Pushgateway     ImageRef          `json:"pushgateway"`
 	Cleaner         ImageRef          `json:"cleaner"`
 	ImagePullPolicy string            `json:"imagePullPolicy"`
 	CriticalAddon   bool              `json:"criticalAddon"`
-	LogLevel        int               `json:"logLevel"`
+	LogLevel        int32             `json:"logLevel"`
 	Annotations     map[string]string `json:"annotations"`
 	NodeSelector    map[string]string `json:"nodeSelector"`
 	// If specified, the pod's tolerations.
@@ -88,8 +88,8 @@ type ServiceAccountSpec struct {
 }
 
 type WebHookSpec struct {
-	GroupPriorityMinimum        int             `json:"groupPriorityMinimum"`
-	VersionPriority             int             `json:"versionPriority"`
+	GroupPriorityMinimum        int32           `json:"groupPriorityMinimum"`
+	VersionPriority             int32           `json:"versionPriority"`
 	EnableMutatingWebhook       bool            `json:"enableMutatingWebhook"`
 	EnableValidatingWebhook     bool            `json:"enableValidatingWebhook"`
 	Ca                          string          `json:"ca"`
