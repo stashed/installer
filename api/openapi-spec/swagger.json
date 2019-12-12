@@ -868,9 +868,6 @@
   "definitions": {
     "dev.appscode.stash.installer.apis.installer.v1alpha1.HealthcheckSpec": {
       "type": "object",
-      "required": [
-        "enabled"
-      ],
       "properties": {
         "enabled": {
           "type": "boolean"
@@ -1000,7 +997,39 @@
         }
       ]
     },
-    "dev.appscode.stash.installer.apis.installer.v1alpha1.StashOperatorChartValues": {
+    "dev.appscode.stash.installer.apis.installer.v1alpha1.StashOperatorList": {
+      "description": "StashOperatorList is a list of StashOperators",
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "items": {
+          "description": "Items is a list of StashOperator CRD objects",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/dev.appscode.stash.installer.apis.installer.v1alpha1.StashOperator"
+          }
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+        }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "installer.stash.appscode.com",
+          "kind": "StashOperatorList",
+          "version": "v1alpha1"
+        }
+      ]
+    },
+    "dev.appscode.stash.installer.apis.installer.v1alpha1.StashOperatorSpec": {
+      "description": "StashOperatorSpec is the spec for redis version",
       "type": "object",
       "required": [
         "replicaCount",
@@ -1008,10 +1037,7 @@
         "pushgateway",
         "cleaner",
         "imagePullPolicy",
-        "criticalAddon",
         "logLevel",
-        "annotations",
-        "nodeSelector",
         "serviceAccount",
         "apiserver",
         "enableAnalytics",
@@ -1089,49 +1115,6 @@
         }
       }
     },
-    "dev.appscode.stash.installer.apis.installer.v1alpha1.StashOperatorList": {
-      "description": "StashOperatorList is a list of StashOperators",
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-          "type": "string"
-        },
-        "items": {
-          "description": "Items is a list of StashOperator CRD objects",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/dev.appscode.stash.installer.apis.installer.v1alpha1.StashOperator"
-          }
-        },
-        "kind": {
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-          "type": "string"
-        },
-        "metadata": {
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
-        }
-      },
-      "x-kubernetes-group-version-kind": [
-        {
-          "group": "installer.stash.appscode.com",
-          "kind": "StashOperatorList",
-          "version": "v1alpha1"
-        }
-      ]
-    },
-    "dev.appscode.stash.installer.apis.installer.v1alpha1.StashOperatorSpec": {
-      "description": "StashOperatorSpec is the spec for redis version",
-      "type": "object",
-      "required": [
-        "values"
-      ],
-      "properties": {
-        "values": {
-          "$ref": "#/definitions/dev.appscode.stash.installer.apis.installer.v1alpha1.StashOperatorChartValues"
-        }
-      }
-    },
     "dev.appscode.stash.installer.apis.installer.v1alpha1.WebHookSpec": {
       "type": "object",
       "required": [
@@ -1140,7 +1123,6 @@
         "enableMutatingWebhook",
         "enableValidatingWebhook",
         "ca",
-        "bypassValidatingWebhookXray",
         "useKubeapiserverFqdnForAks",
         "healthcheck"
       ],

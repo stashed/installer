@@ -30,17 +30,12 @@ const (
 // StashOperator defines the schama for Stash Operator Installer.
 
 // +genclient
-// +genclient:nonNamespaced
 // +genclient:skipVerbs=updateStatus
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // +kubebuilder:object:root=true
-// +kubebuilder:resource:path=stashoperators,singular=stashoperator,scope=Cluster,categories={stash,appscode}
-// +kubebuilder:printcolumn:name="Version",type="string",JSONPath=".spec.version"
-// +kubebuilder:printcolumn:name="DB_IMAGE",type="string",JSONPath=".spec.db.image"
-// +kubebuilder:printcolumn:name="Deprecated",type="boolean",JSONPath=".spec.deprecated"
-// +kubebuilder:printcolumn:name="Age",type="date",JSONPath=".metadata.creationTimestamp"
+// +kubebuilder:resource:path=stashoperators,singular=stashoperator,categories={stash,appscode}
 type StashOperator struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
@@ -55,19 +50,15 @@ type ImageRef struct {
 
 // StashOperatorSpec is the spec for redis version
 type StashOperatorSpec struct {
-	Values StashOperatorChartValues `json:"values"`
-}
-
-type StashOperatorChartValues struct {
 	ReplicaCount    int32             `json:"replicaCount"`
 	Operator        ImageRef          `json:"operator"`
 	Pushgateway     ImageRef          `json:"pushgateway"`
 	Cleaner         ImageRef          `json:"cleaner"`
 	ImagePullPolicy string            `json:"imagePullPolicy"`
-	CriticalAddon   bool              `json:"criticalAddon"`
+	CriticalAddon   bool              `json:"criticalAddon,omitempty"`
 	LogLevel        int32             `json:"logLevel"`
-	Annotations     map[string]string `json:"annotations"`
-	NodeSelector    map[string]string `json:"nodeSelector"`
+	Annotations     map[string]string `json:"annotations,omitempty"`
+	NodeSelector    map[string]string `json:"nodeSelector,omitempty"`
 	// If specified, the pod's tolerations.
 	// +optional
 	Tolerations []core.Toleration `json:"tolerations,omitempty"`
@@ -92,14 +83,14 @@ type WebHookSpec struct {
 	VersionPriority             int32           `json:"versionPriority"`
 	EnableMutatingWebhook       bool            `json:"enableMutatingWebhook"`
 	EnableValidatingWebhook     bool            `json:"enableValidatingWebhook"`
-	Ca                          string          `json:"ca"`
-	BypassValidatingWebhookXray bool            `json:"bypassValidatingWebhookXray"`
+	CA                          string          `json:"ca"`
+	BypassValidatingWebhookXray bool            `json:"bypassValidatingWebhookXray,omitempty"`
 	UseKubeapiserverFqdnForAks  bool            `json:"useKubeapiserverFqdnForAks"`
 	Healthcheck                 HealthcheckSpec `json:"healthcheck"`
 }
 
 type HealthcheckSpec struct {
-	Enabled bool `json:"enabled"`
+	Enabled bool `json:"enabled,omitempty"`
 }
 
 type Monitoring struct {
