@@ -61,9 +61,9 @@ ARCH := $(if $(GOARCH),$(GOARCH),$(shell go env GOARCH))
 BASEIMAGE_PROD   ?= gcr.io/distroless/static
 BASEIMAGE_DBG    ?= debian:stretch
 
-GO_VERSION       ?= 1.13.4
+GO_VERSION       ?= 1.13.5
 BUILD_IMAGE      ?= appscode/golang-dev:$(GO_VERSION)
-CHART_TEST_IMAGE ?= quay.io/helmpack/chart-testing:v2.4.0
+CHART_TEST_IMAGE ?= quay.io/helmpack/chart-testing:v3.0.0-beta.1
 
 OUTBIN = bin/$(OS)_$(ARCH)/$(BIN)
 ifeq ($(OS),windows)
@@ -189,6 +189,26 @@ label-crds: $(BUILD_DIRS)
 		mv bin/crd.yaml $$f; \
 	done
 
+.PHONY: gen-crd-protos
+gen-crd-protos: $(addprefix gen-crd-protos-, $(subst :,_, $(API_GROUPS)))
+
+gen-crd-protos-%:
+	@echo "Generating protobuf for $(subst _,/,$*)"
+	@docker run --rm                                     \
+		-u $$(id -u):$$(id -g)                           \
+		-v /tmp:/.cache                                  \
+		-v $$(pwd):$(DOCKER_REPO_ROOT)                   \
+		-w $(DOCKER_REPO_ROOT)                           \
+		--env HTTP_PROXY=$(HTTP_PROXY)                   \
+		--env HTTPS_PROXY=$(HTTPS_PROXY)                 \
+		$(CODE_GENERATOR_IMAGE)                          \
+		go-to-protobuf                                   \
+			--go-header-file "./hack/license/go.txt"     \
+			--proto-import=$(DOCKER_REPO_ROOT)/vendor    \
+			--proto-import=$(DOCKER_REPO_ROOT)/third_party/protobuf \
+			--apimachinery-packages=-k8s.io/apimachinery/pkg/api/resource,-k8s.io/apimachinery/pkg/apis/meta/v1,-k8s.io/apimachinery/pkg/apis/meta/v1beta1,-k8s.io/apimachinery/pkg/runtime,-k8s.io/apimachinery/pkg/runtime/schema,-k8s.io/apimachinery/pkg/util/intstr \
+			--packages=-k8s.io/api/core/v1,stash.appscode.dev/installer/apis/$(subst _,/,$*)
+
 .PHONY: gen-bindata
 gen-bindata:
 	@docker run                                                 \
@@ -207,7 +227,7 @@ gen-bindata:
 manifests: gen-crds patch-crds label-crds gen-bindata
 
 .PHONY: gen
-gen: clientset openapi manifests
+gen: clientset gen-crd-protos manifests openapi
 
 fmt: $(BUILD_DIRS)
 	@docker run                                                 \
@@ -298,13 +318,7 @@ ct: $(BUILD_DIRS)
 	    --env HTTPS_PROXY=$(HTTPS_PROXY)                        \
 	    --env KUBECONFIG=$(subst $(HOME),,$(KUBECONFIG))        \
 	    $(CHART_TEST_IMAGE)                                     \
-	    /bin/sh -c "                                            \
-		    kubectl -n kube-system create sa tiller;            \
-			kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount=kube-system:tiller;   \
-			helm init --service-account tiller;                 \
-			kubectl wait --for=condition=Ready pods -n kube-system --all --timeout=5m;  \
-			ct lint-and-install --all;                          \
-	    "
+	    ct lint-and-install --all
 
 ADDTL_LINTERS   := goconst,gofmt,goimports,unparam
 
