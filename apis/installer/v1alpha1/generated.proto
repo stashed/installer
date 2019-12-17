@@ -99,33 +99,35 @@ message StashOperatorSpec {
 
   optional string imagePullPolicy = 5;
 
-  optional bool criticalAddon = 6;
+  repeated string imagePullSecrets = 6;
 
-  optional int32 logLevel = 7;
+  optional bool criticalAddon = 7;
 
-  map<string, string> annotations = 8;
+  optional int32 logLevel = 8;
 
-  map<string, string> nodeSelector = 9;
+  map<string, string> annotations = 9;
+
+  map<string, string> nodeSelector = 10;
 
   // If specified, the pod's tolerations.
   // +optional
-  repeated k8s.io.api.core.v1.Toleration tolerations = 10;
+  repeated k8s.io.api.core.v1.Toleration tolerations = 11;
 
   // If specified, the pod's scheduling constraints
   // +optional
-  optional k8s.io.api.core.v1.Affinity affinity = 11;
+  optional k8s.io.api.core.v1.Affinity affinity = 12;
 
-  optional ServiceAccountSpec serviceAccount = 12;
+  optional ServiceAccountSpec serviceAccount = 13;
 
-  optional WebHookSpec apiserver = 13;
+  optional WebHookSpec apiserver = 14;
 
-  optional bool enableAnalytics = 14;
+  optional bool enableAnalytics = 15;
 
-  optional Monitoring monitoring = 15;
+  optional Monitoring monitoring = 16;
 
-  repeated string additionalPodSecurityPolicies = 16;
+  repeated string additionalPodSecurityPolicies = 17;
 
-  optional Platform platform = 17;
+  optional Platform platform = 18;
 }
 
 message WebHookSpec {

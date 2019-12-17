@@ -15772,6 +15772,19 @@ func schema_installer_apis_installer_v1alpha1_StashOperatorSpec(ref common.Refer
 							Format: "",
 						},
 					},
+					"imagePullSecrets": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
 					"criticalAddon": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
@@ -15871,7 +15884,7 @@ func schema_installer_apis_installer_v1alpha1_StashOperatorSpec(ref common.Refer
 						},
 					},
 				},
-				Required: []string{"replicaCount", "operator", "pushgateway", "cleaner", "imagePullPolicy", "logLevel", "serviceAccount", "apiserver", "enableAnalytics", "monitoring", "additionalPodSecurityPolicies", "platform"},
+				Required: []string{"replicaCount", "operator", "pushgateway", "cleaner", "imagePullPolicy", "imagePullSecrets", "logLevel", "serviceAccount", "apiserver", "enableAnalytics", "monitoring", "additionalPodSecurityPolicies", "platform"},
 			},
 		},
 		Dependencies: []string{

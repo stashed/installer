@@ -1037,6 +1037,7 @@
         "pushgateway",
         "cleaner",
         "imagePullPolicy",
+        "imagePullSecrets",
         "logLevel",
         "serviceAccount",
         "apiserver",
@@ -1076,6 +1077,12 @@
         },
         "imagePullPolicy": {
           "type": "string"
+        },
+        "imagePullSecrets": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         },
         "logLevel": {
           "type": "integer",

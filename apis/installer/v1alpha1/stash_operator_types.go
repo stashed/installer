@@ -50,27 +50,28 @@ type ImageRef struct {
 
 // StashOperatorSpec is the spec for redis version
 type StashOperatorSpec struct {
-	ReplicaCount    int32             `json:"replicaCount" protobuf:"varint,1,opt,name=replicaCount"`
-	Operator        ImageRef          `json:"operator" protobuf:"bytes,2,opt,name=operator"`
-	Pushgateway     ImageRef          `json:"pushgateway" protobuf:"bytes,3,opt,name=pushgateway"`
-	Cleaner         ImageRef          `json:"cleaner" protobuf:"bytes,4,opt,name=cleaner"`
-	ImagePullPolicy string            `json:"imagePullPolicy" protobuf:"bytes,5,opt,name=imagePullPolicy"`
-	CriticalAddon   bool              `json:"criticalAddon,omitempty" protobuf:"varint,6,opt,name=criticalAddon"`
-	LogLevel        int32             `json:"logLevel" protobuf:"varint,7,opt,name=logLevel"`
-	Annotations     map[string]string `json:"annotations,omitempty" protobuf:"bytes,8,rep,name=annotations"`
-	NodeSelector    map[string]string `json:"nodeSelector,omitempty" protobuf:"bytes,9,rep,name=nodeSelector"`
+	ReplicaCount     int32             `json:"replicaCount" protobuf:"varint,1,opt,name=replicaCount"`
+	Operator         ImageRef          `json:"operator" protobuf:"bytes,2,opt,name=operator"`
+	Pushgateway      ImageRef          `json:"pushgateway" protobuf:"bytes,3,opt,name=pushgateway"`
+	Cleaner          ImageRef          `json:"cleaner" protobuf:"bytes,4,opt,name=cleaner"`
+	ImagePullPolicy  string            `json:"imagePullPolicy" protobuf:"bytes,5,opt,name=imagePullPolicy"`
+	ImagePullSecrets []string          `json:"imagePullSecrets" protobuf:"bytes,6,rep,name=imagePullSecrets"`
+	CriticalAddon    bool              `json:"criticalAddon,omitempty" protobuf:"varint,7,opt,name=criticalAddon"`
+	LogLevel         int32             `json:"logLevel" protobuf:"varint,8,opt,name=logLevel"`
+	Annotations      map[string]string `json:"annotations,omitempty" protobuf:"bytes,9,rep,name=annotations"`
+	NodeSelector     map[string]string `json:"nodeSelector,omitempty" protobuf:"bytes,10,rep,name=nodeSelector"`
 	// If specified, the pod's tolerations.
 	// +optional
-	Tolerations []core.Toleration `json:"tolerations,omitempty" protobuf:"bytes,10,rep,name=tolerations"`
+	Tolerations []core.Toleration `json:"tolerations,omitempty" protobuf:"bytes,11,rep,name=tolerations"`
 	// If specified, the pod's scheduling constraints
 	// +optional
-	Affinity                      *core.Affinity     `json:"affinity,omitempty" protobuf:"bytes,11,opt,name=affinity"`
-	ServiceAccount                ServiceAccountSpec `json:"serviceAccount" protobuf:"bytes,12,opt,name=serviceAccount"`
-	Apiserver                     WebHookSpec        `json:"apiserver" protobuf:"bytes,13,opt,name=apiserver"`
-	EnableAnalytics               bool               `json:"enableAnalytics" protobuf:"varint,14,opt,name=enableAnalytics"`
-	Monitoring                    Monitoring         `json:"monitoring" protobuf:"bytes,15,opt,name=monitoring"`
-	AdditionalPodSecurityPolicies []string           `json:"additionalPodSecurityPolicies" protobuf:"bytes,16,rep,name=additionalPodSecurityPolicies"`
-	Platform                      Platform           `json:"platform" protobuf:"bytes,17,opt,name=platform"`
+	Affinity                      *core.Affinity     `json:"affinity,omitempty" protobuf:"bytes,12,opt,name=affinity"`
+	ServiceAccount                ServiceAccountSpec `json:"serviceAccount" protobuf:"bytes,13,opt,name=serviceAccount"`
+	Apiserver                     WebHookSpec        `json:"apiserver" protobuf:"bytes,14,opt,name=apiserver"`
+	EnableAnalytics               bool               `json:"enableAnalytics" protobuf:"varint,15,opt,name=enableAnalytics"`
+	Monitoring                    Monitoring         `json:"monitoring" protobuf:"bytes,16,opt,name=monitoring"`
+	AdditionalPodSecurityPolicies []string           `json:"additionalPodSecurityPolicies" protobuf:"bytes,17,rep,name=additionalPodSecurityPolicies"`
+	Platform                      Platform           `json:"platform" protobuf:"bytes,18,opt,name=platform"`
 }
 
 type ServiceAccountSpec struct {
