@@ -67,16 +67,4 @@ jobs:
       run: |
         export KUBECONFIG="$(kind get kubeconfig-path)"
         make ct
-        kubectl delete crd --all
-
-    - name: Test script installer
-      run: |
-        export KUBECONFIG="$(kind get kubeconfig-path)"
-        echo "installing operator"
-        ./deploy/stash.sh
-        echo
-        echo "uninstalling operator"
-        ./deploy/stash.sh --uninstall
-        echo
-        echo "purging operator"
-        ./deploy/stash.sh --uninstall --purge
+        kubectl delete crd -l app=stash
