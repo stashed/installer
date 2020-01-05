@@ -7,7 +7,7 @@
 ```console
 $ helm repo add appscode https://charts.appscode.com/stable/
 $ helm repo update
-$ helm install stash-operator appscode/stash --namespace kube-system
+$ helm install stash-operator appscode/stash -n kube-system
 ```
 
 ## Introduction
@@ -16,14 +16,14 @@ This chart bootstraps a [Stash controller](https://github.com/stashed/stash) dep
 
 ## Prerequisites
 
-- Kubernetes 1.12+
+- Kubernetes 1.11+
 
 ## Installing the Chart
 
 To install the chart with the release name `stash-operator`:
 
 ```console
-$ helm install stash-operator appscode/stash --namespace kube-system
+$ helm install stash-operator appscode/stash -n kube-system
 ```
 
 The command deploys Stash operator on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
@@ -35,7 +35,7 @@ The command deploys Stash operator on the Kubernetes cluster in the default conf
 To uninstall/delete the `stash-operator`:
 
 ```console
-$ helm delete stash-operator --namespace kube-system
+$ helm delete stash-operator -n kube-system
 ```
 
 The command removes all the Kubernetes components associated with the chart and deletes the release.
@@ -86,12 +86,12 @@ The following table lists the configurable parameters of the Stash chart and the
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example:
 
 ```console
-$ helm install stash-operator appscode/stash --namespace kube-system --set image.tag=v0.2.1
+$ helm install stash-operator appscode/stash -n kube-system --set image.tag=v0.2.1
 ```
 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while
 installing the chart. For example:
 
 ```console
-$ helm install stash-operator appscode/stash --namespace kube-system --values values.yaml
+$ helm install stash-operator appscode/stash -n kube-system --values values.yaml
 ```
