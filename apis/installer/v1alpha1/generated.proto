@@ -71,6 +71,16 @@ message ServiceMonitorLabels {
   map<string, string> labels = 1;
 }
 
+message ServingCerts {
+  optional bool generate = 1;
+
+  optional string caCrt = 2;
+
+  optional string serverCrt = 3;
+
+  optional string serverKey = 4;
+}
+
 // +kubebuilder:object:root=true
 // +kubebuilder:resource:path=stashoperators,singular=stashoperator,categories={stash,appscode}
 message StashOperator {
@@ -146,5 +156,7 @@ message WebHookSpec {
   optional bool useKubeapiserverFqdnForAks = 7;
 
   optional HealthcheckSpec healthcheck = 8;
+
+  optional ServingCerts servingCerts = 9;
 }
 
