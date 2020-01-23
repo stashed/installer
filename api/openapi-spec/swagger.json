@@ -971,6 +971,29 @@
         }
       }
     },
+    "dev.appscode.stash.installer.apis.installer.v1alpha1.ServingCerts": {
+      "type": "object",
+      "required": [
+        "generate",
+        "caCrt",
+        "serverCrt",
+        "serverKey"
+      ],
+      "properties": {
+        "caCrt": {
+          "type": "string"
+        },
+        "generate": {
+          "type": "boolean"
+        },
+        "serverCrt": {
+          "type": "string"
+        },
+        "serverKey": {
+          "type": "string"
+        }
+      }
+    },
     "dev.appscode.stash.installer.apis.installer.v1alpha1.StashOperator": {
       "type": "object",
       "properties": {
@@ -1131,7 +1154,8 @@
         "enableValidatingWebhook",
         "ca",
         "useKubeapiserverFqdnForAks",
-        "healthcheck"
+        "healthcheck",
+        "servingCerts"
       ],
       "properties": {
         "bypassValidatingWebhookXray": {
@@ -1152,6 +1176,9 @@
         },
         "healthcheck": {
           "$ref": "#/definitions/dev.appscode.stash.installer.apis.installer.v1alpha1.HealthcheckSpec"
+        },
+        "servingCerts": {
+          "$ref": "#/definitions/dev.appscode.stash.installer.apis.installer.v1alpha1.ServingCerts"
         },
         "useKubeapiserverFqdnForAks": {
           "type": "boolean"

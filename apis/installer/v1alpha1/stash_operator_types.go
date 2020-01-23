@@ -88,6 +88,14 @@ type WebHookSpec struct {
 	BypassValidatingWebhookXray bool            `json:"bypassValidatingWebhookXray,omitempty" protobuf:"varint,6,opt,name=bypassValidatingWebhookXray"`
 	UseKubeapiserverFqdnForAks  bool            `json:"useKubeapiserverFqdnForAks" protobuf:"varint,7,opt,name=useKubeapiserverFqdnForAks"`
 	Healthcheck                 HealthcheckSpec `json:"healthcheck" protobuf:"bytes,8,opt,name=healthcheck"`
+	ServingCerts                ServingCerts    `json:"servingCerts" protobuf:"bytes,9,opt,name=servingCerts"`
+}
+
+type ServingCerts struct {
+	Generate  bool   `json:"generate" protobuf:"varint,1,opt,name=generate"`
+	CaCrt     string `json:"caCrt" protobuf:"bytes,2,opt,name=caCrt"`
+	ServerCrt string `json:"serverCrt" protobuf:"bytes,3,opt,name=serverCrt"`
+	ServerKey string `json:"serverKey" protobuf:"bytes,4,opt,name=serverKey"`
 }
 
 type HealthcheckSpec struct {
