@@ -337,6 +337,7 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.PrometheusSpec":       schema_installer_apis_installer_v1alpha1_PrometheusSpec(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.ServiceAccountSpec":   schema_installer_apis_installer_v1alpha1_ServiceAccountSpec(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.ServiceMonitorLabels": schema_installer_apis_installer_v1alpha1_ServiceMonitorLabels(ref),
+		"stash.appscode.dev/installer/apis/installer/v1alpha1.ServingCerts":         schema_installer_apis_installer_v1alpha1_ServingCerts(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.StashOperator":        schema_installer_apis_installer_v1alpha1_StashOperator(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.StashOperatorList":    schema_installer_apis_installer_v1alpha1_StashOperatorList(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.StashOperatorSpec":    schema_installer_apis_installer_v1alpha1_StashOperatorSpec(ref),
@@ -15653,6 +15654,43 @@ func schema_installer_apis_installer_v1alpha1_ServiceMonitorLabels(ref common.Re
 	}
 }
 
+func schema_installer_apis_installer_v1alpha1_ServingCerts(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"generate": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"caCrt": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"serverCrt": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"serverKey": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+				Required: []string{"generate", "caCrt", "serverCrt", "serverKey"},
+			},
+		},
+	}
+}
+
 func schema_installer_apis_installer_v1alpha1_StashOperator(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
@@ -15945,11 +15983,16 @@ func schema_installer_apis_installer_v1alpha1_WebHookSpec(ref common.ReferenceCa
 							Ref: ref("stash.appscode.dev/installer/apis/installer/v1alpha1.HealthcheckSpec"),
 						},
 					},
+					"servingCerts": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("stash.appscode.dev/installer/apis/installer/v1alpha1.ServingCerts"),
+						},
+					},
 				},
-				Required: []string{"groupPriorityMinimum", "versionPriority", "enableMutatingWebhook", "enableValidatingWebhook", "ca", "useKubeapiserverFqdnForAks", "healthcheck"},
+				Required: []string{"groupPriorityMinimum", "versionPriority", "enableMutatingWebhook", "enableValidatingWebhook", "ca", "useKubeapiserverFqdnForAks", "healthcheck", "servingCerts"},
 			},
 		},
 		Dependencies: []string{
-			"stash.appscode.dev/installer/apis/installer/v1alpha1.HealthcheckSpec"},
+			"stash.appscode.dev/installer/apis/installer/v1alpha1.HealthcheckSpec", "stash.appscode.dev/installer/apis/installer/v1alpha1.ServingCerts"},
 	}
 }

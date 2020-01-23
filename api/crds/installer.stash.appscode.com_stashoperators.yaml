@@ -638,6 +638,22 @@ spec:
                     enabled:
                       type: boolean
                   type: object
+                servingCerts:
+                  properties:
+                    caCrt:
+                      type: string
+                    generate:
+                      type: boolean
+                    serverCrt:
+                      type: string
+                    serverKey:
+                      type: string
+                  required:
+                  - caCrt
+                  - generate
+                  - serverCrt
+                  - serverKey
+                  type: object
                 useKubeapiserverFqdnForAks:
                   type: boolean
                 versionPriority:
@@ -649,6 +665,7 @@ spec:
               - enableValidatingWebhook
               - groupPriorityMinimum
               - healthcheck
+              - servingCerts
               - useKubeapiserverFqdnForAks
               - versionPriority
               type: object
