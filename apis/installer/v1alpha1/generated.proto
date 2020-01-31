@@ -30,6 +30,7 @@ import "k8s.io/apimachinery/pkg/runtime/schema/generated.proto";
 option go_package = "v1alpha1";
 
 message HealthcheckSpec {
+  // +optional
   optional bool enabled = 1;
 }
 
@@ -54,30 +55,37 @@ message Monitoring {
 }
 
 message Platform {
+  // +optional
   optional bool openshift = 1;
 }
 
 message PrometheusSpec {
+  // +optional
   optional string namespace = 1;
 }
 
 message ServiceAccountSpec {
   optional bool create = 1;
 
+  // +optional
   optional string name = 2;
 }
 
 message ServiceMonitorLabels {
+  // +optional
   map<string, string> labels = 1;
 }
 
 message ServingCerts {
   optional bool generate = 1;
 
+  // +optional
   optional string caCrt = 2;
 
+  // +optional
   optional string serverCrt = 3;
 
+  // +optional
   optional string serverKey = 4;
 }
 
@@ -107,16 +115,21 @@ message StashOperatorSpec {
 
   optional ImageRef cleaner = 4;
 
+  // +optional
   optional string imagePullPolicy = 5;
 
   repeated string imagePullSecrets = 6;
 
+  // +optional
   optional bool criticalAddon = 7;
 
+  // +optional
   optional int32 logLevel = 8;
 
+  // +optional
   map<string, string> annotations = 9;
 
+  // +optional
   map<string, string> nodeSelector = 10;
 
   // If specified, the pod's tolerations.
@@ -135,8 +148,10 @@ message StashOperatorSpec {
 
   optional Monitoring monitoring = 16;
 
+  // +optional
   repeated string additionalPodSecurityPolicies = 17;
 
+  // +optional
   optional Platform platform = 18;
 }
 
@@ -151,6 +166,7 @@ message WebHookSpec {
 
   optional string ca = 5;
 
+  // +optional
   optional bool bypassValidatingWebhookXray = 6;
 
   optional bool useKubeapiserverFqdnForAks = 7;

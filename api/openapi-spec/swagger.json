@@ -922,9 +922,6 @@
     },
     "dev.appscode.stash.installer.apis.installer.v1alpha1.Platform": {
       "type": "object",
-      "required": [
-        "openshift"
-      ],
       "properties": {
         "openshift": {
           "type": "boolean"
@@ -933,9 +930,6 @@
     },
     "dev.appscode.stash.installer.apis.installer.v1alpha1.PrometheusSpec": {
       "type": "object",
-      "required": [
-        "namespace"
-      ],
       "properties": {
         "namespace": {
           "type": "string"
@@ -945,8 +939,7 @@
     "dev.appscode.stash.installer.apis.installer.v1alpha1.ServiceAccountSpec": {
       "type": "object",
       "required": [
-        "create",
-        "name"
+        "create"
       ],
       "properties": {
         "create": {
@@ -959,9 +952,6 @@
     },
     "dev.appscode.stash.installer.apis.installer.v1alpha1.ServiceMonitorLabels": {
       "type": "object",
-      "required": [
-        "labels"
-      ],
       "properties": {
         "labels": {
           "type": "object",
@@ -974,10 +964,7 @@
     "dev.appscode.stash.installer.apis.installer.v1alpha1.ServingCerts": {
       "type": "object",
       "required": [
-        "generate",
-        "caCrt",
-        "serverCrt",
-        "serverKey"
+        "generate"
       ],
       "properties": {
         "caCrt": {
@@ -1059,15 +1046,11 @@
         "operator",
         "pushgateway",
         "cleaner",
-        "imagePullPolicy",
         "imagePullSecrets",
-        "logLevel",
         "serviceAccount",
         "apiserver",
         "enableAnalytics",
-        "monitoring",
-        "additionalPodSecurityPolicies",
-        "platform"
+        "monitoring"
       ],
       "properties": {
         "additionalPodSecurityPolicies": {
