@@ -15577,7 +15577,6 @@ func schema_installer_apis_installer_v1alpha1_Platform(ref common.ReferenceCallb
 						},
 					},
 				},
-				Required: []string{"openshift"},
 			},
 		},
 	}
@@ -15596,7 +15595,6 @@ func schema_installer_apis_installer_v1alpha1_PrometheusSpec(ref common.Referenc
 						},
 					},
 				},
-				Required: []string{"namespace"},
 			},
 		},
 	}
@@ -15621,7 +15619,7 @@ func schema_installer_apis_installer_v1alpha1_ServiceAccountSpec(ref common.Refe
 						},
 					},
 				},
-				Required: []string{"create", "name"},
+				Required: []string{"create"},
 			},
 		},
 	}
@@ -15648,7 +15646,6 @@ func schema_installer_apis_installer_v1alpha1_ServiceMonitorLabels(ref common.Re
 						},
 					},
 				},
-				Required: []string{"labels"},
 			},
 		},
 	}
@@ -15685,7 +15682,7 @@ func schema_installer_apis_installer_v1alpha1_ServingCerts(ref common.ReferenceC
 						},
 					},
 				},
-				Required: []string{"generate", "caCrt", "serverCrt", "serverKey"},
+				Required: []string{"generate"},
 			},
 		},
 	}
@@ -15922,7 +15919,7 @@ func schema_installer_apis_installer_v1alpha1_StashOperatorSpec(ref common.Refer
 						},
 					},
 				},
-				Required: []string{"replicaCount", "operator", "pushgateway", "cleaner", "imagePullPolicy", "imagePullSecrets", "logLevel", "serviceAccount", "apiserver", "enableAnalytics", "monitoring", "additionalPodSecurityPolicies", "platform"},
+				Required: []string{"replicaCount", "operator", "pushgateway", "cleaner", "imagePullSecrets", "serviceAccount", "apiserver", "enableAnalytics", "monitoring"},
 			},
 		},
 		Dependencies: []string{
