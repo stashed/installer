@@ -897,8 +897,6 @@
       "type": "object",
       "required": [
         "agent",
-        "backup",
-        "operator",
         "prometheus",
         "serviceMonitor"
       ],
@@ -1046,10 +1044,9 @@
         "operator",
         "pushgateway",
         "cleaner",
-        "imagePullSecrets",
+        "imagePullPolicy",
         "serviceAccount",
         "apiserver",
-        "enableAnalytics",
         "monitoring"
       ],
       "properties": {

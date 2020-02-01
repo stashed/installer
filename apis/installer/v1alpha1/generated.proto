@@ -45,8 +45,10 @@ message ImageRef {
 message Monitoring {
   optional string agent = 1;
 
+  // +optional
   optional bool backup = 2;
 
+  // +optional
   optional bool operator = 3;
 
   optional PrometheusSpec prometheus = 4;
@@ -115,9 +117,9 @@ message StashOperatorSpec {
 
   optional ImageRef cleaner = 4;
 
-  // +optional
   optional string imagePullPolicy = 5;
 
+  // +optional
   repeated string imagePullSecrets = 6;
 
   // +optional
@@ -144,6 +146,7 @@ message StashOperatorSpec {
 
   optional WebHookSpec apiserver = 14;
 
+  // +optional
   optional bool enableAnalytics = 15;
 
   optional Monitoring monitoring = 16;
