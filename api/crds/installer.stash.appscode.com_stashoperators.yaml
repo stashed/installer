@@ -714,8 +714,6 @@ spec:
                   type: object
               required:
               - agent
-              - backup
-              - operator
               - prometheus
               - serviceMonitor
               type: object
@@ -809,8 +807,7 @@ spec:
           required:
           - apiserver
           - cleaner
-          - enableAnalytics
-          - imagePullSecrets
+          - imagePullPolicy
           - monitoring
           - operator
           - pushgateway
