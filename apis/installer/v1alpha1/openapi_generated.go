@@ -15556,7 +15556,7 @@ func schema_installer_apis_installer_v1alpha1_Monitoring(ref common.ReferenceCal
 						},
 					},
 				},
-				Required: []string{"agent", "backup", "operator", "prometheus", "serviceMonitor"},
+				Required: []string{"agent", "prometheus", "serviceMonitor"},
 			},
 		},
 		Dependencies: []string{
@@ -15919,7 +15919,7 @@ func schema_installer_apis_installer_v1alpha1_StashOperatorSpec(ref common.Refer
 						},
 					},
 				},
-				Required: []string{"replicaCount", "operator", "pushgateway", "cleaner", "imagePullSecrets", "serviceAccount", "apiserver", "enableAnalytics", "monitoring"},
+				Required: []string{"replicaCount", "operator", "pushgateway", "cleaner", "imagePullPolicy", "serviceAccount", "apiserver", "monitoring"},
 			},
 		},
 		Dependencies: []string{
