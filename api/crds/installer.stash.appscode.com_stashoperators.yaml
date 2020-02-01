@@ -649,10 +649,7 @@ spec:
                     serverKey:
                       type: string
                   required:
-                  - caCrt
                   - generate
-                  - serverCrt
-                  - serverKey
                   type: object
                 useKubeapiserverFqdnForAks:
                   type: boolean
@@ -707,8 +704,6 @@ spec:
                   properties:
                     namespace:
                       type: string
-                  required:
-                  - namespace
                   type: object
                 serviceMonitor:
                   properties:
@@ -716,8 +711,6 @@ spec:
                       additionalProperties:
                         type: string
                       type: object
-                  required:
-                  - labels
                   type: object
               required:
               - agent
@@ -747,8 +740,6 @@ spec:
               properties:
                 openshift:
                   type: boolean
-              required:
-              - openshift
               type: object
             pushgateway:
               properties:
@@ -774,7 +765,6 @@ spec:
                   type: string
               required:
               - create
-              - name
               type: object
             tolerations:
               description: If specified, the pod's tolerations.
@@ -817,16 +807,12 @@ spec:
                 type: object
               type: array
           required:
-          - additionalPodSecurityPolicies
           - apiserver
           - cleaner
           - enableAnalytics
-          - imagePullPolicy
           - imagePullSecrets
-          - logLevel
           - monitoring
           - operator
-          - platform
           - pushgateway
           - replicaCount
           - serviceAccount
