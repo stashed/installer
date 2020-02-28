@@ -1,3 +1,6 @@
+{{- $major := default "0" .Capabilities.KubeVersion.Major | trimSuffix "+" | int64 }}
+{{- $minor := default "0" .Capabilities.KubeVersion.Minor | trimSuffix "+" | int64 }}
+{{- $criticalAddon := and .Values.criticalAddon (or (eq .Release.Namespace "kube-system") (and (ge $major 1) (ge $minor 17))) -}}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -19,9 +22,9 @@ spec:
     metadata:
       labels:
         {{- include "stash.labels" . | nindent 8 }}
-{{- if or .Values.annotations (and .Values.criticalAddon (eq .Release.Namespace "kube-system")) }}
+{{- if or .Values.annotations $criticalAddon }}
       annotations:
-{{- if and .Values.criticalAddon (eq .Release.Namespace "kube-system") }}
+{{- if $criticalAddon }}
         scheduler.alpha.kubernetes.io/critical-pod: ''
 {{- end }}
 {{- if .Values.annotations }}
@@ -104,12 +107,12 @@ spec:
           secretName: {{ template "stash.fullname" . }}-apiserver-cert
       securityContext:
         fsGroup: 65535
-{{- if or .Values.tolerations (and .Values.criticalAddon (eq .Release.Namespace "kube-system")) }}
+{{- if or .Values.tolerations $criticalAddon }}
       tolerations:
 {{- if .Values.tolerations }}
 {{ toYaml .Values.tolerations | indent 8 }}
 {{- end -}}
-{{- if and .Values.criticalAddon (eq .Release.Namespace "kube-system") }}
+{{- if $criticalAddon }}
       - key: CriticalAddonsOnly
         operator: Exists
 {{- end -}}
@@ -122,6 +125,6 @@ spec:
       nodeSelector:
 {{ toYaml .Values.nodeSelector | indent 8 }}
 {{- end -}}
-{{- if and .Values.criticalAddon (eq .Release.Namespace "kube-system") }}
+{{- if $criticalAddon }}
       priorityClassName: system-cluster-critical
 {{- end -}}
