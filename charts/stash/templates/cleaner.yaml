@@ -24,7 +24,13 @@ spec:
            kubectl delete validatingwebhookconfigurations admission.stash.appscode.com || true; \
            kubectl delete mutatingwebhookconfiguration admission.stash.appscode.com || true; \
            kubectl delete apiservice v1alpha1.admission.stash.appscode.com || true; \
+           kubectl delete apiservice v1alpha1.appcatalog.appscode.com || true; \
+           kubectl delete apiservice v1alpha1.stash.appscode.com || true; \
+           kubectl delete apiservice v1beta1.stash.appscode.com || true; \
            kubectl delete functions.stash.appscode.com update-status pvc-backup pvc-restore || true; \
-           kubectl delete tasks.stash.appscode.com pvc-backup pvc-restore"
+           kubectl delete tasks.stash.appscode.com pvc-backup pvc-restore || true; \
+           kubectl delete clusterroles appscode:stash:edit || true; \
+           kubectl delete clusterroles appscode:stash:view || true; \
+           kubectl delete clusterroles stash-sidecar || true"
         imagePullPolicy: {{ .Values.imagePullPolicy }}
       restartPolicy: Never
