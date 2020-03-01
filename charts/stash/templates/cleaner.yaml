@@ -15,7 +15,7 @@ spec:
     spec:
       serviceAccountName: {{ template "stash.serviceAccountName" . }}
       containers:
-      - name: busybox
+      - name: kubectl
         image: {{ .Values.cleaner.registry }}/{{ .Values.cleaner.repository }}:{{ .Values.cleaner.tag }}
         command:
           - sh
