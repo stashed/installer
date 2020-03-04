@@ -10,6 +10,7 @@ metadata:
     {{- include "stash.labels" . | nindent 4 }}
 {{- if .Values.annotations }}
   annotations:
+    checksum/apiregistration.yaml: {{ include (print $.Template.BasePath "/apiregistration.yaml") . | sha256sum }}
 {{ toYaml .Values.annotations | indent 4 }}
 {{- end }}
 spec:
