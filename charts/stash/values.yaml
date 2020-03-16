@@ -11,6 +11,7 @@ pushgateway:
   registry: prom
   repository: pushgateway
   tag: v0.5.2
+  resources: {}
 cleaner:
   registry: appscode
   repository: kubectl

@@ -89,6 +89,8 @@ spec:
         args:
         - --web.listen-address=:56789
         - --persistence.file=/var/pv/pushgateway.dat
+        resources:
+{{ toYaml .Values.pushgateway.resources | indent 10 }}
         ports:
         - containerPort: 56789
         volumeMounts:
