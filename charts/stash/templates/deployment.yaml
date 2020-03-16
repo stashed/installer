@@ -79,8 +79,7 @@ spec:
           initialDelaySeconds: 5
 {{- end }}
         resources:
-          requests:
-            cpu: "100m"
+{{ toYaml .Values.resources | indent 10 }}
         volumeMounts:
         - mountPath: /var/serving-cert
           name: serving-cert

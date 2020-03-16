@@ -34,6 +34,10 @@ criticalAddon: false
 ## Log level for operator
 logLevel: 3
 
+resources:
+  requests:
+    cpu: "100m"
+
 ## Annotations passed to operator pod(s).
 ##
 annotations: {}
