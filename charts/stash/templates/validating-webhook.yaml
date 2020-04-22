@@ -9,7 +9,7 @@ metadata:
   labels:
     {{- include "stash.labels" . | nindent 4 }}
   annotations:
-    "helm.sh/hook": post-install,post-upgrade
+    "helm.sh/hook": pre-install,pre-upgrade
     "helm.sh/hook-delete-policy": before-hook-creation
 webhooks:
 - name: restic.admission.stash.appscode.com
