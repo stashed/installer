@@ -29,6 +29,22 @@ import "k8s.io/apimachinery/pkg/runtime/schema/generated.proto";
 // Package-wide variables from generator "generated".
 option go_package = "v1alpha1";
 
+message Container {
+  optional string registry = 1;
+
+  optional string repository = 2;
+
+  optional string tag = 3;
+
+  // Compute Resources required by the sidecar container.
+  // +optional
+  optional k8s.io.api.core.v1.ResourceRequirements resources = 4;
+
+  // Security options the pod should run with.
+  // +optional
+  optional k8s.io.api.core.v1.SecurityContext securityContext = 5;
+}
+
 message HealthcheckSpec {
   // +optional
   optional bool enabled = 1;
@@ -111,9 +127,9 @@ message StashOperatorList {
 message StashOperatorSpec {
   optional int32 replicaCount = 1;
 
-  optional ImageRef operator = 2;
+  optional Container operator = 2;
 
-  optional ImageRef pushgateway = 3;
+  optional Container pushgateway = 3;
 
   optional ImageRef cleaner = 4;
 
@@ -142,20 +158,25 @@ message StashOperatorSpec {
   // +optional
   optional k8s.io.api.core.v1.Affinity affinity = 12;
 
-  optional ServiceAccountSpec serviceAccount = 13;
+  // PodSecurityContext holds pod-level security attributes and common container settings.
+  // Optional: Defaults to empty.  See type description for default values of each field.
+  // +optional
+  optional k8s.io.api.core.v1.PodSecurityContext podSecurityContext = 13;
 
-  optional WebHookSpec apiserver = 14;
+  optional ServiceAccountSpec serviceAccount = 14;
+
+  optional WebHookSpec apiserver = 15;
 
   // +optional
-  optional bool enableAnalytics = 15;
+  optional bool enableAnalytics = 16;
 
-  optional Monitoring monitoring = 16;
-
-  // +optional
-  repeated string additionalPodSecurityPolicies = 17;
+  optional Monitoring monitoring = 17;
 
   // +optional
-  optional Platform platform = 18;
+  repeated string additionalPodSecurityPolicies = 18;
+
+  // +optional
+  optional Platform platform = 19;
 }
 
 message WebHookSpec {

@@ -42,6 +42,18 @@ type StashOperator struct {
 	Spec              StashOperatorSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
 }
 
+type Container struct {
+	Registry   string `json:"registry" protobuf:"bytes,1,opt,name=registry"`
+	Repository string `json:"repository" protobuf:"bytes,2,opt,name=repository"`
+	Tag        string `json:"tag" protobuf:"bytes,3,opt,name=tag"`
+	// Compute Resources required by the sidecar container.
+	// +optional
+	Resources core.ResourceRequirements `json:"resources" protobuf:"bytes,4,opt,name=resources"`
+	// Security options the pod should run with.
+	// +optional
+	SecurityContext *core.SecurityContext `json:"securityContext" protobuf:"bytes,5,opt,name=securityContext"`
+}
+
 type ImageRef struct {
 	Registry   string `json:"registry" protobuf:"bytes,1,opt,name=registry"`
 	Repository string `json:"repository" protobuf:"bytes,2,opt,name=repository"`
@@ -50,11 +62,11 @@ type ImageRef struct {
 
 // StashOperatorSpec is the spec for redis version
 type StashOperatorSpec struct {
-	ReplicaCount    int32    `json:"replicaCount" protobuf:"varint,1,opt,name=replicaCount"`
-	Operator        ImageRef `json:"operator" protobuf:"bytes,2,opt,name=operator"`
-	Pushgateway     ImageRef `json:"pushgateway" protobuf:"bytes,3,opt,name=pushgateway"`
-	Cleaner         ImageRef `json:"cleaner" protobuf:"bytes,4,opt,name=cleaner"`
-	ImagePullPolicy string   `json:"imagePullPolicy" protobuf:"bytes,5,opt,name=imagePullPolicy"`
+	ReplicaCount    int32     `json:"replicaCount" protobuf:"varint,1,opt,name=replicaCount"`
+	Operator        Container `json:"operator" protobuf:"bytes,2,opt,name=operator"`
+	Pushgateway     Container `json:"pushgateway" protobuf:"bytes,3,opt,name=pushgateway"`
+	Cleaner         ImageRef  `json:"cleaner" protobuf:"bytes,4,opt,name=cleaner"`
+	ImagePullPolicy string    `json:"imagePullPolicy" protobuf:"bytes,5,opt,name=imagePullPolicy"`
 	//+optional
 	ImagePullSecrets []string `json:"imagePullSecrets" protobuf:"bytes,6,rep,name=imagePullSecrets"`
 	//+optional
@@ -70,16 +82,20 @@ type StashOperatorSpec struct {
 	Tolerations []core.Toleration `json:"tolerations" protobuf:"bytes,11,rep,name=tolerations"`
 	// If specified, the pod's scheduling constraints
 	// +optional
-	Affinity       *core.Affinity     `json:"affinity" protobuf:"bytes,12,opt,name=affinity"`
-	ServiceAccount ServiceAccountSpec `json:"serviceAccount" protobuf:"bytes,13,opt,name=serviceAccount"`
-	Apiserver      WebHookSpec        `json:"apiserver" protobuf:"bytes,14,opt,name=apiserver"`
+	Affinity *core.Affinity `json:"affinity" protobuf:"bytes,12,opt,name=affinity"`
+	// PodSecurityContext holds pod-level security attributes and common container settings.
+	// Optional: Defaults to empty.  See type description for default values of each field.
+	// +optional
+	PodSecurityContext *core.PodSecurityContext `json:"podSecurityContext" protobuf:"bytes,13,opt,name=podSecurityContext"`
+	ServiceAccount     ServiceAccountSpec       `json:"serviceAccount" protobuf:"bytes,14,opt,name=serviceAccount"`
+	Apiserver          WebHookSpec              `json:"apiserver" protobuf:"bytes,15,opt,name=apiserver"`
 	//+optional
-	EnableAnalytics bool       `json:"enableAnalytics" protobuf:"varint,15,opt,name=enableAnalytics"`
-	Monitoring      Monitoring `json:"monitoring" protobuf:"bytes,16,opt,name=monitoring"`
+	EnableAnalytics bool       `json:"enableAnalytics" protobuf:"varint,16,opt,name=enableAnalytics"`
+	Monitoring      Monitoring `json:"monitoring" protobuf:"bytes,17,opt,name=monitoring"`
 	//+optional
-	AdditionalPodSecurityPolicies []string `json:"additionalPodSecurityPolicies" protobuf:"bytes,17,rep,name=additionalPodSecurityPolicies"`
+	AdditionalPodSecurityPolicies []string `json:"additionalPodSecurityPolicies" protobuf:"bytes,18,rep,name=additionalPodSecurityPolicies"`
 	//+optional
-	Platform Platform `json:"platform" protobuf:"bytes,18,opt,name=platform"`
+	Platform Platform `json:"platform" protobuf:"bytes,19,opt,name=platform"`
 }
 
 type ServiceAccountSpec struct {

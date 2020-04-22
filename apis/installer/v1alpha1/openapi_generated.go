@@ -330,6 +330,7 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"k8s.io/apimachinery/pkg/runtime.Unknown":                                   schema_k8sio_apimachinery_pkg_runtime_Unknown(ref),
 		"k8s.io/apimachinery/pkg/util/intstr.IntOrString":                           schema_apimachinery_pkg_util_intstr_IntOrString(ref),
 		"k8s.io/apimachinery/pkg/version.Info":                                      schema_k8sio_apimachinery_pkg_version_Info(ref),
+		"stash.appscode.dev/installer/apis/installer/v1alpha1.Container":            schema_installer_apis_installer_v1alpha1_Container(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.HealthcheckSpec":      schema_installer_apis_installer_v1alpha1_HealthcheckSpec(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.ImageRef":             schema_installer_apis_installer_v1alpha1_ImageRef(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.Monitoring":           schema_installer_apis_installer_v1alpha1_Monitoring(ref),
@@ -15472,6 +15473,51 @@ func schema_k8sio_apimachinery_pkg_version_Info(ref common.ReferenceCallback) co
 	}
 }
 
+func schema_installer_apis_installer_v1alpha1_Container(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"registry": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"repository": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"tag": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"resources": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Compute Resources required by the sidecar container.",
+							Ref:         ref("k8s.io/api/core/v1.ResourceRequirements"),
+						},
+					},
+					"securityContext": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Security options the pod should run with.",
+							Ref:         ref("k8s.io/api/core/v1.SecurityContext"),
+						},
+					},
+				},
+				Required: []string{"registry", "repository", "tag"},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/api/core/v1.ResourceRequirements", "k8s.io/api/core/v1.SecurityContext"},
+	}
+}
+
 func schema_installer_apis_installer_v1alpha1_HealthcheckSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
@@ -15788,12 +15834,12 @@ func schema_installer_apis_installer_v1alpha1_StashOperatorSpec(ref common.Refer
 					},
 					"operator": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("stash.appscode.dev/installer/apis/installer/v1alpha1.ImageRef"),
+							Ref: ref("stash.appscode.dev/installer/apis/installer/v1alpha1.Container"),
 						},
 					},
 					"pushgateway": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("stash.appscode.dev/installer/apis/installer/v1alpha1.ImageRef"),
+							Ref: ref("stash.appscode.dev/installer/apis/installer/v1alpha1.Container"),
 						},
 					},
 					"cleaner": {
@@ -15879,6 +15925,12 @@ func schema_installer_apis_installer_v1alpha1_StashOperatorSpec(ref common.Refer
 							Ref:         ref("k8s.io/api/core/v1.Affinity"),
 						},
 					},
+					"podSecurityContext": {
+						SchemaProps: spec.SchemaProps{
+							Description: "PodSecurityContext holds pod-level security attributes and common container settings. Optional: Defaults to empty.  See type description for default values of each field.",
+							Ref:         ref("k8s.io/api/core/v1.PodSecurityContext"),
+						},
+					},
 					"serviceAccount": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("stash.appscode.dev/installer/apis/installer/v1alpha1.ServiceAccountSpec"),
@@ -15923,7 +15975,7 @@ func schema_installer_apis_installer_v1alpha1_StashOperatorSpec(ref common.Refer
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/api/core/v1.Affinity", "k8s.io/api/core/v1.Toleration", "stash.appscode.dev/installer/apis/installer/v1alpha1.ImageRef", "stash.appscode.dev/installer/apis/installer/v1alpha1.Monitoring", "stash.appscode.dev/installer/apis/installer/v1alpha1.Platform", "stash.appscode.dev/installer/apis/installer/v1alpha1.ServiceAccountSpec", "stash.appscode.dev/installer/apis/installer/v1alpha1.WebHookSpec"},
+			"k8s.io/api/core/v1.Affinity", "k8s.io/api/core/v1.PodSecurityContext", "k8s.io/api/core/v1.Toleration", "stash.appscode.dev/installer/apis/installer/v1alpha1.Container", "stash.appscode.dev/installer/apis/installer/v1alpha1.ImageRef", "stash.appscode.dev/installer/apis/installer/v1alpha1.Monitoring", "stash.appscode.dev/installer/apis/installer/v1alpha1.Platform", "stash.appscode.dev/installer/apis/installer/v1alpha1.ServiceAccountSpec", "stash.appscode.dev/installer/apis/installer/v1alpha1.WebHookSpec"},
 	}
 }
 
