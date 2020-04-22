@@ -19,8 +19,7 @@ spec:
     - {{ .Release.Namespace }}
   selector:
     matchLabels:
-      app: "{{ template "stash.name" . }}"
-      release: "{{ .Release.Name }}"
+      {{- include "stash.selectorLabels" . | nindent 6 }}
   endpoints:
   {{- if .Values.monitoring.backup }}
   - port: pushgateway

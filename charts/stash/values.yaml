@@ -1,6 +1,10 @@
 # Default values for stash.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
+
+nameOverride: ""
+fullnameOverride: ""
+
 replicaCount: 1
 # Docker registry containing Stash images
 operator:
