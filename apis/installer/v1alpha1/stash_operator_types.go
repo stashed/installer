@@ -42,6 +42,18 @@ type StashOperator struct {
 	Spec              StashOperatorSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
 }
 
+type Container struct {
+	Registry   string `json:"registry" protobuf:"bytes,1,opt,name=registry"`
+	Repository string `json:"repository" protobuf:"bytes,2,opt,name=repository"`
+	Tag        string `json:"tag" protobuf:"bytes,3,opt,name=tag"`
+	// Compute Resources required by the sidecar container.
+	// +optional
+	Resources core.ResourceRequirements `json:"resources"`
+	// Security options the pod should run with.
+	// +optional
+	SecurityContext *core.SecurityContext `json:"securityContext"`
+}
+
 type ImageRef struct {
 	Registry   string `json:"registry" protobuf:"bytes,1,opt,name=registry"`
 	Repository string `json:"repository" protobuf:"bytes,2,opt,name=repository"`
@@ -50,9 +62,16 @@ type ImageRef struct {
 
 // StashOperatorSpec is the spec for redis version
 type StashOperatorSpec struct {
+
+	// SecurityContext holds pod-level security attributes and common container settings.
+	// Optional: Defaults to empty.  See type description for default values of each field.
+	// +optional
+	SecurityContext *core.PodSecurityContext `json:"securityContext,omitempty" protobuf:"bytes,13,opt,name=securityContext"`
+
+
 	ReplicaCount    int32    `json:"replicaCount" protobuf:"varint,1,opt,name=replicaCount"`
-	Operator        ImageRef `json:"operator" protobuf:"bytes,2,opt,name=operator"`
-	Pushgateway     ImageRef `json:"pushgateway" protobuf:"bytes,3,opt,name=pushgateway"`
+	Operator        Container `json:"operator" protobuf:"bytes,2,opt,name=operator"`
+	Pushgateway     Container `json:"pushgateway" protobuf:"bytes,3,opt,name=pushgateway"`
 	Cleaner         ImageRef `json:"cleaner" protobuf:"bytes,4,opt,name=cleaner"`
 	ImagePullPolicy string   `json:"imagePullPolicy" protobuf:"bytes,5,opt,name=imagePullPolicy"`
 	//+optional
