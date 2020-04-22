@@ -8,11 +8,11 @@ metadata:
   namespace: {{ .Release.Namespace }}
   labels:
     {{- include "stash.labels" . | nindent 4 }}
-{{- if .Values.annotations }}
   annotations:
     checksum/apiregistration.yaml: {{ include (print $.Template.BasePath "/apiregistration.yaml") . | sha256sum }}
-{{ toYaml .Values.annotations | indent 4 }}
-{{- end }}
+  {{- with .Values.annotations }}
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
@@ -33,9 +33,17 @@ spec:
 {{- end }}
 {{- end }}
     spec:
+    {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
       serviceAccountName: {{ template "stash.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
       - name: operator
+        securityContext:
+          {{- toYaml .Values.operator.securityContext | nindent 10 }}
         image: {{ .Values.operator.registry }}/{{ .Values.operator.repository }}:{{ .Values.operator.tag }}
         imagePullPolicy: {{ .Values.imagePullPolicy }}
         args:
@@ -79,18 +87,20 @@ spec:
           initialDelaySeconds: 5
 {{- end }}
         resources:
-{{ toYaml .Values.resources | indent 10 }}
+          {{- toYaml .Values.operator.resources | nindent 10 }}
         volumeMounts:
         - mountPath: /var/serving-cert
           name: serving-cert
       - name: pushgateway
+        securityContext:
+          {{- toYaml .Values.pushgateway.securityContext | nindent 10 }}
         image: '{{ .Values.pushgateway.registry }}/{{ .Values.pushgateway.repository }}:{{ .Values.pushgateway.tag }}'
         imagePullPolicy: {{ .Values.imagePullPolicy }}
         args:
         - --web.listen-address=:56789
         - --persistence.file=/var/pv/pushgateway.dat
         resources:
-{{ toYaml .Values.pushgateway.resources | indent 10 }}
+          {{- toYaml .Values.pushgateway.resources | nindent 10 }}
         ports:
         - containerPort: 56789
         volumeMounts:
@@ -111,22 +121,22 @@ spec:
         fsGroup: 65535
 {{- if or .Values.tolerations $criticalAddon }}
       tolerations:
-{{- if .Values.tolerations }}
-{{ toYaml .Values.tolerations | indent 8 }}
+    {{- with .Values.tolerations }}
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- if $criticalAddon }}
+        - key: CriticalAddonsOnly
+          operator: Exists
+    {{- end -}}
 {{- end -}}
-{{- if $criticalAddon }}
-      - key: CriticalAddonsOnly
-        operator: Exists
-{{- end -}}
-{{- end -}}
-{{- if .Values.affinity }}
+    {{- with .Values.affinity }}
       affinity:
-{{ toYaml .Values.affinity | indent 8 }}
-{{- end -}}
-{{- if .Values.nodeSelector }}
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.nodeSelector }}
       nodeSelector:
-{{ toYaml .Values.nodeSelector | indent 8 }}
-{{- end -}}
-{{- if $criticalAddon }}
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- if $criticalAddon }}
       priorityClassName: system-cluster-critical
-{{- end -}}
+    {{- end -}}
