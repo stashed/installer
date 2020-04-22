@@ -15837,7 +15837,7 @@ func schema_installer_apis_installer_v1alpha1_StashOperatorSpec(ref common.Refer
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "StashOperatorSpec is the spec for redis version",
+				Description: "StashOperatorSpec is the schema for Stash operator values file",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"nameOverride": {

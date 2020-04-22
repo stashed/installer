@@ -60,7 +60,7 @@ type ImageRef struct {
 	Tag        string `json:"tag" protobuf:"bytes,3,opt,name=tag"`
 }
 
-// StashOperatorSpec is the spec for redis version
+// StashOperatorSpec is the schema for Stash operator values file
 type StashOperatorSpec struct {
 	//+optional
 	NameOverride string `json:"nameOverride" protobuf:"bytes,1,opt,name=nameOverride"`
@@ -105,7 +105,7 @@ type StashOperatorSpec struct {
 type ServiceAccountSpec struct {
 	Create bool `json:"create" protobuf:"varint,1,opt,name=create"`
 	//+optional
-	Name string `json:"name" protobuf:"bytes,2,opt,name=name"`
+	Name *string `json:"name" protobuf:"bytes,2,opt,name=name"`
 	//+optional
 	Annotations map[string]string `json:"annotations" protobuf:"bytes,3,rep,name=annotations"`
 }

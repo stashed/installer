@@ -1070,7 +1070,7 @@
       ]
     },
     "dev.appscode.stash.installer.apis.installer.v1alpha1.StashOperatorSpec": {
-      "description": "StashOperatorSpec is the spec for redis version",
+      "description": "StashOperatorSpec is the schema for Stash operator values file",
       "type": "object",
       "required": [
         "replicaCount",

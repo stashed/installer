@@ -126,7 +126,7 @@ message StashOperatorList {
   repeated StashOperator items = 2;
 }
 
-// StashOperatorSpec is the spec for redis version
+// StashOperatorSpec is the schema for Stash operator values file
 message StashOperatorSpec {
   // +optional
   optional string nameOverride = 1;
