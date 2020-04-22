@@ -15826,6 +15826,18 @@ func schema_installer_apis_installer_v1alpha1_StashOperatorSpec(ref common.Refer
 				Description: "StashOperatorSpec is the spec for redis version",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
+					"nameOverride": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"fullnameOverride": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 					"replicaCount": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"integer"},

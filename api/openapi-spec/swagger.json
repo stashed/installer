@@ -1105,6 +1105,9 @@
         "enableAnalytics": {
           "type": "boolean"
         },
+        "fullnameOverride": {
+          "type": "string"
+        },
         "imagePullPolicy": {
           "type": "string"
         },
@@ -1120,6 +1123,9 @@
         },
         "monitoring": {
           "$ref": "#/definitions/dev.appscode.stash.installer.apis.installer.v1alpha1.Monitoring"
+        },
+        "nameOverride": {
+          "type": "string"
         },
         "nodeSelector": {
           "type": "object",

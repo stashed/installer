@@ -683,6 +683,8 @@ spec:
               type: boolean
             enableAnalytics:
               type: boolean
+            fullnameOverride:
+              type: string
             imagePullPolicy:
               type: string
             imagePullSecrets:
@@ -717,6 +719,8 @@ spec:
               - prometheus
               - serviceMonitor
               type: object
+            nameOverride:
+              type: string
             nodeSelector:
               additionalProperties:
                 type: string

@@ -125,58 +125,64 @@ message StashOperatorList {
 
 // StashOperatorSpec is the spec for redis version
 message StashOperatorSpec {
-  optional int32 replicaCount = 1;
-
-  optional Container operator = 2;
-
-  optional Container pushgateway = 3;
-
-  optional ImageRef cleaner = 4;
-
-  optional string imagePullPolicy = 5;
+  // +optional
+  optional string nameOverride = 1;
 
   // +optional
-  repeated string imagePullSecrets = 6;
+  optional string fullnameOverride = 2;
+
+  optional int32 replicaCount = 3;
+
+  optional Container operator = 4;
+
+  optional Container pushgateway = 5;
+
+  optional ImageRef cleaner = 6;
+
+  optional string imagePullPolicy = 7;
 
   // +optional
-  optional bool criticalAddon = 7;
+  repeated string imagePullSecrets = 8;
 
   // +optional
-  optional int32 logLevel = 8;
+  optional bool criticalAddon = 9;
 
   // +optional
-  map<string, string> annotations = 9;
+  optional int32 logLevel = 10;
 
   // +optional
-  map<string, string> nodeSelector = 10;
+  map<string, string> annotations = 11;
+
+  // +optional
+  map<string, string> nodeSelector = 12;
 
   // If specified, the pod's tolerations.
   // +optional
-  repeated k8s.io.api.core.v1.Toleration tolerations = 11;
+  repeated k8s.io.api.core.v1.Toleration tolerations = 13;
 
   // If specified, the pod's scheduling constraints
   // +optional
-  optional k8s.io.api.core.v1.Affinity affinity = 12;
+  optional k8s.io.api.core.v1.Affinity affinity = 14;
 
   // PodSecurityContext holds pod-level security attributes and common container settings.
   // Optional: Defaults to empty.  See type description for default values of each field.
   // +optional
-  optional k8s.io.api.core.v1.PodSecurityContext podSecurityContext = 13;
+  optional k8s.io.api.core.v1.PodSecurityContext podSecurityContext = 15;
 
-  optional ServiceAccountSpec serviceAccount = 14;
+  optional ServiceAccountSpec serviceAccount = 16;
 
-  optional WebHookSpec apiserver = 15;
-
-  // +optional
-  optional bool enableAnalytics = 16;
-
-  optional Monitoring monitoring = 17;
+  optional WebHookSpec apiserver = 17;
 
   // +optional
-  repeated string additionalPodSecurityPolicies = 18;
+  optional bool enableAnalytics = 18;
+
+  optional Monitoring monitoring = 19;
 
   // +optional
-  optional Platform platform = 19;
+  repeated string additionalPodSecurityPolicies = 20;
+
+  // +optional
+  optional Platform platform = 21;
 }
 
 message WebHookSpec {

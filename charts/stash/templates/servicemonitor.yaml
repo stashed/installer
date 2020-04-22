@@ -10,8 +10,7 @@ metadata:
     {{ $key }}: {{ $val }}
     {{- end }}
     {{- else }}
-    app: "{{ template "stash.name" . }}"
-    release: "{{ .Release.Name }}"
+      {{- include "stash.selectorLabels" . | nindent 4 }}
     {{- end }}
 spec:
   namespaceSelector:
