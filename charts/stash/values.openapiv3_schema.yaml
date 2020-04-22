@@ -1053,6 +1053,10 @@ properties:
     type: integer
   serviceAccount:
     properties:
+      annotations:
+        additionalProperties:
+          type: string
+        type: object
       create:
         type: boolean
       name:

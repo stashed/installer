@@ -967,6 +967,12 @@
         "create"
       ],
       "properties": {
+        "annotations": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
         "create": {
           "type": "boolean"
         },
