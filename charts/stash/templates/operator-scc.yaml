@@ -27,7 +27,7 @@ seLinuxContext:
 supplementalGroups:
   type: RunAsAny
 users:
-- system:serviceaccount:{{ .Release.Namespace }}:{{ template "stash.serviceAccountName" . }}
+- system:serviceaccount:{{ .Release.Namespace }}:{{ include "stash.serviceAccountName" . }}
 volumes:
 - '*'
 {{ end }}

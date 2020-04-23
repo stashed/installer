@@ -2,7 +2,7 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: {{ template "stash.fullname" . }}
+  name: {{ include "stash.fullname" . }}
   namespace: {{ default .Release.Namespace .Values.monitoring.prometheus.namespace }}
   labels:
     {{- if .Values.monitoring.serviceMonitor.labels }}
@@ -29,7 +29,7 @@ spec:
     bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
     scheme: https
     tlsConfig:
-      caFile: /etc/prometheus/secrets/{{ template "stash.fullname" . }}-apiserver-cert/tls.crt
-      serverName: "{{ template "stash.fullname" . }}.{{ .Release.Namespace }}.svc"
+      caFile: /etc/prometheus/secrets/{{ include "stash.fullname" . }}-apiserver-cert/tls.crt
+      serverName: "{{ include "stash.fullname" . }}.{{ .Release.Namespace }}.svc"
   {{- end }}
 {{- end }}

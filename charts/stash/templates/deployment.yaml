@@ -4,7 +4,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ template "stash.fullname" . }}
+  name: {{ include "stash.fullname" . }}
   namespace: {{ .Release.Namespace }}
   labels:
     {{- include "stash.labels" . | nindent 4 }}
@@ -36,7 +36,7 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
     {{- end }}
-      serviceAccountName: {{ template "stash.serviceAccountName" . }}
+      serviceAccountName: {{ include "stash.serviceAccountName" . }}
       containers:
       - name: operator
         securityContext:
@@ -52,7 +52,7 @@ spec:
         - --audit-log-path=-
         - --tls-cert-file=/var/serving-cert/tls.crt
         - --tls-private-key-file=/var/serving-cert/tls.key
-        - --service-name={{ template "stash.fullname" . }}
+        - --service-name={{ include "stash.fullname" . }}
         - --enable-mutating-webhook={{ .Values.apiserver.enableMutatingWebhook }}
         - --enable-validating-webhook={{ .Values.apiserver.enableValidatingWebhook }}
         - --bypass-validating-webhook-xray={{ .Values.apiserver.bypassValidatingWebhookXray }}
@@ -113,7 +113,7 @@ spec:
       - name: serving-cert
         secret:
           defaultMode: 420
-          secretName: {{ template "stash.fullname" . }}-apiserver-cert
+          secretName: {{ include "stash.fullname" . }}-apiserver-cert
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
 {{- if or .Values.tolerations $criticalAddon }}

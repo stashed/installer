@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ template "stash.fullname" . }}-cleaner
+  name: {{ include "stash.fullname" . }}-cleaner
   namespace: {{ .Release.Namespace }}
   labels:
     {{- include "stash.labels" . | nindent 4 }}
@@ -13,7 +13,7 @@ spec:
   activeDeadlineSeconds: 120
   template:
     spec:
-      serviceAccountName: {{ template "stash.serviceAccountName" . }}
+      serviceAccountName: {{ include "stash.serviceAccountName" . }}
       containers:
       - name: busybox
         image: {{ .Values.cleaner.registry }}/{{ .Values.cleaner.repository }}:{{ .Values.cleaner.tag }}

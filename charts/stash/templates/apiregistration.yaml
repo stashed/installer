@@ -27,7 +27,7 @@ spec:
   version: v1alpha1
   service:
     namespace: {{ .Release.Namespace }}
-    name: {{ template "stash.fullname" . }}
+    name: {{ include "stash.fullname" . }}
   caBundle: {{ $caCrt }}
   groupPriorityMinimum: {{ .Values.apiserver.groupPriorityMinimum }}
   versionPriority: {{ .Values.apiserver.versionPriority }}
@@ -43,7 +43,7 @@ spec:
   version: v1beta1
   service:
     namespace: {{ .Release.Namespace }}
-    name: {{ template "stash.fullname" . }}
+    name: {{ include "stash.fullname" . }}
   caBundle: {{ $caCrt }}
   groupPriorityMinimum: {{ .Values.apiserver.groupPriorityMinimum }}
   versionPriority: {{ .Values.apiserver.versionPriority }}
@@ -59,7 +59,7 @@ spec:
   version: v1alpha1
   service:
     namespace: {{ .Release.Namespace }}
-    name: {{ template "stash.fullname" . }}
+    name: {{ include "stash.fullname" . }}
   caBundle: {{ $caCrt }}
   groupPriorityMinimum: {{ .Values.apiserver.groupPriorityMinimum }}
   versionPriority: {{ .Values.apiserver.versionPriority }}
@@ -68,7 +68,7 @@ spec:
 apiVersion: v1
 kind: Secret
 metadata:
-  name: {{ template "stash.fullname" . }}-apiserver-cert
+  name: {{ include "stash.fullname" . }}-apiserver-cert
   namespace: {{ .Release.Namespace }}
   labels:
     {{- include "stash.labels" . | nindent 4 }}
@@ -84,7 +84,7 @@ data:
 apiVersion: v1
 kind: Secret
 metadata:
-  name: {{ template "stash.fullname" . }}-apiserver-cert
+  name: {{ include "stash.fullname" . }}-apiserver-cert
   namespace: {{ $promNamespace }}
   labels:
     {{- include "stash.labels" . | nindent 4 }}
@@ -98,7 +98,7 @@ data:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: {{ template "stash.fullname" . }}-apiserver-extension-server-authentication-reader
+  name: {{ include "stash.fullname" . }}-apiserver-extension-server-authentication-reader
   namespace: kube-system
   labels:
     {{- include "stash.labels" . | nindent 4 }}
@@ -108,14 +108,14 @@ roleRef:
   name: extension-apiserver-authentication-reader
 subjects:
 - kind: ServiceAccount
-  name: {{ template "stash.serviceAccountName" . }}
+  name: {{ include "stash.serviceAccountName" . }}
   namespace: {{ .Release.Namespace }}
 ---
 # to delegate authentication and authorization
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: {{ template "stash.fullname" . }}-apiserver-auth-delegator
+  name: {{ include "stash.fullname" . }}-apiserver-auth-delegator
   labels:
     {{- include "stash.labels" . | nindent 4 }}
 roleRef:
@@ -124,5 +124,5 @@ roleRef:
   name: system:auth-delegator
 subjects:
 - kind: ServiceAccount
-  name: {{ template "stash.serviceAccountName" . }}
+  name: {{ include "stash.serviceAccountName" . }}
   namespace: {{ .Release.Namespace }}
