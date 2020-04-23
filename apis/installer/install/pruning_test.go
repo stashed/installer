@@ -28,5 +28,11 @@ import (
 
 func TestPruneTypes(t *testing.T) {
 	Install(clientsetscheme.Scheme)
+	crdfuzz.SchemaFuzzTestForV1beta1CRD(t, clientsetscheme.Scheme, v1alpha1.StashElasticsearch{}.CustomResourceDefinition(), fuzzer.Funcs)
+	crdfuzz.SchemaFuzzTestForV1beta1CRD(t, clientsetscheme.Scheme, v1alpha1.StashMariaDB{}.CustomResourceDefinition(), fuzzer.Funcs)
+	crdfuzz.SchemaFuzzTestForV1beta1CRD(t, clientsetscheme.Scheme, v1alpha1.StashMongoDB{}.CustomResourceDefinition(), fuzzer.Funcs)
+	crdfuzz.SchemaFuzzTestForV1beta1CRD(t, clientsetscheme.Scheme, v1alpha1.StashMySQL{}.CustomResourceDefinition(), fuzzer.Funcs)
 	crdfuzz.SchemaFuzzTestForV1beta1CRD(t, clientsetscheme.Scheme, v1alpha1.StashOperator{}.CustomResourceDefinition(), fuzzer.Funcs)
+	crdfuzz.SchemaFuzzTestForV1beta1CRD(t, clientsetscheme.Scheme, v1alpha1.StashPerconaXtraDB{}.CustomResourceDefinition(), fuzzer.Funcs)
+	crdfuzz.SchemaFuzzTestForV1beta1CRD(t, clientsetscheme.Scheme, v1alpha1.StashPostgres{}.CustomResourceDefinition(), fuzzer.Funcs)
 }

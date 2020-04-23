@@ -41,6 +41,14 @@ message Container {
   optional k8s.io.api.core.v1.SecurityContext securityContext = 3;
 }
 
+message ElasticsearchBackup {
+  optional string args = 1;
+}
+
+message ElasticsearchRestore {
+  optional string args = 1;
+}
+
 message HealthcheckSpec {
   // +optional
   optional bool enabled = 1;
@@ -52,6 +60,22 @@ message ImageRef {
   optional string repository = 2;
 
   optional string tag = 3;
+}
+
+message MariaDBBackup {
+  optional string args = 1;
+}
+
+message MariaDBRestore {
+  optional string args = 1;
+}
+
+message MongoDBBackup {
+  optional string args = 1;
+}
+
+message MongoDBRestore {
+  optional string args = 1;
 }
 
 message Monitoring {
@@ -68,9 +92,37 @@ message Monitoring {
   optional ServiceMonitorLabels serviceMonitor = 5;
 }
 
+message MySQLBackup {
+  optional string args = 1;
+}
+
+message MySQLRestore {
+  optional string args = 1;
+}
+
+message PerconaXtraDBBackup {
+  optional string args = 1;
+
+  optional int32 socatRetry = 2;
+}
+
+message PerconaXtraDBRestore {
+  optional string args = 1;
+
+  optional int32 targetAppReplicas = 2;
+}
+
 message Platform {
   // +optional
   optional bool openshift = 1;
+}
+
+message PostgresBackup {
+  optional string args = 1;
+}
+
+message PostgresRestore {
+  optional string args = 1;
 }
 
 message PrometheusSpec {
@@ -104,6 +156,132 @@ message ServingCerts {
 
   // +optional
   optional string serverKey = 4;
+}
+
+// +kubebuilder:object:root=true
+// +kubebuilder:resource:path=stashelasticsearchs,singular=stashelasticsearch,categories={stash,appscode}
+message StashElasticsearch {
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+
+  optional StashElasticsearchSpec spec = 2;
+}
+
+// StashElasticsearchList is a list of StashElasticsearchs
+message StashElasticsearchList {
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+
+  // Items is a list of StashElasticsearch CRD objects
+  repeated StashElasticsearch items = 2;
+}
+
+// StashElasticsearchSpec is the schema for Stash Elasticsearch values file
+message StashElasticsearchSpec {
+  // +optional
+  optional string nameOverride = 1;
+
+  // +optional
+  optional string fullnameOverride = 2;
+
+  optional ImageRef image = 3;
+
+  optional ElasticsearchBackup backup = 4;
+
+  optional ElasticsearchRestore restore = 5;
+}
+
+// +kubebuilder:object:root=true
+// +kubebuilder:resource:path=stashmariadbs,singular=stashmariadb,categories={stash,appscode}
+message StashMariaDB {
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+
+  optional StashMariaDBSpec spec = 2;
+}
+
+// StashMariaDBList is a list of StashMariaDBs
+message StashMariaDBList {
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+
+  // Items is a list of StashMariaDB CRD objects
+  repeated StashMariaDB items = 2;
+}
+
+// StashMariaDBSpec is the schema for Stash MariaDB values file
+message StashMariaDBSpec {
+  // +optional
+  optional string nameOverride = 1;
+
+  // +optional
+  optional string fullnameOverride = 2;
+
+  optional ImageRef image = 3;
+
+  optional MariaDBBackup backup = 4;
+
+  optional MariaDBRestore restore = 5;
+}
+
+// +kubebuilder:object:root=true
+// +kubebuilder:resource:path=stashmongodbs,singular=stashmongodb,categories={stash,appscode}
+message StashMongoDB {
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+
+  optional StashMongoDBSpec spec = 2;
+}
+
+// StashMongoDBList is a list of StashMongoDBs
+message StashMongoDBList {
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+
+  // Items is a list of StashMongoDB CRD objects
+  repeated StashMongoDB items = 2;
+}
+
+// StashMongoDBSpec is the schema for Stash MongoDB values file
+message StashMongoDBSpec {
+  // +optional
+  optional string nameOverride = 1;
+
+  // +optional
+  optional string fullnameOverride = 2;
+
+  optional ImageRef image = 3;
+
+  optional MongoDBBackup backup = 4;
+
+  optional MongoDBRestore restore = 5;
+
+  optional int32 maxConcurrency = 6;
+}
+
+// +kubebuilder:object:root=true
+// +kubebuilder:resource:path=stashmysqls,singular=stashmysql,categories={stash,appscode}
+message StashMySQL {
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+
+  optional StashMySQLSpec spec = 2;
+}
+
+// StashMySQLList is a list of StashMySQLs
+message StashMySQLList {
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+
+  // Items is a list of StashMySQL CRD objects
+  repeated StashMySQL items = 2;
+}
+
+// StashMySQLSpec is the schema for Stash MySQL values file
+message StashMySQLSpec {
+  // +optional
+  optional string nameOverride = 1;
+
+  // +optional
+  optional string fullnameOverride = 2;
+
+  optional ImageRef image = 3;
+
+  optional MySQLBackup backup = 4;
+
+  optional MySQLRestore restore = 5;
 }
 
 // +kubebuilder:object:root=true
@@ -185,6 +363,70 @@ message StashOperatorSpec {
 
   // +optional
   optional Platform platform = 22;
+}
+
+// +kubebuilder:object:root=true
+// +kubebuilder:resource:path=stashperconaxtradbs,singular=stashperconaxtradb,categories={stash,appscode}
+message StashPerconaXtraDB {
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+
+  optional StashPerconaXtraDBSpec spec = 2;
+}
+
+// StashPerconaXtraDBList is a list of StashPerconaXtraDBs
+message StashPerconaXtraDBList {
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+
+  // Items is a list of StashPerconaXtraDB CRD objects
+  repeated StashPerconaXtraDB items = 2;
+}
+
+// StashPerconaXtraDBSpec is the schema for Stash Percona XtraDB values file
+message StashPerconaXtraDBSpec {
+  // +optional
+  optional string nameOverride = 1;
+
+  // +optional
+  optional string fullnameOverride = 2;
+
+  optional int32 replicaCount = 3;
+
+  optional ImageRef image = 4;
+
+  optional PerconaXtraDBBackup backup = 5;
+
+  optional PerconaXtraDBRestore restore = 6;
+}
+
+// +kubebuilder:object:root=true
+// +kubebuilder:resource:path=stashpostgress,singular=stashpostgres,categories={stash,appscode}
+message StashPostgres {
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+
+  optional StashPostgresSpec spec = 2;
+}
+
+// StashPostgresList is a list of StashPostgress
+message StashPostgresList {
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+
+  // Items is a list of StashPostgres CRD objects
+  repeated StashPostgres items = 2;
+}
+
+// StashPostgresSpec is the schema for Stash Postgres values file
+message StashPostgresSpec {
+  // +optional
+  optional string nameOverride = 1;
+
+  // +optional
+  optional string fullnameOverride = 2;
+
+  optional ImageRef image = 3;
+
+  optional PostgresBackup backup = 4;
+
+  optional PostgresRestore restore = 5;
 }
 
 message WebHookSpec {

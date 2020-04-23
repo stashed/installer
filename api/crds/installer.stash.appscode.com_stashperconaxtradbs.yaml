@@ -1,0 +1,92 @@
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  labels:
+    app: stash
+  name: stashperconaxtradbs.installer.stash.appscode.com
+spec:
+  group: installer.stash.appscode.com
+  names:
+    categories:
+    - stash
+    - appscode
+    kind: StashPerconaXtraDB
+    listKind: StashPerconaXtraDBList
+    plural: stashperconaxtradbs
+    singular: stashperconaxtradb
+  preserveUnknownFields: false
+  scope: Namespaced
+  validation:
+    openAPIV3Schema:
+      properties:
+        apiVersion:
+          description: 'APIVersion defines the versioned schema of this representation
+            of an object. Servers should convert recognized schemas to the latest
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+          type: string
+        kind:
+          description: 'Kind is a string value representing the REST resource this
+            object represents. Servers may infer this from the endpoint the client
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+          type: string
+        metadata:
+          type: object
+        spec:
+          description: StashPerconaXtraDBSpec is the schema for Stash Percona XtraDB
+            values file
+          properties:
+            backup:
+              properties:
+                args:
+                  type: string
+                socatRetry:
+                  format: int32
+                  type: integer
+              required:
+              - args
+              - socatRetry
+              type: object
+            fullnameOverride:
+              type: string
+            image:
+              properties:
+                registry:
+                  type: string
+                repository:
+                  type: string
+                tag:
+                  type: string
+              required:
+              - registry
+              - repository
+              - tag
+              type: object
+            nameOverride:
+              type: string
+            replicaCount:
+              format: int32
+              type: integer
+            restore:
+              properties:
+                args:
+                  type: string
+                targetAppReplicas:
+                  format: int32
+                  type: integer
+              required:
+              - args
+              - targetAppReplicas
+              type: object
+          required:
+          - backup
+          - image
+          - replicaCount
+          - restore
+          type: object
+      type: object
+  version: v1alpha1
+  versions:
+  - name: v1alpha1
+    served: true
+    storage: true
