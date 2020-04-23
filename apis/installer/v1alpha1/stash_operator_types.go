@@ -42,22 +42,20 @@ type StashOperator struct {
 	Spec              StashOperatorSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
 }
 
-type Container struct {
-	Registry   string `json:"registry" protobuf:"bytes,1,opt,name=registry"`
-	Repository string `json:"repository" protobuf:"bytes,2,opt,name=repository"`
-	Tag        string `json:"tag" protobuf:"bytes,3,opt,name=tag"`
-	// Compute Resources required by the sidecar container.
-	// +optional
-	Resources core.ResourceRequirements `json:"resources" protobuf:"bytes,4,opt,name=resources"`
-	// Security options the pod should run with.
-	// +optional
-	SecurityContext *core.SecurityContext `json:"securityContext" protobuf:"bytes,5,opt,name=securityContext"`
-}
-
 type ImageRef struct {
 	Registry   string `json:"registry" protobuf:"bytes,1,opt,name=registry"`
 	Repository string `json:"repository" protobuf:"bytes,2,opt,name=repository"`
 	Tag        string `json:"tag" protobuf:"bytes,3,opt,name=tag"`
+}
+
+type Container struct {
+	ImageRef `json:",inline" protobuf:"bytes,1,opt,name=imageRef"`
+	// Compute Resources required by the sidecar container.
+	// +optional
+	Resources core.ResourceRequirements `json:"resources" protobuf:"bytes,2,opt,name=resources"`
+	// Security options the pod should run with.
+	// +optional
+	SecurityContext *core.SecurityContext `json:"securityContext" protobuf:"bytes,3,opt,name=securityContext"`
 }
 
 // StashOperatorSpec is the schema for Stash operator values file

@@ -69,7 +69,7 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
-{{- if .Values.apiserver.healthcheck.enabled }}
+      {{- if .Values.apiserver.healthcheck.enabled }}
         readinessProbe:
           httpGet:
             path: /healthz
@@ -82,7 +82,7 @@ spec:
             port: 8443
             scheme: HTTPS
           initialDelaySeconds: 5
-{{- end }}
+      {{- end }}
         resources:
           {{- toYaml .Values.operator.resources | nindent 10 }}
         volumeMounts:
@@ -116,16 +116,16 @@ spec:
           secretName: {{ include "stash.fullname" . }}-apiserver-cert
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
-{{- if or .Values.tolerations $criticalAddon }}
+    {{- if or .Values.tolerations $criticalAddon }}
       tolerations:
-    {{- with .Values.tolerations }}
+      {{- with .Values.tolerations }}
         {{- toYaml . | nindent 8 }}
-    {{- end }}
-    {{- if $criticalAddon }}
+      {{- end }}
+      {{- if $criticalAddon }}
         - key: CriticalAddonsOnly
           operator: Exists
+      {{- end -}}
     {{- end -}}
-{{- end -}}
     {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
