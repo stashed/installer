@@ -3,7 +3,7 @@ module stash.appscode.dev/installer
 go 1.12
 
 require (
-	github.com/appscode/go v0.0.0-20191119085241-0887d8ec2ecc
+	github.com/appscode/go v0.0.0-20200323182826-54e98e09185a
 	github.com/go-openapi/spec v0.19.2
 	github.com/gogo/protobuf v1.2.2-0.20190723190241-65acae22fc9d
 	github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b
@@ -14,7 +14,7 @@ require (
 	k8s.io/apimachinery v0.0.0-20191028221656-72ed19daf4bb
 	k8s.io/client-go v12.0.0+incompatible
 	k8s.io/kube-openapi v0.0.0-20190816220812-743ec37842bf
-	kmodules.xyz/client-go v0.0.0-20191211113554-dc49699dbc3e
+	kmodules.xyz/client-go v0.0.0-20200305091010-36ee6a593ed3
 	kmodules.xyz/crd-schema-fuzz v0.0.0-20191129174258-81f984340891
 	sigs.k8s.io/yaml v1.1.0
 )

@@ -1,7 +1,7 @@
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
-  name: {{ template "stash.fullname" . }}
+  name: {{ include "stash.fullname" . }}
   labels:
     {{- include "stash.labels" . | nindent 4 }}
 spec:

@@ -29,6 +29,18 @@ import "k8s.io/apimachinery/pkg/runtime/schema/generated.proto";
 // Package-wide variables from generator "generated".
 option go_package = "v1alpha1";
 
+message Container {
+  optional ImageRef imageRef = 1;
+
+  // Compute Resources required by the sidecar container.
+  // +optional
+  optional k8s.io.api.core.v1.ResourceRequirements resources = 2;
+
+  // Security options the pod should run with.
+  // +optional
+  optional k8s.io.api.core.v1.SecurityContext securityContext = 3;
+}
+
 message HealthcheckSpec {
   // +optional
   optional bool enabled = 1;
@@ -71,6 +83,9 @@ message ServiceAccountSpec {
 
   // +optional
   optional string name = 2;
+
+  // +optional
+  map<string, string> annotations = 3;
 }
 
 message ServiceMonitorLabels {
@@ -107,55 +122,66 @@ message StashOperatorList {
   repeated StashOperator items = 2;
 }
 
-// StashOperatorSpec is the spec for redis version
+// StashOperatorSpec is the schema for Stash operator values file
 message StashOperatorSpec {
-  optional int32 replicaCount = 1;
-
-  optional ImageRef operator = 2;
-
-  optional ImageRef pushgateway = 3;
-
-  optional ImageRef cleaner = 4;
-
-  optional string imagePullPolicy = 5;
+  // +optional
+  optional string nameOverride = 1;
 
   // +optional
-  repeated string imagePullSecrets = 6;
+  optional string fullnameOverride = 2;
+
+  optional int32 replicaCount = 3;
+
+  optional Container operator = 4;
+
+  optional Container pushgateway = 5;
+
+  optional ImageRef cleaner = 6;
+
+  optional string imagePullPolicy = 7;
 
   // +optional
-  optional bool criticalAddon = 7;
+  repeated string imagePullSecrets = 8;
 
   // +optional
-  optional int32 logLevel = 8;
+  optional bool criticalAddon = 9;
 
   // +optional
-  map<string, string> annotations = 9;
+  optional int32 logLevel = 10;
 
   // +optional
-  map<string, string> nodeSelector = 10;
+  map<string, string> annotations = 11;
+
+  // +optional
+  map<string, string> nodeSelector = 12;
 
   // If specified, the pod's tolerations.
   // +optional
-  repeated k8s.io.api.core.v1.Toleration tolerations = 11;
+  repeated k8s.io.api.core.v1.Toleration tolerations = 13;
 
   // If specified, the pod's scheduling constraints
   // +optional
-  optional k8s.io.api.core.v1.Affinity affinity = 12;
+  optional k8s.io.api.core.v1.Affinity affinity = 14;
 
-  optional ServiceAccountSpec serviceAccount = 13;
+  // PodSecurityContext holds pod-level security attributes and common container settings.
+  // Optional: Defaults to empty.  See type description for default values of each field.
+  // +optional
+  optional k8s.io.api.core.v1.PodSecurityContext podSecurityContext = 15;
 
-  optional WebHookSpec apiserver = 14;
+  optional ServiceAccountSpec serviceAccount = 16;
+
+  optional WebHookSpec apiserver = 17;
 
   // +optional
-  optional bool enableAnalytics = 15;
+  optional bool enableAnalytics = 18;
 
-  optional Monitoring monitoring = 16;
-
-  // +optional
-  repeated string additionalPodSecurityPolicies = 17;
+  optional Monitoring monitoring = 19;
 
   // +optional
-  optional Platform platform = 18;
+  repeated string additionalPodSecurityPolicies = 20;
+
+  // +optional
+  optional Platform platform = 21;
 }
 
 message WebHookSpec {

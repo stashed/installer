@@ -1,17 +1,38 @@
 # Default values for stash.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
+
+nameOverride: ""
+fullnameOverride: ""
+
 replicaCount: 1
 # Docker registry containing Stash images
 operator:
   registry: appscode
   repository: stash
   tag: v0.9.0-rc.6
+  resources:
+    requests:
+      cpu: "100m"
+  securityContext: {}
+    # capabilities:
+    #   drop:
+    #   - ALL
+    # readOnlyRootFilesystem: true
+    # runAsNonRoot: true
+    # runAsUser: 1000
 pushgateway:
   registry: prom
   repository: pushgateway
   tag: v0.5.2
   resources: {}
+  securityContext: {}
+    # capabilities:
+    #   drop:
+    #   - ALL
+    # readOnlyRootFilesystem: true
+    # runAsNonRoot: true
+    # runAsUser: 1000
 cleaner:
   registry: appscode
   repository: kubectl
@@ -20,8 +41,7 @@ cleaner:
 ## Secrets must be manually created in the namespace.
 ## ref: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
 ## example: helm template charts/stash \
-##            --set imagePullSecrets[0]=abc \
-##            --set imagePullSecrets[1]=xyz
+##            --set imagePullSecrets[0].name=abc,imagePullSecrets[1].name=xyz
 imagePullSecrets: []
 
 ## Specify a imagePullPolicy
@@ -34,10 +54,6 @@ criticalAddon: false
 
 ## Log level for operator
 logLevel: 3
-
-resources:
-  requests:
-    cpu: "100m"
 
 ## Annotations passed to operator pod(s).
 ##
@@ -60,10 +76,15 @@ tolerations: []
 ##
 affinity: {}
 
+podSecurityContext:
+  fsGroup: 65535
+
 serviceAccount:
-  # Specifies whether a ServiceAccount should be created
+  # Specifies whether a service account should be created
   create: true
-  # The name of the ServiceAccount to use.
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
   name:
 
