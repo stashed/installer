@@ -37,8 +37,6 @@ spec:
         {{- toYaml . | nindent 8 }}
     {{- end }}
       serviceAccountName: {{ template "stash.serviceAccountName" . }}
-      securityContext:
-        {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
       - name: operator
         securityContext:
@@ -117,7 +115,7 @@ spec:
           defaultMode: 420
           secretName: {{ template "stash.fullname" . }}-apiserver-cert
       securityContext:
-        fsGroup: 65535
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
 {{- if or .Values.tolerations $criticalAddon }}
       tolerations:
     {{- with .Values.tolerations }}

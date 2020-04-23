@@ -77,8 +77,8 @@ tolerations: []
 ##
 affinity: {}
 
-podSecurityContext: {}
-  # fsGroup: 2000
+podSecurityContext:
+  fsGroup: 65535
 
 serviceAccount:
   # Specifies whether a service account should be created
