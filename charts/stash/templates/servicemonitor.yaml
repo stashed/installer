@@ -5,13 +5,13 @@ metadata:
   name: {{ include "stash.fullname" . }}
   namespace: {{ default .Release.Namespace .Values.monitoring.prometheus.namespace }}
   labels:
-    {{- if .Values.monitoring.serviceMonitor.labels }}
+  {{- if .Values.monitoring.serviceMonitor.labels }}
     {{- range $key, $val := .Values.monitoring.serviceMonitor.labels }}
     {{ $key }}: {{ $val }}
     {{- end }}
-    {{- else }}
-      {{- include "stash.selectorLabels" . | nindent 4 }}
-    {{- end }}
+  {{- else }}
+    {{- include "stash.selectorLabels" . | nindent 4 }}
+  {{- end }}
 spec:
   namespaceSelector:
     matchNames:
