@@ -153,35 +153,38 @@ message StashOperatorSpec {
   map<string, string> annotations = 11;
 
   // +optional
-  map<string, string> nodeSelector = 12;
+  map<string, string> podAnnotations = 12;
+
+  // +optional
+  map<string, string> nodeSelector = 13;
 
   // If specified, the pod's tolerations.
   // +optional
-  repeated k8s.io.api.core.v1.Toleration tolerations = 13;
+  repeated k8s.io.api.core.v1.Toleration tolerations = 14;
 
   // If specified, the pod's scheduling constraints
   // +optional
-  optional k8s.io.api.core.v1.Affinity affinity = 14;
+  optional k8s.io.api.core.v1.Affinity affinity = 15;
 
   // PodSecurityContext holds pod-level security attributes and common container settings.
   // Optional: Defaults to empty.  See type description for default values of each field.
   // +optional
-  optional k8s.io.api.core.v1.PodSecurityContext podSecurityContext = 15;
+  optional k8s.io.api.core.v1.PodSecurityContext podSecurityContext = 16;
 
-  optional ServiceAccountSpec serviceAccount = 16;
+  optional ServiceAccountSpec serviceAccount = 17;
 
-  optional WebHookSpec apiserver = 17;
-
-  // +optional
-  optional bool enableAnalytics = 18;
-
-  optional Monitoring monitoring = 19;
+  optional WebHookSpec apiserver = 18;
 
   // +optional
-  repeated string additionalPodSecurityPolicies = 20;
+  optional bool enableAnalytics = 19;
+
+  optional Monitoring monitoring = 20;
 
   // +optional
-  optional Platform platform = 21;
+  repeated string additionalPodSecurityPolicies = 21;
+
+  // +optional
+  optional Platform platform = 22;
 }
 
 message WebHookSpec {
