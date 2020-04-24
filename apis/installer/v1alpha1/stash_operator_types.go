@@ -78,26 +78,28 @@ type StashOperatorSpec struct {
 	//+optional
 	Annotations map[string]string `json:"annotations" protobuf:"bytes,11,rep,name=annotations"`
 	//+optional
-	NodeSelector map[string]string `json:"nodeSelector" protobuf:"bytes,12,rep,name=nodeSelector"`
+	PodAnnotations map[string]string `json:"podAnnotations" protobuf:"bytes,12,rep,name=podAnnotations"`
+	//+optional
+	NodeSelector map[string]string `json:"nodeSelector" protobuf:"bytes,13,rep,name=nodeSelector"`
 	// If specified, the pod's tolerations.
 	// +optional
-	Tolerations []core.Toleration `json:"tolerations" protobuf:"bytes,13,rep,name=tolerations"`
+	Tolerations []core.Toleration `json:"tolerations" protobuf:"bytes,14,rep,name=tolerations"`
 	// If specified, the pod's scheduling constraints
 	// +optional
-	Affinity *core.Affinity `json:"affinity" protobuf:"bytes,14,opt,name=affinity"`
+	Affinity *core.Affinity `json:"affinity" protobuf:"bytes,15,opt,name=affinity"`
 	// PodSecurityContext holds pod-level security attributes and common container settings.
 	// Optional: Defaults to empty.  See type description for default values of each field.
 	// +optional
-	PodSecurityContext *core.PodSecurityContext `json:"podSecurityContext" protobuf:"bytes,15,opt,name=podSecurityContext"`
-	ServiceAccount     ServiceAccountSpec       `json:"serviceAccount" protobuf:"bytes,16,opt,name=serviceAccount"`
-	Apiserver          WebHookSpec              `json:"apiserver" protobuf:"bytes,17,opt,name=apiserver"`
+	PodSecurityContext *core.PodSecurityContext `json:"podSecurityContext" protobuf:"bytes,16,opt,name=podSecurityContext"`
+	ServiceAccount     ServiceAccountSpec       `json:"serviceAccount" protobuf:"bytes,17,opt,name=serviceAccount"`
+	Apiserver          WebHookSpec              `json:"apiserver" protobuf:"bytes,18,opt,name=apiserver"`
 	//+optional
-	EnableAnalytics bool       `json:"enableAnalytics" protobuf:"varint,18,opt,name=enableAnalytics"`
-	Monitoring      Monitoring `json:"monitoring" protobuf:"bytes,19,opt,name=monitoring"`
+	EnableAnalytics bool       `json:"enableAnalytics" protobuf:"varint,19,opt,name=enableAnalytics"`
+	Monitoring      Monitoring `json:"monitoring" protobuf:"bytes,20,opt,name=monitoring"`
 	//+optional
-	AdditionalPodSecurityPolicies []string `json:"additionalPodSecurityPolicies" protobuf:"bytes,20,rep,name=additionalPodSecurityPolicies"`
+	AdditionalPodSecurityPolicies []string `json:"additionalPodSecurityPolicies" protobuf:"bytes,21,rep,name=additionalPodSecurityPolicies"`
 	//+optional
-	Platform Platform `json:"platform" protobuf:"bytes,21,opt,name=platform"`
+	Platform Platform `json:"platform" protobuf:"bytes,22,opt,name=platform"`
 }
 
 type ServiceAccountSpec struct {
