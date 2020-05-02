@@ -241,7 +241,7 @@ gen-chart-doc-%:
 		--env HTTP_PROXY=$(HTTP_PROXY)                   \
 		--env HTTPS_PROXY=$(HTTPS_PROXY)                 \
 		$(BUILD_IMAGE)                                   \
-		chart-doc-gen -d ./charts/stash/doc.yaml -v ./charts/stash/values.yaml > ./charts/stash/README.md
+		chart-doc-gen -d ./charts/$*/doc.yaml -v ./charts/$*/values.yaml > ./charts/$*/README.md
 
 .PHONY: manifests
 manifests: gen-crds patch-crds label-crds gen-bindata gen-values-schema gen-chart-doc
