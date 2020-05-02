@@ -2,7 +2,9 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+# Overrides name template
 nameOverride: ""
+# Overrides fullname template
 fullnameOverride: ""
 
 # Number of stash operator replicas to create (only 1 is supported)
@@ -15,10 +17,11 @@ operator:
   repository: stash
   # Operator container image tag
   tag: v0.9.0-rc.6
-  # operator container image tag
-  resources:
+  # Compute Resources required by the operator container
+  resources: # +doc-gen:break
     requests:
       cpu: "100m"
+  # Security options the operator container should run with
   securityContext: {}
     # capabilities:
     #   drop:
@@ -34,7 +37,9 @@ pushgateway:
   repository: pushgateway
   # Prometheus pushgateway container image tag
   tag: v0.5.2
+  # Compute Resources required by the Prometheus pushgateway container
   resources: {}
+  # Security options the Prometheus pushgateway container should run with
   securityContext: {}
     # capabilities:
     #   drop:
@@ -56,13 +61,14 @@ cleaner:
 #
 # Example:
 # helm template charts/stash \
-#   --set imagePullSecrets[0].name=abc,imagePullSecrets[1].name=xyz
+#   --set imagePullSecrets[0].name=sec0 \
+#   --set imagePullSecrets[1].name=sec1
 imagePullSecrets: []
 
 # Container image pull policy
 imagePullPolicy: IfNotPresent
 
-## If true, installs Stash operator as critical addon
+# If true, installs Stash operator as critical addon
 criticalAddon: false
 
 # Log level for operator
