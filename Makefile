@@ -228,8 +228,23 @@ gen-values-schema:
 	@yq r api/crds/installer.stash.appscode.com_stashoperators.yaml spec.validation.openAPIV3Schema.properties.spec > /tmp/stash-values.openapiv3_schema.yaml
 	@yq d /tmp/stash-values.openapiv3_schema.yaml description > charts/stash/values.openapiv3_schema.yaml
 
+.PHONY: gen-chart-doc
+gen-chart-doc: gen-chart-doc-stash
+
+gen-chart-doc-%:
+	@echo "Generate $* chart docs"
+	@docker run --rm 	                                 \
+		-u $$(id -u):$$(id -g)                           \
+		-v /tmp:/.cache                                  \
+		-v $$(pwd):$(DOCKER_REPO_ROOT)                   \
+		-w $(DOCKER_REPO_ROOT)                           \
+		--env HTTP_PROXY=$(HTTP_PROXY)                   \
+		--env HTTPS_PROXY=$(HTTPS_PROXY)                 \
+		$(BUILD_IMAGE)                                   \
+		chart-doc-gen -d ./charts/stash/doc.yaml -v ./charts/stash/values.yaml > ./charts/stash/README.md
+
 .PHONY: manifests
-manifests: gen-crds patch-crds label-crds gen-bindata gen-values-schema
+manifests: gen-crds patch-crds label-crds gen-bindata gen-values-schema gen-chart-doc
 
 .PHONY: gen
 gen: clientset gen-crd-protos manifests openapi
