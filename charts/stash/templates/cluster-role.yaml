@@ -108,7 +108,7 @@ rules:
   - podsecuritypolicies
   verbs: ["use"]
   resourceNames:
-  {{- range $x := .Values.podSecurityPolicies }}
+  {{- range $x := .Values.security.podSecurityPolicies }}
   - {{ $x }}
   {{- end }}
 - apiGroups:

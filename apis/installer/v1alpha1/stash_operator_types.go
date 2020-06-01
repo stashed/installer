@@ -94,10 +94,9 @@ type StashOperatorSpec struct {
 	ServiceAccount     ServiceAccountSpec       `json:"serviceAccount" protobuf:"bytes,17,opt,name=serviceAccount"`
 	Apiserver          WebHookSpec              `json:"apiserver" protobuf:"bytes,18,opt,name=apiserver"`
 	//+optional
-	EnableAnalytics bool       `json:"enableAnalytics" protobuf:"varint,19,opt,name=enableAnalytics"`
-	Monitoring      Monitoring `json:"monitoring" protobuf:"bytes,20,opt,name=monitoring"`
-	//+optional
-	AdditionalPodSecurityPolicies []string `json:"additionalPodSecurityPolicies" protobuf:"bytes,21,rep,name=additionalPodSecurityPolicies"`
+	EnableAnalytics bool         `json:"enableAnalytics" protobuf:"varint,19,opt,name=enableAnalytics"`
+	Monitoring      Monitoring   `json:"monitoring" protobuf:"bytes,20,opt,name=monitoring"`
+	Security        SecuritySpec `json:"security" protobuf:"bytes,21,opt,name=security"`
 	//+optional
 	Platform Platform `json:"platform" protobuf:"bytes,22,opt,name=platform"`
 }
@@ -156,6 +155,23 @@ type PrometheusSpec struct {
 type ServiceMonitorLabels struct {
 	//+optional
 	Labels map[string]string `json:"labels" protobuf:"bytes,1,rep,name=labels"`
+}
+
+type SecuritySpec struct {
+	Apparmor ApparmorSpec `json:"apparmor" protobuf:"bytes,1,opt,name=apparmor"`
+	Seccomp  SeccompSpec  `json:"seccomp" protobuf:"bytes,2,opt,name=seccomp"`
+	//+optional
+	PodSecurityPolicies []string `json:"podSecurityPolicies" protobuf:"bytes,3,rep,name=podSecurityPolicies"`
+}
+
+type ApparmorSpec struct {
+	//+optional
+	Enabled bool `json:"enabled" protobuf:"varint,1,opt,name=enabled"`
+}
+
+type SeccompSpec struct {
+	//+optional
+	Enabled bool `json:"enabled" protobuf:"varint,1,opt,name=enabled"`
 }
 
 type Platform struct {
