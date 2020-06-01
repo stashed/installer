@@ -56,6 +56,9 @@ spec:
         - --bypass-validating-webhook-xray={{ .Values.apiserver.bypassValidatingWebhookXray }}
         - --use-kubeapiserver-fqdn-for-aks={{ .Values.apiserver.useKubeapiserverFqdnForAks }}
         - --enable-analytics={{ .Values.enableAnalytics }}
+        - --cron-job-psp={{ .Values.podSecurityPolicies | join "," }}
+        - --backup-job-psp={{ .Values.podSecurityPolicies | join "," }}
+        - --restore-job-psp={{ .Values.podSecurityPolicies | join "," }}
         ports:
         - containerPort: 8443
         env:
