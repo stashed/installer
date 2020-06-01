@@ -330,12 +330,15 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"k8s.io/apimachinery/pkg/runtime.Unknown":                                   schema_k8sio_apimachinery_pkg_runtime_Unknown(ref),
 		"k8s.io/apimachinery/pkg/util/intstr.IntOrString":                           schema_apimachinery_pkg_util_intstr_IntOrString(ref),
 		"k8s.io/apimachinery/pkg/version.Info":                                      schema_k8sio_apimachinery_pkg_version_Info(ref),
+		"stash.appscode.dev/installer/apis/installer/v1alpha1.ApparmorSpec":         schema_installer_apis_installer_v1alpha1_ApparmorSpec(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.Container":            schema_installer_apis_installer_v1alpha1_Container(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.HealthcheckSpec":      schema_installer_apis_installer_v1alpha1_HealthcheckSpec(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.ImageRef":             schema_installer_apis_installer_v1alpha1_ImageRef(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.Monitoring":           schema_installer_apis_installer_v1alpha1_Monitoring(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.Platform":             schema_installer_apis_installer_v1alpha1_Platform(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.PrometheusSpec":       schema_installer_apis_installer_v1alpha1_PrometheusSpec(ref),
+		"stash.appscode.dev/installer/apis/installer/v1alpha1.SeccompSpec":          schema_installer_apis_installer_v1alpha1_SeccompSpec(ref),
+		"stash.appscode.dev/installer/apis/installer/v1alpha1.SecuritySpec":         schema_installer_apis_installer_v1alpha1_SecuritySpec(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.ServiceAccountSpec":   schema_installer_apis_installer_v1alpha1_ServiceAccountSpec(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.ServiceMonitorLabels": schema_installer_apis_installer_v1alpha1_ServiceMonitorLabels(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.ServingCerts":         schema_installer_apis_installer_v1alpha1_ServingCerts(ref),
@@ -15530,6 +15533,24 @@ func schema_k8sio_apimachinery_pkg_version_Info(ref common.ReferenceCallback) co
 	}
 }
 
+func schema_installer_apis_installer_v1alpha1_ApparmorSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"enabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+				},
+			},
+		},
+	}
+}
+
 func schema_installer_apis_installer_v1alpha1_Container(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
@@ -15700,6 +15721,62 @@ func schema_installer_apis_installer_v1alpha1_PrometheusSpec(ref common.Referenc
 				},
 			},
 		},
+	}
+}
+
+func schema_installer_apis_installer_v1alpha1_SeccompSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"enabled": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+				},
+			},
+		},
+	}
+}
+
+func schema_installer_apis_installer_v1alpha1_SecuritySpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"apparmor": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("stash.appscode.dev/installer/apis/installer/v1alpha1.ApparmorSpec"),
+						},
+					},
+					"seccomp": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("stash.appscode.dev/installer/apis/installer/v1alpha1.SeccompSpec"),
+						},
+					},
+					"podSecurityPolicies": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"apparmor", "seccomp"},
+			},
+		},
+		Dependencies: []string{
+			"stash.appscode.dev/installer/apis/installer/v1alpha1.ApparmorSpec", "stash.appscode.dev/installer/apis/installer/v1alpha1.SeccompSpec"},
 	}
 }
 
@@ -16049,17 +16126,9 @@ func schema_installer_apis_installer_v1alpha1_StashOperatorSpec(ref common.Refer
 							Ref: ref("stash.appscode.dev/installer/apis/installer/v1alpha1.Monitoring"),
 						},
 					},
-					"additionalPodSecurityPolicies": {
+					"security": {
 						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
-									},
-								},
-							},
+							Ref: ref("stash.appscode.dev/installer/apis/installer/v1alpha1.SecuritySpec"),
 						},
 					},
 					"platform": {
@@ -16068,11 +16137,11 @@ func schema_installer_apis_installer_v1alpha1_StashOperatorSpec(ref common.Refer
 						},
 					},
 				},
-				Required: []string{"replicaCount", "operator", "pushgateway", "cleaner", "imagePullPolicy", "serviceAccount", "apiserver", "monitoring"},
+				Required: []string{"replicaCount", "operator", "pushgateway", "cleaner", "imagePullPolicy", "serviceAccount", "apiserver", "monitoring", "security"},
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/api/core/v1.Affinity", "k8s.io/api/core/v1.PodSecurityContext", "k8s.io/api/core/v1.Toleration", "stash.appscode.dev/installer/apis/installer/v1alpha1.Container", "stash.appscode.dev/installer/apis/installer/v1alpha1.ImageRef", "stash.appscode.dev/installer/apis/installer/v1alpha1.Monitoring", "stash.appscode.dev/installer/apis/installer/v1alpha1.Platform", "stash.appscode.dev/installer/apis/installer/v1alpha1.ServiceAccountSpec", "stash.appscode.dev/installer/apis/installer/v1alpha1.WebHookSpec"},
+			"k8s.io/api/core/v1.Affinity", "k8s.io/api/core/v1.PodSecurityContext", "k8s.io/api/core/v1.Toleration", "stash.appscode.dev/installer/apis/installer/v1alpha1.Container", "stash.appscode.dev/installer/apis/installer/v1alpha1.ImageRef", "stash.appscode.dev/installer/apis/installer/v1alpha1.Monitoring", "stash.appscode.dev/installer/apis/installer/v1alpha1.Platform", "stash.appscode.dev/installer/apis/installer/v1alpha1.SecuritySpec", "stash.appscode.dev/installer/apis/installer/v1alpha1.ServiceAccountSpec", "stash.appscode.dev/installer/apis/installer/v1alpha1.WebHookSpec"},
 	}
 }
 

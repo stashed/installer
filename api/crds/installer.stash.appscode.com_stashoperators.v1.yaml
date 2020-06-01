@@ -37,10 +37,6 @@ spec:
             description: StashOperatorSpec is the schema for Stash operator values
               file
             properties:
-              additionalPodSecurityPolicies:
-                items:
-                  type: string
-                type: array
               affinity:
                 description: If specified, the pod's scheduling constraints
                 properties:
@@ -1201,6 +1197,26 @@ spec:
               replicaCount:
                 format: int32
                 type: integer
+              security:
+                properties:
+                  apparmor:
+                    properties:
+                      enabled:
+                        type: boolean
+                    type: object
+                  podSecurityPolicies:
+                    items:
+                      type: string
+                    type: array
+                  seccomp:
+                    properties:
+                      enabled:
+                        type: boolean
+                    type: object
+                required:
+                - apparmor
+                - seccomp
+                type: object
               serviceAccount:
                 properties:
                   annotations:
@@ -1262,6 +1278,7 @@ spec:
             - operator
             - pushgateway
             - replicaCount
+            - security
             - serviceAccount
             type: object
         type: object

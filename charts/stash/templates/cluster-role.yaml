@@ -108,22 +108,18 @@ rules:
   - podsecuritypolicies
   verbs: ["use"]
   resourceNames:
-  - {{ include "stash.fullname" . }}
-  - stash-backupsession-cron
-  - stash-backup-job
-  - stash-restore-job
-  {{- range $x := .Values.additionalPodSecurityPolicies }}
+  {{- range $x := .Values.security.podSecurityPolicies }}
   - {{ $x }}
   {{- end }}
 - apiGroups:
-    - snapshot.storage.k8s.io
+  - snapshot.storage.k8s.io
   resources:
-    - volumesnapshots
-    - volumesnapshotcontents
-    - volumesnapshotclasses
+  - volumesnapshots
+  - volumesnapshotcontents
+  - volumesnapshotclasses
   verbs: ["create", "get", "list", "watch", "patch", "delete"]
 - apiGroups:
-    - storage.k8s.io
+  - storage.k8s.io
   resources:
-    - storageclasses
+  - storageclasses
   verbs: ["get"]
