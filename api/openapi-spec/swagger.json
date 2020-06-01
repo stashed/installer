@@ -866,6 +866,14 @@
     }
   },
   "definitions": {
+    "dev.appscode.stash.installer.apis.installer.v1alpha1.ApparmorSpec": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      }
+    },
     "dev.appscode.stash.installer.apis.installer.v1alpha1.Container": {
       "type": "object",
       "required": [
@@ -958,6 +966,35 @@
       "properties": {
         "namespace": {
           "type": "string"
+        }
+      }
+    },
+    "dev.appscode.stash.installer.apis.installer.v1alpha1.SeccompSpec": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      }
+    },
+    "dev.appscode.stash.installer.apis.installer.v1alpha1.SecuritySpec": {
+      "type": "object",
+      "required": [
+        "apparmor",
+        "seccomp"
+      ],
+      "properties": {
+        "apparmor": {
+          "$ref": "#/definitions/dev.appscode.stash.installer.apis.installer.v1alpha1.ApparmorSpec"
+        },
+        "podSecurityPolicies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "seccomp": {
+          "$ref": "#/definitions/dev.appscode.stash.installer.apis.installer.v1alpha1.SeccompSpec"
         }
       }
     },
@@ -1080,15 +1117,10 @@
         "imagePullPolicy",
         "serviceAccount",
         "apiserver",
-        "monitoring"
+        "monitoring",
+        "security"
       ],
       "properties": {
-        "additionalPodSecurityPolicies": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
         "affinity": {
           "description": "If specified, the pod's scheduling constraints",
           "$ref": "#/definitions/io.k8s.api.core.v1.Affinity"
@@ -1161,6 +1193,9 @@
         "replicaCount": {
           "type": "integer",
           "format": "int32"
+        },
+        "security": {
+          "$ref": "#/definitions/dev.appscode.stash.installer.apis.installer.v1alpha1.SecuritySpec"
         },
         "serviceAccount": {
           "$ref": "#/definitions/dev.appscode.stash.installer.apis.installer.v1alpha1.ServiceAccountSpec"
