@@ -156,14 +156,21 @@ monitoring:
     # Only usable when monitoring agent is `prometheus.io/operator`.
     labels: {}
 
-# PSP names passed to operator
-#
-# Example:
-# helm install appscode/stash \
-#   --set podSecurityPolicies[0]=abc \
-#   --set podSecurityPolicies[1]=xyz
-podSecurityPolicies:  # +doc-gen:break
-  - baseline
+security:
+  apparmor:
+    # `Optional:` Allows the default AppArmor profile, requires setting the default.
+    enabled: false
+  seccomp:
+    # `Optional:` Allows the default seccomp profile, requires setting the default.
+    enabled: false
+  # PSP names passed to operator
+  #
+  # Example:
+  # helm install appscode/stash \
+  #   --set podSecurityPolicies[0]=abc \
+  #   --set podSecurityPolicies[1]=xyz
+  podSecurityPolicies:  # +doc-gen:break
+    - baseline
 
 platform:
   # Set true, if installed in OpenShift

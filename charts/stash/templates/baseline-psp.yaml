@@ -6,12 +6,16 @@ metadata:
   annotations:
     "helm.sh/hook": pre-install,pre-upgrade
     "helm.sh/hook-delete-policy": before-hook-creation
+  {{- if .Values.security.apparmor.enabled }}
     # Optional: Allow the default AppArmor profile, requires setting the default.
     apparmor.security.beta.kubernetes.io/allowedProfileNames: 'runtime/default'
     apparmor.security.beta.kubernetes.io/defaultProfileName:  'runtime/default'
+  {{- end }}
+  {{- if .Values.security.seccomp.enabled }}
     # Optional: Allow the default seccomp profile, requires setting the default.
     seccomp.security.alpha.kubernetes.io/allowedProfileNames: 'docker/default,runtime/default,unconfined'
     seccomp.security.alpha.kubernetes.io/defaultProfileName:  'unconfined'
+  {{- end }}
 spec:
   privileged: false
   # The moby default capability set, defined here:

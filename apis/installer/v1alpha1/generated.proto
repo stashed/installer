@@ -29,6 +29,11 @@ import "k8s.io/apimachinery/pkg/runtime/schema/generated.proto";
 // Package-wide variables from generator "generated".
 option go_package = "v1alpha1";
 
+message ApparmorSpec {
+  // +optional
+  optional bool enabled = 1;
+}
+
 message Container {
   optional ImageRef imageRef = 1;
 
@@ -76,6 +81,20 @@ message Platform {
 message PrometheusSpec {
   // +optional
   optional string namespace = 1;
+}
+
+message SeccompSpec {
+  // +optional
+  optional bool enabled = 1;
+}
+
+message SecuritySpec {
+  optional ApparmorSpec apparmor = 1;
+
+  optional SeccompSpec seccomp = 2;
+
+  // +optional
+  repeated string podSecurityPolicies = 3;
 }
 
 message ServiceAccountSpec {
@@ -180,8 +199,7 @@ message StashOperatorSpec {
 
   optional Monitoring monitoring = 20;
 
-  // +optional
-  repeated string additionalPodSecurityPolicies = 21;
+  optional SecuritySpec security = 21;
 
   // +optional
   optional Platform platform = 22;
