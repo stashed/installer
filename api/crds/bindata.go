@@ -215,8 +215,8 @@ type bintree struct {
 }
 
 var _bintree = &bintree{nil, map[string]*bintree{
-	"installer.stash.appscode.com_stashoperators.v1.yaml": {installerStashAppscodeCom_stashoperatorsV1Yaml, map[string]*bintree{}},
-	"installer.stash.appscode.com_stashoperators.yaml":    {installerStashAppscodeCom_stashoperatorsYaml, map[string]*bintree{}},
+	"installer.stash.appscode.com_stashoperators.v1.yaml": &bintree{installerStashAppscodeCom_stashoperatorsV1Yaml, map[string]*bintree{}},
+	"installer.stash.appscode.com_stashoperators.yaml":    &bintree{installerStashAppscodeCom_stashoperatorsYaml, map[string]*bintree{}},
 }}
 
 // RestoreAsset restores an asset under the given directory
