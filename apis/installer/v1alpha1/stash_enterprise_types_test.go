@@ -30,8 +30,8 @@ import (
 	"sigs.k8s.io/yaml"
 )
 
-func TestStashOperatorDefaultValues(t *testing.T) {
-	diffstring, err := compareStashOperatorDefaultValues()
+func TestStashEnterpriseDefaultValues(t *testing.T) {
+	diffstring, err := compareStashEnterpriseDefaultValues()
 	if err != nil {
 		t.Error(err)
 	}
@@ -40,8 +40,8 @@ func TestStashOperatorDefaultValues(t *testing.T) {
 	}
 }
 
-func compareStashOperatorDefaultValues() (string, error) {
-	data, err := ioutil.ReadFile("../../../charts/stash/values.yaml")
+func compareStashEnterpriseDefaultValues() (string, error) {
+	data, err := ioutil.ReadFile("../../../charts/stash-enterprise/values.yaml")
 	if err != nil {
 		return "", err
 	}
@@ -56,7 +56,7 @@ func compareStashOperatorDefaultValues() (string, error) {
 		return "", err
 	}
 
-	var spec v1alpha1.StashOperatorSpec
+	var spec v1alpha1.StashEnterpriseSpec
 	err = yaml.Unmarshal(data, &spec)
 	if err != nil {
 		return "", err

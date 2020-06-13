@@ -342,6 +342,9 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.ServiceAccountSpec":   schema_installer_apis_installer_v1alpha1_ServiceAccountSpec(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.ServiceMonitorLabels": schema_installer_apis_installer_v1alpha1_ServiceMonitorLabels(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.ServingCerts":         schema_installer_apis_installer_v1alpha1_ServingCerts(ref),
+		"stash.appscode.dev/installer/apis/installer/v1alpha1.StashEnterprise":      schema_installer_apis_installer_v1alpha1_StashEnterprise(ref),
+		"stash.appscode.dev/installer/apis/installer/v1alpha1.StashEnterpriseList":  schema_installer_apis_installer_v1alpha1_StashEnterpriseList(ref),
+		"stash.appscode.dev/installer/apis/installer/v1alpha1.StashEnterpriseSpec":  schema_installer_apis_installer_v1alpha1_StashEnterpriseSpec(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.StashOperator":        schema_installer_apis_installer_v1alpha1_StashOperator(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.StashOperatorList":    schema_installer_apis_installer_v1alpha1_StashOperatorList(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.StashOperatorSpec":    schema_installer_apis_installer_v1alpha1_StashOperatorSpec(ref),
@@ -15879,6 +15882,269 @@ func schema_installer_apis_installer_v1alpha1_ServingCerts(ref common.ReferenceC
 				Required: []string{"generate"},
 			},
 		},
+	}
+}
+
+func schema_installer_apis_installer_v1alpha1_StashEnterprise(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("stash.appscode.dev/installer/apis/installer/v1alpha1.StashEnterpriseSpec"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta", "stash.appscode.dev/installer/apis/installer/v1alpha1.StashEnterpriseSpec"},
+	}
+}
+
+func schema_installer_apis_installer_v1alpha1_StashEnterpriseList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "StashEnterpriseList is a list of StashEnterprises",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Items is a list of StashEnterprise CRD objects",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("stash.appscode.dev/installer/apis/installer/v1alpha1.StashEnterprise"),
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta", "stash.appscode.dev/installer/apis/installer/v1alpha1.StashEnterprise"},
+	}
+}
+
+func schema_installer_apis_installer_v1alpha1_StashEnterpriseSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "StashEnterpriseSpec is the schema for Stash operator values file",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"nameOverride": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"fullnameOverride": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"replicaCount": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"operator": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("stash.appscode.dev/installer/apis/installer/v1alpha1.Container"),
+						},
+					},
+					"pushgateway": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("stash.appscode.dev/installer/apis/installer/v1alpha1.Container"),
+						},
+					},
+					"cleaner": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("stash.appscode.dev/installer/apis/installer/v1alpha1.ImageRef"),
+						},
+					},
+					"imagePullPolicy": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"imagePullSecrets": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"criticalAddon": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"logLevel": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"annotations": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"podAnnotations": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"nodeSelector": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
+						},
+					},
+					"tolerations": {
+						SchemaProps: spec.SchemaProps{
+							Description: "If specified, the pod's tolerations.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("k8s.io/api/core/v1.Toleration"),
+									},
+								},
+							},
+						},
+					},
+					"affinity": {
+						SchemaProps: spec.SchemaProps{
+							Description: "If specified, the pod's scheduling constraints",
+							Ref:         ref("k8s.io/api/core/v1.Affinity"),
+						},
+					},
+					"podSecurityContext": {
+						SchemaProps: spec.SchemaProps{
+							Description: "PodSecurityContext holds pod-level security attributes and common container settings. Optional: Defaults to empty.  See type description for default values of each field.",
+							Ref:         ref("k8s.io/api/core/v1.PodSecurityContext"),
+						},
+					},
+					"serviceAccount": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("stash.appscode.dev/installer/apis/installer/v1alpha1.ServiceAccountSpec"),
+						},
+					},
+					"apiserver": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("stash.appscode.dev/installer/apis/installer/v1alpha1.WebHookSpec"),
+						},
+					},
+					"enableAnalytics": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+					"monitoring": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("stash.appscode.dev/installer/apis/installer/v1alpha1.Monitoring"),
+						},
+					},
+					"security": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("stash.appscode.dev/installer/apis/installer/v1alpha1.SecuritySpec"),
+						},
+					},
+					"platform": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("stash.appscode.dev/installer/apis/installer/v1alpha1.Platform"),
+						},
+					},
+				},
+				Required: []string{"replicaCount", "operator", "pushgateway", "cleaner", "imagePullPolicy", "serviceAccount", "apiserver", "monitoring", "security"},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/api/core/v1.Affinity", "k8s.io/api/core/v1.PodSecurityContext", "k8s.io/api/core/v1.Toleration", "stash.appscode.dev/installer/apis/installer/v1alpha1.Container", "stash.appscode.dev/installer/apis/installer/v1alpha1.ImageRef", "stash.appscode.dev/installer/apis/installer/v1alpha1.Monitoring", "stash.appscode.dev/installer/apis/installer/v1alpha1.Platform", "stash.appscode.dev/installer/apis/installer/v1alpha1.SecuritySpec", "stash.appscode.dev/installer/apis/installer/v1alpha1.ServiceAccountSpec", "stash.appscode.dev/installer/apis/installer/v1alpha1.WebHookSpec"},
 	}
 }
 

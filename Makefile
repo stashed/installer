@@ -173,15 +173,6 @@ gen-crds:
 			paths="./apis/..."              \
 			output:crd:artifacts:config=api/crds
 
-crds_to_patch := installer.stash.appscode.com_stashoperators.yaml
-
-.PHONY: patch-crds
-patch-crds: $(addprefix patch-crd-, $(crds_to_patch))
-patch-crd-%: $(BUILD_DIRS)
-	@echo "patching $*"
-	@kubectl patch -f api/crds/$* -p "$$(cat hack/crd-patch.json)" --type=json --local=true -o yaml > bin/$*
-	@mv bin/$* api/crds/$*
-
 .PHONY: label-crds
 label-crds: $(BUILD_DIRS)
 	@for f in api/crds/*.yaml; do \
@@ -226,6 +217,8 @@ gen-bindata:
 
 .PHONY: gen-values-schema
 gen-values-schema:
+	@yq r api/crds/installer.stash.appscode.com_stashenterprises.v1.yaml spec.versions[0].schema.openAPIV3Schema.properties.spec > /tmp/stash-enterprise-values.openapiv3_schema.yaml
+	@yq d /tmp/stash-enterprise-values.openapiv3_schema.yaml description > charts/stash-enterprise/values.openapiv3_schema.yaml
 	@yq r api/crds/installer.stash.appscode.com_stashoperators.v1.yaml spec.versions[0].schema.openAPIV3Schema.properties.spec > /tmp/stash-values.openapiv3_schema.yaml
 	@yq d /tmp/stash-values.openapiv3_schema.yaml description > charts/stash/values.openapiv3_schema.yaml
 
@@ -245,7 +238,7 @@ gen-chart-doc-%:
 		chart-doc-gen -d ./charts/$*/doc.yaml -v ./charts/$*/values.yaml > ./charts/$*/README.md
 
 .PHONY: manifests
-manifests: gen-crds patch-crds label-crds gen-bindata gen-values-schema gen-chart-doc
+manifests: gen-crds label-crds gen-bindata gen-values-schema gen-chart-doc
 
 .PHONY: gen
 gen: clientset gen-crd-protos manifests openapi
@@ -339,6 +332,15 @@ unit-tests: $(BUILD_DIRS)
 	        ./hack/test.sh $(SRC_PKGS)                          \
 	    "
 
+TEST_CHARTS    ?=
+KUBE_NAMESPACE ?=
+
+ifeq ($(strip $(TEST_CHARTS)),)
+	CT_ARGS = --all --namespace=$(KUBE_NAMESPACE)
+else
+	CT_ARGS = --charts=$(TEST_CHARTS) --namespace=$(KUBE_NAMESPACE)
+endif
+
 .PHONY: ct
 ct: $(BUILD_DIRS)
 	@docker run                                                 \
@@ -357,7 +359,7 @@ ct: $(BUILD_DIRS)
 	    --env HTTPS_PROXY=$(HTTPS_PROXY)                        \
 	    --env KUBECONFIG=$(subst $(HOME),,$(KUBECONFIG))        \
 	    $(CHART_TEST_IMAGE)                                     \
-	    ct lint-and-install --all
+	    ct lint-and-install --debug $(CT_ARGS)
 
 ADDTL_LINTERS   := goconst,gofmt,goimports,unparam
 

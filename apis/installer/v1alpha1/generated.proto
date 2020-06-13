@@ -126,6 +126,86 @@ message ServingCerts {
 }
 
 // +kubebuilder:object:root=true
+// +kubebuilder:resource:path=stashenterprises,singular=stashenterprise,categories={stash,appscode}
+message StashEnterprise {
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
+
+  optional StashEnterpriseSpec spec = 2;
+}
+
+// StashEnterpriseList is a list of StashEnterprises
+message StashEnterpriseList {
+  optional k8s.io.apimachinery.pkg.apis.meta.v1.ListMeta metadata = 1;
+
+  // Items is a list of StashEnterprise CRD objects
+  repeated StashEnterprise items = 2;
+}
+
+// StashEnterpriseSpec is the schema for Stash operator values file
+message StashEnterpriseSpec {
+  // +optional
+  optional string nameOverride = 1;
+
+  // +optional
+  optional string fullnameOverride = 2;
+
+  optional int32 replicaCount = 3;
+
+  optional Container operator = 4;
+
+  optional Container pushgateway = 5;
+
+  optional ImageRef cleaner = 6;
+
+  optional string imagePullPolicy = 7;
+
+  // +optional
+  repeated string imagePullSecrets = 8;
+
+  // +optional
+  optional bool criticalAddon = 9;
+
+  // +optional
+  optional int32 logLevel = 10;
+
+  // +optional
+  map<string, string> annotations = 11;
+
+  // +optional
+  map<string, string> podAnnotations = 12;
+
+  // +optional
+  map<string, string> nodeSelector = 13;
+
+  // If specified, the pod's tolerations.
+  // +optional
+  repeated k8s.io.api.core.v1.Toleration tolerations = 14;
+
+  // If specified, the pod's scheduling constraints
+  // +optional
+  optional k8s.io.api.core.v1.Affinity affinity = 15;
+
+  // PodSecurityContext holds pod-level security attributes and common container settings.
+  // Optional: Defaults to empty.  See type description for default values of each field.
+  // +optional
+  optional k8s.io.api.core.v1.PodSecurityContext podSecurityContext = 16;
+
+  optional ServiceAccountSpec serviceAccount = 17;
+
+  optional WebHookSpec apiserver = 18;
+
+  // +optional
+  optional bool enableAnalytics = 19;
+
+  optional Monitoring monitoring = 20;
+
+  optional SecuritySpec security = 21;
+
+  // +optional
+  optional Platform platform = 22;
+}
+
+// +kubebuilder:object:root=true
 // +kubebuilder:resource:path=stashoperators,singular=stashoperator,categories={stash,appscode}
 message StashOperator {
   optional k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta metadata = 1;
