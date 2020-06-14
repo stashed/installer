@@ -3,43 +3,41 @@ name: CI
 on:
   pull_request:
     branches:
-      - '*'
+      - "*"
   push:
     branches:
       - master
 
 jobs:
-
   build:
     name: Build
     runs-on: ubuntu-latest
     steps:
+      - name: Set up Go 1.14
+        uses: actions/setup-go@v1
+        with:
+          go-version: 1.14
+        id: go
 
-    - name: Set up Go 1.14
-      uses: actions/setup-go@v1
-      with:
-        go-version: 1.14
-      id: go
+      - name: Check out code into the Go module directory
+        uses: actions/checkout@v1
 
-    - name: Check out code into the Go module directory
-      uses: actions/checkout@v1
+      - name: Prepare Host
+        run: |
+          sudo apt-get -qq update || true
+          sudo apt-get install -y bzr
+          # install yq
+          curl -fsSL -o yq https://github.com/mikefarah/yq/releases/download/3.3.0/yq_linux_amd64
+          chmod +x yq
+          sudo mv yq /usr/local/bin/yq
+          # install kubectl
+          curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.17.0/bin/linux/amd64/kubectl
+          chmod +x ./kubectl
+          sudo mv ./kubectl /usr/local/bin/kubectl
 
-    - name: Prepare Host
-      run: |
-        sudo apt-get -qq update || true
-        sudo apt-get install -y bzr
-        # install yq
-        curl -fsSL -o yq https://github.com/mikefarah/yq/releases/download/3.3.0/yq_linux_amd64
-        chmod +x yq
-        sudo mv yq /usr/local/bin/yq
-        # install kubectl
-        curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.17.0/bin/linux/amd64/kubectl
-        chmod +x ./kubectl
-        sudo mv ./kubectl /usr/local/bin/kubectl
-
-    - name: Run checks
-      run: |
-        make ci
+      - name: Run checks
+        run: |
+          make ci
 
   kubernetes:
     name: Kubernetes
@@ -47,38 +45,47 @@ jobs:
     needs: build
     strategy:
       matrix:
-        k8s: [v1.11.10, v1.12.10, v1.13.12, v1.14.10, v1.15.7, v1.16.4, v1.17.2, v1.18.2]
+        k8s:
+          [
+            v1.11.10,
+            v1.12.10,
+            v1.13.12,
+            v1.14.10,
+            v1.15.7,
+            v1.16.4,
+            v1.17.2,
+            v1.18.2,
+          ]
     steps:
+      - name: Check out code into the Go module directory
+        uses: actions/checkout@v1
 
-    - name: Check out code into the Go module directory
-      uses: actions/checkout@v1
+      - name: Create Kubernetes ${{ matrix.k8s }} cluster
+        id: kind
+        uses: engineerd/setup-kind@v0.1.0
+        with:
+          version: v0.7.0
+          config: hack/kubernetes/kind.yaml
+          image: kindest/node:${{ matrix.k8s }}
 
-    - name: Create Kubernetes ${{ matrix.k8s }} cluster
-      id: kind
-      uses: engineerd/setup-kind@v0.1.0
-      with:
-        version: v0.7.0
-        config: hack/kubernetes/kind.yaml
-        image: kindest/node:${{ matrix.k8s }}
+      - name: Prepare cluster for testing
+        id: local-path
+        env:
+          DOCKER_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+          USERNAME: 1gtm
+          REGISTRY_SECRET: regcred
+        run: |
+          echo "waiting for nodes to be ready ..."
+          kubectl wait --for=condition=Ready nodes --all --timeout=5m
+          kubectl get nodes
+          echo
+          kubectl version
+          echo
+          echo "create docker-registry secret"
+          kubectl create secret docker-registry ${REGISTRY_SECRET} --namespace=kube-system --docker-server=https://index.docker.io/v1/ --docker-username=${USERNAME} --docker-password=${DOCKER_TOKEN}
 
-    - name: Prepare cluster for testing
-      id: local-path
-      env:
-        DOCKER_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
-        USERNAME: 1gtm
-        REGISTRY_SECRET: regcred
-      run: |
-        echo "waiting for nodes to be ready ..."
-        kubectl wait --for=condition=Ready nodes --all --timeout=5m
-        kubectl get nodes
-        echo
-        kubectl version
-        echo
-        echo "create docker-registry secret"
-        kubectl create secret docker-registry ${REGISTRY_SECRET} --namespace=kube-system --docker-server=https://index.docker.io/v1/ --docker-username=${USERNAME} --docker-password=${DOCKER_TOKEN}
-
-    - name: Test charts
-      run: |
-        export KUBECONFIG="${HOME}/.kube/config"
-        make ct
-        kubectl delete crd -l app=stash
+      - name: Test charts
+        run: |
+          export KUBECONFIG="${HOME}/.kube/config"
+          make ct
+          kubectl delete crd -l app=stash
