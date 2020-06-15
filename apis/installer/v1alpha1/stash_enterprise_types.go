@@ -22,12 +22,12 @@ import (
 )
 
 const (
-	ResourceKindStashOperator = "StashOperator"
-	ResourceStashOperator     = "stashoperator"
-	ResourceStashOperators    = "stashoperators"
+	ResourceKindStashEnterprise = "StashEnterprise"
+	ResourceStashEnterprise     = "stashenterprise"
+	ResourceStashEnterprises    = "stashenterprises"
 )
 
-// StashOperator defines the schama for Stash Operator Installer.
+// StashEnterprise defines the schama for Stash Enterprise Operator Installer.
 
 // +genclient
 // +genclient:skipVerbs=updateStatus
@@ -35,15 +35,15 @@ const (
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // +kubebuilder:object:root=true
-// +kubebuilder:resource:path=stashoperators,singular=stashoperator,categories={stash,appscode}
-type StashOperator struct {
+// +kubebuilder:resource:path=stashenterprises,singular=stashenterprise,categories={stash,appscode}
+type StashEnterprise struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
 	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
-	Spec              StashOperatorSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
+	Spec              StashEnterpriseSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
 }
 
-// StashOperatorSpec is the schema for Stash operator values file
-type StashOperatorSpec struct {
+// StashEnterpriseSpec is the schema for Stash operator values file
+type StashEnterpriseSpec struct {
 	//+optional
 	NameOverride string `json:"nameOverride" protobuf:"bytes,1,opt,name=nameOverride"`
 	//+optional
@@ -87,10 +87,10 @@ type StashOperatorSpec struct {
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// StashOperatorList is a list of StashOperators
-type StashOperatorList struct {
+// StashEnterpriseList is a list of StashEnterprises
+type StashEnterpriseList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
-	// Items is a list of StashOperator CRD objects
-	Items []StashOperator `json:"items,omitempty" protobuf:"bytes,2,rep,name=items"`
+	// Items is a list of StashEnterprise CRD objects
+	Items []StashEnterprise `json:"items,omitempty" protobuf:"bytes,2,rep,name=items"`
 }
