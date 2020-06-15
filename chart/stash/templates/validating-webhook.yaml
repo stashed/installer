@@ -11,6 +11,9 @@ metadata:
   annotations:
     "helm.sh/hook": post-install,post-upgrade
     "helm.sh/hook-delete-policy": before-hook-creation
+    {{- if .Values.apiserver.validatingWebhookAnnotations }}
+    {{- toYaml .Values.apiserver.validatingWebhookAnnotations | nindent 4 }}
+    {{- end }}
 webhooks:
 - name: restic.admission.stash.appscode.com
   clientConfig:
