@@ -80,6 +80,10 @@ apiserver:
   enableValidatingWebhook: true
   # CA certificate used by main Kubernetes api server
   ca: not-ca-cert
+
+  mutatingWebhookAnnotations: {}
+  validatingWebhookAnnotations: {}
+
   # If true, disables status sub resource for crds.
   # Otherwise, enables status sub resource for Kubernetes version >= 1.11 and disables for other versions.
   disableStatusSubresource: false
