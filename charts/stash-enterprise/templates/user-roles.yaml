@@ -10,14 +10,14 @@ metadata:
     "helm.sh/hook-delete-policy": before-hook-creation
 rules:
 - apiGroups:
-  - stash-enterprise.appscode.com
+  - stash.appscode.com
   resources:
   - restics
   - recoveries
   - repositories
   verbs: ["*"]
 - apiGroups:
-  - repositories.stash-enterprise.appscode.com
+  - repositories.stash.appscode.com
   resources:
   - snapshots
   verbs: ["delete", "deletecollection", "get", "list"]
@@ -33,14 +33,14 @@ metadata:
     "helm.sh/hook-delete-policy": before-hook-creation
 rules:
 - apiGroups:
-  - stash-enterprise.appscode.com
+  - stash.appscode.com
   resources:
   - restics
   - recoveries
   - repositories
   verbs: ["get", "list", "watch"]
 - apiGroups:
-  - repositories.stash-enterprise.appscode.com
+  - repositories.stash.appscode.com
   resources:
   - snapshots
   verbs: ["get", "list"]
