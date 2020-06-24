@@ -19,11 +19,11 @@
 apiVersion: apiregistration.k8s.io/v1beta1
 kind: APIService
 metadata:
-  name: v1alpha1.admission.stash-enterprise.appscode.com
+  name: v1alpha1.admission.stash.appscode.com
   labels:
     {{- include "stash-enterprise.labels" . | nindent 4 }}
 spec:
-  group: admission.stash-enterprise.appscode.com
+  group: admission.stash.appscode.com
   version: v1alpha1
   service:
     namespace: {{ .Release.Namespace }}
@@ -35,11 +35,11 @@ spec:
 apiVersion: apiregistration.k8s.io/v1beta1
 kind: APIService
 metadata:
-  name: v1beta1.admission.stash-enterprise.appscode.com
+  name: v1beta1.admission.stash.appscode.com
   labels:
     {{- include "stash-enterprise.labels" . | nindent 4 }}
 spec:
-  group: admission.stash-enterprise.appscode.com
+  group: admission.stash.appscode.com
   version: v1beta1
   service:
     namespace: {{ .Release.Namespace }}
@@ -51,11 +51,11 @@ spec:
 apiVersion: apiregistration.k8s.io/v1beta1
 kind: APIService
 metadata:
-  name: v1alpha1.repositories.stash-enterprise.appscode.com
+  name: v1alpha1.repositories.stash.appscode.com
   labels:
     {{- include "stash-enterprise.labels" . | nindent 4 }}
 spec:
-  group: repositories.stash-enterprise.appscode.com
+  group: repositories.stash.appscode.com
   version: v1alpha1
   service:
     namespace: {{ .Release.Namespace }}
