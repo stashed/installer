@@ -21,10 +21,10 @@ spec:
           - sh
           - -c
           - "sleep 2; \
-           kubectl delete validatingwebhookconfigurations admission.stash-enterprise.appscode.com || true; \
-           kubectl delete mutatingwebhookconfiguration admission.stash-enterprise.appscode.com || true; \
-           kubectl delete apiservice v1alpha1.admission.stash-enterprise.appscode.com || true; \
-           kubectl delete functions.stash-enterprise.appscode.com update-status pvc-backup pvc-restore || true; \
-           kubectl delete tasks.stash-enterprise.appscode.com pvc-backup pvc-restore"
+           kubectl delete validatingwebhookconfigurations admission.stash.appscode.com || true; \
+           kubectl delete mutatingwebhookconfiguration admission.stash.appscode.com || true; \
+           kubectl delete apiservice v1alpha1.admission.stash.appscode.com || true; \
+           kubectl delete functions.stash.appscode.com update-status pvc-backup pvc-restore || true; \
+           kubectl delete tasks.stash.appscode.com pvc-backup pvc-restore || true;"
         imagePullPolicy: {{ .Values.imagePullPolicy }}
       restartPolicy: Never

@@ -5,19 +5,19 @@
 apiVersion: admissionregistration.k8s.io/v1beta1
 kind: MutatingWebhookConfiguration
 metadata:
-  name: admission.stash-enterprise.appscode.com
+  name: admission.stash.appscode.com
   labels:
     {{- include "stash-enterprise.labels" . | nindent 4 }}
   annotations:
     "helm.sh/hook": pre-install,pre-upgrade
     "helm.sh/hook-delete-policy": before-hook-creation
 webhooks:
-- name: deployment.admission.stash-enterprise.appscode.com
+- name: deployment.admission.stash.appscode.com
   clientConfig:
     service:
       namespace: default
       name: kubernetes
-      path: /apis/admission.stash-enterprise.appscode.com/v1alpha1/deploymentmutators
+      path: /apis/admission.stash.appscode.com/v1alpha1/deploymentmutators
     caBundle: {{ b64enc .Values.apiserver.ca }}
   rules:
   - operations:
@@ -34,12 +34,12 @@ webhooks:
 {{- if and (ge $major 1) (ge $minor 12) }}
   sideEffects: None
 {{- end }}
-- name: daemonset.admission.stash-enterprise.appscode.com
+- name: daemonset.admission.stash.appscode.com
   clientConfig:
     service:
       namespace: default
       name: kubernetes
-      path: /apis/admission.stash-enterprise.appscode.com/v1alpha1/daemonsetmutators
+      path: /apis/admission.stash.appscode.com/v1alpha1/daemonsetmutators
     caBundle: {{ b64enc .Values.apiserver.ca }}
   rules:
   - operations:
@@ -56,12 +56,12 @@ webhooks:
 {{- if and (ge $major 1) (ge $minor 12) }}
   sideEffects: None
 {{- end }}
-- name: statefulset.admission.stash-enterprise.appscode.com
+- name: statefulset.admission.stash.appscode.com
   clientConfig:
     service:
       namespace: default
       name: kubernetes
-      path: /apis/admission.stash-enterprise.appscode.com/v1alpha1/statefulsetmutators
+      path: /apis/admission.stash.appscode.com/v1alpha1/statefulsetmutators
     caBundle: {{ b64enc .Values.apiserver.ca }}
   rules:
   - operations:
@@ -76,12 +76,12 @@ webhooks:
 {{- if and (ge $major 1) (ge $minor 12) }}
   sideEffects: None
 {{- end }}
-- name: replicationcontroller.admission.stash-enterprise.appscode.com
+- name: replicationcontroller.admission.stash.appscode.com
   clientConfig:
     service:
       namespace: default
       name: kubernetes
-      path: /apis/admission.stash-enterprise.appscode.com/v1alpha1/replicationcontrollermutators
+      path: /apis/admission.stash.appscode.com/v1alpha1/replicationcontrollermutators
     caBundle: {{ b64enc .Values.apiserver.ca }}
   rules:
   - operations:
@@ -97,12 +97,12 @@ webhooks:
 {{- if and (ge $major 1) (ge $minor 12) }}
   sideEffects: None
 {{- end }}
-- name: replicaset.admission.stash-enterprise.appscode.com
+- name: replicaset.admission.stash.appscode.com
   clientConfig:
     service:
       namespace: default
       name: kubernetes
-      path: /apis/admission.stash-enterprise.appscode.com/v1alpha1/replicasetmutators
+      path: /apis/admission.stash.appscode.com/v1alpha1/replicasetmutators
     caBundle: {{ b64enc .Values.apiserver.ca }}
   rules:
   - operations:
@@ -119,12 +119,12 @@ webhooks:
 {{- if and (ge $major 1) (ge $minor 12) }}
   sideEffects: None
 {{- end }}
-- name: deploymentconfig.admission.stash-enterprise.appscode.com
+- name: deploymentconfig.admission.stash.appscode.com
   clientConfig:
     service:
       namespace: default
       name: kubernetes
-      path: /apis/admission.stash-enterprise.appscode.com/v1alpha1/deploymentconfigmutators
+      path: /apis/admission.stash.appscode.com/v1alpha1/deploymentconfigmutators
     caBundle: {{ b64enc .Values.apiserver.ca }}
   rules:
   - operations:

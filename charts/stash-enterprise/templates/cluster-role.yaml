@@ -22,7 +22,7 @@ rules:
   - validatingwebhookconfigurations
   verbs: ["delete", "get", "list", "watch", "patch"]
 - apiGroups:
-  - stash-enterprise.appscode.com
+  - stash.appscode.com
   resources:
   - "*"
   verbs: ["*"]
