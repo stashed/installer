@@ -44,7 +44,7 @@ spec:
         args:
         - run
         - --v={{ .Values.logLevel }}
-        - --docker-registry={{ .Values.operator.registry }}
+        - --docker-registry={{ .Values.operator.registry }}/{{ .Values.operator.repository }}
         - --image-tag={{ .Values.operator.tag }}
         - --secure-port=8443
         - --audit-log-path=-
