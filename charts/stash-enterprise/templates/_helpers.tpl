@@ -61,3 +61,11 @@ Create the name of the service account to use
     {{ default "default" .Values.serviceAccount.name }}
 {{- end -}}
 {{- end -}}
+
+{{- define "image-pull-secrets" -}}
+{{- $secrets:= list -}}
+{{- range $x:=.Values.imagePullSecrets -}}
+{{- $secrets = append $secrets $x.name -}}
+{{- end -}}
+{{- $secrets | join "," | print -}}
+{{- end -}}
