@@ -83,6 +83,8 @@ type StashEnterpriseSpec struct {
 	Security        SecuritySpec `json:"security" protobuf:"bytes,21,opt,name=security"`
 	//+optional
 	Platform Platform `json:"platform" protobuf:"bytes,22,opt,name=platform"`
+	//+optional
+	NfsHelper NfsHelper `json:"nfsHelper" protobuf:"bytes,23,opt,name=nfsHelper"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

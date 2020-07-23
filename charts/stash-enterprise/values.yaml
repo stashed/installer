@@ -151,7 +151,18 @@ security:
   #   --set podSecurityPolicies[0]=abc \
   #   --set podSecurityPolicies[1]=xyz
   podSecurityPolicies: # +doc-gen:break
-  - baseline
+  - app-stash
 platform:
   # Set true, if installed in OpenShift
   openshift: false
+
+# NFS backend helper configurations
+nfsHelper:
+  # CPU resource for each NFS helper deployment
+  cpu: 100m
+  # Memory for each NFS helper deployment
+  memory: 128Mi
+  # Run the NFS helper deployments with this UID.
+  runAsUser: 2000
+  # Run the NFS helper deployments in privileged mode
+  privileged: false

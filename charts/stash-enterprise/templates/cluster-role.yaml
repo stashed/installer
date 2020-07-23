@@ -40,6 +40,11 @@ rules:
   - statefulsets
   verbs: ["get", "list", "watch", "patch"]
 - apiGroups:
+  - apps
+  resources:
+  - deployments
+  verbs: ["create","patch","delete"]
+- apiGroups:
   - batch
   resources:
   - jobs

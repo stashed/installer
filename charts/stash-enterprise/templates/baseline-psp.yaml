@@ -2,7 +2,7 @@
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
-  name: baseline
+  name: app-stash
   annotations:
     "helm.sh/hook": pre-install,pre-upgrade
     "helm.sh/hook-delete-policy": before-hook-creation
@@ -17,7 +17,7 @@ metadata:
     seccomp.security.alpha.kubernetes.io/defaultProfileName:  'unconfined'
   {{- end }}
 spec:
-  privileged: false
+  privileged: {{ .Values.nfsHelper.priveleged }}
   # The moby default capability set, defined here:
   # https://github.com/moby/moby/blob/0a5cec2833f82a6ad797d70acbf9cbbaf8956017/oci/caps/defaults.go#L6-L19
   allowedCapabilities:

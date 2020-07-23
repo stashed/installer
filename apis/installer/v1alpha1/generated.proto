@@ -73,6 +73,20 @@ message Monitoring {
   optional ServiceMonitorLabels serviceMonitor = 5;
 }
 
+message NfsHelper {
+  // +optional
+  optional string cpu = 1;
+
+  // +optional
+  optional string memory = 2;
+
+  // +optional
+  optional int64 runAsUser = 3;
+
+  // +optional
+  optional bool privileged = 4;
+}
+
 message Platform {
   // +optional
   optional bool openshift = 1;
@@ -203,6 +217,9 @@ message StashEnterpriseSpec {
 
   // +optional
   optional Platform platform = 22;
+
+  // +optional
+  optional NfsHelper nfsHelper = 23;
 }
 
 // +kubebuilder:object:root=true
