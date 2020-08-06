@@ -155,3 +155,14 @@ security:
 platform:
   # Set true, if installed in OpenShift
   openshift: false
+
+# Network volume accessor configurations
+netVolAccessor:
+  # CPU resource for each network volume accessor deployment
+  cpu: 100m
+  # Memory for each network volume accessor deployment
+  memory: 128Mi
+  # Run the network volume accessor with this UID.
+  runAsUser: 2000
+  # Run the network volume accessor deployments in privileged mode
+  privileged: false

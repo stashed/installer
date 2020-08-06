@@ -113,3 +113,14 @@ type Platform struct {
 	//+optional
 	Openshift bool `json:"openshift" protobuf:"varint,1,opt,name=openshift"`
 }
+
+type NetVolAccessor struct {
+	//+optional
+	CPU string `json:"cpu" protobuf:"bytes,1,opt,name=cpu"`
+	//+optional
+	Memory string `json:"memory" protobuf:"bytes,2,opt,name=memory"`
+	//+optional
+	RunAsUser int64 `json:"runAsUser" protobuf:"bytes,3,opt,name=runAsUser"`
+	//+optional
+	Privileged bool `json:"privileged" protobuf:"bytes,4,opt,name=privileged"`
+}
