@@ -642,6 +642,18 @@ properties:
     type: object
   nameOverride:
     type: string
+  netVolAccessor:
+    properties:
+      cpu:
+        type: string
+      memory:
+        type: string
+      privileged:
+        type: boolean
+      runAsUser:
+        format: int64
+        type: integer
+    type: object
   nodeSelector:
     additionalProperties:
       type: string
