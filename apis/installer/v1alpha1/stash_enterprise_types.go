@@ -84,7 +84,7 @@ type StashEnterpriseSpec struct {
 	//+optional
 	Platform Platform `json:"platform" protobuf:"bytes,22,opt,name=platform"`
 	//+optional
-	NfsHelper NfsHelper `json:"nfsHelper" protobuf:"bytes,23,opt,name=nfsHelper"`
+	NetVolAccessor NetVolAccessor `json:"netVolAccessor" protobuf:"bytes,23,opt,name=netVolAccessor"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -335,7 +335,7 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.HealthcheckSpec":      schema_installer_apis_installer_v1alpha1_HealthcheckSpec(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.ImageRef":             schema_installer_apis_installer_v1alpha1_ImageRef(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.Monitoring":           schema_installer_apis_installer_v1alpha1_Monitoring(ref),
-		"stash.appscode.dev/installer/apis/installer/v1alpha1.NfsHelper":            schema_installer_apis_installer_v1alpha1_NfsHelper(ref),
+		"stash.appscode.dev/installer/apis/installer/v1alpha1.NetVolAccessor":       schema_installer_apis_installer_v1alpha1_NfsHelper(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.Platform":             schema_installer_apis_installer_v1alpha1_Platform(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.PrometheusSpec":       schema_installer_apis_installer_v1alpha1_PrometheusSpec(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.SeccompSpec":          schema_installer_apis_installer_v1alpha1_SeccompSpec(ref),
@@ -16178,7 +16178,7 @@ func schema_installer_apis_installer_v1alpha1_StashEnterpriseSpec(ref common.Ref
 					},
 					"nfsHelper": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("stash.appscode.dev/installer/apis/installer/v1alpha1.NfsHelper"),
+							Ref: ref("stash.appscode.dev/installer/apis/installer/v1alpha1.NetVolAccessor"),
 						},
 					},
 				},
@@ -16186,7 +16186,7 @@ func schema_installer_apis_installer_v1alpha1_StashEnterpriseSpec(ref common.Ref
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/api/core/v1.Affinity", "k8s.io/api/core/v1.PodSecurityContext", "k8s.io/api/core/v1.Toleration", "stash.appscode.dev/installer/apis/installer/v1alpha1.Container", "stash.appscode.dev/installer/apis/installer/v1alpha1.ImageRef", "stash.appscode.dev/installer/apis/installer/v1alpha1.Monitoring", "stash.appscode.dev/installer/apis/installer/v1alpha1.NfsHelper", "stash.appscode.dev/installer/apis/installer/v1alpha1.Platform", "stash.appscode.dev/installer/apis/installer/v1alpha1.SecuritySpec", "stash.appscode.dev/installer/apis/installer/v1alpha1.ServiceAccountSpec", "stash.appscode.dev/installer/apis/installer/v1alpha1.WebHookSpec"},
+			"k8s.io/api/core/v1.Affinity", "k8s.io/api/core/v1.PodSecurityContext", "k8s.io/api/core/v1.Toleration", "stash.appscode.dev/installer/apis/installer/v1alpha1.Container", "stash.appscode.dev/installer/apis/installer/v1alpha1.ImageRef", "stash.appscode.dev/installer/apis/installer/v1alpha1.Monitoring", "stash.appscode.dev/installer/apis/installer/v1alpha1.NetVolAccessor", "stash.appscode.dev/installer/apis/installer/v1alpha1.Platform", "stash.appscode.dev/installer/apis/installer/v1alpha1.SecuritySpec", "stash.appscode.dev/installer/apis/installer/v1alpha1.ServiceAccountSpec", "stash.appscode.dev/installer/apis/installer/v1alpha1.WebHookSpec"},
 	}
 }
 

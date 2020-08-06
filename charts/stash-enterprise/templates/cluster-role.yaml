@@ -117,9 +117,7 @@ rules:
   - podsecuritypolicies
   verbs: ["use"]
   resourceNames:
-  {{- range $x := .Values.security.podSecurityPolicies }}
-  - {{ $x }}
-  {{- end }}
+  {{- include "operator-psp" . }}
 - apiGroups:
   - snapshot.storage.k8s.io
   resources:

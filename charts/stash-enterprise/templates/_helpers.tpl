@@ -69,3 +69,23 @@ Create the name of the service account to use
 {{- end -}}
 {{- $secrets | join "," | print -}}
 {{- end -}}
+
+{{- define "operator-psp" -}}
+{{- $psps := .Values.security.podSecurityPolicies -}}
+{{- if .Values.netVolAccessor.privileged -}}
+  {{- $psps = without $psps "baseline" -}}
+  {{- $psps = append $psps "privileged" -}}
+{{- end -}}
+{{- range $x := $psps }}
+  - {{ $x }}
+{{- end }}
+{{- end -}}
+
+{{- define "netvol-accessor-psp" -}}
+{{- $psps := .Values.security.podSecurityPolicies -}}
+{{- if .Values.netVolAccessor.privileged -}}
+  {{- $psps = without $psps "baseline" -}}
+  {{- $psps = append $psps "privileged" -}}
+{{- end -}}
+{{- $psps | join "," -}}
+{{- end -}}

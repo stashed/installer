@@ -183,15 +183,15 @@ func (m *Monitoring) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Monitoring proto.InternalMessageInfo
 
-func (m *NfsHelper) Reset()      { *m = NfsHelper{} }
-func (*NfsHelper) ProtoMessage() {}
-func (*NfsHelper) Descriptor() ([]byte, []int) {
+func (m *NetVolAccessor) Reset()      { *m = NetVolAccessor{} }
+func (*NetVolAccessor) ProtoMessage() {}
+func (*NetVolAccessor) Descriptor() ([]byte, []int) {
 	return fileDescriptor_797ac2f2ad0c02e3, []int{5}
 }
-func (m *NfsHelper) XXX_Unmarshal(b []byte) error {
+func (m *NetVolAccessor) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *NfsHelper) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *NetVolAccessor) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	b = b[:cap(b)]
 	n, err := m.MarshalToSizedBuffer(b)
 	if err != nil {
@@ -199,13 +199,13 @@ func (m *NfsHelper) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	}
 	return b[:n], nil
 }
-func (m *NfsHelper) XXX_Merge(src proto.Message) {
+func (m *NetVolAccessor) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_NfsHelper.Merge(m, src)
 }
-func (m *NfsHelper) XXX_Size() int {
+func (m *NetVolAccessor) XXX_Size() int {
 	return m.Size()
 }
-func (m *NfsHelper) XXX_DiscardUnknown() {
+func (m *NetVolAccessor) XXX_DiscardUnknown() {
 	xxx_messageInfo_NfsHelper.DiscardUnknown(m)
 }
 
@@ -609,7 +609,7 @@ func init() {
 	proto.RegisterType((*HealthcheckSpec)(nil), "stash.appscode.dev.installer.apis.installer.v1alpha1.HealthcheckSpec")
 	proto.RegisterType((*ImageRef)(nil), "stash.appscode.dev.installer.apis.installer.v1alpha1.ImageRef")
 	proto.RegisterType((*Monitoring)(nil), "stash.appscode.dev.installer.apis.installer.v1alpha1.Monitoring")
-	proto.RegisterType((*NfsHelper)(nil), "stash.appscode.dev.installer.apis.installer.v1alpha1.NfsHelper")
+	proto.RegisterType((*NetVolAccessor)(nil), "stash.appscode.dev.installer.apis.installer.v1alpha1.NetVolAccessor")
 	proto.RegisterType((*Platform)(nil), "stash.appscode.dev.installer.apis.installer.v1alpha1.Platform")
 	proto.RegisterType((*PrometheusSpec)(nil), "stash.appscode.dev.installer.apis.installer.v1alpha1.PrometheusSpec")
 	proto.RegisterType((*SeccompSpec)(nil), "stash.appscode.dev.installer.apis.installer.v1alpha1.SeccompSpec")
@@ -995,7 +995,7 @@ func (m *Monitoring) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *NfsHelper) Marshal() (dAtA []byte, err error) {
+func (m *NetVolAccessor) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -1005,12 +1005,12 @@ func (m *NfsHelper) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *NfsHelper) MarshalTo(dAtA []byte) (int, error) {
+func (m *NetVolAccessor) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *NfsHelper) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *NetVolAccessor) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -1447,7 +1447,7 @@ func (m *StashEnterpriseSpec) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	var l int
 	_ = l
 	{
-		size, err := m.NfsHelper.MarshalToSizedBuffer(dAtA[:i])
+		size, err := m.NetVolAccessor.MarshalToSizedBuffer(dAtA[:i])
 		if err != nil {
 			return 0, err
 		}
@@ -2240,7 +2240,7 @@ func (m *Monitoring) Size() (n int) {
 	return n
 }
 
-func (m *NfsHelper) Size() (n int) {
+func (m *NetVolAccessor) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -2466,7 +2466,7 @@ func (m *StashEnterpriseSpec) Size() (n int) {
 	n += 2 + l + sovGenerated(uint64(l))
 	l = m.Platform.Size()
 	n += 2 + l + sovGenerated(uint64(l))
-	l = m.NfsHelper.Size()
+	l = m.NetVolAccessor.Size()
 	n += 2 + l + sovGenerated(uint64(l))
 	return n
 }
@@ -2665,11 +2665,11 @@ func (this *Monitoring) String() string {
 	}, "")
 	return s
 }
-func (this *NfsHelper) String() string {
+func (this *NetVolAccessor) String() string {
 	if this == nil {
 		return "nil"
 	}
-	s := strings.Join([]string{`&NfsHelper{`,
+	s := strings.Join([]string{`&NetVolAccessor{`,
 		`CPU:` + fmt.Sprintf("%v", this.CPU) + `,`,
 		`Memory:` + fmt.Sprintf("%v", this.Memory) + `,`,
 		`RunAsUser:` + fmt.Sprintf("%v", this.RunAsUser) + `,`,
@@ -2864,7 +2864,7 @@ func (this *StashEnterpriseSpec) String() string {
 		`Monitoring:` + strings.Replace(strings.Replace(this.Monitoring.String(), "Monitoring", "Monitoring", 1), `&`, ``, 1) + `,`,
 		`Security:` + strings.Replace(strings.Replace(this.Security.String(), "SecuritySpec", "SecuritySpec", 1), `&`, ``, 1) + `,`,
 		`Platform:` + strings.Replace(strings.Replace(this.Platform.String(), "Platform", "Platform", 1), `&`, ``, 1) + `,`,
-		`NfsHelper:` + strings.Replace(strings.Replace(this.NfsHelper.String(), "NfsHelper", "NfsHelper", 1), `&`, ``, 1) + `,`,
+		`NetVolAccessor:` + strings.Replace(strings.Replace(this.NetVolAccessor.String(), "NetVolAccessor", "NetVolAccessor", 1), `&`, ``, 1) + `,`,
 		`}`,
 	}, "")
 	return s
@@ -3629,7 +3629,7 @@ func (m *Monitoring) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *NfsHelper) Unmarshal(dAtA []byte) error {
+func (m *NetVolAccessor) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -3652,10 +3652,10 @@ func (m *NfsHelper) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: NfsHelper: wiretype end group for non-group")
+			return fmt.Errorf("proto: NetVolAccessor: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: NfsHelper: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: NetVolAccessor: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -5976,7 +5976,7 @@ func (m *StashEnterpriseSpec) Unmarshal(dAtA []byte) error {
 			iNdEx = postIndex
 		case 23:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field NfsHelper", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field NetVolAccessor", wireType)
 			}
 			var msglen int
 			for shift := uint(0); ; shift += 7 {
@@ -6003,7 +6003,7 @@ func (m *StashEnterpriseSpec) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			if err := m.NfsHelper.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+			if err := m.NetVolAccessor.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex

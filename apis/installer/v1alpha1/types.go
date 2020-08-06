@@ -114,7 +114,7 @@ type Platform struct {
 	Openshift bool `json:"openshift" protobuf:"varint,1,opt,name=openshift"`
 }
 
-type NfsHelper struct {
+type NetVolAccessor struct {
 	//+optional
 	CPU string `json:"cpu" protobuf:"bytes,1,opt,name=cpu"`
 	//+optional

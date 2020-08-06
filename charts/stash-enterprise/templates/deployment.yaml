@@ -63,11 +63,11 @@ spec:
         - --cron-job-psp={{ .Values.security.podSecurityPolicies | join "," }}
         - --backup-job-psp={{ .Values.security.podSecurityPolicies | join "," }}
         - --restore-job-psp={{ .Values.security.podSecurityPolicies | join "," }}
-        - --nfs-helper-cpu={{ .Values.nfsHelper.cpu }}
-        - --nfs-helper-memory={{ .Values.nfsHelper.memory }}
-        - --nfs-helper-user={{ .Values.nfsHelper.runAsUser }}
-        - --nfs-helper-privileged-mode={{ .Values.nfsHelper.privileged }}
-        - --nfs-helper-psp={{ .Values.security.podSecurityPolicies | join "," }}
+        - --nva-cpu={{ .Values.netVolAccessor.cpu }}
+        - --nva-memory={{ .Values.netVolAccessor.memory }}
+        - --nva-user={{ .Values.netVolAccessor.runAsUser }}
+        - --nva-privileged-mode={{ .Values.netVolAccessor.privileged }}
+        - --nva-psp={{ include "netvol-accessor-psp" .}}
         ports:
         - containerPort: 8443
         env:
