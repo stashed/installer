@@ -73,7 +73,7 @@ message Monitoring {
   optional ServiceMonitorLabels serviceMonitor = 5;
 }
 
-message NfsHelper {
+message NetVolAccessor {
   // +optional
   optional string cpu = 1;
 
@@ -219,7 +219,7 @@ message StashEnterpriseSpec {
   optional Platform platform = 22;
 
   // +optional
-  optional NfsHelper nfsHelper = 23;
+  optional NetVolAccessor netVolAccessor = 23;
 }
 
 // +kubebuilder:object:root=true

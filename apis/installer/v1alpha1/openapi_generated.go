@@ -335,7 +335,7 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.HealthcheckSpec":      schema_installer_apis_installer_v1alpha1_HealthcheckSpec(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.ImageRef":             schema_installer_apis_installer_v1alpha1_ImageRef(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.Monitoring":           schema_installer_apis_installer_v1alpha1_Monitoring(ref),
-		"stash.appscode.dev/installer/apis/installer/v1alpha1.NetVolAccessor":       schema_installer_apis_installer_v1alpha1_NfsHelper(ref),
+		"stash.appscode.dev/installer/apis/installer/v1alpha1.NetVolAccessor":       schema_installer_apis_installer_v1alpha1_NetVolAccessor(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.Platform":             schema_installer_apis_installer_v1alpha1_Platform(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.PrometheusSpec":       schema_installer_apis_installer_v1alpha1_PrometheusSpec(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.SeccompSpec":          schema_installer_apis_installer_v1alpha1_SeccompSpec(ref),
@@ -15692,7 +15692,7 @@ func schema_installer_apis_installer_v1alpha1_Monitoring(ref common.ReferenceCal
 	}
 }
 
-func schema_installer_apis_installer_v1alpha1_NfsHelper(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_installer_apis_installer_v1alpha1_NetVolAccessor(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -16176,7 +16176,7 @@ func schema_installer_apis_installer_v1alpha1_StashEnterpriseSpec(ref common.Ref
 							Ref: ref("stash.appscode.dev/installer/apis/installer/v1alpha1.Platform"),
 						},
 					},
-					"nfsHelper": {
+					"netVolAccessor": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("stash.appscode.dev/installer/apis/installer/v1alpha1.NetVolAccessor"),
 						},

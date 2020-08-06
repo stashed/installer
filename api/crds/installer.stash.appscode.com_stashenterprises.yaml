@@ -713,7 +713,7 @@ spec:
               type: object
             nameOverride:
               type: string
-            nfsHelper:
+            netVolAccessor:
               properties:
                 cpu:
                   type: string
