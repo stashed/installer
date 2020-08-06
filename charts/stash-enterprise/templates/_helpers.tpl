@@ -77,8 +77,8 @@ Create the name of the service account to use
   {{- $psps = append $psps "privileged" -}}
 {{- end -}}
 {{- range $x := $psps }}
-  - {{ $x }}
-{{- end }}
+- {{ $x }}
+{{- end -}}
 {{- end -}}
 
 {{- define "netvol-accessor-psp" -}}

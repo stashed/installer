@@ -43,7 +43,7 @@ rules:
   - apps
   resources:
   - deployments
-  verbs: ["create","patch","delete"]
+  verbs: ["create", "patch", "delete"]
 - apiGroups:
   - batch
   resources:
@@ -65,7 +65,7 @@ rules:
   - ""
   resources:
   - persistentvolumeclaims
-  verbs: ["get","list","watch", "create", "patch"]
+  verbs: ["get", "list", "watch", "create", "patch"]
 - apiGroups:
   - ""
   resources:
@@ -76,7 +76,7 @@ rules:
   - ""
   resources:
   - secrets
-  verbs: ["get","list","create","patch"]
+  verbs: ["get", "list", "create", "patch"]
 - apiGroups:
   - ""
   resources:
@@ -111,13 +111,15 @@ rules:
   resources:
   - deploymentconfigs
   verbs: ["get", "list", "watch", "patch"]
+{{- if .Values.security.podSecurityPolicies }}
 - apiGroups:
   - policy
   resources:
   - podsecuritypolicies
   verbs: ["use"]
   resourceNames:
-  {{- include "operator-psp" . }}
+  {{- include "operator-psp" . | indent 2 }}
+{{- end }}
 - apiGroups:
   - snapshot.storage.k8s.io
   resources:
