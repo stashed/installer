@@ -73,7 +73,6 @@ Create the name of the service account to use
 {{- define "operator-psp" -}}
 {{- $psps := .Values.security.podSecurityPolicies -}}
 {{- if .Values.netVolAccessor.privileged -}}
-  {{- $psps = without $psps "baseline" -}}
   {{- $psps = append $psps "privileged" -}}
 {{- end -}}
 {{- range $x := $psps }}
