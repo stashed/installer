@@ -8,6 +8,7 @@ nameOverride: ""
 fullnameOverride: ""
 # Number of stash operator replicas to create (only 1 is supported)
 replicaCount: 1
+license: ""
 operator:
   # Docker registry used to pull operator image
   registry: appscode
