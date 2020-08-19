@@ -81,7 +81,7 @@ rules:
   - ""
   resources:
   - events
-  verbs: ["create"]
+  verbs: ["get", "list", "create", "patch"]
 - apiGroups:
   - ""
   resources:

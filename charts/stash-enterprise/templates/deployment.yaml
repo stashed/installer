@@ -68,6 +68,9 @@ spec:
         - --nva-user={{ .Values.netVolAccessor.runAsUser }}
         - --nva-privileged-mode={{ .Values.netVolAccessor.privileged }}
         - --nva-psp={{ include "netvol-accessor-psp" .}}
+        {{- if .Values.license }}
+        - --license-file=/var/run/secrets/byte.builders/license/key.txt
+        {{- end }}
         ports:
         - containerPort: 8443
         env:
@@ -98,6 +101,10 @@ spec:
         volumeMounts:
         - mountPath: /var/serving-cert
           name: serving-cert
+        {{- if .Values.license }}
+        - mountPath: /var/run/secrets/byte.builders/license
+          name: license
+        {{- end }}
       - name: pushgateway
         securityContext:
           {{- toYaml .Values.pushgateway.securityContext | nindent 10 }}
@@ -124,6 +131,12 @@ spec:
         secret:
           defaultMode: 420
           secretName: {{ include "stash-enterprise.fullname" . }}-apiserver-cert
+      {{- if .Values.license }}
+      - name: license
+        secret:
+          defaultMode: 420
+          secretName: {{ include "stash-enterprise.fullname" . }}-license
+      {{- end }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
     {{- if or .Values.tolerations $criticalAddon }}
