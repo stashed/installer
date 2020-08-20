@@ -8,6 +8,13 @@ nameOverride: ""
 fullnameOverride: ""
 # Number of stash operator replicas to create (only 1 is supported)
 replicaCount: 1
+# License to verify the product.
+# Example:
+# helm install appscode/stash \
+#   --set-file license=/path/to/license/file
+# or
+# helm install appscode/stash \
+#   --set license=<license file content>
 license: ""
 operator:
   # Docker registry used to pull operator image
