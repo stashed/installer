@@ -83,6 +83,8 @@ type StashOperatorSpec struct {
 	Security        SecuritySpec `json:"security" protobuf:"bytes,21,opt,name=security"`
 	//+optional
 	Platform Platform `json:"platform" protobuf:"bytes,22,opt,name=platform"`
+	// +optional
+	License string `json:"license" protobuf:"bytes,23,opt,name=license"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
