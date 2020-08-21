@@ -60,19 +60,23 @@ rules:
   - ""
   resources:
   - persistentvolumeclaims
-  verbs: ["get","list","watch", "create", "patch"]
+  verbs: ["get", "list", "watch", "create", "patch"]
 - apiGroups:
   - ""
   resources:
-  - secrets
   - services
   - endpoints
   verbs: ["get"]
 - apiGroups:
   - ""
   resources:
+  - secrets
+  verbs: ["get", "list", "create", "patch"]
+- apiGroups:
+  - ""
+  resources:
   - events
-  verbs: ["create"]
+  verbs: ["get", "list", "create", "patch"]
 - apiGroups:
   - ""
   resources:
@@ -102,6 +106,7 @@ rules:
   resources:
   - deploymentconfigs
   verbs: ["get", "list", "watch", "patch"]
+{{- if .Values.security.podSecurityPolicies }}
 - apiGroups:
   - policy
   resources:
@@ -111,6 +116,7 @@ rules:
   {{- range $x := .Values.security.podSecurityPolicies }}
   - {{ $x }}
   {{- end }}
+{{- end }}
 - apiGroups:
   - snapshot.storage.k8s.io
   resources:

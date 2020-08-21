@@ -220,6 +220,9 @@ message StashEnterpriseSpec {
 
   // +optional
   optional NetVolAccessor netVolAccessor = 23;
+
+  // +optional
+  optional string license = 24;
 }
 
 // +kubebuilder:object:root=true
@@ -300,6 +303,9 @@ message StashOperatorSpec {
 
   // +optional
   optional Platform platform = 22;
+
+  // +optional
+  optional string license = 23;
 }
 
 message WebHookSpec {

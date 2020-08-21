@@ -16181,6 +16181,12 @@ func schema_installer_apis_installer_v1alpha1_StashEnterpriseSpec(ref common.Ref
 							Ref: ref("stash.appscode.dev/installer/apis/installer/v1alpha1.NetVolAccessor"),
 						},
 					},
+					"license": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
 				Required: []string{"replicaCount", "operator", "pushgateway", "cleaner", "imagePullPolicy", "serviceAccount", "apiserver", "monitoring", "security"},
 			},
@@ -16442,6 +16448,12 @@ func schema_installer_apis_installer_v1alpha1_StashOperatorSpec(ref common.Refer
 					"platform": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("stash.appscode.dev/installer/apis/installer/v1alpha1.Platform"),
+						},
+					},
+					"license": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 				},
