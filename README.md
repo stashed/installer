@@ -7,7 +7,7 @@
 Stash Helm chart and deployment scripts
 
 ## Installation
-To install Stash, please follow the guide [here](https://stash.run/docs/latest/setup/install).
+To install Stash, please follow the guide [here](https://stash.run/docs/latest/setup/).
 
 ## Using Stash
 Want to learn how to use Stash? Please start [here](https://stash.run/docs/latest/).
