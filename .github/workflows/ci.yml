@@ -92,7 +92,8 @@ jobs:
           export KUBECONFIG="${HOME}/.kube/config"
           CLUSTER_UID=$(kubectl get ns kube-system -o=jsonpath='{.metadata.uid}')
           LICENSE_KEY=$(curl -X POST -d "name=1gtm&email=1gtm@appscode.com&product=stash-enterprise&cluster=${CLUSTER_UID}&tos=true&token=${BYTEBUILDERS_LICENSE_TOKEN}" https://license-issuer.appscode.com/issue-license)
-          yq w -i /charts/stash-enterprise/ci/ci-values.yaml license --tag '!!str' ${LICENSE_KEY}
+          # ref: https://github.com/mikefarah/yq/issues/230#issuecomment-487458629
+          yq w -i ./charts/stash-enterprise/ci/ci-values.yaml license --tag '!!str' -- "${LICENSE_KEY}"
 
       - name: Test charts
         run: |
