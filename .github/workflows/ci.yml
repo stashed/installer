@@ -47,8 +47,13 @@ jobs:
       matrix:
         k8s: [v1.12.10, v1.13.12, v1.14.10, v1.15.11, v1.16.9, v1.17.5, v1.18.4]
     steps:
-      - name: Check out code into the Go module directory
-        uses: actions/checkout@v1
+      - uses: actions/checkout@v1
+
+      - name: Install yq
+        run: |
+          curl -fsSL -o yq https://github.com/mikefarah/yq/releases/download/3.3.0/yq_linux_amd64
+          chmod +x yq
+          sudo mv yq /usr/local/bin/yq
 
       - name: Generate Test Parameters
         id: params
@@ -103,6 +108,15 @@ jobs:
             --docker-username=_json_key \
             --docker-email=${USERNAME}@appscode.com \
             --docker-password="$(echo $GCR_SERVICE_ACCOUNT_JSON_KEY)"
+
+      - name: Issue License
+        env:
+          BYTEBUILDERS_LICENSE_TOKEN: ${{ secrets.BYTEBUILDERS_LICENSE_TOKEN }}
+        run: |
+          export KUBECONFIG="${HOME}/.kube/config"
+          CLUSTER_UID=$(kubectl get ns kube-system -o=jsonpath='{.metadata.uid}')
+          LICENSE_KEY=$(curl -X POST -d "name=1gtm&email=1gtm@appscode.com&product=stash-enterprise&cluster=${CLUSTER_UID}&tos=true&token=${BYTEBUILDERS_LICENSE_TOKEN}" https://license-issuer.appscode.com/issue-license)
+          yq w -i /charts/stash-enterprise/ci/ci-values.yaml license --tag '!!str' ${LICENSE_KEY}
 
       - name: Test charts
         run: |
