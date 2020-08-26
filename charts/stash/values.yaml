@@ -8,7 +8,8 @@ nameOverride: ""
 fullnameOverride: ""
 # Number of stash operator replicas to create (only 1 is supported)
 replicaCount: 1
-# License to verify the product.
+# License for the product.
+# Get a license by following the steps from [here](https://stash.run/docs/latest/setup/install/community/#get-a-license).
 # Example:
 # helm install appscode/stash \
 #   --set-file license=/path/to/license/file
