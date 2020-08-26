@@ -23,7 +23,7 @@ operator:
   # Name of operator container image
   repository: stash-enterprise
   # Operator container image tag
-  tag: v0.10.0-alpha.0
+  tag: v0.10.0-rc.0
   # Compute Resources required by the operator container
   resources: # +doc-gen:break
     requests:
@@ -164,7 +164,6 @@ security:
 platform:
   # Set true, if installed in OpenShift
   openshift: false
-
 # Network volume accessor configurations
 netVolAccessor:
   # CPU resource for each network volume accessor deployment
