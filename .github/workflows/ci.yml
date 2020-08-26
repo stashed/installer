@@ -61,23 +61,6 @@ jobs:
           rnd=$(head /dev/urandom | tr -dc a-z0-9 | head -c 10 ; echo '')
           echo ::set-output name=namespace::stash-enterprise-$rnd
 
-      - name: Configure Docker credential helper
-        env:
-          GCR_SERVICE_ACCOUNT_JSON_KEY: ${{ secrets.GCR_SERVICE_ACCOUNT_JSON_KEY }}
-        run: |
-          echo "install gcloud cli"
-          echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-          curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
-          sudo apt-get -qq update
-          sudo apt-get install -y google-cloud-sdk
-          echo
-          echo "configure gcloud auth"
-          echo "$GCR_SERVICE_ACCOUNT_JSON_KEY" > "$HOME"/gcr.json
-          gcloud auth activate-service-account --key-file=$HOME/gcr.json
-          echo
-          echo "configure docker auth"
-          gcloud auth configure-docker -q
-
       - name: Create Kubernetes ${{ matrix.k8s }} cluster
         id: kind
         uses: engineerd/setup-kind@v0.3.0
@@ -91,7 +74,6 @@ jobs:
         env:
           USERNAME: 1gtm
           REGISTRY_SECRET: regcred
-          GCR_SERVICE_ACCOUNT_JSON_KEY: ${{ secrets.GCR_SERVICE_ACCOUNT_JSON_KEY }}
         run: |
           echo "waiting for nodes to be ready ..."
           kubectl wait --for=condition=Ready nodes --all --timeout=5m
@@ -102,12 +84,6 @@ jobs:
           echo
           echo "create docker-registry secret"
           kubectl create ns ${{ steps.params.outputs.namespace }} || true
-          kubectl create secret docker-registry ${REGISTRY_SECRET} \
-            --namespace=${{ steps.params.outputs.namespace }} \
-            --docker-server=https://gcr.io \
-            --docker-username=_json_key \
-            --docker-email=${USERNAME}@appscode.com \
-            --docker-password="$(echo $GCR_SERVICE_ACCOUNT_JSON_KEY)"
 
       - name: Issue License
         env:
