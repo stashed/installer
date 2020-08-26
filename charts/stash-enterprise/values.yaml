@@ -18,7 +18,7 @@ replicaCount: 1
 license: ""
 operator:
   # Docker registry used to pull operator image
-  registry: gcr.io/appscode
+  registry: stashed
   # Name of operator container image
   repository: stash-enterprise
   # Operator container image tag
