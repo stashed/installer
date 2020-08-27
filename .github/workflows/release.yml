@@ -46,4 +46,4 @@ jobs:
           if [[ $GIT_TAG =~ "-alpha." ]] || [[ $GIT_TAG =~ "-beta." ]]; then
             export REPO_DIR=testing
           fi
-          ./hack/scripts/open-pr.sh $GITHUB_WORKSPACE
+          ./hack/scripts/upload-charts.sh $GITHUB_WORKSPACE
