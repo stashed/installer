@@ -4,7 +4,7 @@ name: stash
 version: v0.10.0
 appVersion: v0.10.0
 home: https://stash.run
-icon: https://cdn.appscode.com/images/products/stash/icons/android-icon-192x192.png
+icon: https://cdn.appscode.com/images/products/stash/stash-community-icon.png
 sources:
 - https://github.com/stashed
 maintainers:
