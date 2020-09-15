@@ -69,7 +69,7 @@ spec:
         - --nva-privileged-mode={{ .Values.netVolAccessor.privileged }}
         - --nva-psp={{ include "netvol-accessor-psp" .}}
         {{- if .Values.license }}
-        - --license-file=/var/run/secrets/byte.builders/license/key.txt
+        - --license-file=/var/run/secrets/appscode/license/key.txt
         {{- end }}
         ports:
         - containerPort: 8443
@@ -102,7 +102,7 @@ spec:
         - mountPath: /var/serving-cert
           name: serving-cert
         {{- if .Values.license }}
-        - mountPath: /var/run/secrets/byte.builders/license
+        - mountPath: /var/run/secrets/appscode/license
           name: license
         {{- end }}
       - name: pushgateway
