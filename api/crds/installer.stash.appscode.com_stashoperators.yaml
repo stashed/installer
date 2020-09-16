@@ -684,6 +684,8 @@ spec:
               type: array
             license:
               type: string
+            licenseApiService:
+              type: string
             logLevel:
               format: int32
               type: integer

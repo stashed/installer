@@ -16187,6 +16187,12 @@ func schema_installer_apis_installer_v1alpha1_StashEnterpriseSpec(ref common.Ref
 							Format: "",
 						},
 					},
+					"licenseApiService": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
 				},
 				Required: []string{"replicaCount", "operator", "pushgateway", "cleaner", "imagePullPolicy", "serviceAccount", "apiserver", "monitoring", "security"},
 			},
@@ -16451,6 +16457,12 @@ func schema_installer_apis_installer_v1alpha1_StashOperatorSpec(ref common.Refer
 						},
 					},
 					"license": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"licenseApiService": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"string"},
 							Format: "",

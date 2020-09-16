@@ -223,6 +223,9 @@ message StashEnterpriseSpec {
 
   // +optional
   optional string license = 24;
+
+  // +optional
+  optional string licenseApiService = 25;
 }
 
 // +kubebuilder:object:root=true
@@ -306,6 +309,9 @@ message StashOperatorSpec {
 
   // +optional
   optional string license = 23;
+
+  // +optional
+  optional string licenseApiService = 24;
 }
 
 message WebHookSpec {
