@@ -65,6 +65,7 @@ spec:
         - --restore-job-psp={{ .Values.security.podSecurityPolicies | join "," }}
         {{- if .Values.license }}
         - --license-file=/var/run/secrets/appscode/license/key.txt
+        - --license-apiservice={{ .Values.licenseApiService }}
         {{- end }}
         ports:
         - containerPort: 8443

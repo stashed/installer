@@ -70,6 +70,7 @@ spec:
         - --nva-psp={{ include "netvol-accessor-psp" .}}
         {{- if .Values.license }}
         - --license-file=/var/run/secrets/appscode/license/key.txt
+        - --license-apiservice={{ .Values.licenseApiService }}
         {{- end }}
         ports:
         - containerPort: 8443
