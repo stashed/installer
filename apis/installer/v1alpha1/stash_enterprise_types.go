@@ -87,6 +87,8 @@ type StashEnterpriseSpec struct {
 	NetVolAccessor NetVolAccessor `json:"netVolAccessor" protobuf:"bytes,23,opt,name=netVolAccessor"`
 	// +optional
 	License string `json:"license" protobuf:"bytes,24,opt,name=license"`
+	// +optional
+	LicenseApiService string `json:"licenseApiService" protobuf:"bytes,25,opt,name=licenseApiService"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

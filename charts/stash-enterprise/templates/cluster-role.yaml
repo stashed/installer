@@ -85,11 +85,6 @@ rules:
 - apiGroups:
   - ""
   resources:
-  - nodes
-  verbs: ["list"]
-- apiGroups:
-  - ""
-  resources:
   - pods
   - pods/exec
   verbs: ["get", "create", "list", "delete", "deletecollection"]

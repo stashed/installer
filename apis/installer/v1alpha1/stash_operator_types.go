@@ -85,6 +85,8 @@ type StashOperatorSpec struct {
 	Platform Platform `json:"platform" protobuf:"bytes,22,opt,name=platform"`
 	// +optional
 	License string `json:"license" protobuf:"bytes,23,opt,name=license"`
+	// +optional
+	LicenseApiService string `json:"licenseApiService" protobuf:"bytes,24,opt,name=licenseApiService"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

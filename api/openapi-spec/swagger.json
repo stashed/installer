@@ -1158,6 +1158,9 @@
         "license": {
           "type": "string"
         },
+        "licenseApiService": {
+          "type": "string"
+        },
         "logLevel": {
           "type": "integer",
           "format": "int32"
