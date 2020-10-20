@@ -78,13 +78,7 @@ type Monitoring struct {
 	Backup bool `json:"backup" protobuf:"varint,2,opt,name=backup"`
 	//+optional
 	Operator       bool                 `json:"operator" protobuf:"varint,3,opt,name=operator"`
-	Prometheus     PrometheusSpec       `json:"prometheus" protobuf:"bytes,4,opt,name=prometheus"`
-	ServiceMonitor ServiceMonitorLabels `json:"serviceMonitor" protobuf:"bytes,5,opt,name=serviceMonitor"`
-}
-
-type PrometheusSpec struct {
-	//+optional
-	Namespace string `json:"namespace" protobuf:"bytes,1,opt,name=namespace"`
+	ServiceMonitor ServiceMonitorLabels `json:"serviceMonitor" protobuf:"bytes,4,opt,name=serviceMonitor"`
 }
 
 type ServiceMonitorLabels struct {

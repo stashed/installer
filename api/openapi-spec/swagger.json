@@ -932,7 +932,6 @@
       "type": "object",
       "required": [
         "agent",
-        "prometheus",
         "serviceMonitor"
       ],
       "properties": {
@@ -945,9 +944,6 @@
         "operator": {
           "type": "boolean"
         },
-        "prometheus": {
-          "$ref": "#/definitions/dev.appscode.stash.installer.apis.installer.v1alpha1.PrometheusSpec"
-        },
         "serviceMonitor": {
           "$ref": "#/definitions/dev.appscode.stash.installer.apis.installer.v1alpha1.ServiceMonitorLabels"
         }
@@ -958,14 +954,6 @@
       "properties": {
         "openshift": {
           "type": "boolean"
-        }
-      }
-    },
-    "dev.appscode.stash.installer.apis.installer.v1alpha1.PrometheusSpec": {
-      "type": "object",
-      "properties": {
-        "namespace": {
-          "type": "string"
         }
       }
     },

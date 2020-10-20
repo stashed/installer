@@ -698,11 +698,6 @@ spec:
                   type: boolean
                 operator:
                   type: boolean
-                prometheus:
-                  properties:
-                    namespace:
-                      type: string
-                  type: object
                 serviceMonitor:
                   properties:
                     labels:
@@ -712,7 +707,6 @@ spec:
                   type: object
               required:
               - agent
-              - prometheus
               - serviceMonitor
               type: object
             nameOverride:
