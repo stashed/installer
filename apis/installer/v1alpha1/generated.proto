@@ -68,9 +68,7 @@ message Monitoring {
   // +optional
   optional bool operator = 3;
 
-  optional PrometheusSpec prometheus = 4;
-
-  optional ServiceMonitorLabels serviceMonitor = 5;
+  optional ServiceMonitorLabels serviceMonitor = 4;
 }
 
 message NetVolAccessor {
@@ -90,11 +88,6 @@ message NetVolAccessor {
 message Platform {
   // +optional
   optional bool openshift = 1;
-}
-
-message PrometheusSpec {
-  // +optional
-  optional string namespace = 1;
 }
 
 message SeccompSpec {
