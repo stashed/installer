@@ -337,7 +337,6 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.Monitoring":           schema_installer_apis_installer_v1alpha1_Monitoring(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.NetVolAccessor":       schema_installer_apis_installer_v1alpha1_NetVolAccessor(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.Platform":             schema_installer_apis_installer_v1alpha1_Platform(ref),
-		"stash.appscode.dev/installer/apis/installer/v1alpha1.PrometheusSpec":       schema_installer_apis_installer_v1alpha1_PrometheusSpec(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.SeccompSpec":          schema_installer_apis_installer_v1alpha1_SeccompSpec(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.SecuritySpec":         schema_installer_apis_installer_v1alpha1_SecuritySpec(ref),
 		"stash.appscode.dev/installer/apis/installer/v1alpha1.ServiceAccountSpec":   schema_installer_apis_installer_v1alpha1_ServiceAccountSpec(ref),
@@ -15673,22 +15672,17 @@ func schema_installer_apis_installer_v1alpha1_Monitoring(ref common.ReferenceCal
 							Format: "",
 						},
 					},
-					"prometheus": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref("stash.appscode.dev/installer/apis/installer/v1alpha1.PrometheusSpec"),
-						},
-					},
 					"serviceMonitor": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("stash.appscode.dev/installer/apis/installer/v1alpha1.ServiceMonitorLabels"),
 						},
 					},
 				},
-				Required: []string{"agent", "prometheus", "serviceMonitor"},
+				Required: []string{"agent", "serviceMonitor"},
 			},
 		},
 		Dependencies: []string{
-			"stash.appscode.dev/installer/apis/installer/v1alpha1.PrometheusSpec", "stash.appscode.dev/installer/apis/installer/v1alpha1.ServiceMonitorLabels"},
+			"stash.appscode.dev/installer/apis/installer/v1alpha1.ServiceMonitorLabels"},
 	}
 }
 
@@ -15737,24 +15731,6 @@ func schema_installer_apis_installer_v1alpha1_Platform(ref common.ReferenceCallb
 					"openshift": {
 						SchemaProps: spec.SchemaProps{
 							Type:   []string{"boolean"},
-							Format: "",
-						},
-					},
-				},
-			},
-		},
-	}
-}
-
-func schema_installer_apis_installer_v1alpha1_PrometheusSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"namespace": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
 							Format: "",
 						},
 					},

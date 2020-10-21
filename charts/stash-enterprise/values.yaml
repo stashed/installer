@@ -140,9 +140,6 @@ monitoring:
   backup: false
   # Specify whether to monitor Stash operator
   operator: false
-  prometheus:
-    # Specify the namespace where Prometheus server is running or will be deployed.
-    namespace: ""
   serviceMonitor:
     # Specify the labels for ServiceMonitor.
     # Prometheus crd will select ServiceMonitor using these labels.
