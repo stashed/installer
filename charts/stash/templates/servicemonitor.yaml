@@ -33,7 +33,6 @@ spec:
         secret:
           name: {{ include "stash.fullname" . }}-apiserver-cert
           key: tls.crt
-      caFile: /etc/prometheus/secrets/{{ include "stash.fullname" . }}-apiserver-cert/tls.crt
       serverName: "{{ include "stash.fullname" . }}.{{ .Release.Namespace }}.svc"
   {{- end }}
 {{- end }}
