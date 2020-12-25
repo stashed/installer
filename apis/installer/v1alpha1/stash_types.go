@@ -22,12 +22,12 @@ import (
 )
 
 const (
-	ResourceKindStashOperator = "StashOperator"
-	ResourceStashOperator     = "stashoperator"
-	ResourceStashOperators    = "stashoperators"
+	ResourceKindStash = "Stash"
+	ResourceStash     = "stash"
+	ResourceStashs    = "stashs"
 )
 
-// StashOperator defines the schama for Stash Operator Installer.
+// Stash defines the schama for Stash Operator Installer.
 
 // +genclient
 // +genclient:skipVerbs=updateStatus
@@ -35,15 +35,15 @@ const (
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // +kubebuilder:object:root=true
-// +kubebuilder:resource:path=stashoperators,singular=stashoperator,categories={stash,appscode}
-type StashOperator struct {
+// +kubebuilder:resource:path=stashs,singular=stash,categories={stash,appscode}
+type Stash struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
 	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
-	Spec              StashOperatorSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
+	Spec              StashSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
 }
 
-// StashOperatorSpec is the schema for Stash operator values file
-type StashOperatorSpec struct {
+// StashSpec is the schema for Stash operator values file
+type StashSpec struct {
 	//+optional
 	NameOverride string `json:"nameOverride" protobuf:"bytes,1,opt,name=nameOverride"`
 	//+optional
@@ -91,10 +91,10 @@ type StashOperatorSpec struct {
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// StashOperatorList is a list of StashOperators
-type StashOperatorList struct {
+// StashList is a list of Stashs
+type StashList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
-	// Items is a list of StashOperator CRD objects
-	Items []StashOperator `json:"items,omitempty" protobuf:"bytes,2,rep,name=items"`
+	// Items is a list of Stash CRD objects
+	Items []Stash `json:"items,omitempty" protobuf:"bytes,2,rep,name=items"`
 }
