@@ -38,55 +38,55 @@ const (
 // +kubebuilder:resource:path=stashs,singular=stash,categories={stash,appscode}
 type Stash struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
-	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
-	Spec              StashSpec `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
+	metav1.ObjectMeta `json:"metadata,omitempty"`
+	Spec              StashSpec `json:"spec,omitempty"`
 }
 
 // StashSpec is the schema for Stash operator values file
 type StashSpec struct {
 	//+optional
-	NameOverride string `json:"nameOverride" protobuf:"bytes,1,opt,name=nameOverride"`
+	NameOverride string `json:"nameOverride"`
 	//+optional
-	FullnameOverride string    `json:"fullnameOverride" protobuf:"bytes,2,opt,name=fullnameOverride"`
-	ReplicaCount     int32     `json:"replicaCount" protobuf:"varint,3,opt,name=replicaCount"`
-	Operator         Container `json:"operator" protobuf:"bytes,4,opt,name=operator"`
-	Pushgateway      Container `json:"pushgateway" protobuf:"bytes,5,opt,name=pushgateway"`
-	Cleaner          ImageRef  `json:"cleaner" protobuf:"bytes,6,opt,name=cleaner"`
-	ImagePullPolicy  string    `json:"imagePullPolicy" protobuf:"bytes,7,opt,name=imagePullPolicy"`
+	FullnameOverride string     `json:"fullnameOverride"`
+	ReplicaCount     int32      `json:"replicaCount"`
+	Operator         Container  `json:"operator"`
+	Pushgateway      Container  `json:"pushgateway"`
+	Cleaner          CleanerRef `json:"cleaner"`
+	ImagePullPolicy  string     `json:"imagePullPolicy"`
 	//+optional
-	ImagePullSecrets []string `json:"imagePullSecrets" protobuf:"bytes,8,rep,name=imagePullSecrets"`
+	ImagePullSecrets []string `json:"imagePullSecrets"`
 	//+optional
-	CriticalAddon bool `json:"criticalAddon" protobuf:"varint,9,opt,name=criticalAddon"`
+	CriticalAddon bool `json:"criticalAddon"`
 	//+optional
-	LogLevel int32 `json:"logLevel" protobuf:"varint,10,opt,name=logLevel"`
+	LogLevel int32 `json:"logLevel"`
 	//+optional
-	Annotations map[string]string `json:"annotations" protobuf:"bytes,11,rep,name=annotations"`
+	Annotations map[string]string `json:"annotations"`
 	//+optional
-	PodAnnotations map[string]string `json:"podAnnotations" protobuf:"bytes,12,rep,name=podAnnotations"`
+	PodAnnotations map[string]string `json:"podAnnotations"`
 	//+optional
-	NodeSelector map[string]string `json:"nodeSelector" protobuf:"bytes,13,rep,name=nodeSelector"`
+	NodeSelector map[string]string `json:"nodeSelector"`
 	// If specified, the pod's tolerations.
 	// +optional
-	Tolerations []core.Toleration `json:"tolerations" protobuf:"bytes,14,rep,name=tolerations"`
+	Tolerations []core.Toleration `json:"tolerations"`
 	// If specified, the pod's scheduling constraints
 	// +optional
-	Affinity *core.Affinity `json:"affinity" protobuf:"bytes,15,opt,name=affinity"`
+	Affinity *core.Affinity `json:"affinity"`
 	// PodSecurityContext holds pod-level security attributes and common container settings.
 	// Optional: Defaults to empty.  See type description for default values of each field.
 	// +optional
-	PodSecurityContext *core.PodSecurityContext `json:"podSecurityContext" protobuf:"bytes,16,opt,name=podSecurityContext"`
-	ServiceAccount     ServiceAccountSpec       `json:"serviceAccount" protobuf:"bytes,17,opt,name=serviceAccount"`
-	Apiserver          WebHookSpec              `json:"apiserver" protobuf:"bytes,18,opt,name=apiserver"`
+	PodSecurityContext *core.PodSecurityContext `json:"podSecurityContext"`
+	ServiceAccount     ServiceAccountSpec       `json:"serviceAccount"`
+	Apiserver          WebHookSpec              `json:"apiserver"`
 	//+optional
-	EnableAnalytics bool         `json:"enableAnalytics" protobuf:"varint,19,opt,name=enableAnalytics"`
-	Monitoring      Monitoring   `json:"monitoring" protobuf:"bytes,20,opt,name=monitoring"`
-	Security        SecuritySpec `json:"security" protobuf:"bytes,21,opt,name=security"`
+	EnableAnalytics bool         `json:"enableAnalytics"`
+	Monitoring      Monitoring   `json:"monitoring"`
+	Security        SecuritySpec `json:"security"`
 	//+optional
-	Platform Platform `json:"platform" protobuf:"bytes,22,opt,name=platform"`
+	Platform Platform `json:"platform"`
 	// +optional
-	License string `json:"license" protobuf:"bytes,23,opt,name=license"`
+	License string `json:"license"`
 	// +optional
-	LicenseApiService string `json:"licenseApiService" protobuf:"bytes,24,opt,name=licenseApiService"`
+	LicenseApiService string `json:"licenseApiService"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -94,7 +94,7 @@ type StashSpec struct {
 // StashList is a list of Stashs
 type StashList struct {
 	metav1.TypeMeta `json:",inline"`
-	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+	metav1.ListMeta `json:"metadata,omitempty"`
 	// Items is a list of Stash CRD objects
-	Items []Stash `json:"items,omitempty" protobuf:"bytes,2,rep,name=items"`
+	Items []Stash `json:"items,omitempty"`
 }
