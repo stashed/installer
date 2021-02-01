@@ -1,3 +1,4 @@
+{{- if not .Values.cleaner.skip }}
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -33,3 +34,4 @@ spec:
            kubectl delete tasks.stash.appscode.com pvc-backup pvc-restore || true;"
         imagePullPolicy: {{ .Values.imagePullPolicy }}
       restartPolicy: Never
+{{ end }}

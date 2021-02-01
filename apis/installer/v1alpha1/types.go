@@ -21,100 +21,105 @@ import (
 )
 
 type ImageRef struct {
-	Registry   string `json:"registry" protobuf:"bytes,1,opt,name=registry"`
-	Repository string `json:"repository" protobuf:"bytes,2,opt,name=repository"`
-	Tag        string `json:"tag" protobuf:"bytes,3,opt,name=tag"`
+	Registry   string `json:"registry"`
+	Repository string `json:"repository"`
+	Tag        string `json:"tag"`
 }
 
 type Container struct {
-	ImageRef `json:",inline" protobuf:"bytes,1,opt,name=imageRef"`
+	ImageRef `json:",inline"`
 	// Compute Resources required by the sidecar container.
 	// +optional
-	Resources core.ResourceRequirements `json:"resources" protobuf:"bytes,2,opt,name=resources"`
+	Resources core.ResourceRequirements `json:"resources"`
 	// Security options the pod should run with.
 	// +optional
-	SecurityContext *core.SecurityContext `json:"securityContext" protobuf:"bytes,3,opt,name=securityContext"`
+	SecurityContext *core.SecurityContext `json:"securityContext"`
+}
+
+type CleanerRef struct {
+	ImageRef `json:",inline"`
+	Skip     bool `json:"skip"`
 }
 
 type ServiceAccountSpec struct {
-	Create bool `json:"create" protobuf:"varint,1,opt,name=create"`
+	Create bool `json:"create"`
 	//+optional
-	Name *string `json:"name" protobuf:"bytes,2,opt,name=name"`
+	Name *string `json:"name"`
 	//+optional
-	Annotations map[string]string `json:"annotations" protobuf:"bytes,3,rep,name=annotations"`
+	Annotations map[string]string `json:"annotations"`
 }
 
 type WebHookSpec struct {
-	GroupPriorityMinimum    int32  `json:"groupPriorityMinimum" protobuf:"varint,1,opt,name=groupPriorityMinimum"`
-	VersionPriority         int32  `json:"versionPriority" protobuf:"varint,2,opt,name=versionPriority"`
-	EnableMutatingWebhook   bool   `json:"enableMutatingWebhook" protobuf:"varint,3,opt,name=enableMutatingWebhook"`
-	EnableValidatingWebhook bool   `json:"enableValidatingWebhook" protobuf:"varint,4,opt,name=enableValidatingWebhook"`
-	CA                      string `json:"ca" protobuf:"bytes,5,opt,name=ca"`
+	GroupPriorityMinimum    int32  `json:"groupPriorityMinimum"`
+	VersionPriority         int32  `json:"versionPriority"`
+	EnableMutatingWebhook   bool   `json:"enableMutatingWebhook"`
+	EnableValidatingWebhook bool   `json:"enableValidatingWebhook"`
+	CA                      string `json:"ca"`
 	//+optional
-	BypassValidatingWebhookXray bool            `json:"bypassValidatingWebhookXray" protobuf:"varint,6,opt,name=bypassValidatingWebhookXray"`
-	UseKubeapiserverFqdnForAks  bool            `json:"useKubeapiserverFqdnForAks" protobuf:"varint,7,opt,name=useKubeapiserverFqdnForAks"`
-	Healthcheck                 HealthcheckSpec `json:"healthcheck" protobuf:"bytes,8,opt,name=healthcheck"`
-	ServingCerts                ServingCerts    `json:"servingCerts" protobuf:"bytes,9,opt,name=servingCerts"`
+	BypassValidatingWebhookXray bool            `json:"bypassValidatingWebhookXray"`
+	UseKubeapiserverFqdnForAks  bool            `json:"useKubeapiserverFqdnForAks"`
+	Healthcheck                 HealthcheckSpec `json:"healthcheck"`
+	ServingCerts                ServingCerts    `json:"servingCerts"`
 }
 
 type ServingCerts struct {
-	Generate bool `json:"generate" protobuf:"varint,1,opt,name=generate"`
+	Generate bool `json:"generate"`
 	//+optional
-	CaCrt string `json:"caCrt" protobuf:"bytes,2,opt,name=caCrt"`
+	CaCrt string `json:"caCrt"`
 	//+optional
-	ServerCrt string `json:"serverCrt" protobuf:"bytes,3,opt,name=serverCrt"`
+	ServerCrt string `json:"serverCrt"`
 	//+optional
-	ServerKey string `json:"serverKey" protobuf:"bytes,4,opt,name=serverKey"`
+	ServerKey string `json:"serverKey"`
 }
 
 type HealthcheckSpec struct {
 	//+optional
-	Enabled bool `json:"enabled" protobuf:"varint,1,opt,name=enabled"`
+	Enabled bool `json:"enabled"`
 }
 
 type Monitoring struct {
-	Agent string `json:"agent" protobuf:"bytes,1,opt,name=agent"`
+	Agent string `json:"agent"`
 	//+optional
-	Backup bool `json:"backup" protobuf:"varint,2,opt,name=backup"`
+	Backup bool `json:"backup"`
 	//+optional
-	Operator       bool                 `json:"operator" protobuf:"varint,3,opt,name=operator"`
-	ServiceMonitor ServiceMonitorLabels `json:"serviceMonitor" protobuf:"bytes,4,opt,name=serviceMonitor"`
+	Operator       bool                 `json:"operator"`
+	ServiceMonitor ServiceMonitorLabels `json:"serviceMonitor"`
 }
 
 type ServiceMonitorLabels struct {
 	//+optional
-	Labels map[string]string `json:"labels" protobuf:"bytes,1,rep,name=labels"`
+	Labels map[string]string `json:"labels"`
 }
 
 type SecuritySpec struct {
-	Apparmor ApparmorSpec `json:"apparmor" protobuf:"bytes,1,opt,name=apparmor"`
-	Seccomp  SeccompSpec  `json:"seccomp" protobuf:"bytes,2,opt,name=seccomp"`
+	Apparmor ApparmorSpec `json:"apparmor"`
+	Seccomp  SeccompSpec  `json:"seccomp"`
 	//+optional
-	PodSecurityPolicies []string `json:"podSecurityPolicies" protobuf:"bytes,3,rep,name=podSecurityPolicies"`
+	PodSecurityPolicies []string `json:"podSecurityPolicies"`
 }
 
 type ApparmorSpec struct {
 	//+optional
-	Enabled bool `json:"enabled" protobuf:"varint,1,opt,name=enabled"`
+	Enabled bool `json:"enabled"`
 }
 
 type SeccompSpec struct {
 	//+optional
-	Enabled bool `json:"enabled" protobuf:"varint,1,opt,name=enabled"`
+	Enabled bool `json:"enabled"`
 }
 
 type Platform struct {
 	//+optional
-	Openshift bool `json:"openshift" protobuf:"varint,1,opt,name=openshift"`
+	Openshift bool `json:"openshift"`
 }
 
 type NetVolAccessor struct {
 	//+optional
-	CPU string `json:"cpu" protobuf:"bytes,1,opt,name=cpu"`
+	CPU string `json:"cpu"`
 	//+optional
-	Memory string `json:"memory" protobuf:"bytes,2,opt,name=memory"`
+	Memory string `json:"memory"`
 	//+optional
-	RunAsUser int64 `json:"runAsUser" protobuf:"bytes,3,opt,name=runAsUser"`
+	RunAsUser int64 `json:"runAsUser"`
 	//+optional
-	Privileged bool `json:"privileged" protobuf:"bytes,4,opt,name=privileged"`
+	Privileged bool `json:"privileged"`
 }
