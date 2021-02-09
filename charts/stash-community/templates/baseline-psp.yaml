@@ -1,3 +1,4 @@
+{{ if .Values.security.createPSPs.baseline }}
 # ref: https://kubernetes.io/docs/concepts/security/pod-security-standards/#policy-instantiation
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
@@ -79,3 +80,4 @@ spec:
     rule: 'RunAsAny'
   fsGroup:
     rule: 'RunAsAny'
+{{ end -}}

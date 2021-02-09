@@ -162,6 +162,13 @@ security:
   #   --set podSecurityPolicies[1]=xyz
   podSecurityPolicies: # +doc-gen:break
   - baseline
+
+  # Set to false below to prevent chart creating PSPs. (PSPs are cluster-scoped resources
+  # and can't be duplicated. Many clusters may already include a PSP named "privileged")
+  createPSPs:
+    privileged: true
+    baseline: true
+  
 platform:
   # Set true, if installed in OpenShift
   openshift: false
