@@ -1,0 +1,18 @@
+project:
+  name: Stash CRDs
+  shortName: Stash CRDs
+  url: https://github.com/stashed
+  description: Stash Custom Resource Definitions
+  app: Stash crds
+repository:
+  url: https://charts.appscode.com/stable/
+  name: appscode
+chart:
+  name: stash-crds
+  values: "-- generate from values file --"
+  valuesExample: "-- generate from values file --"
+prerequisites:
+- Kubernetes 1.16+
+release:
+  name: stash-crds
+  namespace: kube-system
