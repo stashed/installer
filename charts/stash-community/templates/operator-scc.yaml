@@ -2,9 +2,9 @@
 apiVersion: security.openshift.io/v1
 kind: SecurityContextConstraints
 metadata:
-  name: stash-restore-job
+  name: stash-operator-psp
   labels:
-    {{- include "stash.labels" . | nindent 4 }}
+    {{- include "stash-community.labels" . | nindent 4 }}
 allowHostDirVolumePlugin: false
 allowHostIPC: false
 allowHostNetwork: false
@@ -26,7 +26,8 @@ seLinuxContext:
   type: RunAsAny
 supplementalGroups:
   type: RunAsAny
-users: null
+users:
+- system:serviceaccount:{{ .Release.Namespace }}:{{ include "stash-community.serviceAccountName" . }}
 volumes:
 - '*'
 {{ end }}

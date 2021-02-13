@@ -2,9 +2,9 @@
 apiVersion: security.openshift.io/v1
 kind: SecurityContextConstraints
 metadata:
-  name: stash-backup-job
+  name: stash-restore-job
   labels:
-    {{- include "stash.labels" . | nindent 4 }}
+    {{- include "stash-community.labels" . | nindent 4 }}
 allowHostDirVolumePlugin: false
 allowHostIPC: false
 allowHostNetwork: false

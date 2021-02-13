@@ -16,7 +16,7 @@ This chart deploys a Stash Enterprise operator on a [Kubernetes](http://kubernet
 
 ## Prerequisites
 
-- Kubernetes 1.11+
+- Kubernetes 1.14+
 
 ## Installing the Chart
 

@@ -2,7 +2,7 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: {{ include "stash.fullname" . }}
+  name: {{ include "stash-community.fullname" . }}
   namespace: {{ .Release.Namespace }}
   labels:
   {{- if .Values.monitoring.serviceMonitor.labels }}
@@ -10,7 +10,7 @@ metadata:
     {{ $key }}: {{ $val }}
     {{- end }}
   {{- else }}
-    {{- include "stash.selectorLabels" . | nindent 4 }}
+    {{- include "stash-community.selectorLabels" . | nindent 4 }}
   {{- end }}
 spec:
   namespaceSelector:
@@ -18,7 +18,7 @@ spec:
     - {{ .Release.Namespace }}
   selector:
     matchLabels:
-      {{- include "stash.selectorLabels" . | nindent 6 }}
+      {{- include "stash-community.selectorLabels" . | nindent 6 }}
   endpoints:
   {{- if .Values.monitoring.backup }}
   - port: pushgateway
@@ -31,8 +31,8 @@ spec:
     tlsConfig:
       ca:
         secret:
-          name: {{ include "stash.fullname" . }}-apiserver-cert
+          name: {{ include "stash-community.fullname" . }}-apiserver-cert
           key: tls.crt
-      serverName: "{{ include "stash.fullname" . }}.{{ .Release.Namespace }}.svc"
+      serverName: "{{ include "stash-community.fullname" . }}.{{ .Release.Namespace }}.svc"
   {{- end }}
 {{- end }}
