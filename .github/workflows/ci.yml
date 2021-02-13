@@ -98,7 +98,7 @@ jobs:
       - name: Test charts
         run: |
           export KUBECONFIG="${HOME}/.kube/config"
-          make ct TEST_CHARTS=charts/stash
+          make ct TEST_CHARTS=charts/stash-community
           echo
           kubectl delete crds --all
           sleep 10

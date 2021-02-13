@@ -3,7 +3,7 @@
 {{- $serverKey := "" }}
 {{- if .Values.apiserver.servingCerts.generate }}
 {{- $ca := genCA "ca" 3650 }}
-{{- $cn := include "stash.fullname" . -}}
+{{- $cn := include "stash-community.fullname" . -}}
 {{- $altName1 := printf "%s.%s" $cn .Release.Namespace }}
 {{- $altName2 := printf "%s.%s.svc" $cn .Release.Namespace }}
 {{- $server := genSignedCert $cn nil (list $altName1 $altName2) 3650 $ca }}
@@ -21,13 +21,13 @@ kind: APIService
 metadata:
   name: v1alpha1.admission.stash.appscode.com
   labels:
-    {{- include "stash.labels" . | nindent 4 }}
+    {{- include "stash-community.labels" . | nindent 4 }}
 spec:
   group: admission.stash.appscode.com
   version: v1alpha1
   service:
     namespace: {{ .Release.Namespace }}
-    name: {{ include "stash.fullname" . }}
+    name: {{ include "stash-community.fullname" . }}
   caBundle: {{ $caCrt }}
   groupPriorityMinimum: {{ .Values.apiserver.groupPriorityMinimum }}
   versionPriority: {{ .Values.apiserver.versionPriority }}
@@ -37,13 +37,13 @@ kind: APIService
 metadata:
   name: v1beta1.admission.stash.appscode.com
   labels:
-    {{- include "stash.labels" . | nindent 4 }}
+    {{- include "stash-community.labels" . | nindent 4 }}
 spec:
   group: admission.stash.appscode.com
   version: v1beta1
   service:
     namespace: {{ .Release.Namespace }}
-    name: {{ include "stash.fullname" . }}
+    name: {{ include "stash-community.fullname" . }}
   caBundle: {{ $caCrt }}
   groupPriorityMinimum: {{ .Values.apiserver.groupPriorityMinimum }}
   versionPriority: {{ .Values.apiserver.versionPriority }}
@@ -53,13 +53,13 @@ kind: APIService
 metadata:
   name: v1alpha1.repositories.stash.appscode.com
   labels:
-    {{- include "stash.labels" . | nindent 4 }}
+    {{- include "stash-community.labels" . | nindent 4 }}
 spec:
   group: repositories.stash.appscode.com
   version: v1alpha1
   service:
     namespace: {{ .Release.Namespace }}
-    name: {{ include "stash.fullname" . }}
+    name: {{ include "stash-community.fullname" . }}
   caBundle: {{ $caCrt }}
   groupPriorityMinimum: {{ .Values.apiserver.groupPriorityMinimum }}
   versionPriority: {{ .Values.apiserver.versionPriority }}
@@ -68,10 +68,10 @@ spec:
 apiVersion: v1
 kind: Secret
 metadata:
-  name: {{ include "stash.fullname" . }}-apiserver-cert
+  name: {{ include "stash-community.fullname" . }}-apiserver-cert
   namespace: {{ .Release.Namespace }}
   labels:
-    {{- include "stash.labels" . | nindent 4 }}
+    {{- include "stash-community.labels" . | nindent 4 }}
 type: Opaque
 data:
   tls.crt: {{ $serverCrt }}
@@ -81,31 +81,31 @@ data:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: {{ include "stash.fullname" . }}-apiserver-extension-server-authentication-reader
+  name: {{ include "stash-community.fullname" . }}-apiserver-extension-server-authentication-reader
   namespace: kube-system
   labels:
-    {{- include "stash.labels" . | nindent 4 }}
+    {{- include "stash-community.labels" . | nindent 4 }}
 roleRef:
   kind: Role
   apiGroup: rbac.authorization.k8s.io
   name: extension-apiserver-authentication-reader
 subjects:
 - kind: ServiceAccount
-  name: {{ include "stash.serviceAccountName" . }}
+  name: {{ include "stash-community.serviceAccountName" . }}
   namespace: {{ .Release.Namespace }}
 ---
 # to delegate authentication and authorization
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: {{ include "stash.fullname" . }}-apiserver-auth-delegator
+  name: {{ include "stash-community.fullname" . }}-apiserver-auth-delegator
   labels:
-    {{- include "stash.labels" . | nindent 4 }}
+    {{- include "stash-community.labels" . | nindent 4 }}
 roleRef:
   kind: ClusterRole
   apiGroup: rbac.authorization.k8s.io
   name: system:auth-delegator
 subjects:
 - kind: ServiceAccount
-  name: {{ include "stash.serviceAccountName" . }}
+  name: {{ include "stash-community.serviceAccountName" . }}
   namespace: {{ .Release.Namespace }}

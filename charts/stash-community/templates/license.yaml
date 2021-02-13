@@ -3,10 +3,10 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: {{ include "stash.fullname" . }}-license
+  name: {{ include "stash-community.fullname" . }}-license
   namespace: {{ .Release.Namespace }}
   labels:
-  {{- include "stash.labels" . | nindent 4 }}
+  {{- include "stash-community.labels" . | nindent 4 }}
 type: Opaque
 data:
   key.txt: {{ .Values.license | b64enc }}

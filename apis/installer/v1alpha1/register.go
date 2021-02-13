@@ -56,8 +56,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
 		&StashEnterprise{},
 		&StashEnterpriseList{},
-		&Stash{},
-		&StashList{},
+		&StashCommunity{},
+		&StashCommunityList{},
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,

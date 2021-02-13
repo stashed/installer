@@ -1,48 +1,48 @@
-# Stash
+# Stash Community
 
-[Stash by AppsCode](https://github.com/stashed/stash) - Backup your Kubernetes Volumes
+[Stash Community by AppsCode](https://github.com/stashed/stash) - Backup your Kubernetes Volumes
 
 ## TL;DR;
 
 ```console
 $ helm repo add appscode https://charts.appscode.com/stable/
 $ helm repo update
-$ helm install stash-operator appscode/stash -n kube-system
+$ helm install stash-community appscode/stash-community -n kube-system
 ```
 
 ## Introduction
 
-This chart deploys a Stash operator on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart deploys a Stash community operator on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 ## Prerequisites
 
-- Kubernetes 1.11+
+- Kubernetes 1.14+
 
 ## Installing the Chart
 
-To install the chart with the release name `stash-operator`:
+To install the chart with the release name `stash-community`:
 
 ```console
-$ helm install stash-operator appscode/stash -n kube-system
+$ helm install stash-community appscode/stash-community -n kube-system
 ```
 
-The command deploys a Stash operator on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
+The command deploys a Stash community operator on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
 
 > **Tip**: List all releases using `helm list`
 
 ## Uninstalling the Chart
 
-To uninstall/delete the `stash-operator`:
+To uninstall/delete the `stash-community`:
 
 ```console
-$ helm delete stash-operator -n kube-system
+$ helm delete stash-community -n kube-system
 ```
 
 The command removes all the Kubernetes components associated with the chart and deletes the release.
 
 ## Configuration
 
-The following table lists the configurable parameters of the `stash` chart and their default values.
+The following table lists the configurable parameters of the `stash-community` chart and their default values.
 
 |               Parameter               |                                                                                                                                                                  Description                                                                                                                                                                   |                                Default                                |
 |---------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------|
@@ -104,12 +104,12 @@ The following table lists the configurable parameters of the `stash` chart and t
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example:
 
 ```console
-$ helm install stash-operator appscode/stash -n kube-system --set replicaCount=1
+$ helm install stash-community appscode/stash-community -n kube-system --set replicaCount=1
 ```
 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while
 installing the chart. For example:
 
 ```console
-$ helm install stash-operator appscode/stash -n kube-system --values values.yaml
+$ helm install stash-community appscode/stash-community -n kube-system --values values.yaml
 ```

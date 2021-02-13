@@ -4,10 +4,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "stash.fullname" . }}
+  name: {{ include "stash-community.fullname" . }}
   namespace: {{ .Release.Namespace }}
   labels:
-    {{- include "stash.labels" . | nindent 4 }}
+    {{- include "stash-community.labels" . | nindent 4 }}
   {{- with .Values.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
@@ -16,11 +16,11 @@ spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      {{- include "stash.selectorLabels" . | nindent 6 }}
+      {{- include "stash-community.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "stash.selectorLabels" . | nindent 8 }}
+        {{- include "stash-community.selectorLabels" . | nindent 8 }}
       annotations:
         checksum/apiregistration.yaml: {{ include (print $.Template.BasePath "/apiregistration.yaml") . | sha256sum }}
       {{- if $criticalAddon }}
@@ -34,7 +34,7 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
     {{- end }}
-      serviceAccountName: {{ include "stash.serviceAccountName" . }}
+      serviceAccountName: {{ include "stash-community.serviceAccountName" . }}
       containers:
       - name: operator
         securityContext:
@@ -54,7 +54,7 @@ spec:
         - --audit-log-path=-
         - --tls-cert-file=/var/serving-cert/tls.crt
         - --tls-private-key-file=/var/serving-cert/tls.key
-        - --service-name={{ include "stash.fullname" . }}
+        - --service-name={{ include "stash-community.fullname" . }}
         - --enable-mutating-webhook={{ .Values.apiserver.enableMutatingWebhook }}
         - --enable-validating-webhook={{ .Values.apiserver.enableValidatingWebhook }}
         - --bypass-validating-webhook-xray={{ .Values.apiserver.bypassValidatingWebhookXray }}
@@ -126,12 +126,12 @@ spec:
       - name: serving-cert
         secret:
           defaultMode: 420
-          secretName: {{ include "stash.fullname" . }}-apiserver-cert
+          secretName: {{ include "stash-community.fullname" . }}-apiserver-cert
       {{- if .Values.license }}
       - name: license
         secret:
           defaultMode: 420
-          secretName: {{ include "stash.fullname" . }}-license
+          secretName: {{ include "stash-community.fullname" . }}-license
       {{- end }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}

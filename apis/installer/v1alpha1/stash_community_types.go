@@ -22,12 +22,12 @@ import (
 )
 
 const (
-	ResourceKindStash = "Stash"
-	ResourceStash     = "stash"
-	ResourceStashs    = "stashs"
+	ResourceKindStashCommunity = "StashCommunity"
+	ResourceStashCommunity     = "stashcommunity"
+	ResourceStashCommunitys    = "stashcommunitys"
 )
 
-// Stash defines the schama for Stash Operator Installer.
+// StashCommunity defines the schama for Stash community operator Installer.
 
 // +genclient
 // +genclient:skipVerbs=updateStatus
@@ -35,15 +35,15 @@ const (
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // +kubebuilder:object:root=true
-// +kubebuilder:resource:path=stashs,singular=stash,categories={stash,appscode}
-type Stash struct {
+// +kubebuilder:resource:path=stashcommunitys,singular=stashcommunity,categories={stash,appscode}
+type StashCommunity struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Spec              StashSpec `json:"spec,omitempty"`
+	Spec              StashCommunitySpec `json:"spec,omitempty"`
 }
 
-// StashSpec is the schema for Stash operator values file
-type StashSpec struct {
+// StashCommunitySpec is the schema for Stash community operator values file
+type StashCommunitySpec struct {
 	//+optional
 	NameOverride string `json:"nameOverride"`
 	//+optional
@@ -91,10 +91,10 @@ type StashSpec struct {
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// StashList is a list of Stashs
-type StashList struct {
+// StashCommunityList is a list of Stashs
+type StashCommunityList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	// Items is a list of Stash CRD objects
-	Items []Stash `json:"items,omitempty"`
+	// Items is a list of StashCommunity CRD objects
+	Items []StashCommunity `json:"items,omitempty"`
 }

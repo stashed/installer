@@ -7,7 +7,7 @@ kind: ValidatingWebhookConfiguration
 metadata:
   name: admission.stash.appscode.com
   labels:
-    {{- include "stash.labels" . | nindent 4 }}
+    {{- include "stash-community.labels" . | nindent 4 }}
   annotations:
     "helm.sh/hook": pre-install,pre-upgrade
     "helm.sh/hook-delete-policy": before-hook-creation
