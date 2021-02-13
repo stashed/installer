@@ -1,18 +1,18 @@
 project:
-  name: Stash by AppsCode
-  shortName: Stash
+  name: Stash Community by AppsCode
+  shortName: Stash Community
   url: https://github.com/stashed/stash
   description: Backup your Kubernetes Volumes
-  app: a Stash operator
+  app: a Stash community operator
 repository:
   url: https://charts.appscode.com/stable/
   name: appscode
 chart:
-  name: stash
+  name: stash-community
   values: "-- generate from values file --"
   valuesExample: "-- generate from values file --"
 prerequisites:
-- Kubernetes 1.11+
+- Kubernetes 1.14+
 release:
-  name: stash-operator
+  name: stash-community
   namespace: kube-system

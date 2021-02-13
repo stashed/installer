@@ -4,17 +4,17 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   creationTimestamp: null
-  name: stashs.installer.stash.appscode.com
+  name: stashcommunitys.installer.stash.appscode.com
 spec:
   group: installer.stash.appscode.com
   names:
     categories:
     - stash
     - appscode
-    kind: Stash
-    listKind: StashList
-    plural: stashs
-    singular: stash
+    kind: StashCommunity
+    listKind: StashCommunityList
+    plural: stashcommunitys
+    singular: stashcommunity
   scope: Namespaced
   versions:
   - name: v1alpha1
@@ -34,7 +34,8 @@ spec:
           metadata:
             type: object
           spec:
-            description: StashSpec is the schema for Stash operator values file
+            description: StashCommunitySpec is the schema for Stash community operator
+              values file
             properties:
               affinity:
                 description: If specified, the pod's scheduling constraints
