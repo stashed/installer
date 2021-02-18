@@ -61,7 +61,7 @@ ARCH := $(if $(GOARCH),$(GOARCH),$(shell go env GOARCH))
 BASEIMAGE_PROD   ?= gcr.io/distroless/static-debian10
 BASEIMAGE_DBG    ?= debian:buster
 
-GO_VERSION       ?= 1.15
+GO_VERSION       ?= 1.16
 BUILD_IMAGE      ?= appscode/golang-dev:$(GO_VERSION)
 CHART_TEST_IMAGE ?= quay.io/helmpack/chart-testing:v3.0.0
 
@@ -403,8 +403,8 @@ verify: verify-modules verify-gen
 
 .PHONY: verify-modules
 verify-modules:
-	GO111MODULE=on go mod tidy
-	GO111MODULE=on go mod vendor
+	go mod tidy
+	go mod vendor
 	@if !(git diff --exit-code HEAD); then \
 		echo "go module files are out of date"; exit 1; \
 	fi
