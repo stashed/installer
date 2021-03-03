@@ -404,12 +404,12 @@ $(BUILD_DIRS):
 dev: gen fmt
 
 .PHONY: verify
-verify: verify-gen verify-modules
+verify: verify-modules
 
 .PHONY: verify-modules
-verify-modules:
-	go mod tidy
-	go mod vendor
+verify-modules: gen fmt
+	GO111MODULE=on go mod tidy
+	GO111MODULE=on go mod vendor
 	@if !(git diff --exit-code HEAD); then \
 		echo "go module files are out of date"; exit 1; \
 	fi
