@@ -105,7 +105,7 @@ rules:
   - roles
   - rolebindings
   - clusterrolebindings
-  verbs: ["get", "create", "delete", "patch"]
+  verbs: ["get","list", "create", "delete", "patch"]
 - apiGroups:
   - apps.openshift.io
   resources:
