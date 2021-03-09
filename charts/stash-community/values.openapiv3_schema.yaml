@@ -1072,6 +1072,16 @@ properties:
           enabled:
             type: boolean
         type: object
+      createPSPs:
+        properties:
+          baseline:
+            type: boolean
+          privileged:
+            type: boolean
+        required:
+        - baseline
+        - privileged
+        type: object
       podSecurityPolicies:
         items:
           type: string
@@ -1083,6 +1093,7 @@ properties:
         type: object
     required:
     - apparmor
+    - createPSPs
     - seccomp
     type: object
   serviceAccount:
