@@ -95,7 +95,8 @@ type SecuritySpec struct {
 	Apparmor ApparmorSpec `json:"apparmor"`
 	Seccomp  SeccompSpec  `json:"seccomp"`
 	//+optional
-	PodSecurityPolicies []string `json:"podSecurityPolicies"`
+	PodSecurityPolicies []string      `json:"podSecurityPolicies"`
+	CreatePSPs          CreatePSPSpec `json:"createPSPs"`
 }
 
 type ApparmorSpec struct {
@@ -106,6 +107,11 @@ type ApparmorSpec struct {
 type SeccompSpec struct {
 	//+optional
 	Enabled bool `json:"enabled"`
+}
+
+type CreatePSPSpec struct {
+	Privileged bool `json:"privileged"`
+	Baseline   bool `json:"baseline"`
 }
 
 type Platform struct {
