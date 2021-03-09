@@ -25,7 +25,7 @@ operator:
   # Name of operator container image
   repository: stash-enterprise
   # Operator container image tag
-  tag: v0.11.9
+  tag: v0.11.10
   # Compute Resources required by the operator container
   resources: # +doc-gen:break
     requests:
