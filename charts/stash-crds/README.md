@@ -46,13 +46,13 @@ The following table lists the configurable parameters of the `stash-crds` chart 
 
 |  Parameter   | Description |  Default   |
 |--------------|-------------|------------|
-| operator.tag |             | `v0.11.10` |
+| operator.tag |             | `v0.11.11` |
 
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example:
 
 ```console
-$ helm install stash-crds appscode/stash-crds -n kube-system --set operator.tag=v0.11.10
+$ helm install stash-crds appscode/stash-crds -n kube-system --set operator.tag=v0.11.11
 ```
 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while
