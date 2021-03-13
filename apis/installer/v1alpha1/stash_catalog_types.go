@@ -49,7 +49,7 @@ type StashCatalogSpec struct {
 	Mariadb       StashMariadbSpec       `json:"mariadb"`
 	Mongodb       StashMongodbSpec       `json:"mongodb"`
 	Mysql         StashMysqlSpec         `json:"mysql"`
-	PerconaXtraDB StashPerconaXtraDBSpec `json:"percona-xtradb"`
+	PerconaXtraDB StashPerconaXtraDBSpec `json:"perconaxtradb"`
 	Postgres      StashPostgresSpec      `json:"postgres"`
 }
 

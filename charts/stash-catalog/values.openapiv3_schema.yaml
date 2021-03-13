@@ -91,7 +91,7 @@ properties:
     - enabled
     - restore
     type: object
-  percona-xtradb:
+  perconaxtradb:
     description: StashPerconaXtraDBSpec is the schema for Stash Percona XtraDB values
       file
     properties:
@@ -151,7 +151,7 @@ required:
 - mariadb
 - mongodb
 - mysql
-- percona-xtradb
+- perconaxtradb
 - postgres
 - waitTimeout
 type: object
