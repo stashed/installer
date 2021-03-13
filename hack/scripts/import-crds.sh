@@ -54,3 +54,9 @@ crd-importer \
     --gk=Repository.stash.appscode.com \
     --gk=RestoreSession.stash.appscode.com \
     --gk=Task.stash.appscode.com
+
+crd-importer --v=v1beta1 \
+    --input=${crd_dir} \
+    --out=./charts/stash-catalog/crds \
+    --gk=Function.stash.appscode.com \
+    --gk=Task.stash.appscode.com

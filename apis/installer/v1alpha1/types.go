@@ -20,6 +20,10 @@ import (
 	core "k8s.io/api/core/v1"
 )
 
+type RegistryRef struct {
+	Registry string `json:"registry"`
+}
+
 type ImageRef struct {
 	Registry   string `json:"registry"`
 	Repository string `json:"repository"`

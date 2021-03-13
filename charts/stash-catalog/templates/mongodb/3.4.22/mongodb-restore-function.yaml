@@ -1,0 +1,35 @@
+{{ if .Values.mongodb.enabled }}
+apiVersion: stash.appscode.com/v1beta1
+kind: Function
+metadata:
+  name: 'mongodb-restore-3.4.22'
+  labels:
+    {{- include "stash-catalog.labels" . | nindent 4 }}
+spec:
+  args:
+  - restore-mongo
+  - --provider=${REPOSITORY_PROVIDER:=}
+  - --bucket=${REPOSITORY_BUCKET:=}
+  - --endpoint=${REPOSITORY_ENDPOINT:=}
+  - --region=${REPOSITORY_REGION:=}
+  - --path=${REPOSITORY_PREFIX:=}
+  - --secret-dir=/etc/repository/secret
+  - --scratch-dir=/tmp
+  - --enable-cache=false
+  - --max-connections=${MAX_CONNECTIONS:=0}
+  - --hostname=${HOSTNAME:=}
+  - --source-hostname=${SOURCE_HOSTNAME:=}
+  - --mongo-args=${args:={{ .Values.mongodb.restore.args }}}
+  - --max-concurrency=${MAX_CONCURRENCY:={{ .Values.mongodb.maxConcurrency}}}
+  - --wait-timeout=${waitTimeout:={{ .Values.waitTimeout}}}
+  - --namespace=${NAMESPACE:=default}
+  - --appbinding=${TARGET_NAME:=}
+  - --restoresession=${RESTORE_SESSION:=}
+  - --snapshot=${RESTORE_SNAPSHOTS:=}
+  - --output-dir=${outputDir:=}
+  - --license-apiservice=${LICENSE_APISERVICE:=}
+  image: '{{ .Values.image.registry }}/stash-mongodb:3.4.22-v6'
+  volumeMounts:
+  - mountPath: /etc/repository/secret
+    name: ${secretVolume}
+{{ end }}
