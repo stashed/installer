@@ -26,6 +26,7 @@ import (
 
 func TestDefaultValues(t *testing.T) {
 	checker := schemachecker.New("../../..", []interface{}{
+		v1alpha1.StashCatalogSpec{},
 		v1alpha1.StashCommunitySpec{},
 		v1alpha1.StashEnterpriseSpec{},
 	})
