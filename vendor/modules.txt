@@ -2,7 +2,6 @@
 ## explicit
 github.com/Masterminds/goutils
 # github.com/Masterminds/semver v1.5.0
-## explicit
 github.com/Masterminds/semver
 # github.com/Masterminds/sprig v2.22.0+incompatible
 ## explicit
@@ -68,6 +67,9 @@ golang.org/x/text/secure/bidirule
 golang.org/x/text/transform
 golang.org/x/text/unicode/bidi
 golang.org/x/text/unicode/norm
+# gomodules.xyz/semvers v0.0.0-20210310134147-b22f1a8bc683
+## explicit
+gomodules.xyz/semvers
 # gopkg.in/inf.v0 v0.9.1
 gopkg.in/inf.v0
 # gopkg.in/yaml.v2 v2.3.0
