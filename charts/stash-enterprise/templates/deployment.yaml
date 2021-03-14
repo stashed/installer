@@ -39,12 +39,12 @@ spec:
       - name: operator
         securityContext:
           {{- toYaml .Values.operator.securityContext | nindent 10 }}
-        image: {{ .Values.operator.registry }}/{{ .Values.operator.repository }}:{{ .Values.operator.tag }}
+        image: {{ include "operator.registry" . }}/{{ .Values.operator.repository }}:{{ .Values.operator.tag }}
         imagePullPolicy: {{ .Values.imagePullPolicy }}
         args:
         - run
         - --v={{ .Values.logLevel }}
-        - --docker-registry={{ .Values.operator.registry }}
+        - --docker-registry={{ include "operator.registry" . }}
         - --image={{ .Values.operator.repository }}
         - --image-tag={{ .Values.operator.tag }}
         {{- if .Values.imagePullSecrets }}
@@ -68,7 +68,7 @@ spec:
         - --nva-user={{ .Values.netVolAccessor.runAsUser }}
         - --nva-privileged-mode={{ .Values.netVolAccessor.privileged }}
         - --nva-psp={{ include "netvol-accessor-psp" .}}
-        {{- if .Values.license }}
+        {{- if include "appscode.license" . }}
         - --license-file=/var/run/secrets/appscode/license/key.txt
         - --license-apiservice={{ .Values.licenseApiService }}
         {{- end }}
@@ -102,7 +102,7 @@ spec:
         volumeMounts:
         - mountPath: /var/serving-cert
           name: serving-cert
-        {{- if .Values.license }}
+        {{- if include "appscode.license" . }}
         - mountPath: /var/run/secrets/appscode/license
           name: license
         {{- end }}
@@ -132,7 +132,7 @@ spec:
         secret:
           defaultMode: 420
           secretName: {{ include "stash-enterprise.fullname" . }}-apiserver-cert
-      {{- if .Values.license }}
+      {{- if include "appscode.license" . }}
       - name: license
         secret:
           defaultMode: 420

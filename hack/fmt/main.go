@@ -158,7 +158,7 @@ func main() {
 						panic(err)
 					}
 					if img != "" && strings.HasPrefix(img, "stashed/") {
-						nuimg := "{{ .Values.image.registry }}/" + strings.TrimPrefix(img, "stashed/")
+						nuimg := `{{ include "catalog.registry" . }}/` + strings.TrimPrefix(img, "stashed/")
 						err = unstructured.SetNestedField(r.Resource.Object, nuimg, "spec", "image")
 						if err != nil {
 							panic(err)
