@@ -17,7 +17,7 @@ github.com/gogo/protobuf/sortkeys
 github.com/golang/protobuf/jsonpb
 github.com/golang/protobuf/proto
 github.com/golang/protobuf/ptypes/struct
-# github.com/google/go-cmp v0.5.2
+# github.com/google/go-cmp v0.4.0
 github.com/google/go-cmp/cmp
 github.com/google/go-cmp/cmp/internal/diff
 github.com/google/go-cmp/cmp/internal/flags
@@ -62,7 +62,7 @@ golang.org/x/net/http/httpguts
 golang.org/x/net/http2
 golang.org/x/net/http2/hpack
 golang.org/x/net/idna
-# golang.org/x/text v0.3.4
+# golang.org/x/text v0.3.3
 golang.org/x/text/secure/bidirule
 golang.org/x/text/transform
 golang.org/x/text/unicode/bidi
@@ -74,10 +74,10 @@ gomodules.xyz/semvers
 gopkg.in/inf.v0
 # gopkg.in/yaml.v2 v2.3.0
 gopkg.in/yaml.v2
-# k8s.io/api v0.20.4 => github.com/kmodules/api v0.18.10-0.20200922195318-d60fe725dea0
+# k8s.io/api v0.18.9 => github.com/kmodules/api v0.18.10-0.20200922195318-d60fe725dea0
 ## explicit
 k8s.io/api/core/v1
-# k8s.io/apimachinery v0.20.4 => github.com/kmodules/apimachinery v0.19.0-alpha.0.0.20200922195535-0c9a1b86beec
+# k8s.io/apimachinery v0.18.9 => github.com/kmodules/apimachinery v0.19.0-alpha.0.0.20200922195535-0c9a1b86beec
 ## explicit
 k8s.io/apimachinery/pkg/api/apitesting
 k8s.io/apimachinery/pkg/api/apitesting/fuzzer
@@ -118,7 +118,7 @@ k8s.io/apimachinery/pkg/watch
 k8s.io/apimachinery/third_party/forked/golang/reflect
 # k8s.io/klog v1.0.0
 k8s.io/klog
-# kmodules.xyz/client-go v0.0.0-20210228131103-84674e27d4fe
+# kmodules.xyz/client-go v0.0.0-20210220080427-fd7308e30bb4
 ## explicit
 kmodules.xyz/client-go/tools/parser
 # kmodules.xyz/schema-checker v0.1.2

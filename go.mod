@@ -10,9 +10,9 @@ require (
 	github.com/mitchellh/copystructure v1.1.1 // indirect
 	github.com/spf13/pflag v1.0.5
 	gomodules.xyz/semvers v0.0.0-20210310134147-b22f1a8bc683
-	k8s.io/api v0.20.4
-	k8s.io/apimachinery v0.20.4
-	kmodules.xyz/client-go v0.0.0-20210228131103-84674e27d4fe
+	k8s.io/api v0.18.9
+	k8s.io/apimachinery v0.18.9
+	kmodules.xyz/client-go v0.0.0-20210220080427-fd7308e30bb4
 	kmodules.xyz/schema-checker v0.1.2
 	sigs.k8s.io/yaml v1.2.0
 )
