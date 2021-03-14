@@ -27,6 +27,7 @@ import (
 	"strings"
 	"text/template"
 
+	"stash.appscode.dev/installer/catalog"
 	"stash.appscode.dev/installer/hack/fmt/templates"
 
 	"github.com/Masterminds/sprig"
@@ -64,6 +65,17 @@ func main() {
 
 	store := map[Location][]TypedObject{}
 
+	stashCatalog := map[Location]string{}
+	for _, addon := range catalog.Load().Addons {
+		app := strings.ReplaceAll(addon.Name, "-", "")
+		for _, v := range addon.Versions {
+			stashCatalog[Location{
+				App:     app,
+				Version: toVersion(app, v),
+			}] = v
+		}
+	}
+
 	for _, obj := range resources {
 		// remove labels
 		obj.SetNamespace("")
@@ -76,6 +88,29 @@ func main() {
 			App:     parts[0],
 			Version: parts[2],
 		}
+
+		if obj.GetKind() == "Function" {
+			img, _, err := unstructured.NestedString(obj.Object, "spec", "image")
+			if err != nil {
+				panic(err)
+			}
+			if img == "" {
+				panic(fmt.Errorf("missing image"))
+			}
+			idx := strings.LastIndex(img, ":")
+			if idx == -1 {
+				panic(fmt.Errorf("failed to detect image %s tag", img))
+			}
+			if _, ok := stashCatalog[loc]; !ok {
+				panic(fmt.Errorf("failed to detect image tag for %+v", loc))
+			}
+			img = img[:idx] + ":" + stashCatalog[loc]
+			err = unstructured.SetNestedField(obj.Object, img, "spec", "image")
+			if err != nil {
+				panic(err)
+			}
+		}
+
 		store[loc] = append(store[loc], TypedObject{
 			Type:     parts[1],
 			Resource: obj,
@@ -270,4 +305,21 @@ func toJSON(v interface{}) string {
 		return ""
 	}
 	return string(data)
+}
+
+func toVersion(app, v string) string {
+	idx := strings.IndexRune(v, '-')
+	if idx == -1 {
+		return v
+	}
+	v2 := v[:idx]
+
+	if app == "postgres" {
+		if strings.HasPrefix(v2, "9.6.") {
+			return v2
+		}
+		parts := strings.Split(v2, ".")
+		return parts[0] + "." + parts[1]
+	}
+	return v2
 }
