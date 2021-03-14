@@ -1,0 +1,26 @@
+{{ if .Values.postgres.enabled }}
+apiVersion: stash.appscode.com/v1beta1
+kind: Task
+metadata:
+  name: 'postgres-restore-13.1'
+  labels:
+    {{- include "stash-catalog.labels" . | nindent 4 }}
+spec:
+  steps:
+  - name: postgres-restore-13.1
+    params:
+    - name: outputDir
+      value: /tmp/output
+    - name: secretVolume
+      value: secret-volume
+  - name: update-status
+    params:
+    - name: outputDir
+      value: /tmp/output
+    - name: secretVolume
+      value: secret-volume
+  volumes:
+  - name: secret-volume
+    secret:
+      secretName: ${REPOSITORY_SECRET_NAME}
+{{ end }}
