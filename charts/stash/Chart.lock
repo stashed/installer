@@ -1,0 +1,12 @@
+dependencies:
+- name: stash-community
+  repository: file://../stash-community
+  version: v0.11.11
+- name: stash-enterprise
+  repository: file://../stash-enterprise
+  version: v0.11.11
+- name: stash-catalog
+  repository: file://../stash-catalog
+  version: v0.11.11
+digest: sha256:76459651daaba1451d8937ee103abbfaa58245b17b7facf3fb444d15d2f4bb43
+generated: "2021-03-14T16:26:54.575636677-07:00"

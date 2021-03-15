@@ -1,4 +1,4 @@
-{{- if not .Values.cleaner.skip }}
+{{- if eq "true" ( include "cleaner.generate" . ) }}
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -17,7 +17,7 @@ spec:
       serviceAccountName: {{ include "stash-enterprise.serviceAccountName" . }}
       containers:
       - name: busybox
-        image: {{ .Values.cleaner.registry }}/{{ .Values.cleaner.repository }}:{{ .Values.cleaner.tag }}
+        image: {{ include "cleaner.registry" . }}/{{ .Values.cleaner.repository }}:{{ .Values.cleaner.tag }}
         command:
           - sh
           - -c
