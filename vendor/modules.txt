@@ -118,7 +118,7 @@ k8s.io/apimachinery/pkg/watch
 k8s.io/apimachinery/third_party/forked/golang/reflect
 # k8s.io/klog v1.0.0
 k8s.io/klog
-# kmodules.xyz/client-go v0.0.0-20210220080427-fd7308e30bb4
+# kmodules.xyz/client-go v0.0.0-20210315112949-a05d2cc96f28
 ## explicit
 kmodules.xyz/client-go/tools/parser
 # kmodules.xyz/schema-checker v0.1.2
