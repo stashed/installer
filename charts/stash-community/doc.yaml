@@ -2,7 +2,7 @@ project:
   name: Stash Community by AppsCode
   shortName: Stash Community
   url: https://github.com/stashed/stash
-  description: Backup your Kubernetes Volumes
+  description: Free community features for Stash by AppsCode
   app: a Stash community operator
 repository:
   url: https://charts.appscode.com/stable/

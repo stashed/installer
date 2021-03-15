@@ -1,6 +1,6 @@
 # Stash
 
-[Stash by AppsCode](https://github.com/stashed/stash) - Backup your Kubernetes Volumes
+[Stash by AppsCode](https://github.com/stashed/stash) - Backup your Kubernetes native applications
 
 ## TL;DR;
 
