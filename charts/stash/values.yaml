@@ -6,11 +6,11 @@ global:
   # License for the product.
   # Get a license by following the steps from [here](https://stash.run/docs/latest/setup/install/enterprise#get-a-trial-license).
   # Example:
-  # helm install appscode/stash-enterprise \
-  #   --set-file license=/path/to/license/file
+  # helm install appscode/stash \
+  #   --set-file global.license=/path/to/license/file
   # or
-  # helm install appscode/stash-enterprise \
-  #   --set license=<license file content>
+  # helm install appscode/stash \
+  #   --set global.license=<license file content>
   license: ""
 
   # Docker registry used to pull Stash operator image
@@ -20,9 +20,9 @@ global:
   # Secrets must be manually created in the namespace.
   #
   # Example:
-  # helm template charts/stash-community \
-  #   --set imagePullSecrets[0].name=sec0 \
-  #   --set imagePullSecrets[1].name=sec1
+  # helm template charts/stash \
+  #   --set global.imagePullSecrets[0].name=sec0 \
+  #   --set global.imagePullSecrets[1].name=sec1
   imagePullSecrets: []
 
   # Skip generating cleaner job YAML
