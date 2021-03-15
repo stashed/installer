@@ -2,7 +2,7 @@ project:
   name: Stash by AppsCode
   shortName: Stash
   url: https://github.com/stashed/stash
-  description: Backup your Kubernetes Volumes
+  description: Backup your Kubernetes native applications
   app: a Stash operator
 repository:
   url: https://charts.appscode.com/stable/

@@ -1,6 +1,6 @@
 # Stash Community
 
-[Stash Community by AppsCode](https://github.com/stashed/stash) - Backup your Kubernetes Volumes
+[Stash Community by AppsCode](https://github.com/stashed/stash) - Free community features for Stash by AppsCode
 
 ## TL;DR;
 
