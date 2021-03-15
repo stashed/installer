@@ -30,7 +30,7 @@ global:
 
 features:
   # If true, installs the stash-community chart
-  community: true
+  community: false
   # If true, installs the stash-enterprise and stash-catalog chart
   enterprise: false
 
