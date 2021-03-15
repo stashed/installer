@@ -33,3 +33,5 @@ _testmain.go
 
 /bin
 /.go
+
+/charts/stash/charts
