@@ -70,7 +70,6 @@ The following table lists the configurable parameters of the `stash-catalog` cha
 | postgres.backup.cmd                     | Postgres dump command, can either be: pg_dumpall  or pg_dump                          | `"pg_dumpall"`      |
 | postgres.backup.args                    | Arguments to pass to `backup.cmd` command during backup process                       | `""`                |
 | postgres.restore.args                   | Arguments to pass to `psql` command during restore process                            | `""`                |
-| operator.tag                            |                                                                                       | `v0.12.0`           |
 
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example:
