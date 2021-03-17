@@ -12,10 +12,8 @@ global:
   # helm install appscode/stash \
   #   --set global.license=<license file content>
   license: ""
-
   # Docker registry used to pull Stash operator image
   registry: ""
-
   # Specify an array of imagePullSecrets.
   # Secrets must be manually created in the namespace.
   #
@@ -24,21 +22,18 @@ global:
   #   --set global.imagePullSecrets[0].name=sec0 \
   #   --set global.imagePullSecrets[1].name=sec1
   imagePullSecrets: []
-
   # Skip generating cleaner job YAML
   skipCleaner: false
-
 features:
   # If true, installs the stash-community chart
   community: false
   # If true, installs the stash-enterprise and stash-catalog chart
   enterprise: false
-
 # Pass values to stash-community chart
 stash-community: {}
-
 # Pass values to stash-catalog chart
 stash-catalog: {}
-
 # Pass values to stash-enterprise chart
 stash-enterprise: {}
+operator:
+  tag: v2021.03.17
