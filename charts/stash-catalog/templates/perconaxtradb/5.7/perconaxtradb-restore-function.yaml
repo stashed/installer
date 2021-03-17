@@ -1,7 +1,10 @@
+{{ if .Values.perconaxtradb.enabled }}
 apiVersion: stash.appscode.com/v1beta1
 kind: Function
 metadata:
-  name: perconaxtradb-restore-5.7.0
+  name: 'perconaxtradb-restore-5.7'
+  labels:
+    {{- include "stash-catalog.labels" . | nindent 4 }}
 spec:
   args:
   - restore-percona-xtradb
@@ -16,15 +19,16 @@ spec:
   - --max-connections=${MAX_CONNECTIONS:=0}
   - --hostname=${HOSTNAME:=}
   - --source-hostname=${SOURCE_HOSTNAME:=}
-  - --xtradb-args=${args:=}
-  - --target-app-replicas=${TARGET_APP_REPLICAS:=1}
-  - --wait-timeout=${waitTimeout:=300}
+  - --xtradb-args=${args:={{ .Values.perconaxtradb.restore.args }}}
+  - --target-app-replicas=${TARGET_APP_REPLICAS:={{ .Values.perconaxtradb.restore.targetAppReplicas }}}
+  - --wait-timeout=${waitTimeout:={{ .Values.waitTimeout}}}
   - --namespace=${NAMESPACE:=default}
   - --appbinding=${TARGET_NAME:=}
   - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: stashed/stash-percona-xtradb:5.7.0-v2
+  image: '{{ include "catalog.registry" . }}/stash-percona-xtradb:5.7-v2'
   volumeMounts:
   - mountPath: /etc/repository/secret
     name: ${secretVolume}
+{{ end }}
