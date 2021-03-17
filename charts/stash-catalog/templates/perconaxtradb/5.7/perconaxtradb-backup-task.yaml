@@ -2,12 +2,12 @@
 apiVersion: stash.appscode.com/v1beta1
 kind: Task
 metadata:
-  name: 'perconaxtradb-restore-5.7.0'
+  name: 'perconaxtradb-backup-5.7'
   labels:
     {{- include "stash-catalog.labels" . | nindent 4 }}
 spec:
   steps:
-  - name: perconaxtradb-restore-5.7.0
+  - name: perconaxtradb-backup-5.7
     params:
     - name: outputDir
       value: /tmp/output
