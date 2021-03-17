@@ -73,5 +73,3 @@ postgres:
   restore:
     # Arguments to pass to `psql` command during restore process
     args: ""
-operator:
-  tag: v0.12.0

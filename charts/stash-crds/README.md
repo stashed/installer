@@ -40,24 +40,4 @@ $ helm delete stash-crds -n kube-system
 
 The command removes all the Kubernetes components associated with the chart and deletes the release.
 
-## Configuration
 
-The following table lists the configurable parameters of the `stash-crds` chart and their default values.
-
-|  Parameter   | Description |  Default  |
-|--------------|-------------|-----------|
-| operator.tag |             | `v0.12.0` |
-
-
-Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example:
-
-```console
-$ helm install stash-crds appscode/stash-crds -n kube-system --set operator.tag=v0.12.0
-```
-
-Alternatively, a YAML file that specifies the values for the parameters can be provided while
-installing the chart. For example:
-
-```console
-$ helm install stash-crds appscode/stash-crds -n kube-system --values values.yaml
-```

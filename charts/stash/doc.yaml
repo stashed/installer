@@ -10,7 +10,7 @@ repository:
 chart:
   name: stash
   values: "-- generate from values file --"
-  valuesExample: "-- generate from values file --"
+  valuesExample: "global.registry=stashed"
 prerequisites:
 - Kubernetes 1.14+
 release:

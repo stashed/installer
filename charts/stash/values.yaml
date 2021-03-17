@@ -35,5 +35,3 @@ stash-community: {}
 stash-catalog: {}
 # Pass values to stash-enterprise chart
 stash-enterprise: {}
-operator:
-  tag: v2021.03.17
