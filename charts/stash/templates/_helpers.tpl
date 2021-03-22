@@ -86,7 +86,7 @@ Returns the registry used for catalog docker images
 Returns the registry used for cleaner docker image
 */}}
 {{- define "cleaner.registry" -}}
-{{- default .Values.cleaner.registry .Values.global.registry }}
+{{- default .Values.global.registry .Values.cleaner.registry }}
 {{- end }}
 
 {{/*
