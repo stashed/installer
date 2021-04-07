@@ -14,6 +14,9 @@ global:
   license: ""
   # Docker registry used to pull Stash operator image
   registry: ""
+  # Docker registry fqdn used to pull Stash related images.
+  # Set this to use docker registry hosted at ${registryFQDN}/${registry}/${image}
+  registryFQDN: ""
   # Specify an array of imagePullSecrets.
   # Secrets must be manually created in the namespace.
   #

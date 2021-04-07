@@ -63,11 +63,14 @@ spec:
                     type: string
                   registry:
                     type: string
+                  registryFQDN:
+                    type: string
                   skipCleaner:
                     type: boolean
                 required:
                 - license
                 - registry
+                - registryFQDN
                 - skipCleaner
                 type: object
               stash-catalog:
@@ -221,6 +224,8 @@ spec:
                     - enabled
                     - restore
                     type: object
+                  registryFQDN:
+                    type: string
                   waitTimeout:
                     format: int64
                     type: integer
@@ -232,6 +237,7 @@ spec:
                 - mysql
                 - perconaxtradb
                 - postgres
+                - registryFQDN
                 - waitTimeout
                 type: object
               stash-community:
@@ -1432,6 +1438,8 @@ spec:
                     - repository
                     - tag
                     type: object
+                  registryFQDN:
+                    type: string
                   replicaCount:
                     format: int32
                     type: integer
@@ -1527,6 +1535,7 @@ spec:
                 - monitoring
                 - operator
                 - pushgateway
+                - registryFQDN
                 - replicaCount
                 - security
                 - serviceAccount
@@ -2741,6 +2750,8 @@ spec:
                     - repository
                     - tag
                     type: object
+                  registryFQDN:
+                    type: string
                   replicaCount:
                     format: int32
                     type: integer
@@ -2836,6 +2847,7 @@ spec:
                 - monitoring
                 - operator
                 - pushgateway
+                - registryFQDN
                 - replicaCount
                 - security
                 - serviceAccount

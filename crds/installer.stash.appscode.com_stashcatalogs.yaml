@@ -183,6 +183,8 @@ spec:
                 - enabled
                 - restore
                 type: object
+              registryFQDN:
+                type: string
               waitTimeout:
                 format: int64
                 type: integer
@@ -194,6 +196,7 @@ spec:
             - mysql
             - perconaxtradb
             - postgres
+            - registryFQDN
             - waitTimeout
             type: object
         type: object
