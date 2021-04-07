@@ -72,21 +72,21 @@ Returns the appscode license
 Returns the registry used for operator docker image
 */}}
 {{- define "operator.registry" -}}
-{{- default .Values.operator.registry .Values.global.registry }}
+{{- list (default .Values.registryFQDN .Values.global.registryFQDN) (default .Values.operator.registry .Values.global.registry) | compact | join "/" }}
 {{- end }}
 
 {{/*
 Returns the registry used for catalog docker images
 */}}
 {{- define "catalog.registry" -}}
-{{- default .Values.image.registry .Values.global.registry }}
+{{- list (default .Values.registryFQDN .Values.global.registryFQDN) (default .Values.image.registry .Values.global.registry) | compact | join "/" }}
 {{- end }}
 
 {{/*
 Returns the registry used for cleaner docker image
 */}}
 {{- define "cleaner.registry" -}}
-{{- default .Values.cleaner.registry .Values.global.registry }}
+{{- list (default .Values.registryFQDN .Values.global.registryFQDN) (default .Values.cleaner.registry .Values.global.registry) | compact | join "/" }}
 {{- end }}
 
 {{/*

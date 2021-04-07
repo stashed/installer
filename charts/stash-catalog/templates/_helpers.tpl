@@ -65,5 +65,5 @@ Create the name of the service account to use
 Returns the registry used for catalog docker images
 */}}
 {{- define "catalog.registry" -}}
-{{- .Values.image.registry }}
+{{- list .Values.registryFQDN .Values.image.registry | compact | join "/" }}
 {{- end }}

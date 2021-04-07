@@ -1074,6 +1074,8 @@ properties:
     - repository
     - tag
     type: object
+  registryFQDN:
+    type: string
   replicaCount:
     format: int32
     type: integer
@@ -1165,6 +1167,7 @@ required:
 - monitoring
 - operator
 - pushgateway
+- registryFQDN
 - replicaCount
 - security
 - serviceAccount

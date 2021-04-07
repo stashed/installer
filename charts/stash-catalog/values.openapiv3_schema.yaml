@@ -142,6 +142,8 @@ properties:
     - enabled
     - restore
     type: object
+  registryFQDN:
+    type: string
   waitTimeout:
     format: int64
     type: integer
@@ -153,5 +155,6 @@ required:
 - mysql
 - perconaxtradb
 - postgres
+- registryFQDN
 - waitTimeout
 type: object
