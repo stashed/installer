@@ -26,11 +26,14 @@ properties:
         type: string
       registry:
         type: string
+      registryFQDN:
+        type: string
       skipCleaner:
         type: boolean
     required:
     - license
     - registry
+    - registryFQDN
     - skipCleaner
     type: object
   stash-catalog:
@@ -179,6 +182,8 @@ properties:
         - enabled
         - restore
         type: object
+      registryFQDN:
+        type: string
       waitTimeout:
         format: int64
         type: integer
@@ -190,6 +195,7 @@ properties:
     - mysql
     - perconaxtradb
     - postgres
+    - registryFQDN
     - waitTimeout
     type: object
   stash-community:
@@ -1293,6 +1299,8 @@ properties:
         - repository
         - tag
         type: object
+      registryFQDN:
+        type: string
       replicaCount:
         format: int32
         type: integer
@@ -1385,6 +1393,7 @@ properties:
     - monitoring
     - operator
     - pushgateway
+    - registryFQDN
     - replicaCount
     - security
     - serviceAccount
@@ -2501,6 +2510,8 @@ properties:
         - repository
         - tag
         type: object
+      registryFQDN:
+        type: string
       replicaCount:
         format: int32
         type: integer
@@ -2593,6 +2604,7 @@ properties:
     - monitoring
     - operator
     - pushgateway
+    - registryFQDN
     - replicaCount
     - security
     - serviceAccount

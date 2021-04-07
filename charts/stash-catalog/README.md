@@ -44,32 +44,33 @@ The command removes all the Kubernetes components associated with the chart and 
 
 The following table lists the configurable parameters of the `stash-catalog` chart and their default values.
 
-|                Parameter                |                                      Description                                      |       Default       |
-|-----------------------------------------|---------------------------------------------------------------------------------------|---------------------|
-| image.registry                          | Docker registry used to pull Postgres addon image                                     | `stashed`           |
-| waitTimeout                             | Number of seconds to wait for the database to be ready before backup/restore process. | `300`               |
-| elasticsearch.enabled                   | If true, deploys Elasticsearch addon                                                  | `true`              |
-| elasticsearch.backup.args               | Arguments to pass to `multielasticdump` command  during backup process                | `""`                |
-| elasticsearch.restore.args              | Arguments to pass to `multielasticdump` command during restore process                | `""`                |
-| mariadb.enabled                         | If true, deploys MariaDB addon                                                        | `true`              |
-| mariadb.backup.args                     | Arguments to pass to `mariadbdump` command  during bakcup process                     | `"--all-databases"` |
-| mariadb.restore.args                    | Arguments to pass to `mariadb` command during restore process                         | `""`                |
-| mongodb.enabled                         | If true, deploys MongoDB addon                                                        | `true`              |
-| mongodb.maxConcurrency                  | Maximum concurrency to perform backup or restore tasks                                | `3`                 |
-| mongodb.backup.args                     | Arguments to pass to `mongodump` command during backup process                        | `""`                |
-| mongodb.restore.args                    | Arguments to pass to `mongorestore` command during restore process                    | `""`                |
-| mysql.enabled                           | If true, deploys MySQL addon                                                          | `true`              |
-| mysql.backup.args                       | Arguments to pass to `mysqldump` command  during bakcup process                       | `"--all-databases"` |
-| mysql.restore.args                      | Arguments to pass to `mysql` command during restore process                           | `""`                |
-| perconaxtradb.enabled                   | If true, deploys Percona XtraDB addon                                                 | `true`              |
-| perconaxtradb.backup.args               | Arguments to pass to `mysqldump` command  during bakcup process                       | `"--all-databases"` |
-| perconaxtradb.backup.socatRetry         | Optional argument sent to backup script                                               | `30`                |
-| perconaxtradb.restore.args              | Arguments to pass to `mysql` command during restore process                           | `""`                |
-| perconaxtradb.restore.targetAppReplicas | Optional argument sent to recovery script                                             | `1`                 |
-| postgres.enabled                        | If true, deploys PostgreSQL addon                                                     | `true`              |
-| postgres.backup.cmd                     | Postgres dump command, can either be: pg_dumpall  or pg_dump                          | `"pg_dumpall"`      |
-| postgres.backup.args                    | Arguments to pass to `backup.cmd` command during backup process                       | `""`                |
-| postgres.restore.args                   | Arguments to pass to `psql` command during restore process                            | `""`                |
+|                Parameter                |                                                              Description                                                               |       Default       |
+|-----------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|---------------------|
+| registryFQDN                            | Docker registry fqdn used to pull Stash related images. Set this to use docker registry hosted at ${registryFQDN}/${registry}/${image} | `""`                |
+| image.registry                          | Docker registry used to pull Postgres addon image                                                                                      | `stashed`           |
+| waitTimeout                             | Number of seconds to wait for the database to be ready before backup/restore process.                                                  | `300`               |
+| elasticsearch.enabled                   | If true, deploys Elasticsearch addon                                                                                                   | `true`              |
+| elasticsearch.backup.args               | Arguments to pass to `multielasticdump` command  during backup process                                                                 | `""`                |
+| elasticsearch.restore.args              | Arguments to pass to `multielasticdump` command during restore process                                                                 | `""`                |
+| mariadb.enabled                         | If true, deploys MariaDB addon                                                                                                         | `true`              |
+| mariadb.backup.args                     | Arguments to pass to `mariadbdump` command  during bakcup process                                                                      | `"--all-databases"` |
+| mariadb.restore.args                    | Arguments to pass to `mariadb` command during restore process                                                                          | `""`                |
+| mongodb.enabled                         | If true, deploys MongoDB addon                                                                                                         | `true`              |
+| mongodb.maxConcurrency                  | Maximum concurrency to perform backup or restore tasks                                                                                 | `3`                 |
+| mongodb.backup.args                     | Arguments to pass to `mongodump` command during backup process                                                                         | `""`                |
+| mongodb.restore.args                    | Arguments to pass to `mongorestore` command during restore process                                                                     | `""`                |
+| mysql.enabled                           | If true, deploys MySQL addon                                                                                                           | `true`              |
+| mysql.backup.args                       | Arguments to pass to `mysqldump` command  during bakcup process                                                                        | `"--all-databases"` |
+| mysql.restore.args                      | Arguments to pass to `mysql` command during restore process                                                                            | `""`                |
+| perconaxtradb.enabled                   | If true, deploys Percona XtraDB addon                                                                                                  | `true`              |
+| perconaxtradb.backup.args               | Arguments to pass to `mysqldump` command  during bakcup process                                                                        | `"--all-databases"` |
+| perconaxtradb.backup.socatRetry         | Optional argument sent to backup script                                                                                                | `30`                |
+| perconaxtradb.restore.args              | Arguments to pass to `mysql` command during restore process                                                                            | `""`                |
+| perconaxtradb.restore.targetAppReplicas | Optional argument sent to recovery script                                                                                              | `1`                 |
+| postgres.enabled                        | If true, deploys PostgreSQL addon                                                                                                      | `true`              |
+| postgres.backup.cmd                     | Postgres dump command, can either be: pg_dumpall  or pg_dump                                                                           | `"pg_dumpall"`      |
+| postgres.backup.args                    | Arguments to pass to `backup.cmd` command during backup process                                                                        | `""`                |
+| postgres.restore.args                   | Arguments to pass to `psql` command during restore process                                                                             | `""`                |
 
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example:

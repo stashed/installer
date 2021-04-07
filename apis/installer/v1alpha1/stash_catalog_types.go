@@ -43,6 +43,7 @@ type StashCatalog struct {
 
 // StashCatalogSpec is the schema for Stash Postgres values file
 type StashCatalogSpec struct {
+	RegistryFQDN  string                 `json:"registryFQDN"`
 	Image         RegistryRef            `json:"image"`
 	WaitTimeout   int64                  `json:"waitTimeout"`
 	Elasticsearch StashElasticsearchSpec `json:"elasticsearch"`

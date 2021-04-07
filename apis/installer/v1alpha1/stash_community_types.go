@@ -49,6 +49,7 @@ type StashCommunitySpec struct {
 	//+optional
 	FullnameOverride string     `json:"fullnameOverride"`
 	ReplicaCount     int32      `json:"replicaCount"`
+	RegistryFQDN     string     `json:"registryFQDN"`
 	Operator         Container  `json:"operator"`
 	Pushgateway      Container  `json:"pushgateway"`
 	Cleaner          CleanerRef `json:"cleaner"`

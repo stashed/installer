@@ -1207,6 +1207,8 @@ spec:
                 - repository
                 - tag
                 type: object
+              registryFQDN:
+                type: string
               replicaCount:
                 format: int32
                 type: integer
@@ -1301,6 +1303,7 @@ spec:
             - monitoring
             - operator
             - pushgateway
+            - registryFQDN
             - replicaCount
             - security
             - serviceAccount

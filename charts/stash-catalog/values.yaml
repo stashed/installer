@@ -2,6 +2,9 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+# Docker registry fqdn used to pull Stash related images.
+# Set this to use docker registry hosted at ${registryFQDN}/${registry}/${image}
+registryFQDN: ""
 image:
   # Docker registry used to pull Postgres addon image
   registry: stashed
