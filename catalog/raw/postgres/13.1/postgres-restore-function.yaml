@@ -23,7 +23,7 @@ spec:
   - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: stashed/stash-postgres:13.1-v2
+  image: stashed/stash-postgres:13.1-v3
   volumeMounts:
   - mountPath: /etc/repository/secret
     name: ${secretVolume}
