@@ -25,7 +25,7 @@ spec:
   - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: stashed/stash-mongodb:3.6.13-v7
+  image: stashed/stash-mongodb:3.6.13-v8
   volumeMounts:
   - mountPath: /etc/repository/secret
     name: ${secretVolume}
