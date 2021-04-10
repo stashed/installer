@@ -23,7 +23,7 @@ spec:
   - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: stashed/stash-mysql:8.0.21-v2
+  image: stashed/stash-mysql:8.0.21-v3
   volumeMounts:
   - mountPath: /etc/repository/secret
     name: ${secretVolume}

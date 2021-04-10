@@ -35,7 +35,7 @@ spec:
   - --retention-dry-run=${RETENTION_DRY_RUN:=false}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: '{{ include "catalog.registry" . }}/stash-postgres:10.14-v6'
+  image: '{{ include "catalog.registry" . }}/stash-postgres:10.14-v7'
   volumeMounts:
   - mountPath: /etc/repository/secret
     name: ${secretVolume}
