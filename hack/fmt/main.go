@@ -30,7 +30,7 @@ import (
 	"stash.appscode.dev/installer/catalog"
 	"stash.appscode.dev/installer/hack/fmt/templates"
 
-	"github.com/Masterminds/sprig"
+	"github.com/Masterminds/sprig/v3"
 	flag "github.com/spf13/pflag"
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
 	"kmodules.xyz/client-go/tools/parser"
