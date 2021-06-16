@@ -28,7 +28,7 @@ spec:
   - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: '{{ include "catalog.registry" . }}/stash-mongodb:4.1.4-v8'
+  image: '{{ include "catalog.registry" . }}/stash-mongodb:4.1.4-v9'
   volumeMounts:
   - mountPath: /etc/repository/secret
     name: ${secretVolume}
