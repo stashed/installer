@@ -35,7 +35,7 @@ spec:
   - --retention-dry-run=${RETENTION_DRY_RUN:=false}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: '{{ include "catalog.registry" . }}/stash-mongodb:4.0.11-v9'
+  image: '{{ include "catalog.registry" . }}/stash-mongodb:4.0.11-v10'
   volumeMounts:
   - mountPath: /etc/repository/secret
     name: ${secretVolume}
