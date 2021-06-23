@@ -1,0 +1,13 @@
+apiVersion: v2
+name: stash-metrics
+description: Stash Prometheus Metrics
+type: application
+version: v2021.04.16
+appVersion: v2021.04.16
+home: https://stash.run
+icon: https://cdn.appscode.com/images/products/stash/stash-community-icon.png
+sources:
+- https://github.com/stashed
+maintainers:
+- name: appscode
+  email: support@appscode.com
