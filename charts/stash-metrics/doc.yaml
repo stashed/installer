@@ -1,0 +1,18 @@
+project:
+  name: Stash Metrics
+  shortName: Stash Metrics
+  url: https://github.com/stashed
+  description: Stash Prometheus Metrics
+  app: Stash metrics
+repository:
+  url: https://charts.appscode.com/stable/
+  name: appscode
+chart:
+  name: stash-metrics
+  values: "-- generate from values file --"
+  valuesExample: "-- generate from values file --"
+prerequisites:
+- Kubernetes 1.16+
+release:
+  name: stash-metrics
+  namespace: kube-system
