@@ -47,6 +47,7 @@ fi
 
 crd-importer \
     --input=${crd_dir} \
+    --input=https://github.com/kmodules/custom-resources/raw/kubernetes-1.21.1/crds/metrics.appscode.com_metricsconfigurations.v1.yaml \
     --out=./charts/stash-crds/crds \
     --gk=BackupConfiguration.stash.appscode.com \
     --gk=BackupSession.stash.appscode.com \
@@ -76,7 +77,3 @@ crd-importer --v=v1beta1 \
     --out=. --output-yaml=stash-catalog-crds.yaml \
     --gk=Function.stash.appscode.com \
     --gk=Task.stash.appscode.com
-
-crd-importer \
-    --input=https://github.com/kmodules/custom-resources/raw/kubernetes-1.21.1/crds/metrics.appscode.com_metricsconfigurations.v1.yaml \
-    --out=./charts/stash-metrics/crds
