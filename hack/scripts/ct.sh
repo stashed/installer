@@ -21,7 +21,7 @@ for dir in charts/*/; do
     dir=${dir##*/}
     num_files=$(find charts/${dir}/templates -type f | wc -l)
     echo $dir
-    if [ $num_files -le 1 ] || [ "$dir" = "stash" ] || [[ "$dir" =~ "-metrics" ]]; then
+    if [ $num_files -le 1 ] || [ "$dir" = "stash" ] || [[ "$dir" =~ "-crds" ]]; then
         make ct CT_COMMAND=lint TEST_CHARTS=charts/$dir
     else
         make ct TEST_CHARTS=charts/$dir
