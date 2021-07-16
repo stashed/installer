@@ -170,11 +170,11 @@ gen-crds:
 		controller-gen                      \
 			$(CRD_OPTIONS)                  \
 			paths="./apis/..."              \
-			output:crd:artifacts:config=crds
+			output:crd:artifacts:config=.crds
 
 .PHONY: label-crds
 label-crds: $(BUILD_DIRS)
-	@for f in crds/*.yaml; do \
+	@for f in .crds/*.yaml; do \
 		echo "applying app.kubernetes.io/name=stash label to $$f"; \
 		kubectl label --overwrite -f $$f --local=true -o yaml app.kubernetes.io/name=stash > bin/crd.yaml; \
 		mv bin/crd.yaml $$f; \
@@ -207,19 +207,19 @@ gen-bindata:
 	    --rm                                                    \
 	    -u $$(id -u):$$(id -g)                                  \
 	    -v $$(pwd):/src                                         \
-	    -w /src/crds                                            \
+	    -w /src/.crds                                            \
 	    -v /tmp:/.cache                                         \
 	    --env HTTP_PROXY=$(HTTP_PROXY)                          \
 	    --env HTTPS_PROXY=$(HTTPS_PROXY)                        \
 	    $(BUILD_IMAGE)                                          \
-	    go-bindata -ignore=\\.go -ignore=\\.DS_Store -mode=0644 -modtime=1573722179 -o bindata.go -pkg crds ./...
+	    go-bindata -ignore=\\.go -ignore=\\.DS_Store -mode=0644 -modtime=1573722179 -o bindata.go -pkg .crds ./...
 
 .PHONY: gen-values-schema
 gen-values-schema: $(BUILD_DIRS)
 	@for dir in charts/*/; do \
 		dir=$${dir%*/}; \
 		dir=$${dir##*/}; \
-		crd_file=crds/installer.stash.appscode.com_$$(echo $$dir | tr -d '-')s.yaml; \
+		crd_file=.crds/installer.stash.appscode.com_$$(echo $$dir | tr -d '-')s.yaml; \
 		if [ ! -f $${crd_file} ]; then \
 			continue; \
 		fi; \
@@ -382,9 +382,8 @@ ct: $(BUILD_DIRS)
 	    --env KUBECONFIG=$(subst $(HOME),,$(KUBECONFIG))        \
 	    $(CHART_TEST_IMAGE)                                     \
 	    /bin/sh -c "                                            \
-	        kubectl delete crds --selector=app.kubernetes.io/name=stash; \
-	        helm dependency update charts/stash;                         \
-	        ct $(CT_COMMAND) --debug $(CT_ARGS)                          \
+	        kubectl delete crds --selector=app.kubernetes.io/name=kubevault; \
+	        ct $(CT_COMMAND) --debug --validate-maintainers=false $(CT_ARGS) \
 	    "
 
 ADDTL_LINTERS   := goconst,gofmt,goimports,unparam

@@ -58,7 +58,7 @@ crd-importer \
 
 crd-importer \
     --input=${crd_dir} \
-    --out=. --output-yaml=stash-crds.yaml \
+    --out=. --output-yaml=crds/stash-crds.yaml \
     --gk=BackupConfiguration.stash.appscode.com \
     --gk=BackupSession.stash.appscode.com \
     --gk=Function.stash.appscode.com \
@@ -66,14 +66,14 @@ crd-importer \
     --gk=RestoreSession.stash.appscode.com \
     --gk=Task.stash.appscode.com
 
-crd-importer --v=v1beta1 \
+crd-importer --v=v1 \
     --input=${crd_dir} \
     --out=./charts/stash-catalog/crds \
     --gk=Function.stash.appscode.com \
     --gk=Task.stash.appscode.com
 
-crd-importer --v=v1beta1 \
+crd-importer --v=v1 \
     --input=${crd_dir} \
-    --out=. --output-yaml=stash-catalog-crds.yaml \
+    --out=. --output-yaml=crds/stash-catalog-crds.yaml \
     --gk=Function.stash.appscode.com \
     --gk=Task.stash.appscode.com
