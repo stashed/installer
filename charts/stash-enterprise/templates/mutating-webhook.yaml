@@ -2,7 +2,7 @@
 {{- $major := default "0" .Capabilities.KubeVersion.Major | trimSuffix "+" | int64 }}
 {{- $minor := default "0" .Capabilities.KubeVersion.Minor | trimSuffix "+" | int64 }}
 {{- if .Values.apiserver.enableMutatingWebhook }}
-apiVersion: admissionregistration.k8s.io/v1beta1
+apiVersion: admissionregistration.k8s.io/v1
 kind: MutatingWebhookConfiguration
 metadata:
   name: admission.stash.appscode.com
@@ -30,6 +30,7 @@ webhooks:
     - "*"
     resources:
     - deployments
+  admissionReviewVersions: ["v1beta1"]
   failurePolicy: Ignore
 {{- if and (ge $major 1) (ge $minor 12) }}
   sideEffects: None
@@ -52,6 +53,7 @@ webhooks:
     - "*"
     resources:
     - daemonsets
+  admissionReviewVersions: ["v1beta1"]
   failurePolicy: Ignore
 {{- if and (ge $major 1) (ge $minor 12) }}
   sideEffects: None
@@ -72,6 +74,7 @@ webhooks:
     - "*"
     resources:
     - statefulsets
+  admissionReviewVersions: ["v1beta1"]
   failurePolicy: Ignore
 {{- if and (ge $major 1) (ge $minor 12) }}
   sideEffects: None
@@ -93,6 +96,7 @@ webhooks:
     - "*"
     resources:
     - replicationcontrollers
+  admissionReviewVersions: ["v1beta1"]
   failurePolicy: Ignore
 {{- if and (ge $major 1) (ge $minor 12) }}
   sideEffects: None
@@ -115,6 +119,7 @@ webhooks:
     - "*"
     resources:
     - replicasets
+  admissionReviewVersions: ["v1beta1"]
   failurePolicy: Ignore
 {{- if and (ge $major 1) (ge $minor 12) }}
   sideEffects: None
@@ -136,6 +141,7 @@ webhooks:
     - "*"
     resources:
     - deploymentconfigs
+  admissionReviewVersions: ["v1beta1"]
   failurePolicy: Ignore
 {{- if and (ge $major 1) (ge $minor 12) }}
   sideEffects: None
@@ -157,6 +163,7 @@ webhooks:
     - "*"
     resources:
     - restoresessions
+  admissionReviewVersions: ["v1beta1"]
   failurePolicy: Fail
 {{- if and (ge $major 1) (ge $minor 12) }}
   sideEffects: None

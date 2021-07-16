@@ -14,10 +14,13 @@ maintainers:
 dependencies:
 - name: stash-community
   repository: file://../stash-community
+  version: v0.14.1
   condition: features.community
 - name: stash-enterprise
   repository: file://../stash-enterprise
+  version: v0.14.1
   condition: features.enterprise
 - name: stash-catalog
   repository: file://../stash-catalog
+  version: v2021.06.23
   condition: features.enterprise

@@ -8,5 +8,5 @@ dependencies:
 - name: stash-catalog
   repository: file://../stash-catalog
   version: v2021.06.23
-digest: sha256:c9b2d319bab1f349b7ec62d1ecb8b07df03b0b6aca5fb69b5bcf10c6ffa6ad49
-generated: "2021-06-18T21:14:13.947234962Z"
+digest: sha256:03a894871d8580709ed438d1d6a61f8e1d29659c6f6a47697291bf76fc42e30c
+generated: "2021-07-15T16:55:28.9097411-07:00"
