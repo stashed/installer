@@ -1,5 +1,5 @@
 apiVersion: v2
-description: 'Stash by AppsCode - Backup your Kubernetes native applications'
+description: Stash by AppsCode - Backup your Kubernetes native applications
 name: stash
 type: application
 version: v2021.06.23
