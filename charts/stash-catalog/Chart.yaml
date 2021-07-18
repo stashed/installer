@@ -1,6 +1,6 @@
 apiVersion: v2
 name: stash-catalog
-description: 'Stash Catalog by AppsCode - Catalog of Stash Addons'
+description: Stash Catalog by AppsCode - Catalog of Stash Addons
 type: application
 version: v2021.06.23
 appVersion: v2021.06.23
