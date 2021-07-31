@@ -52,6 +52,7 @@ type StashCatalogSpec struct {
 	Mysql         StashMysqlSpec         `json:"mysql"`
 	PerconaXtraDB StashPerconaXtraDBSpec `json:"perconaxtradb"`
 	Postgres      StashPostgresSpec      `json:"postgres"`
+	Redis         StashRedisSpec         `json:"redis"`
 }
 
 // StashElasticsearchSpec is the schema for Stash Elasticsearch values file
@@ -158,6 +159,23 @@ type PostgresBackup struct {
 }
 
 type PostgresRestore struct {
+	// +optional
+	Args string `json:"args"`
+}
+
+// StashRedisSpec is the schema for Stash Redis values file
+type StashRedisSpec struct {
+	Enabled bool         `json:"enabled"`
+	Backup  RedisBackup  `json:"backup"`
+	Restore RedisRestore `json:"restore"`
+}
+
+type RedisBackup struct {
+	// +optional
+	Args string `json:"args"`
+}
+
+type RedisRestore struct {
 	// +optional
 	Args string `json:"args"`
 }

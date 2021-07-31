@@ -2980,6 +2980,9 @@ spec:
     - jsonPath: .status.phase
       name: Phase
       type: string
+    - jsonPath: .status.sessionDuration
+      name: Duration
+      type: string
     - jsonPath: .metadata.creationTimestamp
       name: Age
       type: date
@@ -5873,6 +5876,9 @@ spec:
       type: string
     - jsonPath: .status.phase
       name: Phase
+      type: string
+    - jsonPath: .status.sessionDuration
+      name: Duration
       type: string
     - jsonPath: .metadata.creationTimestamp
       name: Age
