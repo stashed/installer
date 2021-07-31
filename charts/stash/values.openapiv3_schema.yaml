@@ -182,6 +182,26 @@ properties:
         - enabled
         - restore
         type: object
+      redis:
+        description: StashRedisSpec is the schema for Stash Redis values file
+        properties:
+          backup:
+            properties:
+              args:
+                type: string
+            type: object
+          enabled:
+            type: boolean
+          restore:
+            properties:
+              args:
+                type: string
+            type: object
+        required:
+        - backup
+        - enabled
+        - restore
+        type: object
       registryFQDN:
         type: string
       waitTimeout:
@@ -195,6 +215,7 @@ properties:
     - mysql
     - perconaxtradb
     - postgres
+    - redis
     - registryFQDN
     - waitTimeout
     type: object
