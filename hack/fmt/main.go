@@ -212,6 +212,10 @@ func main() {
 							if strings.HasPrefix(args[i], "--pg-args=") {
 								args[i] = fmt.Sprintf(`--pg-args=${args:={{ .Values.%s.%s.args }}}`, loc.App, r.Type)
 							}
+						case "redis":
+							if strings.HasPrefix(args[i], "--redis-args=") {
+								args[i] = fmt.Sprintf(`--redis-args=${args:={{ .Values.%s.%s.args }}}`, loc.App, r.Type)
+							}
 						}
 					}
 

@@ -19,7 +19,7 @@ spec:
   - --max-connections=${MAX_CONNECTIONS:=0}
   - --hostname=${HOSTNAME:=}
   - --source-hostname=${SOURCE_HOSTNAME:=}
-  - --redis-args=${args:=}
+  - --redis-args=${args:={{ .Values.redis.restore.args }}}
   - --wait-timeout=${waitTimeout:={{ .Values.waitTimeout}}}
   - --namespace=${NAMESPACE:=default}
   - --appbinding=${TARGET_NAME:=}

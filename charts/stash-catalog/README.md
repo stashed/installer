@@ -71,6 +71,9 @@ The following table lists the configurable parameters of the `stash-catalog` cha
 | postgres.backup.cmd                     | Postgres dump command, can either be: pg_dumpall  or pg_dump                                                                           | `"pg_dumpall"`      |
 | postgres.backup.args                    | Arguments to pass to `backup.cmd` command during backup process                                                                        | `""`                |
 | postgres.restore.args                   | Arguments to pass to `psql` command during restore process                                                                             | `""`                |
+| redis.enabled                           | If true, deploys Redis addon                                                                                                           | `true`              |
+| redis.backup.args                       | Arguments to pass to `redis-dump` command  during bakcup process                                                                       | `""`                |
+| redis.restore.args                      | Arguments to pass to `redis` command during restore process                                                                            | `""`                |
 
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example:

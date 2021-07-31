@@ -76,3 +76,13 @@ postgres:
   restore:
     # Arguments to pass to `psql` command during restore process
     args: ""
+redis:
+  # If true, deploys Redis addon
+  enabled: true
+  # optional argument to send redis-dump or redis command
+  backup:
+    # Arguments to pass to `redis-dump` command  during bakcup process
+    args: ""
+  restore:
+    # Arguments to pass to `redis` command during restore process
+    args: ""
