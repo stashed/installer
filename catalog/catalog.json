@@ -48,6 +48,12 @@
       ]
     },
     {
+      "name": "nats",
+      "versions": [
+        "2.3.4"
+      ]
+    },
+    {
       "name": "percona-xtradb",
       "versions": [
         "5.7-v7"
