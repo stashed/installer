@@ -18,12 +18,13 @@ spec:
     - --source-hostname=${SOURCE_HOSTNAME:=}
     - --interim-data-dir=${INTERIM_DATA_DIR}
     - --nats-args=${args:=}
+    - --streams=${streams:=}
+    - --overwrite=${overwrite:=false}
     - --wait-timeout=${waitTimeout:=300}
     - --namespace=${NAMESPACE:=default}
     - --appbinding=${TARGET_NAME:=}
     - --snapshot=${RESTORE_SNAPSHOTS:=}
     - --output-dir=${outputDir:=}
-    - --streams=${streams:=}
     - --license-apiservice=${LICENSE_APISERVICE:=}
   image: hmsayem/stash-nats:sayem-dev_linux_amd64
   volumeMounts:
