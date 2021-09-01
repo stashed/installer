@@ -91,6 +91,36 @@ properties:
     - enabled
     - restore
     type: object
+  nats:
+    description: StashNATSSpec is the schema for Stash NATS values file
+    properties:
+      backup:
+        properties:
+          args:
+            type: string
+          streams:
+            items:
+              type: string
+            type: array
+        type: object
+      enabled:
+        type: boolean
+      restore:
+        properties:
+          args:
+            type: string
+          overwrite:
+            type: boolean
+          streams:
+            items:
+              type: string
+            type: array
+        type: object
+    required:
+    - backup
+    - enabled
+    - restore
+    type: object
   perconaxtradb:
     description: StashPerconaXtraDBSpec is the schema for Stash Percona XtraDB values
       file
@@ -173,6 +203,7 @@ required:
 - mariadb
 - mongodb
 - mysql
+- nats
 - perconaxtradb
 - postgres
 - redis

@@ -74,6 +74,12 @@ The following table lists the configurable parameters of the `stash-catalog` cha
 | redis.enabled                           | If true, deploys Redis addon                                                                                                           | `true`              |
 | redis.backup.args                       | Arguments to pass to `redis-dump` command  during bakcup process                                                                       | `""`                |
 | redis.restore.args                      | Arguments to pass to `redis` command during restore process                                                                            | `""`                |
+| nats.enabled                            | If true, deploys NATS addon                                                                                                            | `true`              |
+| nats.backup.args                        | Arguments to pass to `nats str backup` command during backup process                                                                   | `""`                |
+| nats.backup.streams                     | List of streams to backup. Don't set this field if you want to backup all streams.                                                     | `""`                |
+| nats.restore.args                       | Arguments to pass to `nats str restore` command during restore process                                                                 | `""`                |
+| nats.restore.streams                    | List of streams to restore. Don't set this field if you want to restore all the backed up streams.                                     | `""`                |
+| nats.restore.overwrite                  | Specify whether to delete the old stream before restoring from backup.                                                                 | `false`             |
 
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example:
