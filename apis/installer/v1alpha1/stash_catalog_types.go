@@ -53,6 +53,7 @@ type StashCatalogSpec struct {
 	PerconaXtraDB StashPerconaXtraDBSpec `json:"perconaxtradb"`
 	Postgres      StashPostgresSpec      `json:"postgres"`
 	Redis         StashRedisSpec         `json:"redis"`
+	NATS          StashNATSSpec          `json:"nats"`
 }
 
 // StashElasticsearchSpec is the schema for Stash Elasticsearch values file
@@ -178,6 +179,29 @@ type RedisBackup struct {
 type RedisRestore struct {
 	// +optional
 	Args string `json:"args"`
+}
+
+// StashNATSSpec is the schema for Stash NATS values file
+type StashNATSSpec struct {
+	Enabled bool        `json:"enabled"`
+	Backup  NATSBackup  `json:"backup"`
+	Restore NATSRestore `json:"restore"`
+}
+
+type NATSBackup struct {
+	// +optional
+	Args string `json:"args"`
+	// +optional
+	Streams []string `json:"streams"`
+}
+
+type NATSRestore struct {
+	// +optional
+	Args string `json:"args"`
+	// +optional
+	Streams []string `json:"streams"`
+	// +optional
+	Overwrite bool `json:"overwrite"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
