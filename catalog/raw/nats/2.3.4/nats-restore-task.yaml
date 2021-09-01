@@ -1,10 +1,10 @@
 apiVersion: stash.appscode.com/v1beta1
 kind: Task
 metadata:
-  name: nats-restore-2.3.4
+  name: nats-restore-2.4.0
 spec:
   steps:
-    - name: nats-restore-2.3.4
+    - name: nats-restore-2.4.0
       params:
         - name: outputDir
           value: /tmp/output
