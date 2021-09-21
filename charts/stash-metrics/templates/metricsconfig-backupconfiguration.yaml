@@ -41,7 +41,7 @@ spec:
       help: "Current conditions of this BackupConfiguration"
       type: gauge
       field:
-        path: status.conditions
+        path: .status.conditions
         type: Array
       labels:
         - key: invoker_kind
