@@ -1,0 +1,17 @@
+apiVersion: metrics.appscode.com/v1alpha1
+kind: MetricsConfiguration
+metadata:
+  name: stash-appscode-com-repository
+spec:
+  targetRef:
+    apiVersion: stash.appscode.com/v1alpha1
+    kind: Repository
+  metrics:
+    - name: stash_repository_created
+      help: "Unix creation timestamp of this Repository"
+      type: gauge
+      field:
+        path: .metadata.creationTimestamp
+        type: DateTime
+      metricValue:
+        valueFromPath: .metadata.creationTimestamp

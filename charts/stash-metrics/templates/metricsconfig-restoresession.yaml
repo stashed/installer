@@ -1,0 +1,44 @@
+apiVersion: metrics.appscode.com/v1alpha1
+kind: MetricsConfiguration
+metadata:
+  name: stash-appscode-com-restoresession
+spec:
+  targetRef:
+    apiVersion: stash.appscode.com/v1beta1
+    kind: RestoreSession
+  metrics:
+    - name: stash_restoresession_created
+      help: "Unix creation timestamp of this RestoreSession object"
+      type: gauge
+      field:
+        path: .metadata.creationTimestamp
+        type: DateTime
+      labels:
+        - key: invoker_kind
+          value: "RestoreSession"
+        - key: invoker_name
+          valuePath: .metadata.name
+      metricValue:
+        valueFromPath: .metadata.creationTimestamp
+    - name: stash_restoresession_info
+      help: "General information about this RestoreSession"
+      type: gauge
+      labels:
+        - key: driver
+          valuePath: .spec.driver
+        - key: repository
+          valuePath: .spec.repository.name
+        - key: target_api_version
+          valuePath: .spec.target.ref.apiVersion
+        - key: target_kind
+          valuePath: .spec.target.ref.kind
+        - key: target_name
+          valuePath: .spec.target.ref.name
+        - key: invoker_kind
+          value: "RestoreSession"
+        - key: invoker_name
+          valuePath: .metadata.name
+        - key: phase
+          valuePath: .status.phase
+      metricValue:
+        value: 1

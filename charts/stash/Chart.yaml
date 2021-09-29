@@ -24,3 +24,11 @@ dependencies:
   repository: file://../stash-catalog
   version: v2021.08.02
   condition: features.enterprise
+- name: stash-catalog
+  repository: file://../stash-catalog
+  version: v2021.08.02
+  condition: features.enterprise
+- name: stash-metrics
+  repository: file://../stash-metrics
+  version: v2021.08.02
+  condition: features.enterprise
