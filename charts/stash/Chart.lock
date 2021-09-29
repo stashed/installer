@@ -8,5 +8,11 @@ dependencies:
 - name: stash-catalog
   repository: file://../stash-catalog
   version: v2021.08.02
-digest: sha256:2d93f3754c745d0723a5e97b173603f964984587976fdfc3f78b849905949f89
-generated: "2021-07-31T08:10:43.951844786Z"
+- name: stash-catalog
+  repository: file://../stash-catalog
+  version: v2021.08.02
+- name: stash-metrics
+  repository: file://../stash-metrics
+  version: v2021.08.02
+digest: sha256:495a3436959d0385792255a323d83df9b2f7072aa27f888c81db7bfc7ccee713
+generated: "2021-09-17T09:50:10.202973769-07:00"

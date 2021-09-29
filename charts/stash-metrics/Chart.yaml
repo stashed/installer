@@ -1,0 +1,13 @@
+apiVersion: v2
+name: stash-metrics
+description: Stash State Metrics
+type: application
+version: v2021.08.02
+appVersion: v2021.08.02
+home: https://stash.run
+icon: https://cdn.appscode.com/images/products/stash/stash-community-icon.png
+sources:
+- https://github.com/stashed
+maintainers:
+- name: appscode
+  email: support@appscode.com
