@@ -1,10 +1,7 @@
-{{ if .Values.mongodb.enabled }}
 apiVersion: stash.appscode.com/v1beta1
 kind: Function
 metadata:
-  name: 'mongodb-restore-5.0.2'
-  labels:
-    {{- include "stash-catalog.labels" . | nindent 4 }}
+  name: mongodb-restore-5.0.3
 spec:
   args:
   - restore-mongo
@@ -19,17 +16,16 @@ spec:
   - --max-connections=${MAX_CONNECTIONS:=0}
   - --hostname=${HOSTNAME:=}
   - --source-hostname=${SOURCE_HOSTNAME:=}
-  - --mongo-args=${args:={{ .Values.mongodb.restore.args }}}
-  - --max-concurrency=${MAX_CONCURRENCY:={{ .Values.mongodb.maxConcurrency}}}
-  - --wait-timeout=${waitTimeout:={{ .Values.waitTimeout}}}
+  - --mongo-args=${args:=}
+  - --max-concurrency=${MAX_CONCURRENCY:=3}
+  - --wait-timeout=${waitTimeout:=300}
   - --namespace=${NAMESPACE:=default}
   - --appbinding=${TARGET_NAME:=}
   - --restoresession=${RESTORE_SESSION:=}
   - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: '{{ include "catalog.registry" . }}/stash-mongodb:5.0.2'
+  image: stashed/stash-mongodb:5.0.3
   volumeMounts:
   - mountPath: /etc/repository/secret
     name: ${secretVolume}
-{{ end }}

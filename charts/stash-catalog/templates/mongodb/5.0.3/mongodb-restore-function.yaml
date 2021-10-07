@@ -2,12 +2,12 @@
 apiVersion: stash.appscode.com/v1beta1
 kind: Function
 metadata:
-  name: 'mongodb-backup-5.0.2'
+  name: 'mongodb-restore-5.0.3'
   labels:
     {{- include "stash-catalog.labels" . | nindent 4 }}
 spec:
   args:
-  - backup-mongo
+  - restore-mongo
   - --provider=${REPOSITORY_PROVIDER:=}
   - --bucket=${REPOSITORY_BUCKET:=}
   - --endpoint=${REPOSITORY_ENDPOINT:=}
@@ -15,27 +15,20 @@ spec:
   - --path=${REPOSITORY_PREFIX:=}
   - --secret-dir=/etc/repository/secret
   - --scratch-dir=/tmp
-  - --enable-cache=${ENABLE_CACHE:=true}
+  - --enable-cache=false
   - --max-connections=${MAX_CONNECTIONS:=0}
   - --hostname=${HOSTNAME:=}
-  - --mongo-args=${args:={{ .Values.mongodb.backup.args }}}
+  - --source-hostname=${SOURCE_HOSTNAME:=}
+  - --mongo-args=${args:={{ .Values.mongodb.restore.args }}}
   - --max-concurrency=${MAX_CONCURRENCY:={{ .Values.mongodb.maxConcurrency}}}
   - --wait-timeout=${waitTimeout:={{ .Values.waitTimeout}}}
   - --namespace=${NAMESPACE:=default}
   - --appbinding=${TARGET_NAME:=}
-  - --backupsession=${BACKUP_SESSION:=}
-  - --retention-keep-last=${RETENTION_KEEP_LAST:=0}
-  - --retention-keep-hourly=${RETENTION_KEEP_HOURLY:=0}
-  - --retention-keep-daily=${RETENTION_KEEP_DAILY:=0}
-  - --retention-keep-weekly=${RETENTION_KEEP_WEEKLY:=0}
-  - --retention-keep-monthly=${RETENTION_KEEP_MONTHLY:=0}
-  - --retention-keep-yearly=${RETENTION_KEEP_YEARLY:=0}
-  - --retention-keep-tags=${RETENTION_KEEP_TAGS:=}
-  - --retention-prune=${RETENTION_PRUNE:=false}
-  - --retention-dry-run=${RETENTION_DRY_RUN:=false}
+  - --restoresession=${RESTORE_SESSION:=}
+  - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: '{{ include "catalog.registry" . }}/stash-mongodb:5.0.2'
+  image: '{{ include "catalog.registry" . }}/stash-mongodb:5.0.3'
   volumeMounts:
   - mountPath: /etc/repository/secret
     name: ${secretVolume}
