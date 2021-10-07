@@ -273,9 +273,9 @@ func main() {
 func ListResources(dir string) ([]*unstructured.Unstructured, error) {
 	var resources []*unstructured.Unstructured
 
-	err := parser.ProcessDir(dir, func(obj *unstructured.Unstructured) error {
-		obj.SetNamespace("")
-		resources = append(resources, obj)
+	err := parser.ProcessPath(dir, func(ri parser.ResourceInfo) error {
+		ri.Object.SetNamespace("")
+		resources = append(resources, ri.Object)
 		return nil
 	})
 	if err != nil {
