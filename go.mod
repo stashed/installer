@@ -4,13 +4,15 @@ go 1.16
 
 require (
 	github.com/Masterminds/sprig/v3 v3.2.2
+	github.com/google/go-cmp v0.5.6 // indirect
 	github.com/google/gofuzz v1.1.0
 	github.com/json-iterator/go v1.1.11 // indirect
 	github.com/spf13/pflag v1.0.5
+	golang.org/x/crypto v0.0.0-20210314154223-e6e6c4f2bb5b // indirect
 	gomodules.xyz/semvers v0.0.0-20210317131320-984e32dd89ca
 	k8s.io/api v0.21.1
 	k8s.io/apimachinery v0.21.1
-	kmodules.xyz/client-go v0.0.0-20210921150324-f005c6dfcb32
+	kmodules.xyz/client-go v0.0.0-20210928133955-8df5bb467db6
 	kmodules.xyz/schema-checker v0.1.2
 	sigs.k8s.io/yaml v1.2.0
 )
@@ -126,3 +128,5 @@ replace kmodules.xyz/resource-metadata => kmodules.xyz/resource-metadata v0.5.0
 replace sigs.k8s.io/application => github.com/kmodules/application v0.8.4-0.20210427030912-90eeee3bc4ad
 
 replace github.com/satori/go.uuid => github.com/gofrs/uuid v4.0.0+incompatible
+
+replace github.com/dgrijalva/jwt-go => github.com/golang-jwt/jwt v3.2.1+incompatible
