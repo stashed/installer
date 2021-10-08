@@ -60,6 +60,36 @@ properties:
         - enabled
         - restore
         type: object
+      etcd:
+        description: StashETCDSpec is the schema for Stash ETCD values file
+        properties:
+          backup:
+            properties:
+              args:
+                type: string
+            type: object
+          enabled:
+            type: boolean
+          restore:
+            properties:
+              args:
+                type: string
+              dataDir:
+                type: string
+              initialCluster:
+                type: string
+              initialClusterToken:
+                type: string
+              workloadKind:
+                type: string
+              workloadName:
+                type: string
+            type: object
+        required:
+        - backup
+        - enabled
+        - restore
+        type: object
       image:
         properties:
           registry:
@@ -239,6 +269,7 @@ properties:
         type: integer
     required:
     - elasticsearch
+    - etcd
     - image
     - mariadb
     - mongodb

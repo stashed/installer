@@ -80,6 +80,14 @@ The following table lists the configurable parameters of the `stash-catalog` cha
 | nats.restore.args                       | Arguments to pass to `nats str restore` command during restore process                                                                 | `""`                |
 | nats.restore.streams                    | List of streams to restore. Don't set this field if you want to restore all the backed up streams.                                     | `""`                |
 | nats.restore.overwrite                  | Specify whether to delete the old stream before restoring from backup.                                                                 | `false`             |
+| etcd.enabled                            | If true, deploys ETCD addon                                                                                                            | `true`              |
+| etcd.backup.args                        | Arguments to pass to `etcdctl save` command during backup process                                                                      | `""`                |
+| etcd.restore.args                       | Arguments to pass to `etcdctl restore` command during restore process                                                                  | `""`                |
+| etcd.restore.initialCluster             | List of the peers used to bootstrap the ETCD cluster                                                                                   | `""`                |
+| etcd.restore.initialClusterToken        | Initial token used for the ETCD cluster                                                                                                | `""`                |
+| etcd.restore.dataDir                    | Directory where the ETCD stores its data for persistence                                                                               | `""`                |
+| etcd.restore.workloadKind               | Kind of the workload used to deploy the ETCD cluster (i.e. StatefulSet)                                                                | `""`                |
+| etcd.restore.workloadName               | Name of the workload used to deploy the ETCD cluster                                                                                   | `""`                |
 
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example:

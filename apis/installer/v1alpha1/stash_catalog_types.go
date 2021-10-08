@@ -54,6 +54,7 @@ type StashCatalogSpec struct {
 	Postgres      StashPostgresSpec      `json:"postgres"`
 	Redis         StashRedisSpec         `json:"redis"`
 	NATS          StashNATSSpec          `json:"nats"`
+	ETCD          StashETCDSpec          `json:"etcd"`
 }
 
 // StashElasticsearchSpec is the schema for Stash Elasticsearch values file
@@ -202,6 +203,33 @@ type NATSRestore struct {
 	Streams []string `json:"streams"`
 	// +optional
 	Overwrite bool `json:"overwrite"`
+}
+
+// StashETCDSpec is the schema for Stash ETCD values file
+type StashETCDSpec struct {
+	Enabled bool        `json:"enabled"`
+	Backup  ETCDBackup  `json:"backup"`
+	Restore ETCDRestore `json:"restore"`
+}
+
+type ETCDBackup struct {
+	// +optional
+	Args string `json:"args"`
+}
+
+type ETCDRestore struct {
+	// +optional
+	Args string `json:"args"`
+	// +optional
+	InitialCluster string `json:"initialCluster"`
+	// +optional
+	InitialClusterToken string `json:"initialClusterToken"`
+	// +optional
+	DataDir string `json:"dataDir"`
+	// +optional
+	WorkloadKind string `json:"workloadKind"`
+	// +optional
+	WorkloadName string `json:"workloadName"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
