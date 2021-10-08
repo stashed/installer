@@ -1,7 +1,10 @@
+{{ if .Values.etcd.enabled }}
 apiVersion: stash.appscode.com/v1beta1
 kind: Task
 metadata:
-  name: etcd-restore-3.5.0
+  name: 'etcd-restore-3.5.0'
+  labels:
+    {{- include "stash-catalog.labels" . | nindent 4 }}
 spec:
   steps:
   - name: etcd-restore-3.5.0
@@ -20,3 +23,4 @@ spec:
   - name: secret-volume
     secret:
       secretName: ${REPOSITORY_SECRET_NAME}
+{{ end }}
