@@ -89,7 +89,7 @@ redis:
 nats:
   # If true, deploys NATS addon
   enabled: true
-  # optional argument to send to the backup or restore process
+  # Optional argument to send to the backup or restore process
   backup:
     # Arguments to pass to `nats str backup` command during backup process
     args: ""
@@ -102,3 +102,23 @@ nats:
     streams: ""
     # Specify whether to delete the old stream before restoring from backup.
     overwrite: false
+etcd:
+  # If true, deploys ETCD addon
+  enabled: true
+  # Optional argument to send to the backup or restore process
+  backup:
+    # Arguments to pass to `etcdctl save` command during backup process
+    args: ""
+  restore:
+    # Arguments to pass to `etcdctl restore` command during restore process
+    args: ""
+    # List of the peers used to bootstrap the ETCD cluster
+    initialCluster: ""
+    # Initial token used for the ETCD cluster
+    initialClusterToken: ""
+    # Directory where the ETCD stores its data for persistence
+    dataDir: ""
+    # Kind of the workload used to deploy the ETCD cluster (i.e. StatefulSet)
+    workloadKind: ""
+    # Name of the workload used to deploy the ETCD cluster
+    workloadName: ""

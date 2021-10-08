@@ -1,0 +1,42 @@
+{{ if .Values.etcd.enabled }}
+apiVersion: stash.appscode.com/v1beta1
+kind: Function
+metadata:
+  name: 'etcd-restore-3.5.0'
+  labels:
+    {{- include "stash-catalog.labels" . | nindent 4 }}
+spec:
+  args:
+  - restore-etcd
+  - --provider=${REPOSITORY_PROVIDER:=}
+  - --bucket=${REPOSITORY_BUCKET:=}
+  - --endpoint=${REPOSITORY_ENDPOINT:=}
+  - --region=${REPOSITORY_REGION:=}
+  - --path=${REPOSITORY_PREFIX:=}
+  - --secret-dir=/etc/repository/secret
+  - --scratch-dir=/tmp
+  - --enable-cache=${ENABLE_CACHE:=true}
+  - --max-connections=${MAX_CONNECTIONS:=0}
+  - --wait-timeout=${waitTimeout:={{ .Values.waitTimeout}}}
+  - --hostname=${HOSTNAME:=}
+  - --source-hostname=${SOURCE_HOSTNAME:=}
+  - --namespace=${NAMESPACE:=default}
+  - --appbinding=${TARGET_NAME:=}
+  - --etcd-args=${args:=}
+  - --initial-cluster=${initialCluster:=}
+  - --initial-cluster-token=${initialClusterToken:=}
+  - --data-dir=${dataDir:=}
+  - --workload-kind=${workloadKind:=}
+  - --workload-name=${workloadName:=}
+  - --output-dir=${outputDir:=}
+  - --license-apiservice=${LICENSE_APISERVICE:=}
+  - --invoker-kind=${INVOKER_KIND:=}
+  - --invoker-name=${INVOKER_NAME:=}
+  - --image=${ADDON_IMAGE:=}
+  - --secret-name=${REPOSITORY_SECRET_NAME:=}
+  - --snapshots=${RESTORE_SNAPSHOTS:=}
+  image: '{{ include "catalog.registry" . }}/stash-etcd:3.5.0'
+  volumeMounts:
+  - mountPath: /etc/repository/secret
+    name: ${secretVolume}
+{{ end }}
