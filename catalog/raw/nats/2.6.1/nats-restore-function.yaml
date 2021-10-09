@@ -1,7 +1,7 @@
 apiVersion: stash.appscode.com/v1beta1
 kind: Function
 metadata:
-  name: nats-restore-2.4.0
+  name: nats-restore-2.6.1
 spec:
   args:
   - restore-nats
@@ -26,7 +26,7 @@ spec:
   - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: stashed/stash-nats:2.4.0
+  image: stashed/stash-nats:2.6.1
   volumeMounts:
   - mountPath: /etc/repository/secret
     name: ${secretVolume}

@@ -1,10 +1,13 @@
+{{ if .Values.nats.enabled }}
 apiVersion: stash.appscode.com/v1beta1
 kind: Task
 metadata:
-  name: nats-backup-2.4.0
+  name: 'nats-backup-2.6.1'
+  labels:
+    {{- include "stash-catalog.labels" . | nindent 4 }}
 spec:
   steps:
-  - name: nats-backup-2.4.0
+  - name: nats-backup-2.6.1
     params:
     - name: outputDir
       value: /tmp/output
@@ -20,3 +23,4 @@ spec:
   - name: secret-volume
     secret:
       secretName: ${REPOSITORY_SECRET_NAME}
+{{ end }}
