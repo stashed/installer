@@ -26,7 +26,7 @@ spec:
   - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: '{{ include "catalog.registry" . }}/stash-postgres:10.14-v10'
+  image: '{{ include "catalog.registry" . }}/stash-postgres:10.14-v11'
   volumeMounts:
   - mountPath: /etc/repository/secret
     name: ${secretVolume}

@@ -32,7 +32,7 @@ spec:
   - --retention-dry-run=${RETENTION_DRY_RUN:=false}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: stashed/stash-postgres:9.6.19-v10
+  image: stashed/stash-postgres:9.6.19-v11
   volumeMounts:
   - mountPath: /etc/repository/secret
     name: ${secretVolume}

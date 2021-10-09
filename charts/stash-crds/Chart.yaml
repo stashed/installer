@@ -2,8 +2,8 @@ apiVersion: v2
 name: stash-crds
 description: Stash Custom Resource Definitions
 type: application
-version: v2021.08.02
-appVersion: v2021.08.02
+version: v2021.10.11
+appVersion: v2021.10.11
 home: https://stash.run
 icon: https://cdn.appscode.com/images/products/stash/stash-icon.png
 sources:
