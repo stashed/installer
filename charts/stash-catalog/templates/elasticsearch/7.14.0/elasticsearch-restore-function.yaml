@@ -1,0 +1,34 @@
+{{ if .Values.elasticsearch.enabled }}
+apiVersion: stash.appscode.com/v1beta1
+kind: Function
+metadata:
+  name: 'elasticsearch-restore-7.14.0'
+  labels:
+    {{- include "stash-catalog.labels" . | nindent 4 }}
+spec:
+  args:
+  - restore-es
+  - --provider=${REPOSITORY_PROVIDER:=}
+  - --bucket=${REPOSITORY_BUCKET:=}
+  - --endpoint=${REPOSITORY_ENDPOINT:=}
+  - --region=${REPOSITORY_REGION:=}
+  - --path=${REPOSITORY_PREFIX:=}
+  - --secret-dir=/etc/repository/secret
+  - --scratch-dir=/tmp
+  - --enable-cache=${ENABLE_CACHE:=true}
+  - --max-connections=${MAX_CONNECTIONS:=0}
+  - --wait-timeout=${waitTimeout:={{ .Values.waitTimeout}}}
+  - --hostname=${HOSTNAME:=}
+  - --source-hostname=${SOURCE_HOSTNAME:=}
+  - --interim-data-dir=${INTERIM_DATA_DIR}
+  - --namespace=${NAMESPACE:=default}
+  - --appbinding=${TARGET_NAME:=}
+  - --snapshot=${RESTORE_SNAPSHOTS:=}
+  - --es-args=${args:={{ .Values.elasticsearch.restore.args }}}
+  - --output-dir=${outputDir:=}
+  - --license-apiservice=${LICENSE_APISERVICE:=}
+  image: '{{ include "catalog.registry" . }}/stash-elasticsearch:7.14.0'
+  volumeMounts:
+  - mountPath: /etc/repository/secret
+    name: ${secretVolume}
+{{ end }}
