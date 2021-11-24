@@ -136,8 +136,6 @@ apiserver:
     serverCrt: ""
     # Private key for the serving certificate used by webhook server.
     serverKey: ""
-# If true, sends usage analytics
-enableAnalytics: true
 monitoring:
   # Name of monitoring agent (either "prometheus.io/operator" or "prometheus.io/builtin")
   agent: "none"
