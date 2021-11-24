@@ -23,7 +23,7 @@ spec:
   - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: stashed/stash-redis:5.0.13-v1
+  image: stashed/stash-redis:5.0.13-v2
   volumeMounts:
   - mountPath: /etc/repository/secret
     name: ${secretVolume}
