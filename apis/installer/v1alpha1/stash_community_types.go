@@ -78,10 +78,8 @@ type StashCommunitySpec struct {
 	PodSecurityContext *core.PodSecurityContext `json:"podSecurityContext"`
 	ServiceAccount     ServiceAccountSpec       `json:"serviceAccount"`
 	Apiserver          WebHookSpec              `json:"apiserver"`
-	//+optional
-	EnableAnalytics bool         `json:"enableAnalytics"`
-	Monitoring      Monitoring   `json:"monitoring"`
-	Security        SecuritySpec `json:"security"`
+	Monitoring         Monitoring               `json:"monitoring"`
+	Security           SecuritySpec             `json:"security"`
 	//+optional
 	Platform Platform `json:"platform"`
 	// +optional
