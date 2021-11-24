@@ -35,7 +35,7 @@ spec:
   - --image=${ADDON_IMAGE:=}
   - --secret-name=${REPOSITORY_SECRET_NAME:=}
   - --snapshots=${RESTORE_SNAPSHOTS:=}
-  image: '{{ include "catalog.registry" . }}/stash-etcd:3.5.0'
+  image: '{{ include "catalog.registry" . }}/stash-etcd:3.5.0-v1'
   volumeMounts:
   - mountPath: /etc/repository/secret
     name: ${secretVolume}
