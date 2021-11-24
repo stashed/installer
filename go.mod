@@ -10,7 +10,7 @@ require (
 	gomodules.xyz/semvers v0.0.0-20210317131320-984e32dd89ca
 	k8s.io/api v0.21.1
 	k8s.io/apimachinery v0.21.1
-	kmodules.xyz/client-go v0.0.0-20211028132207-0cf6ea46b030
+	kmodules.xyz/client-go v0.0.0-20211122091731-6c471b24a4ea
 	kmodules.xyz/schema-checker v0.1.2
 	sigs.k8s.io/yaml v1.2.0
 )
