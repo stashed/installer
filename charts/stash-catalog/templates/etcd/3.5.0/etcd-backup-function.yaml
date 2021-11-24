@@ -34,7 +34,7 @@ spec:
   - --retention-dry-run=${RETENTION_DRY_RUN:=false}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: '{{ include "catalog.registry" . }}/stash-etcd:3.5.0'
+  image: '{{ include "catalog.registry" . }}/stash-etcd:3.5.0-v1'
   volumeMounts:
   - mountPath: /etc/repository/secret
     name: ${secretVolume}
