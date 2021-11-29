@@ -35,3 +35,4 @@ _testmain.go
 /.go
 /.crds
 /charts/stash/charts
+/charts/stash-opscenter/charts
