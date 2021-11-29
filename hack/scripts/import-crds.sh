@@ -81,3 +81,7 @@ crd-importer --v=v1 \
 crd-importer \
     --input=https://github.com/kmodules/custom-resources/raw/kubernetes-1.21.1/crds/metrics.appscode.com_metricsconfigurations.yaml \
     --out=./charts/stash-metrics/crds
+
+crd-importer \
+    --input=https://github.com/open-viz/grafana-tools/raw/v0.0.1/crds/openviz.dev_grafanadashboards.yaml \
+    --out=./charts/stash-grafana-dashboards/crds
