@@ -1,0 +1,9 @@
+dependencies:
+- name: stash-metrics
+  repository: file://../stash-metrics
+  version: v2021.11.24
+- name: stash-grafana-dashboards
+  repository: file://../stash-grafana-dashboards
+  version: v2021.11.24
+digest: sha256:e5d26ae7c84d8ba90a400adbb4cf9cb63f135bf5484286cd264255630f4ee95f
+generated: "2021-11-29T01:02:01.393045953-08:00"

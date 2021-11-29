@@ -11,8 +11,5 @@ dependencies:
 - name: stash-catalog
   repository: file://../stash-catalog
   version: v2021.11.24
-- name: stash-metrics
-  repository: file://../stash-metrics
-  version: v2021.11.24
-digest: sha256:6cd9863913dfea14ecc9120257ace61330da440431cc71450cb76352233bbc86
-generated: "2021-11-24T13:05:43.131909094Z"
+digest: sha256:3941cd818aa8e212e0a2781685b3bd29ae5de7109c7c99e5d7758a779984a0dc
+generated: "2021-11-29T01:01:54.1114356-08:00"
