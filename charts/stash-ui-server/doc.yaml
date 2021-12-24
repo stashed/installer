@@ -1,0 +1,18 @@
+project:
+  name: KubeDB UI Server by AppsCode
+  shortName: KubeDB UI Server
+  url: https://github.com/stashed/ui-server
+  description: KubeDB UI Server for ByteBuilders
+  app: a KubeDB UI Server
+repository:
+  url: https://charts.appscode.com/stable/
+  name: appscode
+chart:
+  name: stash-ui-server
+  values: -- generate from values file --
+  valuesExample: -- generate from values file --
+prerequisites:
+- Kubernetes 1.16+
+release:
+  name: stash-ui-server
+  namespace: kubeops
