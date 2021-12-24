@@ -1,0 +1,3 @@
+To verify that UI Server has started, run:
+
+  kubectl get deployment --namespace {{ .Release.Namespace }} -l "app.kubernetes.io/name={{ include "stash-ui-server.name" . }},app.kubernetes.io/instance={{ .Release.Name }}"
