@@ -13,7 +13,6 @@ spec:
   - --endpoint=${REPOSITORY_ENDPOINT:=}
   - --region=${REPOSITORY_REGION:=}
   - --path=${REPOSITORY_PREFIX:=}
-  - --secret-dir=/etc/repository/secret
   - --scratch-dir=/tmp
   - --enable-cache=${ENABLE_CACHE:=true}
   - --max-connections=${MAX_CONNECTIONS:=0}
@@ -29,8 +28,8 @@ spec:
   - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
+  - --storage-secret-name=${storageSecretName:=}
+  - --storage-secret-namespace=${storageSecretNamespace:=}
+  - --warning-threshold=${warningThreshold:=30s}
   image: '{{ include "catalog.registry" . }}/stash-nats:2.6.1-v1'
-  volumeMounts:
-  - mountPath: /etc/repository/secret
-    name: ${secretVolume}
 {{ end }}

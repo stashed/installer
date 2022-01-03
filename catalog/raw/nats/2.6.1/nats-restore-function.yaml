@@ -28,5 +28,4 @@ spec:
   - --storage-secret-name=${storageSecretName:=}
   - --storage-secret-namespace=${storageSecretNamespace:=}
   - --warning-threshold=${warningThreshold:=30s}
-  image:  stashed/stash-nats:2.6.1-v1
-
+  image: stashed/stash-nats:2.6.1-v1

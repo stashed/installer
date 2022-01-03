@@ -25,4 +25,3 @@ spec:
   - --storage-secret-name=${storageSecretName:=}
   - --storage-secret-namespace=${storageSecretNamespace:=}
   image: stashed/stash-mysql:8.0.3-v14
-
