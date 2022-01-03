@@ -4,11 +4,11 @@ metadata:
   name: mysql-restore-8.0.3
 spec:
   steps:
-    - name: mysql-restore-8.0.3
-      params:
-        - name: outputDir
-          value: /tmp/output
-    - name: update-status
-      params:
-        - name: outputDir
-          value: /tmp/output
+  - name: mysql-restore-8.0.3
+    params:
+    - name: outputDir
+      value: /tmp/output
+  - name: update-status
+    params:
+    - name: outputDir
+      value: /tmp/output
