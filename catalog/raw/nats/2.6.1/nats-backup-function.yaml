@@ -17,9 +17,6 @@ spec:
   - --interim-data-dir=${INTERIM_DATA_DIR}
   - --nats-args=${args:=}
   - --streams=${streams:=}
-  - --storage-secret-name=${storageSecretName:=}
-  - --storage-secret-namespace=${storageSecretNamespace:=}
-  - --warning-threshold=${warningThreshold:=30s}
   - --wait-timeout=${waitTimeout:=300}
   - --namespace=${NAMESPACE:=default}
   - --appbinding=${TARGET_NAME:=}
@@ -35,4 +32,7 @@ spec:
   - --retention-dry-run=${RETENTION_DRY_RUN:=false}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
+  - --storage-secret-name=${storageSecretName:=}
+  - --storage-secret-namespace=${storageSecretNamespace:=}
+  - --warning-threshold=${warningThreshold:=30s}
   image: stashed/stash-nats:2.6.1-v1
