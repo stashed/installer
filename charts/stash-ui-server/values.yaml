@@ -34,7 +34,7 @@ image:
 #   --set imagePullSecrets[1].name=sec1
 imagePullSecrets: []
 # Container image pull policy
-imagePullPolicy: IfNotPresent
+imagePullPolicy: Always
 # If true, installs Stash operator as critical addon
 criticalAddon: false
 # Log level for operator
