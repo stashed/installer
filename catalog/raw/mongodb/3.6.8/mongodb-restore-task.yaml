@@ -8,15 +8,7 @@ spec:
     params:
     - name: outputDir
       value: /tmp/output
-    - name: secretVolume
-      value: secret-volume
   - name: update-status
     params:
     - name: outputDir
       value: /tmp/output
-    - name: secretVolume
-      value: secret-volume
-  volumes:
-  - name: secret-volume
-    secret:
-      secretName: ${REPOSITORY_SECRET_NAME}
