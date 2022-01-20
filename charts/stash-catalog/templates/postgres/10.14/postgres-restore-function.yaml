@@ -27,5 +27,6 @@ spec:
   - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
+  - --user=${user:=}
   image: '{{ include "catalog.registry" . }}/stash-postgres:10.14-v12'
 {{ end }}
