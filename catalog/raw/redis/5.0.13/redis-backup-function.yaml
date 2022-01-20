@@ -10,7 +10,8 @@ spec:
   - --endpoint=${REPOSITORY_ENDPOINT:=}
   - --region=${REPOSITORY_REGION:=}
   - --path=${REPOSITORY_PREFIX:=}
-  - --secret-dir=/etc/repository/secret
+  - --storage-secret-name=${REPOSITORY_SECRET_NAME:=}
+  - --storage-secret-namespace=${REPOSITORY_SECRET_NAMESPACE:=}
   - --scratch-dir=/tmp
   - --enable-cache=${ENABLE_CACHE:=true}
   - --max-connections=${MAX_CONNECTIONS:=0}
@@ -32,6 +33,3 @@ spec:
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
   image: stashed/stash-redis:5.0.13-v2
-  volumeMounts:
-  - mountPath: /etc/repository/secret
-    name: ${secretVolume}
