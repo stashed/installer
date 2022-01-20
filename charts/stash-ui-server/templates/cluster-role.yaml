@@ -13,6 +13,8 @@ rules:
 - apiGroups:
   - stash.appscode.com
   - repositories.stash.appscode.com
+  - kubedb.com
+  - appcatalog.appscode.com
   resources:
   - "*"
   verbs: ["get", "list", "watch"]
@@ -45,3 +47,7 @@ rules:
   - roles
   - rolebindings
   verbs: ["get", "list", "watch"]
+- nonResourceURLs:
+  - ""
+  - "/apis/ui.stash.appscode.com/v1alpha1"
+  verbs: ["get"]
