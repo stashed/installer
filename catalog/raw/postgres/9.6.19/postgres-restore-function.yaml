@@ -10,7 +10,8 @@ spec:
   - --endpoint=${REPOSITORY_ENDPOINT:=}
   - --region=${REPOSITORY_REGION:=}
   - --path=${REPOSITORY_PREFIX:=}
-  - --secret-dir=/etc/repository/secret
+  - --storage-secret-name=${REPOSITORY_SECRET_NAME:=}
+  - --storage-secret-namespace=${REPOSITORY_SECRET_NAMESPACE:=}
   - --scratch-dir=/tmp
   - --enable-cache=${ENABLE_CACHE:=true}
   - --max-connections=${MAX_CONNECTIONS:=0}
@@ -23,7 +24,5 @@ spec:
   - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
+  - --user=${user:=}
   image: stashed/stash-postgres:9.6.19-v12
-  volumeMounts:
-  - mountPath: /etc/repository/secret
-    name: ${secretVolume}

@@ -13,7 +13,8 @@ spec:
   - --endpoint=${REPOSITORY_ENDPOINT:=}
   - --region=${REPOSITORY_REGION:=}
   - --path=${REPOSITORY_PREFIX:=}
-  - --secret-dir=/etc/repository/secret
+  - --storage-secret-name=${REPOSITORY_SECRET_NAME:=}
+  - --storage-secret-namespace=${REPOSITORY_SECRET_NAMESPACE:=}
   - --scratch-dir=/tmp
   - --enable-cache=false
   - --max-connections=${MAX_CONNECTIONS:=0}
@@ -28,8 +29,6 @@ spec:
   - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
+  - --authentication-database=${authenticationDatabase:=admin}
   image: '{{ include "catalog.registry" . }}/stash-mongodb:4.0.3-v13'
-  volumeMounts:
-  - mountPath: /etc/repository/secret
-    name: ${secretVolume}
 {{ end }}
