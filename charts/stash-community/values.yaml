@@ -47,7 +47,7 @@ pushgateway:
   # Prometheus pushgateway container image
   repository: pushgateway
   # Prometheus pushgateway container image tag
-  tag: v0.5.2
+  tag: v1.4.2
   # Compute Resources required by the Prometheus pushgateway container
   resources: {}
   # Security options the Prometheus pushgateway container should run with
