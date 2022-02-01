@@ -40,6 +40,13 @@ type Container struct {
 	SecurityContext *core.SecurityContext `json:"securityContext"`
 }
 
+type Pushgateway struct {
+	Container `json:",inline"`
+	// Specify the URL of a custom Pushgateway server
+	// +optional
+	CustomURL string `json:"customURL,omitempty"`
+}
+
 type CleanerRef struct {
 	ImageRef `json:",inline"`
 	Skip     bool `json:"skip"`
