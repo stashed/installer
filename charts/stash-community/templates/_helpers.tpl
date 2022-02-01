@@ -104,3 +104,11 @@ imagePullSecrets:
 {{- end -}}
 {{- $secrets | join "," | print -}}
 {{- end -}}
+
+{{- define  "pushgateway-url" -}}
+{{- if .Values.pushgateway.customURL -}}
+    {{- .Values.pushgateway.customURL -}}
+{{- else -}}
+    {{- printf "http://%s.%s.svc:56789" (include "stash-community.fullname" . ) .Release.Namespace -}}
+{{- end -}}
+{{- end -}}

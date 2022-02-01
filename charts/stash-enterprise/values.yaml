@@ -47,7 +47,7 @@ pushgateway:
   # Prometheus pushgateway container image
   repository: pushgateway
   # Prometheus pushgateway container image tag
-  tag: v1.2.0
+  tag: v1.4.2
   # Compute Resources required by the Prometheus pushgateway container
   resources: {}
   # Security options the Prometheus pushgateway container should run with
@@ -58,6 +58,10 @@ pushgateway:
   # readOnlyRootFilesystem: true
   # runAsNonRoot: true
   # runAsUser: 1000
+
+  # If you want to use a custom Pushgatway, specify its URL.
+  # Stash will not inject pushgatway sidecar if you set this field.
+  customURL:
 cleaner:
   # Docker registry used to pull Webhook cleaner image
   registry: appscode

@@ -51,7 +51,7 @@ spec:
         - --audit-log-path=-
         - --tls-cert-file=/var/serving-cert/tls.crt
         - --tls-private-key-file=/var/serving-cert/tls.key
-        - --service-name={{ include "stash-enterprise.fullname" . }}
+        - --pushgateway-url={{ include "pushgateway-url" . }}
         - --enable-mutating-webhook={{ .Values.apiserver.enableMutatingWebhook }}
         - --enable-validating-webhook={{ .Values.apiserver.enableValidatingWebhook }}
         - --bypass-validating-webhook-xray={{ .Values.apiserver.bypassValidatingWebhookXray }}
@@ -102,6 +102,7 @@ spec:
         - mountPath: /var/run/secrets/appscode/license
           name: license
         {{- end }}
+      {{- if not .Values.pushgateway.customURL }}
       - name: pushgateway
         securityContext:
           {{- toYaml .Values.pushgateway.securityContext | nindent 10 }}
@@ -119,6 +120,7 @@ spec:
           name: data-volume
         - mountPath: /tmp
           name: stash-scratchdir
+      {{- end }}
       volumes:
       - emptyDir: {}
         name: data-volume

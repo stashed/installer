@@ -1164,6 +1164,9 @@ properties:
     type: object
   pushgateway:
     properties:
+      customURL:
+        description: Specify the URL of a custom Pushgateway server
+        type: string
       registry:
         type: string
       repository:

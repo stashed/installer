@@ -25,10 +25,12 @@ spec:
   - name: api
     port: 443
     targetPort: 8443
+  {{- if not .Values.pushgateway.customURL }}
   # Port used to expose Prometheus pushgateway
   - name: pushgateway
     port: 56789
     protocol: TCP
     targetPort: 56789
+  {{- end }}
   selector:
     {{- include "stash-community.selectorLabels" . | nindent 4 }}
