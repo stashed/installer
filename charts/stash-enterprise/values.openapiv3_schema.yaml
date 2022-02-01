@@ -811,6 +811,19 @@ properties:
     - skip
     - tag
     type: object
+  crdInstaller:
+    properties:
+      registry:
+        type: string
+      repository:
+        type: string
+      tag:
+        type: string
+    required:
+    - registry
+    - repository
+    - tag
+    type: object
   criticalAddon:
     type: boolean
   fullnameOverride:
@@ -1435,6 +1448,7 @@ properties:
 required:
 - apiserver
 - cleaner
+- crdInstaller
 - imagePullPolicy
 - monitoring
 - operator

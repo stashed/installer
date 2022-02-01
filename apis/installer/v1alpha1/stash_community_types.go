@@ -51,6 +51,7 @@ type StashCommunitySpec struct {
 	ReplicaCount     int32       `json:"replicaCount"`
 	RegistryFQDN     string      `json:"registryFQDN"`
 	Operator         Container   `json:"operator"`
+	CRDInstaller     ImageRef    `json:"crdInstaller"`
 	Pushgateway      Pushgateway `json:"pushgateway"`
 	Cleaner          CleanerRef  `json:"cleaner"`
 	ImagePullPolicy  string      `json:"imagePullPolicy"`

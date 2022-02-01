@@ -831,6 +831,7 @@ func (in *StashCommunityList) DeepCopyObject() runtime.Object {
 func (in *StashCommunitySpec) DeepCopyInto(out *StashCommunitySpec) {
 	*out = *in
 	in.Operator.DeepCopyInto(&out.Operator)
+	out.CRDInstaller = in.CRDInstaller
 	in.Pushgateway.DeepCopyInto(&out.Pushgateway)
 	out.Cleaner = in.Cleaner
 	if in.ImagePullSecrets != nil {
@@ -994,6 +995,7 @@ func (in *StashEnterpriseList) DeepCopyObject() runtime.Object {
 func (in *StashEnterpriseSpec) DeepCopyInto(out *StashEnterpriseSpec) {
 	*out = *in
 	in.Operator.DeepCopyInto(&out.Operator)
+	out.CRDInstaller = in.CRDInstaller
 	in.Pushgateway.DeepCopyInto(&out.Pushgateway)
 	out.Cleaner = in.Cleaner
 	if in.ImagePullSecrets != nil {

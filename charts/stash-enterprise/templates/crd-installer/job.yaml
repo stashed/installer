@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "stash-enterprise.fullname" . }}-crd-installer
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "stash-enterprise.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": pre-install,pre-upgrade,pre-rollback
+    "helm.sh/hook-delete-policy": before-hook-creation,hook-failed
+spec:
+  backoffLimit: 1
+  activeDeadlineSeconds: 300
+  ttlSecondsAfterFinished: 10
+  template:
+    spec:
+      serviceAccountName: {{ include "stash-enterprise.serviceAccountName" . }}-crd-installer
+      containers:
+        - name: installer
+          image: "{{ .Values.crdInstaller.registry | default (include "operator.registry" .) }}/{{.Values.crdInstaller.repository}}:{{.Values.crdInstaller.tag | default .Values.operator.tag }}"
+          args:
+            - --enterprise=true
+          imagePullPolicy: {{ .Values.imagePullPolicy }}
+      restartPolicy: Never
