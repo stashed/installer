@@ -9,7 +9,7 @@ metadata:
     "helm.sh/hook": pre-install,pre-upgrade,pre-rollback
     "helm.sh/hook-delete-policy": before-hook-creation,hook-failed
 spec:
-  backoffLimit: 1
+  backoffLimit: 3
   activeDeadlineSeconds: 300
   ttlSecondsAfterFinished: 10
   template:
