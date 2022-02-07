@@ -1,0 +1,17 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ include "stash-enterprise.fullname" . }}-crd-installer
+  labels:
+    {{- include "stash-enterprise.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": pre-install,pre-upgrade,pre-rollback
+    "helm.sh/hook-delete-policy": before-hook-creation,hook-failed
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ include "stash-enterprise.fullname" . }}-crd-installer
+subjects:
+  - kind: ServiceAccount
+    name: {{ include "stash-enterprise.serviceAccountName" . }}-crd-installer
+    namespace: {{ .Release.Namespace }}
