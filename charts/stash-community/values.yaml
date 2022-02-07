@@ -24,7 +24,7 @@ licenseApiService: v1beta1.admission.stash.appscode.com
 registryFQDN: ""
 operator:
   # Docker registry used to pull operator image
-  registry: appscode
+  registry: stashed
   # Name of operator container image
   repository: stash
   # Operator container image tag
@@ -41,6 +41,15 @@ operator:
   # readOnlyRootFilesystem: true
   # runAsNonRoot: true
   # runAsUser: 1000
+
+crdInstaller:
+  # Docker registry of the CRD installer image. By default, it will use the same registry as the operator.
+  registry: ""
+  # Name of CRD crd installer image. Default `stash-crd-installer`
+  repository: stash-crd-installer
+  # Tag of the CRD installer image. By default, it will use the same tag as the operator.
+  tag: ""
+
 pushgateway:
   # Docker registry used to pull Prometheus pushgateway image
   registry: prom

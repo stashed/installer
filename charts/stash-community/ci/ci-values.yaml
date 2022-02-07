@@ -1,2 +1,5 @@
 # https://github.com/helm/charts/blob/master/test/README.md#providing-custom-test-values
 license: ""
+crdInstaller:
+  registry: appscodeci
+  tag: latest

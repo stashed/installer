@@ -1,0 +1,31 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "stash-community.fullname" . }}-cleaner
+  labels:
+    {{- include "stash-community.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": pre-delete
+    "helm.sh/hook-delete-policy": hook-succeeded,hook-failed
+rules:
+  - apiGroups:
+      - admissionregistration.k8s.io
+    resources:
+      - mutatingwebhookconfigurations
+      - validatingwebhookconfigurations
+    verbs: ["delete"]
+  - apiGroups:
+      - apiregistration.k8s.io
+    resources:
+      - apiservices
+    verbs: ["delete"]
+  - apiGroups:
+      - stash.appscode.com
+    resources:
+      - "*"
+    verbs: ["delete"]
+  - apiGroups:
+      - batch
+    resources:
+      - jobs
+    verbs: ["delete"]
