@@ -24,7 +24,7 @@ licenseApiService: v1beta1.admission.stash.appscode.com
 registryFQDN: ""
 operator:
   # Docker registry used to pull operator image
-  registry: appscode
+  registry: stashed
   # Name of operator container image
   repository: stash
   # Operator container image tag
