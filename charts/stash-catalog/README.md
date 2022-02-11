@@ -44,50 +44,50 @@ The command removes all the Kubernetes components associated with the chart and 
 
 The following table lists the configurable parameters of the `stash-catalog` chart and their default values.
 
-|                Parameter                |                                                              Description                                                               |       Default       |
-|-----------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|---------------------|
-| registryFQDN                            | Docker registry fqdn used to pull Stash related images. Set this to use docker registry hosted at ${registryFQDN}/${registry}/${image} | `""`                |
-| image.registry                          | Docker registry used to pull Postgres addon image                                                                                      | `stashed`           |
-| waitTimeout                             | Number of seconds to wait for the database to be ready before backup/restore process.                                                  | `300`               |
-| elasticsearch.enabled                   | If true, deploys Elasticsearch addon                                                                                                   | `true`              |
-| elasticsearch.backup.args               | Arguments to pass to `multielasticdump` command  during backup process                                                                 | `""`                |
-| elasticsearch.restore.args              | Arguments to pass to `multielasticdump` command during restore process                                                                 | `""`                |
-| mariadb.enabled                         | If true, deploys MariaDB addon                                                                                                         | `true`              |
-| mariadb.backup.args                     | Arguments to pass to `mariadbdump` command  during bakcup process                                                                      | `"--all-databases"` |
-| mariadb.restore.args                    | Arguments to pass to `mariadb` command during restore process                                                                          | `""`                |
-| mongodb.enabled                         | If true, deploys MongoDB addon                                                                                                         | `true`              |
-| mongodb.maxConcurrency                  | Maximum concurrency to perform backup or restore tasks                                                                                 | `3`                 |
-| mongodb.backup.args                     | Arguments to pass to `mongodump` command during backup process                                                                         | `""`                |
-| mongodb.restore.args                    | Arguments to pass to `mongorestore` command during restore process                                                                     | `""`                |
-| mysql.enabled                           | If true, deploys MySQL addon                                                                                                           | `true`              |
-| mysql.backup.args                       | Arguments to pass to `mysqldump` command  during bakcup process                                                                        | `"--all-databases"` |
-| mysql.restore.args                      | Arguments to pass to `mysql` command during restore process                                                                            | `""`                |
-| perconaxtradb.enabled                   | If true, deploys Percona XtraDB addon                                                                                                  | `true`              |
-| perconaxtradb.backup.args               | Arguments to pass to `mysqldump` command  during bakcup process                                                                        | `"--all-databases"` |
-| perconaxtradb.backup.socatRetry         | Optional argument sent to backup script                                                                                                | `30`                |
-| perconaxtradb.restore.args              | Arguments to pass to `mysql` command during restore process                                                                            | `""`                |
-| perconaxtradb.restore.targetAppReplicas | Optional argument sent to recovery script                                                                                              | `1`                 |
-| postgres.enabled                        | If true, deploys PostgreSQL addon                                                                                                      | `true`              |
-| postgres.backup.cmd                     | Postgres dump command, can either be: pg_dumpall  or pg_dump                                                                           | `"pg_dumpall"`      |
-| postgres.backup.args                    | Arguments to pass to `backup.cmd` command during backup process                                                                        | `""`                |
-| postgres.restore.args                   | Arguments to pass to `psql` command during restore process                                                                             | `""`                |
-| redis.enabled                           | If true, deploys Redis addon                                                                                                           | `true`              |
-| redis.backup.args                       | Arguments to pass to `redis-dump` command  during bakcup process                                                                       | `""`                |
-| redis.restore.args                      | Arguments to pass to `redis` command during restore process                                                                            | `""`                |
-| nats.enabled                            | If true, deploys NATS addon                                                                                                            | `true`              |
-| nats.backup.args                        | Arguments to pass to `nats str backup` command during backup process                                                                   | `""`                |
-| nats.backup.streams                     | List of streams to backup. Don't set this field if you want to backup all streams.                                                     | `""`                |
-| nats.restore.args                       | Arguments to pass to `nats str restore` command during restore process                                                                 | `""`                |
-| nats.restore.streams                    | List of streams to restore. Don't set this field if you want to restore all the backed up streams.                                     | `""`                |
-| nats.restore.overwrite                  | Specify whether to delete the old stream before restoring from backup.                                                                 | `false`             |
-| etcd.enabled                            | If true, deploys ETCD addon                                                                                                            | `true`              |
-| etcd.backup.args                        | Arguments to pass to `etcdctl save` command during backup process                                                                      | `""`                |
-| etcd.restore.args                       | Arguments to pass to `etcdctl restore` command during restore process                                                                  | `""`                |
-| etcd.restore.initialCluster             | List of the peers used to bootstrap the ETCD cluster                                                                                   | `""`                |
-| etcd.restore.initialClusterToken        | Initial token used for the ETCD cluster                                                                                                | `""`                |
-| etcd.restore.dataDir                    | Directory where the ETCD stores its data for persistence                                                                               | `""`                |
-| etcd.restore.workloadKind               | Kind of the workload used to deploy the ETCD cluster (i.e. StatefulSet)                                                                | `""`                |
-| etcd.restore.workloadName               | Name of the workload used to deploy the ETCD cluster                                                                                   | `""`                |
+|                Parameter                |                                                              Description                                                               |            Default             |
+|-----------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|--------------------------------|
+| registryFQDN                            | Docker registry fqdn used to pull Stash related images. Set this to use docker registry hosted at ${registryFQDN}/${registry}/${image} | <code>""</code>                |
+| image.registry                          | Docker registry used to pull Postgres addon image                                                                                      | <code>stashed</code>           |
+| waitTimeout                             | Number of seconds to wait for the database to be ready before backup/restore process.                                                  | <code>300</code>               |
+| elasticsearch.enabled                   | If true, deploys Elasticsearch addon                                                                                                   | <code>true</code>              |
+| elasticsearch.backup.args               | Arguments to pass to `multielasticdump` command  during backup process                                                                 | <code>""</code>                |
+| elasticsearch.restore.args              | Arguments to pass to `multielasticdump` command during restore process                                                                 | <code>""</code>                |
+| mariadb.enabled                         | If true, deploys MariaDB addon                                                                                                         | <code>true</code>              |
+| mariadb.backup.args                     | Arguments to pass to `mariadbdump` command  during bakcup process                                                                      | <code>"--all-databases"</code> |
+| mariadb.restore.args                    | Arguments to pass to `mariadb` command during restore process                                                                          | <code>""</code>                |
+| mongodb.enabled                         | If true, deploys MongoDB addon                                                                                                         | <code>true</code>              |
+| mongodb.maxConcurrency                  | Maximum concurrency to perform backup or restore tasks                                                                                 | <code>3</code>                 |
+| mongodb.backup.args                     | Arguments to pass to `mongodump` command during backup process                                                                         | <code>""</code>                |
+| mongodb.restore.args                    | Arguments to pass to `mongorestore` command during restore process                                                                     | <code>""</code>                |
+| mysql.enabled                           | If true, deploys MySQL addon                                                                                                           | <code>true</code>              |
+| mysql.backup.args                       | Arguments to pass to `mysqldump` command  during bakcup process                                                                        | <code>"--all-databases"</code> |
+| mysql.restore.args                      | Arguments to pass to `mysql` command during restore process                                                                            | <code>""</code>                |
+| perconaxtradb.enabled                   | If true, deploys Percona XtraDB addon                                                                                                  | <code>true</code>              |
+| perconaxtradb.backup.args               | Arguments to pass to `mysqldump` command  during bakcup process                                                                        | <code>"--all-databases"</code> |
+| perconaxtradb.backup.socatRetry         | Optional argument sent to backup script                                                                                                | <code>30</code>                |
+| perconaxtradb.restore.args              | Arguments to pass to `mysql` command during restore process                                                                            | <code>""</code>                |
+| perconaxtradb.restore.targetAppReplicas | Optional argument sent to recovery script                                                                                              | <code>1</code>                 |
+| postgres.enabled                        | If true, deploys PostgreSQL addon                                                                                                      | <code>true</code>              |
+| postgres.backup.cmd                     | Postgres dump command, can either be: pg_dumpall  or pg_dump                                                                           | <code>"pg_dumpall"</code>      |
+| postgres.backup.args                    | Arguments to pass to `backup.cmd` command during backup process                                                                        | <code>""</code>                |
+| postgres.restore.args                   | Arguments to pass to `psql` command during restore process                                                                             | <code>""</code>                |
+| redis.enabled                           | If true, deploys Redis addon                                                                                                           | <code>true</code>              |
+| redis.backup.args                       | Arguments to pass to `redis-dump` command  during bakcup process                                                                       | <code>""</code>                |
+| redis.restore.args                      | Arguments to pass to `redis` command during restore process                                                                            | <code>""</code>                |
+| nats.enabled                            | If true, deploys NATS addon                                                                                                            | <code>true</code>              |
+| nats.backup.args                        | Arguments to pass to `nats str backup` command during backup process                                                                   | <code>""</code>                |
+| nats.backup.streams                     | List of streams to backup. Don't set this field if you want to backup all streams.                                                     | <code>""</code>                |
+| nats.restore.args                       | Arguments to pass to `nats str restore` command during restore process                                                                 | <code>""</code>                |
+| nats.restore.streams                    | List of streams to restore. Don't set this field if you want to restore all the backed up streams.                                     | <code>""</code>                |
+| nats.restore.overwrite                  | Specify whether to delete the old stream before restoring from backup.                                                                 | <code>false</code>             |
+| etcd.enabled                            | If true, deploys ETCD addon                                                                                                            | <code>true</code>              |
+| etcd.backup.args                        | Arguments to pass to `etcdctl save` command during backup process                                                                      | <code>""</code>                |
+| etcd.restore.args                       | Arguments to pass to `etcdctl restore` command during restore process                                                                  | <code>""</code>                |
+| etcd.restore.initialCluster             | List of the peers used to bootstrap the ETCD cluster                                                                                   | <code>""</code>                |
+| etcd.restore.initialClusterToken        | Initial token used for the ETCD cluster                                                                                                | <code>""</code>                |
+| etcd.restore.dataDir                    | Directory where the ETCD stores its data for persistence                                                                               | <code>""</code>                |
+| etcd.restore.workloadKind               | Kind of the workload used to deploy the ETCD cluster (i.e. StatefulSet)                                                                | <code>""</code>                |
+| etcd.restore.workloadName               | Name of the workload used to deploy the ETCD cluster                                                                                   | <code>""</code>                |
 
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example:
