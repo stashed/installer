@@ -28,4 +28,4 @@ spec:
   - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: stashed/stash-nats:2.6.1-v1
+  image: stashed/stash-nats:2.6.1-v2
