@@ -25,4 +25,4 @@ spec:
   - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: stashed/stash-percona-xtradb:5.7-v9
+  image: stashed/stash-percona-xtradb:5.7-v10

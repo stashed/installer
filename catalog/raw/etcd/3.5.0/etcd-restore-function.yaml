@@ -33,4 +33,4 @@ spec:
   - --image=${ADDON_IMAGE:=}
   - --secret-name=${REPOSITORY_SECRET_NAME:=}
   - --snapshots=${RESTORE_SNAPSHOTS:=}
-  image: stashed/stash-etcd:3.5.0-v1
+  image: stashed/stash-etcd:3.5.0-v2
