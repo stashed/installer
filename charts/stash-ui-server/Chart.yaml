@@ -2,8 +2,8 @@ apiVersion: v2
 name: stash-ui-server
 description: A Helm chart for stash-ui-server by AppsCode
 type: application
-version: v2021.11.24
-appVersion: v2021.11.24
+version: v0.1.0
+appVersion: v0.1.0
 home: https://github.com/stashed/stash-ui-server
 icon: https://cdn.appscode.com/images/products/stash/stash-community-icon.png
 sources:
