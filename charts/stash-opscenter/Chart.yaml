@@ -12,6 +12,10 @@ maintainers:
 - name: appscode
   email: support@appscode.com
 dependencies:
+- name: stash-ui-server
+  repository: file://../stash-ui-server
+  condition: stash-ui-server.enabled
+  version: v2021.11.24
 - name: stash-metrics
   repository: file://../stash-metrics
   condition: stash-metrics.enabled

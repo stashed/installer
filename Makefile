@@ -264,6 +264,7 @@ chart-contents-%:
 	@if [ -n "$(CHART_VERSION)" ]; then \
 	  yq -y --indentless -i '.version="$(CHART_VERSION)"' ./charts/$*/Chart.yaml; \
 	  yq -y --indentless -i '.dependencies |= map(select(.name == "$*").version="$(CHART_VERSION)")' ./charts/stash/Chart.yaml; \
+	  yq -y --indentless -i '.dependencies |= map(select(.name == "$*").version="$(CHART_VERSION)")' ./charts/stash-opscenter/Chart.yaml; \
 	fi
 	@if [ ! -z "$(APP_VERSION)" ]; then                                               \
 		yq -y --indentless -i '.appVersion="$(APP_VERSION)"' ./charts/$*/Chart.yaml;    \

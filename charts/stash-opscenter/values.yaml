@@ -2,6 +2,9 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+stash-ui-server:
+  # If enabled, installs the stash-ui-server chart
+  enabled: true
 stash-metrics:
   # If enabled, installs the stash-metrics chart
   enabled: true

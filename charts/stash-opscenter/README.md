@@ -46,6 +46,7 @@ The following table lists the configurable parameters of the `stash-opscenter` c
 
 |            Parameter             |                       Description                       |      Default      |
 |----------------------------------|---------------------------------------------------------|-------------------|
+| stash-ui-server.enabled          | If enabled, installs the stash-ui-server chart          | <code>true</code> |
 | stash-metrics.enabled            | If enabled, installs the stash-metrics chart            | <code>true</code> |
 | stash-grafana-dashboards.enabled | If enabled, installs the stash-grafana-dashboards chart | <code>true</code> |
 
