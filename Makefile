@@ -271,6 +271,9 @@ chart-contents-%:
 		  stash-community | stash-enterprise)                                           \
 		    yqq w -i ./charts/$*/values.yaml operator.tag --tag '!!str' $(APP_VERSION); \
 		    ;;                                                                          \
+		  stash-ui-server)                                                              \
+		    yqq w -i ./charts/$*/values.yaml image.tag --tag '!!str' $(APP_VERSION);    \
+		    ;;                                                                          \
 		esac;                                                                           \
 	fi
 
