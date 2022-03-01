@@ -125,12 +125,12 @@ func main() {
 			}
 
 			filename := filepath.Join(dir, "catalog", "new_raw", loc.App, loc.Version, fmt.Sprintf("%s-%s-%s.yaml", loc.App, obj.Type, strings.ToLower(obj.Resource.GetKind())))
-			err = os.MkdirAll(filepath.Dir(filename), 0755)
+			err = os.MkdirAll(filepath.Dir(filename), 0o755)
 			if err != nil {
 				panic(err)
 			}
 
-			err = ioutil.WriteFile(filename, data, 0644)
+			err = ioutil.WriteFile(filename, data, 0o644)
 			if err != nil {
 				panic(err)
 			}
@@ -240,12 +240,12 @@ func main() {
 				}
 
 				filename := filepath.Join(dir, "charts", "stash-catalog", "new_templates", loc.App, loc.Version, fmt.Sprintf("%s-%s-%s.yaml", loc.App, r.Type, strings.ToLower(r.Resource.GetKind())))
-				err = os.MkdirAll(filepath.Dir(filename), 0755)
+				err = os.MkdirAll(filepath.Dir(filename), 0o755)
 				if err != nil {
 					panic(err)
 				}
 
-				err = ioutil.WriteFile(filename, buf.Bytes(), 0644)
+				err = ioutil.WriteFile(filename, buf.Bytes(), 0o644)
 				if err != nil {
 					panic(err)
 				}
