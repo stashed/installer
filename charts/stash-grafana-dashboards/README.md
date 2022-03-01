@@ -4,10 +4,11 @@
 
 ## TL;DR;
 
-```console
+```bash
 $ helm repo add appscode https://charts.appscode.com/stable/
 $ helm repo update
-$ helm install stash-grafana-dashboards appscode/stash-grafana-dashboards -n kubeops
+$ helm search repo appscode/stash-grafana-dashboards --version=v2022.02.22
+$ helm upgrade -i stash-grafana-dashboards appscode/stash-grafana-dashboards -n kubeops --create-namespace --version=v2022.02.22
 ```
 
 ## Introduction
@@ -20,10 +21,10 @@ This chart deploys a Stash Grafana Dashboards on a [Kubernetes](http://kubernete
 
 ## Installing the Chart
 
-To install the chart with the release name `stash-grafana-dashboards`:
+To install/upgrade the chart with the release name `stash-grafana-dashboards`:
 
-```console
-$ helm install stash-grafana-dashboards appscode/stash-grafana-dashboards -n kubeops
+```bash
+$ helm upgrade -i stash-grafana-dashboards appscode/stash-grafana-dashboards -n kubeops --create-namespace --version=v2022.02.22
 ```
 
 The command deploys a Stash Grafana Dashboards on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
@@ -32,10 +33,10 @@ The command deploys a Stash Grafana Dashboards on the Kubernetes cluster in the 
 
 ## Uninstalling the Chart
 
-To uninstall/delete the `stash-grafana-dashboards`:
+To uninstall the `stash-grafana-dashboards`:
 
-```console
-$ helm delete stash-grafana-dashboards -n kubeops
+```bash
+$ helm uninstall stash-grafana-dashboards -n kubeops
 ```
 
 The command removes all the Kubernetes components associated with the chart and deletes the release.
@@ -57,15 +58,15 @@ The following table lists the configurable parameters of the `stash-grafana-dash
 | grafana.namespace               | Namespace of Grafana Appbinding where these dashboards are applied | <code>""</code>        |
 
 
-Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example:
+Specify each parameter using the `--set key=value[,key=value]` argument to `helm upgrade -i`. For example:
 
-```console
-$ helm install stash-grafana-dashboards appscode/stash-grafana-dashboards -n kubeops --set resources=["stash"]
+```bash
+$ helm upgrade -i stash-grafana-dashboards appscode/stash-grafana-dashboards -n kubeops --create-namespace --version=v2022.02.22 --set resources=["stash"]
 ```
 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while
 installing the chart. For example:
 
-```console
-$ helm install stash-grafana-dashboards appscode/stash-grafana-dashboards -n kubeops --values values.yaml
+```bash
+$ helm upgrade -i stash-grafana-dashboards appscode/stash-grafana-dashboards -n kubeops --create-namespace --version=v2022.02.22 --values values.yaml
 ```
