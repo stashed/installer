@@ -4,10 +4,11 @@
 
 ## TL;DR;
 
-```console
+```bash
 $ helm repo add appscode https://charts.appscode.com/stable/
 $ helm repo update
-$ helm install stash-metrics appscode/stash-metrics -n kube-system
+$ helm search repo appscode/stash-metrics --version=v2022.02.22
+$ helm upgrade -i stash-metrics appscode/stash-metrics -n kube-system --create-namespace --version=v2022.02.22
 ```
 
 ## Introduction
@@ -20,10 +21,10 @@ This chart deploys Stash metrics configurations on a [Kubernetes](http://kuberne
 
 ## Installing the Chart
 
-To install the chart with the release name `stash-metrics`:
+To install/upgrade the chart with the release name `stash-metrics`:
 
-```console
-$ helm install stash-metrics appscode/stash-metrics -n kube-system
+```bash
+$ helm upgrade -i stash-metrics appscode/stash-metrics -n kube-system --create-namespace --version=v2022.02.22
 ```
 
 The command deploys Stash metrics configurations on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
@@ -32,10 +33,10 @@ The command deploys Stash metrics configurations on the Kubernetes cluster in th
 
 ## Uninstalling the Chart
 
-To uninstall/delete the `stash-metrics`:
+To uninstall the `stash-metrics`:
 
-```console
-$ helm delete stash-metrics -n kube-system
+```bash
+$ helm uninstall stash-metrics -n kube-system
 ```
 
 The command removes all the Kubernetes components associated with the chart and deletes the release.
