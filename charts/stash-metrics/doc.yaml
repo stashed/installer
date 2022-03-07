@@ -15,4 +15,4 @@ prerequisites:
 - Kubernetes 1.16+
 release:
   name: stash-metrics
-  namespace: kube-system
+  namespace: stash
