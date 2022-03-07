@@ -8,7 +8,7 @@
 $ helm repo add appscode https://charts.appscode.com/stable/
 $ helm repo update
 $ helm search repo appscode/stash-community --version=v0.18.0
-$ helm upgrade -i stash-community appscode/stash-community -n kube-system --create-namespace --version=v0.18.0
+$ helm upgrade -i stash-community appscode/stash-community -n stash --create-namespace --version=v0.18.0
 ```
 
 ## Introduction
@@ -24,7 +24,7 @@ This chart deploys a Stash community operator on a [Kubernetes](http://kubernete
 To install/upgrade the chart with the release name `stash-community`:
 
 ```bash
-$ helm upgrade -i stash-community appscode/stash-community -n kube-system --create-namespace --version=v0.18.0
+$ helm upgrade -i stash-community appscode/stash-community -n stash --create-namespace --version=v0.18.0
 ```
 
 The command deploys a Stash community operator on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
@@ -36,7 +36,7 @@ The command deploys a Stash community operator on the Kubernetes cluster in the 
 To uninstall the `stash-community`:
 
 ```bash
-$ helm uninstall stash-community -n kube-system
+$ helm uninstall stash-community -n stash
 ```
 
 The command removes all the Kubernetes components associated with the chart and deletes the release.
@@ -111,12 +111,12 @@ The following table lists the configurable parameters of the `stash-community` c
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm upgrade -i`. For example:
 
 ```bash
-$ helm upgrade -i stash-community appscode/stash-community -n kube-system --create-namespace --version=v0.18.0 --set replicaCount=1
+$ helm upgrade -i stash-community appscode/stash-community -n stash --create-namespace --version=v0.18.0 --set replicaCount=1
 ```
 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while
 installing the chart. For example:
 
 ```bash
-$ helm upgrade -i stash-community appscode/stash-community -n kube-system --create-namespace --version=v0.18.0 --values values.yaml
+$ helm upgrade -i stash-community appscode/stash-community -n stash --create-namespace --version=v0.18.0 --values values.yaml
 ```
