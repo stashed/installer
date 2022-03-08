@@ -37,7 +37,6 @@ properties:
     - skipCleaner
     type: object
   stash-catalog:
-    description: StashCatalogSpec is the schema for Stash Postgres values file
     properties:
       elasticsearch:
         description: StashElasticsearchSpec is the schema for Stash Elasticsearch
@@ -169,9 +168,7 @@ properties:
               args:
                 type: string
               streams:
-                items:
-                  type: string
-                type: array
+                type: string
             type: object
           enabled:
             type: boolean
@@ -182,9 +179,7 @@ properties:
               overwrite:
                 type: boolean
               streams:
-                items:
-                  type: string
-                type: array
+                type: string
             type: object
         required:
         - backup
@@ -282,8 +277,6 @@ properties:
     - waitTimeout
     type: object
   stash-community:
-    description: StashCommunitySpec is the schema for Stash community operator values
-      file
     properties:
       affinity:
         description: If specified, the pod's scheduling constraints
@@ -1668,6 +1661,7 @@ properties:
           tag:
             type: string
         required:
+        - customURL
         - registry
         - repository
         - tag
@@ -1773,7 +1767,6 @@ properties:
     - serviceAccount
     type: object
   stash-enterprise:
-    description: StashEnterpriseSpec is the schema for Stash operator values file
     properties:
       affinity:
         description: If specified, the pod's scheduling constraints
@@ -3170,6 +3163,7 @@ properties:
           tag:
             type: string
         required:
+        - customURL
         - registry
         - repository
         - tag
