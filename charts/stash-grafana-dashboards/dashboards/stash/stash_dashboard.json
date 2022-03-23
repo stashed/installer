@@ -923,7 +923,7 @@
       "timeShift": null,
       "title": "CPU Usage (Backup Job/Sidecar)",
       "transformations": [],
-      "type": "timeseries"
+      "type": "graph"
     },
     {
       "datasource": "${datasource}",
@@ -1022,7 +1022,7 @@
       ],
       "title": "Memory Usage (Backup Job/Sidecar)",
       "transformations": [],
-      "type": "timeseries"
+      "type": "graph"
     },
     {
       "datasource": "${datasource}",
@@ -1684,7 +1684,7 @@
       ],
       "title": "Repository Sizes",
       "transformations": [],
-      "type": "timeseries"
+      "type": "graph"
     },
     {
       "collapsed": false,
@@ -2401,7 +2401,7 @@
       "timeShift": null,
       "title": "CPU Usage (Restore Job/Sidecar)",
       "transformations": [],
-      "type": "timeseries"
+      "type": "graph"
     },
     {
       "datasource": "${datasource}",
@@ -2500,7 +2500,7 @@
       ],
       "title": "Memory Usage (Restore Job/Sidecar)",
       "transformations": [],
-      "type": "timeseries"
+      "type": "graph"
     },
     {
       "collapsed": false,
@@ -2597,7 +2597,7 @@
         }
       ],
       "title": "CPU Usage",
-      "type": "timeseries"
+      "type": "graph"
     },
     {
       "datasource": "${datasource}",
@@ -2687,7 +2687,7 @@
         }
       ],
       "title": "Memory Usage",
-      "type": "timeseries"
+      "type": "graph"
     }
   ],
   "refresh": "10s",
@@ -2734,10 +2734,7 @@
         "multi": false,
         "name": "namespace",
         "options": [],
-        "query": {
-          "query": "label_values(stash_backupconfiguration_info,namespace)",
-          "refId": "StandardVariableQuery"
-        },
+        "query": "label_values(stash_backupconfiguration_info,namespace)",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
@@ -2761,10 +2758,7 @@
         "multi": false,
         "name": "target_kind",
         "options": [],
-        "query": {
-          "query": "label_values(stash_backupconfiguration_info{namespace=~\"${namespace}\"},target_kind)",
-          "refId": "StandardVariableQuery"
-        },
+        "query": "label_values(stash_backupconfiguration_info{namespace=~\"${namespace}\"},target_kind)",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
@@ -2788,10 +2782,7 @@
         "multi": false,
         "name": "target_name",
         "options": [],
-        "query": {
-          "query": "label_values(stash_backupconfiguration_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\"},target_name)",
-          "refId": "StandardVariableQuery"
-        },
+        "query": "label_values(stash_backupconfiguration_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\"},target_name)",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
@@ -2815,10 +2806,7 @@
         "multi": false,
         "name": "backup_invoker_kind",
         "options": [],
-        "query": {
-          "query": "label_values(stash_backupconfiguration_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"},invoker_kind)",
-          "refId": "StandardVariableQuery"
-        },
+        "query": "label_values(stash_backupconfiguration_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"},invoker_kind)",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
@@ -2842,10 +2830,7 @@
         "multi": false,
         "name": "backup_invoker_name",
         "options": [],
-        "query": {
-          "query": "label_values(stash_backupconfiguration_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"},invoker_name)",
-          "refId": "StandardVariableQuery"
-        },
+        "query": "label_values(stash_backupconfiguration_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"},invoker_name)",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
@@ -2869,10 +2854,7 @@
         "multi": false,
         "name": "restore_invoker_kind",
         "options": [],
-        "query": {
-          "query": "label_values(stash_restoresession_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"},invoker_kind)",
-          "refId": "StandardVariableQuery"
-        },
+        "query": "label_values(stash_restoresession_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"},invoker_kind)",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
@@ -2896,10 +2878,7 @@
         "multi": false,
         "name": "restore_invoker_name",
         "options": [],
-        "query": {
-          "query": "label_values(stash_restoresession_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"},invoker_name)",
-          "refId": "StandardVariableQuery"
-        },
+        "query": "label_values(stash_restoresession_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"},invoker_name)",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
