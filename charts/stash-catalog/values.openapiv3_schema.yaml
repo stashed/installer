@@ -129,9 +129,7 @@ properties:
           args:
             type: string
           streams:
-            items:
-              type: string
-            type: array
+            type: string
         type: object
       enabled:
         type: boolean
@@ -142,9 +140,7 @@ properties:
           overwrite:
             type: boolean
           streams:
-            items:
-              type: string
-            type: array
+            type: string
         type: object
     required:
     - backup

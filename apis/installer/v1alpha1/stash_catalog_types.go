@@ -193,14 +193,14 @@ type NATSBackup struct {
 	// +optional
 	Args string `json:"args"`
 	// +optional
-	Streams []string `json:"streams"`
+	Streams string `json:"streams"`
 }
 
 type NATSRestore struct {
 	// +optional
 	Args string `json:"args"`
 	// +optional
-	Streams []string `json:"streams"`
+	Streams string `json:"streams"`
 	// +optional
 	Overwrite bool `json:"overwrite"`
 }

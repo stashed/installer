@@ -46,13 +46,25 @@ type StashSpec struct {
 	Features Features `json:"features"`
 
 	//+optional
-	Community StashCommunitySpec `json:"stash-community"`
+	Community StashCommunityValues `json:"stash-community"`
 
 	//+optional
-	Catalog StashCatalogSpec `json:"stash-catalog"`
+	Catalog StashCatalogValues `json:"stash-catalog"`
 
 	//+optional
-	Enterprise StashEnterpriseSpec `json:"stash-enterprise"`
+	Enterprise StashEnterpriseValues `json:"stash-enterprise"`
+}
+
+type StashCommunityValues struct {
+	*StashCommunitySpec `json:",inline"`
+}
+
+type StashCatalogValues struct {
+	*StashCatalogSpec `json:",inline"`
+}
+
+type StashEnterpriseValues struct {
+	*StashEnterpriseSpec `json:",inline"`
 }
 
 type GlobalValues struct {

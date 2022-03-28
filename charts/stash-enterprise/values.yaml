@@ -68,7 +68,7 @@ pushgateway:
 
   # If you want to use a custom Pushgatway, specify its URL.
   # Stash will not inject pushgatway sidecar if you set this field.
-  customURL:
+  customURL: ""
 cleaner:
   # Docker registry used to pull Webhook cleaner image
   registry: appscode
