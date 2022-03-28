@@ -4,21 +4,20 @@ go 1.16
 
 require (
 	github.com/Masterminds/sprig/v3 v3.2.2
-	github.com/fsnotify/fsnotify v1.5.1 // indirect
-	github.com/google/gofuzz v1.1.0
-	github.com/google/uuid v1.3.0 // indirect
-	github.com/json-iterator/go v1.1.12 // indirect
-	github.com/mattn/go-colorable v0.1.9 // indirect
-	github.com/mattn/go-isatty v0.0.14 // indirect
+	github.com/google/gofuzz v1.2.0
+	github.com/onsi/ginkgo v1.16.5 // indirect
+	github.com/onsi/gomega v1.17.0 // indirect
 	github.com/spf13/pflag v1.0.5
-	golang.org/x/crypto v0.0.0-20210314154223-e6e6c4f2bb5b // indirect
+	golang.org/x/net v0.0.0-20211209124913-491a49abca63 // indirect
+	golang.org/x/sys v0.0.0-20211029165221-6e7872819dc8 // indirect
 	gomodules.xyz/semvers v0.0.0-20210317131320-984e32dd89ca
+	google.golang.org/protobuf v1.27.1 // indirect
 	k8s.io/api v0.21.1
 	k8s.io/apimachinery v0.21.1
-	k8s.io/klog/v2 v2.9.0 // indirect
-	kmodules.xyz/client-go v0.0.0-20220203031013-1de48437aaf3
+	kmodules.xyz/client-go v0.0.0-20220317213815-2a6d5a5784f2
 	kmodules.xyz/schema-checker v0.1.2
-	sigs.k8s.io/yaml v1.2.0
+	sigs.k8s.io/structured-merge-diff/v4 v4.2.0 // indirect
+	sigs.k8s.io/yaml v1.3.0
 )
 
 replace gopkg.in/yaml.v2 => gopkg.in/yaml.v2 v2.3.0
