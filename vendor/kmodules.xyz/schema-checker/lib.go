@@ -18,15 +18,14 @@ package schemachecker
 
 import (
 	"encoding/json"
-	"fmt"
-	"io/ioutil"
-	"os"
+	"io/fs"
 	"path/filepath"
 	"reflect"
 	"strings"
 	"testing"
 
 	"github.com/gobuffalo/flect"
+	"github.com/pkg/errors"
 	diff "github.com/yudai/gojsondiff"
 	"github.com/yudai/gojsondiff/formatter"
 	"sigs.k8s.io/yaml"
@@ -39,8 +38,7 @@ type TypeMapper interface {
 	ToChartName(k string) string
 }
 
-type DefaultTypeMapper struct {
-}
+type DefaultTypeMapper struct{}
 
 var _ TypeMapper = &DefaultTypeMapper{}
 
@@ -62,7 +60,7 @@ func (d DefaultTypeMapper) ToChartName(k string) string {
 
 type SchemaChecker struct {
 	// project root directory
-	rootDir  string
+	fsys     fs.FS
 	mapper   TypeMapper
 	registry map[string]reflect.Type
 }
@@ -71,21 +69,15 @@ func kind(v interface{}) string {
 	return reflect.Indirect(reflect.ValueOf(v)).Type().Name()
 }
 
-func (checker *SchemaChecker) makeInstance(name string) interface{} {
-	v := reflect.New(checker.registry[name]).Elem()
-	// Maybe fill in fields here if necessary
-	return v.Interface()
-}
-
 // https://stackoverflow.com/a/23031445
 
-func New(rootDir string, objs []interface{}) *SchemaChecker {
+func New(fsys fs.FS, objs ...interface{}) *SchemaChecker {
 	reg := map[string]reflect.Type{}
 	for _, v := range objs {
 		reg[kind(v)] = reflect.TypeOf(v)
 	}
 	return &SchemaChecker{
-		rootDir:  rootDir,
+		fsys:     fsys,
 		mapper:   DefaultTypeMapper{},
 		registry: reg,
 	}
@@ -93,8 +85,8 @@ func New(rootDir string, objs []interface{}) *SchemaChecker {
 
 func (checker *SchemaChecker) CheckChart(chartName string) (string, error) {
 	schemaKind := checker.mapper.ChartNameToSchemaKind(chartName)
-	valuesfile := filepath.Join(checker.rootDir, "charts", chartName, "values.yaml")
-	return checker.Check(schemaKind, valuesfile)
+	file := filepath.Join("charts", chartName, "values.yaml")
+	return checker.Check(schemaKind, file)
 }
 
 func (checker *SchemaChecker) TestChart(t *testing.T, chartName string) {
@@ -104,8 +96,8 @@ func (checker *SchemaChecker) TestChart(t *testing.T, chartName string) {
 
 func (checker *SchemaChecker) CheckKind(kind string) (string, error) {
 	schemaKind := checker.mapper.KindToSchemaKind(kind)
-	valuesfile := filepath.Join(checker.rootDir, "charts", checker.mapper.ToChartName(kind), "values.yaml")
-	return checker.Check(schemaKind, valuesfile)
+	file := filepath.Join("charts", checker.mapper.ToChartName(kind), "values.yaml")
+	return checker.Check(schemaKind, file)
 }
 
 func (checker *SchemaChecker) TestKind(t *testing.T, kind string) {
@@ -113,43 +105,52 @@ func (checker *SchemaChecker) TestKind(t *testing.T, kind string) {
 	checker.test(t, result, err)
 }
 
-func (checker *SchemaChecker) Test(t *testing.T, schemaKind string, valuesfile string) {
-	result, err := checker.Check(schemaKind, valuesfile)
+func (checker *SchemaChecker) CheckObject(v interface{}, file string) (string, error) {
+	checker.registry[kind(v)] = reflect.TypeOf(v)
+	return checker.Check(kind(v), file)
+}
+
+func (checker *SchemaChecker) TestObject(t *testing.T, v interface{}, file string) {
+	checker.registry[kind(v)] = reflect.TypeOf(v)
+	checker.Test(t, kind(v), file)
+}
+
+func (checker *SchemaChecker) Test(t *testing.T, schemaKind string, file string) {
+	result, err := checker.Check(schemaKind, file)
 	checker.test(t, result, err)
 }
 
-func (checker *SchemaChecker) Check(schemaKind string, valuesfile string) (string, error) {
-	data, err := ioutil.ReadFile(valuesfile)
+func (checker *SchemaChecker) Check(schemaKind string, file string) (string, error) {
+	data, err := fs.ReadFile(checker.fsys, file)
 	if err != nil {
-		return "", err
+		return "", errors.Wrap(err, file)
 	}
 
 	var original map[string]interface{}
 	err = yaml.Unmarshal(data, &original)
 	if err != nil {
-		return "", err
+		return "", errors.Wrap(err, file)
 	}
 	sorted, err := json.Marshal(&original)
 	if err != nil {
-		return "", err
+		return "", errors.Wrap(err, file)
 	}
 
-	spec := checker.makeInstance(schemaKind)
-	err = yaml.Unmarshal(data, &spec)
+	newObj := reflect.New(checker.registry[schemaKind])
+	err = yaml.Unmarshal(data, newObj.Interface())
 	if err != nil {
-		return "", err
+		return "", errors.Wrap(err, file)
 	}
-	parsed, err := json.Marshal(spec)
+	parsed, err := json.Marshal(newObj.Interface())
 	if err != nil {
-		return "", err
+		return "", errors.Wrap(err, file)
 	}
 
 	// Then, Check them
 	differ := diff.New()
 	d, err := differ.Compare(sorted, parsed)
 	if err != nil {
-		fmt.Printf("Failed to unmarshal file: %s\n", err.Error())
-		os.Exit(3)
+		return "", errors.Wrap(err, file)
 	}
 
 	if d.Modified() {
@@ -161,7 +162,7 @@ func (checker *SchemaChecker) Check(schemaKind string, valuesfile string) (strin
 		f := formatter.NewAsciiFormatter(original, config)
 		result, err := f.Format(d)
 		if err != nil {
-			return "", err
+			return "", errors.Wrap(err, file)
 		}
 		return result, nil
 	}
@@ -194,5 +195,29 @@ func (checker *SchemaChecker) test(t *testing.T, diff string, err error) {
 	}
 	if diff != "" {
 		t.Errorf("values file does not match, diff: %s", diff)
+	}
+}
+
+func CheckFS(fsys fs.FS, v interface{}) error {
+	return fs.WalkDir(fsys, ".", func(path string, e fs.DirEntry, err error) error {
+		if e.IsDir() || err != nil {
+			return err
+		}
+
+		checker := New(fsys)
+		d, err := checker.CheckObject(v, path)
+		if err != nil {
+			return errors.Wrap(err, path)
+		}
+		if d != "" {
+			return errors.Wrapf(err, "values file does not match, diff: %s", d)
+		}
+		return nil
+	})
+}
+
+func TestFS(t *testing.T, fsys fs.FS, v interface{}) {
+	if err := CheckFS(fsys, v); err != nil {
+		t.Error(err)
 	}
 }

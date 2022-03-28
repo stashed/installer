@@ -43,8 +43,7 @@ type Container struct {
 type Pushgateway struct {
 	Container `json:",inline"`
 	// Specify the URL of a custom Pushgateway server
-	// +optional
-	CustomURL string `json:"customURL,omitempty"`
+	CustomURL string `json:"customURL"`
 }
 
 type CleanerRef struct {

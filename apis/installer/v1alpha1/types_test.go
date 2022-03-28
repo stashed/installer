@@ -17,6 +17,7 @@ limitations under the License.
 package v1alpha1_test
 
 import (
+	"os"
 	"testing"
 
 	"stash.appscode.dev/installer/apis/installer/v1alpha1"
@@ -25,11 +26,11 @@ import (
 )
 
 func TestDefaultValues(t *testing.T) {
-	checker := schemachecker.New("../../..", []interface{}{
+	checker := schemachecker.New(os.DirFS("../../.."),
 		v1alpha1.StashCatalogSpec{},
 		v1alpha1.StashCommunitySpec{},
 		v1alpha1.StashEnterpriseSpec{},
 		v1alpha1.StashSpec{},
-	})
+	)
 	checker.TestAll(t)
 }

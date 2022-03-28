@@ -1343,6 +1343,7 @@ properties:
       tag:
         type: string
     required:
+    - customURL
     - registry
     - repository
     - tag
