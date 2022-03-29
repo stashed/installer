@@ -7,8 +7,8 @@
 ```bash
 $ helm repo add appscode https://charts.appscode.com/stable/
 $ helm repo update
-$ helm search repo appscode/stash-opscenter --version=v2022.02.22
-$ helm upgrade -i stash-opscenter appscode/stash-opscenter -n kubeops --create-namespace --version=v2022.02.22
+$ helm search repo appscode/stash-opscenter --version=v2022.03.29
+$ helm upgrade -i stash-opscenter appscode/stash-opscenter -n kubeops --create-namespace --version=v2022.03.29
 ```
 
 ## Introduction
@@ -24,7 +24,7 @@ This chart deploys a Stash Opscenter on a [Kubernetes](http://kubernetes.io) clu
 To install/upgrade the chart with the release name `stash-opscenter`:
 
 ```bash
-$ helm upgrade -i stash-opscenter appscode/stash-opscenter -n kubeops --create-namespace --version=v2022.02.22
+$ helm upgrade -i stash-opscenter appscode/stash-opscenter -n kubeops --create-namespace --version=v2022.03.29
 ```
 
 The command deploys a Stash Opscenter on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
@@ -55,12 +55,12 @@ The following table lists the configurable parameters of the `stash-opscenter` c
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm upgrade -i`. For example:
 
 ```bash
-$ helm upgrade -i stash-opscenter appscode/stash-opscenter -n kubeops --create-namespace --version=v2022.02.22 --set -- generate from values file --
+$ helm upgrade -i stash-opscenter appscode/stash-opscenter -n kubeops --create-namespace --version=v2022.03.29 --set -- generate from values file --
 ```
 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while
 installing the chart. For example:
 
 ```bash
-$ helm upgrade -i stash-opscenter appscode/stash-opscenter -n kubeops --create-namespace --version=v2022.02.22 --values values.yaml
+$ helm upgrade -i stash-opscenter appscode/stash-opscenter -n kubeops --create-namespace --version=v2022.03.29 --values values.yaml
 ```

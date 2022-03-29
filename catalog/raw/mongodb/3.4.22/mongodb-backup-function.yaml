@@ -34,4 +34,4 @@ spec:
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
   - --authentication-database=${authenticationDatabase:=admin}
-  image: stashed/stash-mongodb:3.4.22-v14
+  image: stashed/stash-mongodb:3.4.22-v15
