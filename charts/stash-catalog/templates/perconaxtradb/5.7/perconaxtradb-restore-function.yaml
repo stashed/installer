@@ -28,5 +28,5 @@ spec:
   - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: '{{ include "catalog.registry" . }}/stash-percona-xtradb:5.7-v10'
+  image: '{{ include "catalog.registry" . }}/stash-percona-xtradb:5.7-v11'
 {{ end }}

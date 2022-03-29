@@ -28,5 +28,5 @@ spec:
   - --es-args=${args:={{ .Values.elasticsearch.restore.args }}}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: '{{ include "catalog.registry" . }}/stash-elasticsearch:7.14.0-v1'
+  image: '{{ include "catalog.registry" . }}/stash-elasticsearch:7.14.0-v2'
 {{ end }}
