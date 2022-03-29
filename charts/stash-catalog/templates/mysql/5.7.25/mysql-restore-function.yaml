@@ -27,5 +27,5 @@ spec:
   - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: '{{ include "catalog.registry" . }}/stash-mysql:5.7.25-v15'
+  image: '{{ include "catalog.registry" . }}/stash-mysql:5.7.25-v16'
 {{ end }}
