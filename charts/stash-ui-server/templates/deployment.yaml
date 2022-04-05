@@ -30,16 +30,13 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
     spec:
-    {{- with .Values.imagePullSecrets }}
-      imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
-    {{- end }}
+      {{- include "appscode.imagePullSecrets" . | nindent 6 }}
       serviceAccountName: {{ include "stash-ui-server.serviceAccountName" . }}
       containers:
       - name: server
         securityContext:
           {{- toYaml .Values.image.securityContext | nindent 10 }}
-        image: {{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}
+        image: {{ include "image.registry" . }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}
         imagePullPolicy: {{ .Values.imagePullPolicy  }}
         args:
         - run
@@ -52,11 +49,11 @@ spec:
         ports:
         - containerPort: 8443
         env:
-        - name: MY_POD_NAME
+        - name: POD_NAME
           valueFrom:
             fieldRef:
               fieldPath: metadata.name
-        - name: MY_POD_NAMESPACE
+        - name: POD_NAMESPACE
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
