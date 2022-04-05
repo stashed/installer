@@ -1141,6 +1141,10 @@ properties:
       monitoring:
         properties:
           agent:
+            enum:
+            - prometheus.io
+            - prometheus.io/operator
+            - prometheus.io/builtin
             type: string
           backup:
             type: boolean
@@ -2631,6 +2635,10 @@ properties:
       monitoring:
         properties:
           agent:
+            enum:
+            - prometheus.io
+            - prometheus.io/operator
+            - prometheus.io/builtin
             type: string
           backup:
             type: boolean

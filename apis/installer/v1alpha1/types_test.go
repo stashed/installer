@@ -31,6 +31,7 @@ func TestDefaultValues(t *testing.T) {
 		v1alpha1.StashCommunitySpec{},
 		v1alpha1.StashEnterpriseSpec{},
 		v1alpha1.StashSpec{},
+		v1alpha1.StashUiServerSpec{},
 	)
 	checker.TestAll(t)
 }

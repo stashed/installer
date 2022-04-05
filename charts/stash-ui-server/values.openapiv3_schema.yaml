@@ -751,14 +751,6 @@ properties:
     type: object
   apiserver:
     properties:
-      bypassValidatingWebhookXray:
-        type: boolean
-      ca:
-        type: string
-      enableMutatingWebhook:
-        type: boolean
-      enableValidatingWebhook:
-        type: boolean
       groupPriorityMinimum:
         format: int32
         type: integer
@@ -786,9 +778,6 @@ properties:
         format: int32
         type: integer
     required:
-    - ca
-    - enableMutatingWebhook
-    - enableValidatingWebhook
     - groupPriorityMinimum
     - healthcheck
     - servingCerts
@@ -796,8 +785,6 @@ properties:
     - versionPriority
     type: object
   criticalAddon:
-    type: boolean
-  enableAnalytics:
     type: boolean
   fullnameOverride:
     type: string
@@ -982,11 +969,11 @@ properties:
   monitoring:
     properties:
       agent:
+        enum:
+        - prometheus.io
+        - prometheus.io/operator
+        - prometheus.io/builtin
         type: string
-      backup:
-        type: boolean
-      operator:
-        type: boolean
       serviceMonitor:
         properties:
           labels:
@@ -1139,6 +1126,8 @@ properties:
             type: string
         type: object
     type: object
+  registryFQDN:
+    type: string
   replicaCount:
     format: int32
     type: integer
@@ -1197,6 +1186,7 @@ required:
 - image
 - imagePullPolicy
 - monitoring
+- registryFQDN
 - replicaCount
 - serviceAccount
 type: object
