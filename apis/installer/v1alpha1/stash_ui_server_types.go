@@ -49,6 +49,7 @@ type StashUiServerSpec struct {
 	//+optional
 	FullnameOverride string    `json:"fullnameOverride"`
 	ReplicaCount     int32     `json:"replicaCount"`
+	RegistryFQDN     string    `json:"registryFQDN"`
 	Image            Container `json:"image"`
 	ImagePullPolicy  string    `json:"imagePullPolicy"`
 	//+optional
@@ -74,10 +75,8 @@ type StashUiServerSpec struct {
 	// +optional
 	PodSecurityContext *core.PodSecurityContext `json:"podSecurityContext"`
 	ServiceAccount     ServiceAccountSpec       `json:"serviceAccount"`
-	Apiserver          WebHookSpec              `json:"apiserver"`
-	//+optional
-	EnableAnalytics bool       `json:"enableAnalytics"`
-	Monitoring      Monitoring `json:"monitoring"`
+	Apiserver          EASSpec                  `json:"apiserver"`
+	Monitoring         EASMonitoring            `json:"monitoring"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
