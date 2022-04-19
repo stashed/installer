@@ -25,6 +25,7 @@ spec:
   - --namespace=${NAMESPACE:=default}
   - --backupsession=${BACKUP_SESSION:=}
   - --appbinding=${TARGET_NAME:=}
+  - --appbinding-namespace=${TARGET_NAMESPACE:=}
   - --retention-keep-last=${RETENTION_KEEP_LAST:=0}
   - --retention-keep-hourly=${RETENTION_KEEP_HOURLY:=0}
   - --retention-keep-daily=${RETENTION_KEEP_DAILY:=0}

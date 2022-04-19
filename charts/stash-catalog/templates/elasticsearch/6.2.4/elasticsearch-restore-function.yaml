@@ -24,6 +24,7 @@ spec:
   - --interim-data-dir=${INTERIM_DATA_DIR}
   - --namespace=${NAMESPACE:=default}
   - --appbinding=${TARGET_NAME:=}
+  - --appbinding-namespace=${TARGET_NAMESPACE:=}
   - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --es-args=${args:={{ .Values.elasticsearch.restore.args }}}
   - --output-dir=${outputDir:=}

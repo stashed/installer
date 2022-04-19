@@ -25,6 +25,7 @@ spec:
   - --wait-timeout=${waitTimeout:={{ .Values.waitTimeout}}}
   - --namespace=${NAMESPACE:=default}
   - --appbinding=${TARGET_NAME:=}
+  - --appbinding-namespace=${TARGET_NAMESPACE:=}
   - --restoresession=${RESTORE_SESSION:=}
   - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
