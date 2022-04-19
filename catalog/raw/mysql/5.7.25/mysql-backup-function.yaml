@@ -20,6 +20,7 @@ spec:
   - --wait-timeout=${waitTimeout:=300}
   - --namespace=${NAMESPACE:=default}
   - --appbinding=${TARGET_NAME:=}
+  - --appbinding-namespace=${TARGET_NAMESPACE:=}
   - --backupsession=${BACKUP_SESSION:=}
   - --retention-keep-last=${RETENTION_KEEP_LAST:=0}
   - --retention-keep-hourly=${RETENTION_KEEP_HOURLY:=0}

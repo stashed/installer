@@ -20,6 +20,7 @@ spec:
   - --source-hostname=${SOURCE_HOSTNAME:=}
   - --namespace=${NAMESPACE:=default}
   - --appbinding=${TARGET_NAME:=}
+  - --appbinding-namespace=${TARGET_NAMESPACE:=}
   - --etcd-args=${args:=}
   - --initial-cluster=${initialCluster:=}
   - --initial-cluster-token=${initialClusterToken:=}
