@@ -22,6 +22,7 @@ spec:
   - --wait-timeout=${waitTimeout:=300}
   - --namespace=${NAMESPACE:=default}
   - --appbinding=${TARGET_NAME:=}
+  - --appbinding-namespace=${TARGET_NAMESPACE:=}
   - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}

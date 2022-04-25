@@ -23,6 +23,7 @@ spec:
   - --interim-data-dir=${INTERIM_DATA_DIR}
   - --namespace=${NAMESPACE:=default}
   - --appbinding=${TARGET_NAME:=}
+  - --appbinding-namespace=${TARGET_NAMESPACE:=}
   - --backupsession=${BACKUP_SESSION:=}
   - --es-args=${args:={{ .Values.elasticsearch.backup.args }}}
   - --retention-keep-last=${RETENTION_KEEP_LAST:=0}
