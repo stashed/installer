@@ -43,18 +43,19 @@ type StashCatalog struct {
 
 // StashCatalogSpec is the schema for Stash Postgres values file
 type StashCatalogSpec struct {
-	RegistryFQDN  string                 `json:"registryFQDN"`
-	Image         RegistryRef            `json:"image"`
-	WaitTimeout   int64                  `json:"waitTimeout"`
-	Elasticsearch StashElasticsearchSpec `json:"elasticsearch"`
-	Mariadb       StashMariadbSpec       `json:"mariadb"`
-	Mongodb       StashMongodbSpec       `json:"mongodb"`
-	Mysql         StashMysqlSpec         `json:"mysql"`
-	PerconaXtraDB StashPerconaXtraDBSpec `json:"perconaxtradb"`
-	Postgres      StashPostgresSpec      `json:"postgres"`
-	Redis         StashRedisSpec         `json:"redis"`
-	NATS          StashNATSSpec          `json:"nats"`
-	ETCD          StashETCDSpec          `json:"etcd"`
+	RegistryFQDN   string                 `json:"registryFQDN"`
+	Image          RegistryRef            `json:"image"`
+	WaitTimeout    int64                  `json:"waitTimeout"`
+	Elasticsearch  StashElasticsearchSpec `json:"elasticsearch"`
+	Mariadb        StashMariadbSpec       `json:"mariadb"`
+	Mongodb        StashMongodbSpec       `json:"mongodb"`
+	Mysql          StashMysqlSpec         `json:"mysql"`
+	PerconaXtraDB  StashPerconaXtraDBSpec `json:"perconaxtradb"`
+	Postgres       StashPostgresSpec      `json:"postgres"`
+	Redis          StashRedisSpec         `json:"redis"`
+	NATS           StashNATSSpec          `json:"nats"`
+	ETCD           StashETCDSpec          `json:"etcd"`
+	ManifestBackup ManifestBackupSpec     `json:"manifest-backup"`
 }
 
 // StashElasticsearchSpec is the schema for Stash Elasticsearch values file
@@ -230,6 +231,17 @@ type ETCDRestore struct {
 	WorkloadKind string `json:"workloadKind"`
 	// +optional
 	WorkloadName string `json:"workloadName"`
+}
+
+type ManifestBackupSpec struct {
+	Enabled bool           `json:"enabled"`
+	Backup  ManifestBackup `json:"backup"`
+}
+
+type ManifestBackup struct {
+	Sanitize          bool   `json:"sanitize"`
+	LabelSelector     string `json:"labelSelector"`
+	IncludeDependants bool   `json:"includeDependants"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
