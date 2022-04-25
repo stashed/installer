@@ -6,8 +6,13 @@ spec:
   targetRef:
     apiVersion: stash.appscode.com/v1beta1
     kind: BackupConfiguration
+  commonLabels:
+    - key: invoker_kind
+      value: "BackupConfiguration"
+    - key: invoker_name
+      valuePath: .metadata.name
   metrics:
-    - name: stash_backupconfiguration_created
+    - name: created
       help: "Unix creation timestamp of this BackupConfiguration object"
       type: gauge
       field:
@@ -15,7 +20,7 @@ spec:
         type: DateTime
       metricValue:
         valueFromPath: .metadata.creationTimestamp
-    - name: stash_backupconfiguration_info
+    - name: info
       help: "General information about this BackupConfiguration"
       type: gauge
       labels:
@@ -31,23 +36,15 @@ spec:
           valuePath: .spec.target.ref.kind
         - key: target_name
           valuePath: .spec.target.ref.name
-        - key: invoker_kind
-          value: "BackupConfiguration"
-        - key: invoker_name
-          valuePath: .metadata.name
       metricValue:
         value: 1
-    - name: stash_backupconfiguration_conditions
+    - name: conditions
       help: "Current conditions of this BackupConfiguration"
       type: gauge
       field:
         path: .status.conditions
         type: Array
       labels:
-        - key: invoker_kind
-          value: "BackupConfiguration"
-        - key: invoker_name
-          valuePath: .metadata.name
         - key: condition
           valuePath: .status.conditions[*].type
         - key: status

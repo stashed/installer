@@ -7,7 +7,7 @@ spec:
     apiVersion: stash.appscode.com/v1alpha1
     kind: Repository
   metrics:
-    - name: stash_repository_created
+    - name: created
       help: "Unix creation timestamp of this Repository"
       type: gauge
       field:
