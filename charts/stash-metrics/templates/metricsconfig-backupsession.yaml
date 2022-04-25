@@ -6,32 +6,26 @@ spec:
   targetRef:
     apiVersion: stash.appscode.com/v1beta1
     kind: BackupSession
+  commonLabels:
+    - key: invoker_api_group
+      valuePath: .spec.invoker.apiGroup
+    - key: invoker_kind
+      valuePath: .spec.invoker.kind
+    - key: invoker_name
+      valuePath: .spec.invoker.name
   metrics:
-    - name: stash_backupsession_created
+    - name: created
       help: "Unix creation timestamp of this BackupSession"
       type: gauge
       field:
         path: .metadata.creationTimestamp
         type: DateTime
-      labels:
-        - key: invoker_api_group
-          valuePath: .spec.invoker.apiGroup
-        - key: invoker_kind
-          valuePath: .spec.invoker.kind
-        - key: invoker_name
-          valuePath: .spec.invoker.name
       metricValue:
         valueFromPath: .metadata.creationTimestamp
-    - name: stash_backupsession_info
+    - name: info
       help: "General information about BackupSession"
       type: gauge
       labels:
-        - key: invoker_api_group
-          valuePath: .spec.invoker.apiGroup
-        - key: invoker_kind
-          valuePath: .spec.invoker.kind
-        - key: invoker_name
-          valuePath: .spec.invoker.name
         - key: phase
           valuePath: .status.phase
       metricValue:
