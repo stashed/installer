@@ -96,7 +96,7 @@
       "targets": [
         {
           "exemplar": false,
-          "expr": "count(stash_backupconfiguration_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"})",
+          "expr": "count(stash_appscode_com_backupconfiguration_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"})",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -161,7 +161,7 @@
       "targets": [
         {
           "exemplar": false,
-          "expr": "count(stash_backupsession_info{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\", phase=\"Succeeded\"})",
+          "expr": "count(stash_appscode_com_backupsession_info{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\", phase=\"Succeeded\"})",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -227,7 +227,7 @@
       "targets": [
         {
           "exemplar": false,
-          "expr": "count(stash_backupsession_info{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\",phase=\"Running\"})",
+          "expr": "count(stash_appscode_com_backupsession_info{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\",phase=\"Running\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -291,7 +291,7 @@
       "targets": [
         {
           "exemplar": false,
-          "expr": "count(stash_backupsession_info{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\", phase=\"Skipped\"})",
+          "expr": "count(stash_appscode_com_backupsession_info{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\", phase=\"Skipped\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -355,7 +355,7 @@
       "targets": [
         {
           "exemplar": false,
-          "expr": "count(stash_backupsession_info{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\", phase=\"Failed\"})",
+          "expr": "count(stash_appscode_com_backupsession_info{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\", phase=\"Failed\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -617,7 +617,7 @@
       "targets": [
         {
           "exemplar": false,
-          "expr": "stash_backupconfiguration_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"}",
+          "expr": "stash_appscode_com_backupconfiguration_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"}",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -627,7 +627,7 @@
         },
         {
           "exemplar": false,
-          "expr": "stash_backupconfiguration_conditions{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\", condition=\"CronJobCreated\", status=\"True\"}",
+          "expr": "stash_appscode_com_backupconfiguration_conditions{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\", condition=\"CronJobCreated\", status=\"True\"}",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -1162,7 +1162,7 @@
       "targets": [
         {
           "exemplar": false,
-          "expr": "stash_backupsession_info{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"}",
+          "expr": "stash_appscode_com_backupsession_info{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"}",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1181,7 +1181,7 @@
         },
         {
           "exemplar": false,
-          "expr": "stash_backupsession_created{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"} * 1000",
+          "expr": "stash_appscode_com_backupsession_created{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"} * 1000",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -1754,7 +1754,7 @@
       "targets": [
         {
           "exemplar": false,
-          "expr": "count(stash_restoresession_info{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\"})",
+          "expr": "count(stash_appscode_com_restoresession_info{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -1818,7 +1818,7 @@
       "targets": [
         {
           "exemplar": false,
-          "expr": "count(stash_restoresession_info{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\", phase=\"Succeeded\"})",
+          "expr": "count(stash_appscode_com_restoresession_info{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\", phase=\"Succeeded\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -1882,7 +1882,7 @@
       "targets": [
         {
           "exemplar": false,
-          "expr": "count(stash_restoresession_info{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\", phase=\"Running\"})",
+          "expr": "count(stash_appscode_com_restoresession_info{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\", phase=\"Running\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -1946,7 +1946,7 @@
       "targets": [
         {
           "exemplar": false,
-          "expr": "count(stash_restoresession_info{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\"}) - count(stash_restoresession_info{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\", phase=~\"Succeeded|Failed|Running\"})",
+          "expr": "count(stash_appscode_com_restoresession_info{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\"}) - count(stash_appscode_com_restoresession_info{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\", phase=~\"Succeeded|Failed|Running\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -2010,7 +2010,7 @@
       "targets": [
         {
           "exemplar": false,
-          "expr": "count(stash_restoresession_info{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\", phase=\"Failed\"})",
+          "expr": "count(stash_appscode_com_restoresession_info{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\", phase=\"Failed\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -2162,7 +2162,7 @@
       "targets": [
         {
           "exemplar": false,
-          "expr": "stash_restoresession_info{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\"}",
+          "expr": "stash_appscode_com_restoresession_info{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\"}",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -2184,7 +2184,7 @@
         },
         {
           "exemplar": false,
-          "expr": "stash_restoresession_created{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\"} * 1000",
+          "expr": "stash_appscode_com_restoresession_created{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\"} * 1000",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -2725,7 +2725,7 @@
           "value": "$__all"
         },
         "datasource": "${datasource}",
-        "definition": "label_values(stash_backupconfiguration_info,namespace)",
+        "definition": "label_values(stash_appscode_com_backupconfiguration_info,namespace)",
         "description": "List of namespaces where the backups are running",
         "error": null,
         "hide": 0,
@@ -2734,7 +2734,7 @@
         "multi": false,
         "name": "namespace",
         "options": [],
-        "query": "label_values(stash_backupconfiguration_info,namespace)",
+        "query": "label_values(stash_appscode_com_backupconfiguration_info,namespace)",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
@@ -2749,7 +2749,7 @@
           "value": "$__all"
         },
         "datasource": "${datasource}",
-        "definition": "label_values(stash_backupconfiguration_info{namespace=~\"${namespace}\"},target_kind)",
+        "definition": "label_values(stash_appscode_com_backupconfiguration_info{namespace=~\"${namespace}\"},target_kind)",
         "description": "Kind of the targeted application",
         "error": null,
         "hide": 0,
@@ -2758,7 +2758,7 @@
         "multi": false,
         "name": "target_kind",
         "options": [],
-        "query": "label_values(stash_backupconfiguration_info{namespace=~\"${namespace}\"},target_kind)",
+        "query": "label_values(stash_appscode_com_backupconfiguration_info{namespace=~\"${namespace}\"},target_kind)",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
@@ -2773,7 +2773,7 @@
           "value": "$__all"
         },
         "datasource": "${datasource}",
-        "definition": "label_values(stash_backupconfiguration_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\"},target_name)",
+        "definition": "label_values(stash_appscode_com_backupconfiguration_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\"},target_name)",
         "description": "Name of the targeted application",
         "error": null,
         "hide": 0,
@@ -2782,7 +2782,7 @@
         "multi": false,
         "name": "target_name",
         "options": [],
-        "query": "label_values(stash_backupconfiguration_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\"},target_name)",
+        "query": "label_values(stash_appscode_com_backupconfiguration_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\"},target_name)",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
@@ -2797,7 +2797,7 @@
           "value": "$__all"
         },
         "datasource": "${datasource}",
-        "definition": "label_values(stash_backupconfiguration_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"},invoker_kind)",
+        "definition": "label_values(stash_appscode_com_backupconfiguration_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"},invoker_kind)",
         "description": "Kind of the backup invoker object",
         "error": null,
         "hide": 2,
@@ -2806,7 +2806,7 @@
         "multi": false,
         "name": "backup_invoker_kind",
         "options": [],
-        "query": "label_values(stash_backupconfiguration_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"},invoker_kind)",
+        "query": "label_values(stash_appscode_com_backupconfiguration_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"},invoker_kind)",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
@@ -2821,7 +2821,7 @@
           "value": "$__all"
         },
         "datasource": "${datasource}",
-        "definition": "label_values(stash_backupconfiguration_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"},invoker_name)",
+        "definition": "label_values(stash_appscode_com_backupconfiguration_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"},invoker_name)",
         "description": "Name of the respective backup invoker object",
         "error": null,
         "hide": 2,
@@ -2830,7 +2830,7 @@
         "multi": false,
         "name": "backup_invoker_name",
         "options": [],
-        "query": "label_values(stash_backupconfiguration_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"},invoker_name)",
+        "query": "label_values(stash_appscode_com_backupconfiguration_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"},invoker_name)",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
@@ -2845,7 +2845,7 @@
           "value": "$__all"
         },
         "datasource": "${datasource}",
-        "definition": "label_values(stash_restoresession_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"},invoker_kind)",
+        "definition": "label_values(stash_appscode_com_restoresession_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"},invoker_kind)",
         "description": "Kind of the restore invoker object",
         "error": null,
         "hide": 2,
@@ -2854,7 +2854,7 @@
         "multi": false,
         "name": "restore_invoker_kind",
         "options": [],
-        "query": "label_values(stash_restoresession_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"},invoker_kind)",
+        "query": "label_values(stash_appscode_com_restoresession_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"},invoker_kind)",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
@@ -2869,7 +2869,7 @@
           "value": "$__all"
         },
         "datasource": "${datasource}",
-        "definition": "label_values(stash_restoresession_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"},invoker_name)",
+        "definition": "label_values(stash_appscode_com_restoresession_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"},invoker_name)",
         "description": "Name of the respective restore invoker object",
         "error": null,
         "hide": 2,
@@ -2878,7 +2878,7 @@
         "multi": false,
         "name": "restore_invoker_name",
         "options": [],
-        "query": "label_values(stash_restoresession_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"},invoker_name)",
+        "query": "label_values(stash_appscode_com_restoresession_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"},invoker_name)",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
