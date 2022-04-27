@@ -25,7 +25,7 @@ spec:
   - --target-namespace=${TARGET_NAMESPACE:=}
   - --sanitize=${sanitize:=true}
   - --label-selector=${labelSelector:=}
-  - --include-dependants=${includeDependants:=}
+  - --include-dependants=${includeDependants:=false}
   - --retention-keep-last=${RETENTION_KEEP_LAST:=0}
   - --retention-keep-hourly=${RETENTION_KEEP_HOURLY:=0}
   - --retention-keep-daily=${RETENTION_KEEP_DAILY:=0}
