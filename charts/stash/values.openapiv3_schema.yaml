@@ -96,7 +96,7 @@ properties:
         required:
         - registry
         type: object
-      manifest-backup:
+      manifest:
         properties:
           backup:
             properties:
@@ -287,7 +287,7 @@ properties:
     - elasticsearch
     - etcd
     - image
-    - manifest-backup
+    - manifest
     - mariadb
     - mongodb
     - mysql

@@ -1,7 +1,10 @@
+{{ if .Values.manifest.enabled }}
 apiVersion: stash.appscode.com/v1beta1
 kind: Function
 metadata:
-  name: manifest-backup-10.5.8
+  name: 'manifest-backup-0.1.0'
+  labels:
+    {{- include "stash-catalog.labels" . | nindent 4 }}
 spec:
   args:
   - backup-manifest
@@ -37,4 +40,5 @@ spec:
   - --retention-dry-run=${RETENTION_DRY_RUN:=false}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: stashed/stash-manifest-backup:0.1.0
+  image: '{{ include "catalog.registry" . }}/stash-manifest:0.1.0'
+{{ end }}

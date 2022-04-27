@@ -122,8 +122,8 @@ etcd:
     workloadKind: ""
     # Name of the workload used to deploy the ETCD cluster
     workloadName: ""
-manifest-backup:
-  # If true, deploy manifest-backup plugin
+manifest:
+  # If true, deploy manifest plugin
   enabled: true
   # Optional arguments to pass to the backup process
   backup:

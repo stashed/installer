@@ -86,7 +86,7 @@
       ]
     },
     {
-      "name": "manifest-backup",
+      "name": "manifest",
       "versions": [
         "0.1.0"
       ]
