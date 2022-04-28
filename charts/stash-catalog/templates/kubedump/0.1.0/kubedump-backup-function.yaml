@@ -7,7 +7,7 @@ metadata:
     {{- include "stash-catalog.labels" . | nindent 4 }}
 spec:
   args:
-  - backup-cluster
+  - backup
   - --provider=${REPOSITORY_PROVIDER:=}
   - --bucket=${REPOSITORY_BUCKET:=}
   - --endpoint=${REPOSITORY_ENDPOINT:=}

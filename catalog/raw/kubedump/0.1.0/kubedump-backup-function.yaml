@@ -4,7 +4,7 @@ metadata:
   name: kubedump-backup-0.1.0
 spec:
   args:
-  - backup-cluster
+  - backup
   - --provider=${REPOSITORY_PROVIDER:=}
   - --bucket=${REPOSITORY_BUCKET:=}
   - --endpoint=${REPOSITORY_ENDPOINT:=}
