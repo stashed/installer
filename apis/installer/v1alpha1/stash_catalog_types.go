@@ -55,6 +55,7 @@ type StashCatalogSpec struct {
 	Redis         StashRedisSpec         `json:"redis"`
 	NATS          StashNATSSpec          `json:"nats"`
 	ETCD          StashETCDSpec          `json:"etcd"`
+	KubeDump      KubeDumpSpec           `json:"kubedump"`
 }
 
 // StashElasticsearchSpec is the schema for Stash Elasticsearch values file
@@ -230,6 +231,17 @@ type ETCDRestore struct {
 	WorkloadKind string `json:"workloadKind"`
 	// +optional
 	WorkloadName string `json:"workloadName"`
+}
+
+type KubeDumpSpec struct {
+	Enabled bool           `json:"enabled"`
+	Backup  KubeDumpBackup `json:"backup"`
+}
+
+type KubeDumpBackup struct {
+	Sanitize          bool   `json:"sanitize"`
+	LabelSelector     string `json:"labelSelector"`
+	IncludeDependants bool   `json:"includeDependants"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

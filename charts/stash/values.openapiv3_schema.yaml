@@ -96,6 +96,27 @@ properties:
         required:
         - registry
         type: object
+      kubedump:
+        properties:
+          backup:
+            properties:
+              includeDependants:
+                type: boolean
+              labelSelector:
+                type: string
+              sanitize:
+                type: boolean
+            required:
+            - includeDependants
+            - labelSelector
+            - sanitize
+            type: object
+          enabled:
+            type: boolean
+        required:
+        - backup
+        - enabled
+        type: object
       mariadb:
         description: StashMariadbSpec is the schema for Stash MariaDB values file
         properties:
@@ -266,6 +287,7 @@ properties:
     - elasticsearch
     - etcd
     - image
+    - kubedump
     - mariadb
     - mongodb
     - mysql

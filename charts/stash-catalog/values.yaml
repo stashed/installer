@@ -122,3 +122,14 @@ etcd:
     workloadKind: ""
     # Name of the workload used to deploy the ETCD cluster
     workloadName: ""
+kubedump:
+  # If true, deploy kubedump addon
+  enabled: true
+  # Optional arguments to pass to the backup process
+  backup:
+    # Specify whether to remove the decorator
+    sanitize: true
+    # Specify label selector to filter resources
+    labelSelector: ""
+    # Specify whether to include the dependants resources along with it's parent
+    includeDependants: false

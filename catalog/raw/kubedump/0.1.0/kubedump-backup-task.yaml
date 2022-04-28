@@ -1,0 +1,14 @@
+apiVersion: stash.appscode.com/v1beta1
+kind: Task
+metadata:
+  name: kubedump-backup-0.1.0
+spec:
+  steps:
+  - name: kubedump-backup-0.1.0
+    params:
+    - name: outputDir
+      value: /tmp/output
+  - name: update-status
+    params:
+    - name: outputDir
+      value: /tmp/output
