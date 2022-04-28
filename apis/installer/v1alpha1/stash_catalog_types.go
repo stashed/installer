@@ -55,7 +55,7 @@ type StashCatalogSpec struct {
 	Redis         StashRedisSpec         `json:"redis"`
 	NATS          StashNATSSpec          `json:"nats"`
 	ETCD          StashETCDSpec          `json:"etcd"`
-	Manifest      ManifestSpec           `json:"manifest"`
+	KubeDump      KubeDumpSpec           `json:"kubedump"`
 }
 
 // StashElasticsearchSpec is the schema for Stash Elasticsearch values file
@@ -233,12 +233,12 @@ type ETCDRestore struct {
 	WorkloadName string `json:"workloadName"`
 }
 
-type ManifestSpec struct {
+type KubeDumpSpec struct {
 	Enabled bool           `json:"enabled"`
-	Backup  ManifestBackup `json:"backup"`
+	Backup  KubeDumpBackup `json:"backup"`
 }
 
-type ManifestBackup struct {
+type KubeDumpBackup struct {
 	Sanitize          bool   `json:"sanitize"`
 	LabelSelector     string `json:"labelSelector"`
 	IncludeDependants bool   `json:"includeDependants"`

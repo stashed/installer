@@ -1,13 +1,13 @@
-{{ if .Values.manifest.enabled }}
+{{ if .Values.kubedump.enabled }}
 apiVersion: stash.appscode.com/v1beta1
 kind: Task
 metadata:
-  name: 'manifest-backup-0.1.0'
+  name: 'kubedump-backup-0.1.0'
   labels:
     {{- include "stash-catalog.labels" . | nindent 4 }}
 spec:
   steps:
-  - name: manifest-backup-0.1.0
+  - name: kubedump-backup-0.1.0
     params:
     - name: outputDir
       value: /tmp/output

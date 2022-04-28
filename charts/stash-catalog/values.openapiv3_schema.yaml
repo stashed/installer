@@ -57,7 +57,7 @@ properties:
     required:
     - registry
     type: object
-  manifest:
+  kubedump:
     properties:
       backup:
         properties:
@@ -248,7 +248,7 @@ required:
 - elasticsearch
 - etcd
 - image
-- manifest
+- kubedump
 - mariadb
 - mongodb
 - mysql

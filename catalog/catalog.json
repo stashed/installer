@@ -86,7 +86,7 @@
       ]
     },
     {
-      "name": "manifest",
+      "name": "kubedump",
       "versions": [
         "0.1.0"
       ]

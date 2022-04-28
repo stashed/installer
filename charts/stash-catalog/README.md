@@ -89,10 +89,10 @@ The following table lists the configurable parameters of the `stash-catalog` cha
 | etcd.restore.dataDir                    | Directory where the ETCD stores its data for persistence                                                                               | <code>""</code>                |
 | etcd.restore.workloadKind               | Kind of the workload used to deploy the ETCD cluster (i.e. StatefulSet)                                                                | <code>""</code>                |
 | etcd.restore.workloadName               | Name of the workload used to deploy the ETCD cluster                                                                                   | <code>""</code>                |
-| manifest.enabled                        | If true, deploy manifest plugin                                                                                                        | <code>true</code>              |
-| manifest.backup.sanitize                | Specify whether to remove the decorator                                                                                                | <code>true</code>              |
-| manifest.backup.labelSelector           | Specify label selector to filter resources                                                                                             | <code>""</code>                |
-| manifest.backup.includeDependants       | Specify whether to include the dependants resources along with it's parent                                                             | <code>false</code>             |
+| kubedump.enabled                        | If true, deploy kubedump addon                                                                                                         | <code>true</code>              |
+| kubedump.backup.sanitize                | Specify whether to remove the decorator                                                                                                | <code>true</code>              |
+| kubedump.backup.labelSelector           | Specify label selector to filter resources                                                                                             | <code>""</code>                |
+| kubedump.backup.includeDependants       | Specify whether to include the dependants resources along with it's parent                                                             | <code>false</code>             |
 
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm upgrade -i`. For example:
