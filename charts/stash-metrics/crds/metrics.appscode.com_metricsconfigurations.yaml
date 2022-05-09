@@ -94,7 +94,7 @@ spec:
                     style.
                   properties:
                     field:
-                      description: Field defines the metric value path of the cluster
+                      description: Field defines the metric value path of the manifest
                         file and the type of that value
                       properties:
                         path:
@@ -209,7 +209,7 @@ spec:
                           type: string
                         valueFromPath:
                           description: "ValueFromPath contains the field path of the
-                            cluster file of a object. ValueFromPath is used when
+                            manifest file of a object. ValueFromPath is used when
                             the metric value is coming from any specific json path
                             of the object. \n Example: For metrics \"kube_deployment_spec_replicas\",
                             the metricValue is coming from a specific path .spec.replicas
@@ -241,7 +241,7 @@ spec:
                             description: Value defines user defined parameter's value.
                             type: string
                           valuePath:
-                            description: 'ValuePath defines the cluster field path
+                            description: 'ValuePath defines the manifest field path
                               for the parameter''s value. Example: To add deployment''s
                               spec replica count as parameter, params:   - key: replica     valuePath:
                               .spec.replicas'
@@ -334,7 +334,7 @@ spec:
                                     type: string
                                   valueFromPath:
                                     description: "ValueFromPath contains the field
-                                      path of the cluster file of a object. ValueFromPath
+                                      path of the manifest file of a object. ValueFromPath
                                       is used when the metric value is coming from
                                       any specific json path of the object. \n Example:
                                       For metrics \"kube_deployment_spec_replicas\",

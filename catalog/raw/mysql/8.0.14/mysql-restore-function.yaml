@@ -25,4 +25,4 @@ spec:
   - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: stashed/stash-mysql:8.0.14-v16
+  image: stashed/stash-mysql:8.0.14-v17

@@ -32,5 +32,5 @@ spec:
   - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: '{{ include "catalog.registry" . }}/stash-nats:2.6.1-v3'
+  image: '{{ include "catalog.registry" . }}/stash-nats:2.6.1-v4'
 {{ end }}

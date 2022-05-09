@@ -36,5 +36,5 @@ spec:
   - --retention-dry-run=${RETENTION_DRY_RUN:=false}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: '{{ include "catalog.registry" . }}/stash-redis:5.0.13-v4'
+  image: '{{ include "catalog.registry" . }}/stash-redis:5.0.13-v5'
 {{ end }}
