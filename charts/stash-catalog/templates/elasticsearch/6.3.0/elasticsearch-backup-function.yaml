@@ -37,5 +37,5 @@ spec:
   - --retention-dry-run=${RETENTION_DRY_RUN:=false}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: '{{ include "catalog.registry" . }}/stash-elasticsearch:6.3.0-v16'
+  image: '{{ include "catalog.registry" . }}/stash-elasticsearch:6.3.0-v17'
 {{ end }}
