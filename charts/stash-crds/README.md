@@ -7,8 +7,8 @@
 ```bash
 $ helm repo add appscode https://charts.appscode.com/stable/
 $ helm repo update
-$ helm search repo appscode/stash-crds --version=v2022.03.29
-$ helm upgrade -i stash-crds appscode/stash-crds -n stash --create-namespace --version=v2022.03.29
+$ helm search repo appscode/stash-crds --version=v2022.05.12
+$ helm upgrade -i stash-crds appscode/stash-crds -n stash --create-namespace --version=v2022.05.12
 ```
 
 ## Introduction
@@ -24,7 +24,7 @@ This chart deploys Stash crds on a [Kubernetes](http://kubernetes.io) cluster us
 To install/upgrade the chart with the release name `stash-crds`:
 
 ```bash
-$ helm upgrade -i stash-crds appscode/stash-crds -n stash --create-namespace --version=v2022.03.29
+$ helm upgrade -i stash-crds appscode/stash-crds -n stash --create-namespace --version=v2022.05.12
 ```
 
 The command deploys Stash crds on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.

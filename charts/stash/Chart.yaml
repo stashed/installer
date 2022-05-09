@@ -2,8 +2,8 @@ apiVersion: v2
 description: Stash by AppsCode - Backup your Kubernetes native applications
 name: stash
 type: application
-version: v2022.03.29
-appVersion: v2022.03.29
+version: v2022.05.12
+appVersion: v2022.05.12
 home: https://stash.run
 icon: https://cdn.appscode.com/images/products/stash/stash-icon.png
 sources:
@@ -14,17 +14,17 @@ maintainers:
 dependencies:
 - name: stash-community
   repository: file://../stash-community
-  version: v0.19.0
+  version: v0.20.0
   condition: features.community
 - name: stash-enterprise
   repository: file://../stash-enterprise
-  version: v0.19.0
+  version: v0.20.0
   condition: features.enterprise
 - name: stash-catalog
   repository: file://../stash-catalog
-  version: v2022.03.29
+  version: v2022.05.12
   condition: features.enterprise
 - name: stash-metrics
   repository: file://../stash-metrics
-  version: v2022.03.29
+  version: v2022.05.12
   condition: features.enterprise

@@ -38,5 +38,5 @@ spec:
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
   - --user=${user:=}
-  image: '{{ include "catalog.registry" . }}/stash-postgres:10.14-v14'
+  image: '{{ include "catalog.registry" . }}/stash-postgres:10.14-v15'
 {{ end }}
