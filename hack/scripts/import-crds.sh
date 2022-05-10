@@ -53,7 +53,10 @@ crd-importer \
     --gk=Function.stash.appscode.com \
     --gk=Repository.stash.appscode.com \
     --gk=RestoreSession.stash.appscode.com \
-    --gk=Task.stash.appscode.com
+    --gk=Task.stash.appscode.com \
+    --gk=BackupBlueprint.stash.appscode.com \
+    --gk=BackupBatch.stash.appscode.com \
+    --gk=RestoreBatch.stash.appscode.com
 
 crd-importer \
     --input=${crd_dir} \
@@ -63,7 +66,10 @@ crd-importer \
     --gk=Function.stash.appscode.com \
     --gk=Repository.stash.appscode.com \
     --gk=RestoreSession.stash.appscode.com \
-    --gk=Task.stash.appscode.com
+    --gk=Task.stash.appscode.com \
+    --gk=BackupBlueprint.stash.appscode.com \
+    --gk=BackupBatch.stash.appscode.com \
+    --gk=RestoreBatch.stash.appscode.com
 
 crd-importer --v=v1 \
     --input=${crd_dir} \
