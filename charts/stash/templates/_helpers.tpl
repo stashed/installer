@@ -79,7 +79,7 @@ Returns the registry used for operator docker image
 Returns the registry used for catalog docker images
 */}}
 {{- define "catalog.registry" -}}
-{{- list (default .Values.registryFQDN .Values.global.registryFQDN) (default .Values.image.registry .Values.global.registry) | compact | join "/" }}
+{{- list (default .registryFQDN .global.registryFQDN | default ._reg) (default .image.registry .global.registry | default ._repo) | compact | join "/" }}
 {{- end }}
 
 {{/*

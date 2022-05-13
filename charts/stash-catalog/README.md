@@ -48,7 +48,7 @@ The following table lists the configurable parameters of the `stash-catalog` cha
 |                Parameter                |                                                              Description                                                               |            Default             |
 |-----------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|--------------------------------|
 | registryFQDN                            | Docker registry fqdn used to pull Stash related images. Set this to use docker registry hosted at ${registryFQDN}/${registry}/${image} | <code>""</code>                |
-| image.registry                          | Docker registry used to pull Postgres addon image                                                                                      | <code>stashed</code>           |
+| image.registry                          | Docker registry used to pull Postgres addon image                                                                                      | <code>""</code>                |
 | waitTimeout                             | Number of seconds to wait for the database to be ready before backup/restore process.                                                  | <code>300</code>               |
 | elasticsearch.enabled                   | If true, deploys Elasticsearch addon                                                                                                   | <code>true</code>              |
 | elasticsearch.backup.args               | Arguments to pass to `multielasticdump` command  during backup process                                                                 | <code>""</code>                |
@@ -98,7 +98,7 @@ The following table lists the configurable parameters of the `stash-catalog` cha
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm upgrade -i`. For example:
 
 ```bash
-$ helm upgrade -i stash-catalog appscode/stash-catalog -n stash --create-namespace --version=v2022.05.12 --set image.registry=stashed
+$ helm upgrade -i stash-catalog appscode/stash-catalog -n stash --create-namespace --version=v2022.05.12 --set waitTimeout=300
 ```
 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while

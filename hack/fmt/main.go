@@ -157,13 +157,15 @@ func main() {
 					if err != nil {
 						panic(err)
 					}
-					if img != "" && strings.HasPrefix(img, "stashed/") {
-						nuimg := `{{ include "catalog.registry" . }}/` + strings.TrimPrefix(img, "stashed/")
-						err = unstructured.SetNestedField(r.Resource.Object, nuimg, "spec", "image")
-						if err != nil {
-							panic(err)
-						}
+
+					reg, repo, bin, tag := ParseImage(img)
+					// if img != "" && strings.HasPrefix(img, "stashed/") {
+					nuimg := fmt.Sprintf(`{{ include "catalog.registry" (merge (dict "_reg" "%s" "_repo" "%s") .Values) }}/%s:%s`, reg, repo, bin, tag)
+					err = unstructured.SetNestedField(r.Resource.Object, nuimg, "spec", "image")
+					if err != nil {
+						panic(err)
 					}
+					//}
 
 					args, _, err := unstructured.NestedStringSlice(r.Resource.Object, "spec", "args")
 					if err != nil {
@@ -326,4 +328,25 @@ func toVersion(app, v string) string {
 		return parts[0] + "." + parts[1]
 	}
 	return v2
+}
+
+func ParseImage(s string) (reg, repo, bin, tag string) {
+	idx := strings.IndexRune(s, ':')
+	if idx != -1 {
+		tag = s[idx+1:]
+		s = s[:idx]
+	}
+	parts := strings.Split(s, "/")
+	if len(parts) >= 1 {
+		bin = parts[len(parts)-1]
+		parts = parts[:len(parts)-1]
+	}
+	if len(parts) >= 1 {
+		repo = parts[len(parts)-1]
+		parts = parts[:len(parts)-1]
+	}
+	if len(parts) > 0 {
+		reg = strings.Join(parts, "/")
+	}
+	return
 }

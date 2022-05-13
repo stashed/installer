@@ -7,7 +7,7 @@
 registryFQDN: ""
 image:
   # Docker registry used to pull Postgres addon image
-  registry: stashed
+  registry: ""
 # Number of seconds to wait for the database to be ready before backup/restore process.
 waitTimeout: 300
 elasticsearch:
