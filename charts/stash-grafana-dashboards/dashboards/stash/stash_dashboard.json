@@ -416,7 +416,7 @@
       "targets": [
         {
           "exemplar": false,
-          "expr": "sum(stash_repository_size_bytes{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\",})",
+          "expr": "sum(stash_appscode_com_repository_size_bytes{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\",})",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -637,7 +637,7 @@
         },
         {
           "exemplar": false,
-          "expr": "stash_backup_last_success_time_seconds{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"} * 1000",
+          "expr": "stash_appscode_com_backupsession_last_success_time_seconds{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"} * 1000",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -1171,7 +1171,7 @@
         },
         {
           "exemplar": false,
-          "expr": "stash_backup_session_duration_seconds{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"}",
+          "expr": "stash_appscode_com_backupsession_duration_seconds{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"}",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -1468,7 +1468,7 @@
       "targets": [
         {
           "exemplar": false,
-          "expr": "stash_repository_integrity{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"}",
+          "expr": "stash_appscode_com_repository_integrity{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"}",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -1478,7 +1478,7 @@
         },
         {
           "exemplar": false,
-          "expr": "stash_repository_snapshot_count{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"}",
+          "expr": "stash_appscode_com_repository_snapshot_count{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"}",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -1488,7 +1488,7 @@
         },
         {
           "exemplar": false,
-          "expr": "stash_repository_size_bytes{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"}",
+          "expr": "stash_appscode_com_repository_size_bytes{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"}",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -1498,7 +1498,7 @@
         },
         {
           "exemplar": false,
-          "expr": "stash_backup_last_success_time_seconds{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"} * 1000",
+          "expr": "stash_appscode_com_backupsession_last_success_time_seconds{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"} * 1000",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1673,7 +1673,7 @@
       "targets": [
         {
           "exemplar": false,
-          "expr": "stash_repository_size_bytes{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"}",
+          "expr": "stash_appscode_com_repository_size_bytes{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"}",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -2173,7 +2173,7 @@
         },
         {
           "exemplar": false,
-          "expr": "stash_restore_session_duration_seconds{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\"}",
+          "expr": "stash_appscode_com_restoresession_duration_seconds{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\"}",
           "format": "table",
           "hide": false,
           "instant": true,
