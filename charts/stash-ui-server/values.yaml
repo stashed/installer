@@ -17,7 +17,7 @@ image:
   # Name of operator container image
   repository: stash-ui-server
   # Operator container image tag
-  tag: v0.2.0
+  tag: ""
   # Compute Resources required by the operator container
   resources: {}
   # Security options the operator container should run with
