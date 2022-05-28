@@ -36,14 +36,14 @@ spec:
       - name: operator
         securityContext:
           {{- toYaml .Values.operator.securityContext | nindent 10 }}
-        image: {{ include "operator.registry" . }}/{{ .Values.operator.repository }}:{{ .Values.operator.tag }}
+        image: {{ include "operator.registry" . }}/{{ .Values.operator.repository }}:{{ .Values.operator.tag | default .Chart.AppVersion }}
         imagePullPolicy: {{ .Values.imagePullPolicy }}
         args:
         - run
         - --v={{ .Values.logLevel }}
         - --docker-registry={{ include "operator.registry" . }}
         - --image={{ .Values.operator.repository }}
-        - --image-tag={{ .Values.operator.tag }}
+        - --image-tag={{ .Values.operator.tag | default .Chart.AppVersion }}
         {{- if .Values.imagePullSecrets }}
         - --image-pull-secrets={{ include "image-pull-secrets" . }}
         {{- end }}
