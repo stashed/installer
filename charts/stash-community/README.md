@@ -7,8 +7,8 @@
 ```bash
 $ helm repo add appscode https://charts.appscode.com/stable/
 $ helm repo update
-$ helm search repo appscode/stash-community --version=v0.20.0
-$ helm upgrade -i stash-community appscode/stash-community -n stash --create-namespace --version=v0.20.0
+$ helm search repo appscode/stash-community --version=v0.20.1
+$ helm upgrade -i stash-community appscode/stash-community -n stash --create-namespace --version=v0.20.1
 ```
 
 ## Introduction
@@ -24,7 +24,7 @@ This chart deploys a Stash community operator on a [Kubernetes](http://kubernete
 To install/upgrade the chart with the release name `stash-community`:
 
 ```bash
-$ helm upgrade -i stash-community appscode/stash-community -n stash --create-namespace --version=v0.20.0
+$ helm upgrade -i stash-community appscode/stash-community -n stash --create-namespace --version=v0.20.1
 ```
 
 The command deploys a Stash community operator on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
@@ -55,7 +55,7 @@ The following table lists the configurable parameters of the `stash-community` c
 | registryFQDN                          | Docker registry fqdn used to pull Stash related images. Set this to use docker registry hosted at ${registryFQDN}/${registry}/${image}                                                                                                                                                                                                         | <code>""</code>                                   |
 | operator.registry                     | Docker registry used to pull operator image                                                                                                                                                                                                                                                                                                    | <code>stashed</code>                              |
 | operator.repository                   | Name of operator container image                                                                                                                                                                                                                                                                                                               | <code>stash</code>                                |
-| operator.tag                          | Operator container image tag                                                                                                                                                                                                                                                                                                                   | <code>v0.20.0</code>                              |
+| operator.tag                          | Operator container image tag                                                                                                                                                                                                                                                                                                                   | <code>""</code>                                   |
 | operator.resources                    | Compute Resources required by the operator container                                                                                                                                                                                                                                                                                           | <code>{"requests":{"cpu":"100m"}}</code>          |
 | operator.securityContext              | Security options the operator container should run with                                                                                                                                                                                                                                                                                        | <code>{}</code>                                   |
 | crdInstaller.registry                 | Docker registry of the CRD installer image. By default, it will use the same registry as the operator.                                                                                                                                                                                                                                         | <code>""</code>                                   |
@@ -111,12 +111,12 @@ The following table lists the configurable parameters of the `stash-community` c
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm upgrade -i`. For example:
 
 ```bash
-$ helm upgrade -i stash-community appscode/stash-community -n stash --create-namespace --version=v0.20.0 --set replicaCount=1
+$ helm upgrade -i stash-community appscode/stash-community -n stash --create-namespace --version=v0.20.1 --set replicaCount=1
 ```
 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while
 installing the chart. For example:
 
 ```bash
-$ helm upgrade -i stash-community appscode/stash-community -n stash --create-namespace --version=v0.20.0 --values values.yaml
+$ helm upgrade -i stash-community appscode/stash-community -n stash --create-namespace --version=v0.20.1 --values values.yaml
 ```

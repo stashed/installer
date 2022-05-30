@@ -1,10 +1,10 @@
 apiVersion: stash.appscode.com/v1beta1
 kind: Function
 metadata:
-  name: nats-backup-2.6.1
+  name: elasticsearch-restore-8.2.0
 spec:
   args:
-  - backup-nats
+  - restore-es
   - --provider=${REPOSITORY_PROVIDER:=}
   - --bucket=${REPOSITORY_BUCKET:=}
   - --endpoint=${REPOSITORY_ENDPOINT:=}
@@ -15,25 +15,15 @@ spec:
   - --scratch-dir=/tmp
   - --enable-cache=${ENABLE_CACHE:=true}
   - --max-connections=${MAX_CONNECTIONS:=0}
-  - --hostname=${HOSTNAME:=}
-  - --interim-data-dir=${INTERIM_DATA_DIR}
-  - --nats-args=${args:=}
-  - --streams=${streams:=}
-  - --warning-threshold=${warningThreshold:=30s}
   - --wait-timeout=${waitTimeout:=300}
+  - --hostname=${HOSTNAME:=}
+  - --source-hostname=${SOURCE_HOSTNAME:=}
+  - --interim-data-dir=${INTERIM_DATA_DIR}
   - --namespace=${NAMESPACE:=default}
   - --appbinding=${TARGET_NAME:=}
   - --appbinding-namespace=${TARGET_NAMESPACE:=}
-  - --backupsession=${BACKUP_SESSION:=}
-  - --retention-keep-last=${RETENTION_KEEP_LAST:=0}
-  - --retention-keep-hourly=${RETENTION_KEEP_HOURLY:=0}
-  - --retention-keep-daily=${RETENTION_KEEP_DAILY:=0}
-  - --retention-keep-weekly=${RETENTION_KEEP_WEEKLY:=0}
-  - --retention-keep-monthly=${RETENTION_KEEP_MONTHLY:=0}
-  - --retention-keep-yearly=${RETENTION_KEEP_YEARLY:=0}
-  - --retention-keep-tags=${RETENTION_KEEP_TAGS:=}
-  - --retention-prune=${RETENTION_PRUNE:=false}
-  - --retention-dry-run=${RETENTION_DRY_RUN:=false}
+  - --snapshot=${RESTORE_SNAPSHOTS:=}
+  - --es-args=${args:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: stashed/stash-nats:2.6.1-v5
+  image: stashed/stash-elasticsearch:8.2.0

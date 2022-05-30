@@ -4,9 +4,9 @@ dependencies:
   version: v0.2.0
 - name: stash-metrics
   repository: file://../stash-metrics
-  version: v2022.05.12
+  version: v2022.05.18
 - name: stash-grafana-dashboards
   repository: file://../stash-grafana-dashboards
-  version: v2022.05.12
-digest: sha256:9f4afa30ceeb8529fb52785b9bd59b36927ff41bc3d5161c5c47bd512a80d1b7
-generated: "2022-05-09T08:57:29.505803165Z"
+  version: v2022.05.18
+digest: sha256:f7404dd958cf7f0f2019a24d3dbab0fa98d3a52c38d100e36cc12ccddd77563e
+generated: "2022-05-18T05:39:22.098930075Z"
