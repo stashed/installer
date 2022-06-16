@@ -130,21 +130,21 @@ type MySQLRestore struct {
 // StashPerconaXtraDBSpec is the schema for Stash Percona XtraDB values file
 type StashPerconaXtraDBSpec struct {
 	Enabled bool                 `json:"enabled"`
-	Backup  PerconaXtraDBBackup  `json:"backup" protobuf:"bytes,4,opt,name=backup"`
-	Restore PerconaXtraDBRestore `json:"restore" protobuf:"bytes,5,opt,name=restore"`
+	Backup  PerconaXtraDBBackup  `json:"backup"`
+	Restore PerconaXtraDBRestore `json:"restore"`
 }
 
 type PerconaXtraDBBackup struct {
 	// +optional
-	Args string `json:"args" protobuf:"bytes,1,opt,name=args"`
+	Args string `json:"args"`
 	// +optional
-	SocatRetry int32 `json:"socatRetry" protobuf:"varint,2,opt,name=socatRetry"`
+	SocatRetry int32 `json:"socatRetry"`
 }
 
 type PerconaXtraDBRestore struct {
 	// +optional
-	Args              string `json:"args" protobuf:"bytes,1,opt,name=args"`
-	TargetAppReplicas int32  `json:"targetAppReplicas" protobuf:"varint,2,opt,name=targetAppReplicas"`
+	Args              string `json:"args"`
+	TargetAppReplicas int32  `json:"targetAppReplicas"`
 }
 
 // StashPostgresSpec is the schema for Stash Postgres values file

@@ -70,7 +70,7 @@
       ]
     },
     {
-      "name": "percona-xtradb",
+      "name": "perconaxtradb",
       "versions": [
         "5.7-v12"
       ]
