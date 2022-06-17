@@ -84,7 +84,7 @@ crd-importer --v=v1 \
     --gk=Task.stash.appscode.com
 
 crd-importer \
-    --input=https://github.com/kmodules/custom-resources/raw/kubernetes-1.21.1/crds/metrics.appscode.com_metricsconfigurations.yaml \
+    --input=https://github.com/kmodules/custom-resources/raw/v0.24.0/crds/metrics.appscode.com_metricsconfigurations.yaml \
     --out=./charts/stash-metrics/crds
 
 crd-importer \
