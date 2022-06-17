@@ -268,14 +268,6 @@ chart-contents-%:
 	fi
 	@if [ ! -z "$(APP_VERSION)" ]; then                                               \
 		yq -y --indentless -i '.appVersion="$(APP_VERSION)"' ./charts/$*/Chart.yaml;    \
-		case "$*" in                                                                    \
-		  stash-community | stash-enterprise)                                           \
-		    yqq w -i ./charts/$*/values.yaml operator.tag --tag '!!str' $(APP_VERSION); \
-		    ;;                                                                          \
-		  stash-ui-server)                                                              \
-		    yqq w -i ./charts/$*/values.yaml image.tag --tag '!!str' $(APP_VERSION);    \
-		    ;;                                                                          \
-		esac;                                                                           \
 	fi
 
 fmt: $(BUILD_DIRS)
