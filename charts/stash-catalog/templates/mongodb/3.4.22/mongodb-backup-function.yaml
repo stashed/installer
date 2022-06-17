@@ -38,5 +38,5 @@ spec:
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
   - --authentication-database=${authenticationDatabase:=admin}
-  image: '{{ include "catalog.registry" (merge (dict "_reg" "" "_repo" "stashed") .Values) }}/stash-mongodb:3.4.22-v16'
+  image: '{{ include "catalog.registry" (merge (dict "_reg" "" "_repo" "stashed") .Values) }}/stash-mongodb:3.4.22-v17'
 {{ end }}
