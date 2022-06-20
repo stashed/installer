@@ -1,3 +1,4 @@
+{{ if .Values.crdInstaller.enabled }}
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -17,8 +18,9 @@ spec:
       serviceAccountName: {{ include "stash-enterprise.serviceAccountName" . }}-crd-installer
       containers:
         - name: installer
-          image: "{{ .Values.crdInstaller.registry | default (include "operator.registry" .) }}/{{.Values.crdInstaller.repository}}:{{.Values.crdInstaller.tag | default .Values.operator.tag }}"
+          image: "{{ .Values.crdInstaller.registry | default (include "operator.registry" .) }}/{{.Values.crdInstaller.repository}}:{{.Values.crdInstaller.tag | default .Values.operator.tag | default .Chart.AppVersion}}"
           args:
             - --enterprise=true
           imagePullPolicy: {{ .Values.imagePullPolicy }}
       restartPolicy: Never
+{{ end }}
