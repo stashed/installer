@@ -1126,6 +1126,10 @@ properties:
         type: object
       crdInstaller:
         properties:
+          enabled:
+            description: Specify whether to use crd-installer job to install Stash
+              CRDs. Default is "true".
+            type: boolean
           registry:
             type: string
           repository:
@@ -2675,6 +2679,10 @@ properties:
         type: object
       crdInstaller:
         properties:
+          enabled:
+            description: Specify whether to use crd-installer job to install Stash
+              CRDs. Default is "true".
+            type: boolean
           registry:
             type: string
           repository:

@@ -160,3 +160,10 @@ type NetVolAccessor struct {
 	//+optional
 	Privileged bool `json:"privileged"`
 }
+
+type CRDInstallerRef struct {
+	ImageRef `json:",inline"`
+	// Specify whether to use crd-installer job to install Stash CRDs. Default is "true".
+	//+optional
+	Enabled bool `json:"enabled"`
+}
