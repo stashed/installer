@@ -7,6 +7,6 @@ dependencies:
   version: v0.21.0
 - name: stash-catalog
   repository: file://../stash-catalog
-  version: v2022.06.21
-digest: sha256:a1d0a6e492a856ffa46a2fa86f6a0bf058dd88443b891adeed5e226051b8ca63
-generated: "2022-06-17T12:43:44.360346036Z"
+  version: v2022.06.27
+digest: sha256:636c5b2f34baec1cf83e6365f6b326bdd227919cb2d92a5b2c987f8b3ac0e320
+generated: "2022-06-27T09:00:00.022781295Z"
