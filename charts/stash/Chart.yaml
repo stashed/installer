@@ -24,3 +24,7 @@ dependencies:
   repository: file://../stash-catalog
   version: v2022.06.27
   condition: features.enterprise
+- name: stash-metrics
+  repository: file://../stash-metrics
+  version: v2022.06.27
+  condition: features.enterprise
