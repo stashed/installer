@@ -137,3 +137,21 @@ rules:
   resources:
     - leases
   verbs: ["*"]
+- apiGroups:
+  - apps
+  resources:
+  - daemonsets/finalizers
+  - deployments/finalizers
+  - replicasets/finalizers
+  - statefulsets/finalizers
+  verbs: ["update"]
+- apiGroups:
+  - ""
+  resources:
+  - replicationcontrollers/finalizers
+  verbs: ["update"]
+- apiGroups:
+  - apps.openshift.io
+  resources:
+  - deploymentconfigs/finalizers
+  verbs: ["update"]
