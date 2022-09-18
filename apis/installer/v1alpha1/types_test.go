@@ -27,11 +27,11 @@ import (
 
 func TestDefaultValues(t *testing.T) {
 	checker := schemachecker.New(os.DirFS("../../.."),
-		v1alpha1.StashCatalogSpec{},
-		v1alpha1.StashCommunitySpec{},
-		v1alpha1.StashEnterpriseSpec{},
-		v1alpha1.StashSpec{},
-		v1alpha1.StashUiServerSpec{},
+		schemachecker.TestCase{Obj: v1alpha1.StashCatalogSpec{}},
+		schemachecker.TestCase{Obj: v1alpha1.StashCommunitySpec{}},
+		schemachecker.TestCase{Obj: v1alpha1.StashEnterpriseSpec{}},
+		schemachecker.TestCase{Obj: v1alpha1.StashSpec{}},
+		schemachecker.TestCase{Obj: v1alpha1.StashUiServerSpec{}},
 	)
 	checker.TestAll(t)
 }
