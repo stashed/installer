@@ -1,3 +1,5 @@
+{{- $major := default "0" .Capabilities.KubeVersion.Major | trimSuffix "+" | int64 }}
+{{- $minor := default "0" .Capabilities.KubeVersion.Minor | trimSuffix "+" | int64 }}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -106,7 +108,7 @@ rules:
   resources:
   - deploymentconfigs
   verbs: ["get", "list", "watch", "patch"]
-{{- if .Values.security.podSecurityPolicies }}
+{{- if and .Values.security.podSecurityPolicies (and (eq $major 1) (lt $minor 25))}}
 - apiGroups:
   - policy
   resources:

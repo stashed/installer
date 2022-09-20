@@ -1,4 +1,6 @@
-{{ if .Values.security.createPSPs.privileged }}
+{{- $major := default "0" .Capabilities.KubeVersion.Major | trimSuffix "+" | int64 }}
+{{- $minor := default "0" .Capabilities.KubeVersion.Minor | trimSuffix "+" | int64 }}
+{{ if and .Values.security.createPSPs.privileged (and (eq $major 1) (lt $minor 25))}}
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
