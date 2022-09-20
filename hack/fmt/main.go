@@ -21,7 +21,6 @@ import (
 	"encoding/json"
 	goflag "flag"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -130,7 +129,7 @@ func main() {
 				panic(err)
 			}
 
-			err = ioutil.WriteFile(filename, data, 0o644)
+			err = os.WriteFile(filename, data, 0o644)
 			if err != nil {
 				panic(err)
 			}
@@ -247,7 +246,7 @@ func main() {
 					panic(err)
 				}
 
-				err = ioutil.WriteFile(filename, buf.Bytes(), 0o644)
+				err = os.WriteFile(filename, buf.Bytes(), 0o644)
 				if err != nil {
 					panic(err)
 				}
