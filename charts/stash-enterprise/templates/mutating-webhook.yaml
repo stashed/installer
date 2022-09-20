@@ -79,51 +79,6 @@ webhooks:
 {{- if and (ge $major 1) (ge $minor 12) }}
   sideEffects: None
 {{- end }}
-- name: replicationcontroller.admission.stash.appscode.com
-  clientConfig:
-    service:
-      namespace: default
-      name: kubernetes
-      path: /apis/admission.stash.appscode.com/v1alpha1/replicationcontrollermutators
-    caBundle: {{ b64enc .Values.apiserver.ca }}
-  rules:
-  - operations:
-    - CREATE
-    - UPDATE
-    apiGroups:
-    - ""
-    apiVersions:
-    - "*"
-    resources:
-    - replicationcontrollers
-  admissionReviewVersions: ["v1beta1"]
-  failurePolicy: Ignore
-{{- if and (ge $major 1) (ge $minor 12) }}
-  sideEffects: None
-{{- end }}
-- name: replicaset.admission.stash.appscode.com
-  clientConfig:
-    service:
-      namespace: default
-      name: kubernetes
-      path: /apis/admission.stash.appscode.com/v1alpha1/replicasetmutators
-    caBundle: {{ b64enc .Values.apiserver.ca }}
-  rules:
-  - operations:
-    - CREATE
-    - UPDATE
-    apiGroups:
-    - apps
-    - extensions
-    apiVersions:
-    - "*"
-    resources:
-    - replicasets
-  admissionReviewVersions: ["v1beta1"]
-  failurePolicy: Ignore
-{{- if and (ge $major 1) (ge $minor 12) }}
-  sideEffects: None
-{{- end }}
 - name: deploymentconfig.admission.stash.appscode.com
   clientConfig:
     service:
