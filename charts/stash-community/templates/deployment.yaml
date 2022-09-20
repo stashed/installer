@@ -56,11 +56,11 @@ spec:
         - --enable-validating-webhook={{ .Values.apiserver.enableValidatingWebhook }}
         - --bypass-validating-webhook-xray={{ .Values.apiserver.bypassValidatingWebhookXray }}
         - --use-kubeapiserver-fqdn-for-aks={{ .Values.apiserver.useKubeapiserverFqdnForAks }}
-        {{- if and (eq $major 1) (lt $minor 25) }}
+        {{- if .Capabilities.APIVersions.Has "policy/v1beta1/PodSecurityPolicy" }}
         - --cron-job-psp={{ .Values.security.podSecurityPolicies | join "," }}
         - --backup-job-psp={{ .Values.security.podSecurityPolicies | join "," }}
         - --restore-job-psp={{ .Values.security.podSecurityPolicies | join "," }}
-        {{- end -}}
+        {{- end }}
         {{- if include "appscode.license" . }}
         - --license-file=/var/run/secrets/appscode/license/key.txt
         - --license-apiservice={{ .Values.licenseApiService }}

@@ -1,6 +1,4 @@
-{{- $major := default "0" .Capabilities.KubeVersion.Major | trimSuffix "+" | int64 }}
-{{- $minor := default "0" .Capabilities.KubeVersion.Minor | trimSuffix "+" | int64 }}
-{{ if and .Values.security.createPSPs.baseline (and (eq $major 1) (lt $minor 25)) }}
+{{ if and (.Capabilities.APIVersions.Has "policy/v1beta1/PodSecurityPolicy") .Values.security.createPSPs.baseline }}
 # ref: https://kubernetes.io/docs/concepts/security/pod-security-standards/#policy-instantiation
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
