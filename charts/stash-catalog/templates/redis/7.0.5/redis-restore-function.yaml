@@ -1,7 +1,10 @@
+{{ if .Values.redis.enabled }}
 apiVersion: stash.appscode.com/v1beta1
 kind: Function
 metadata:
-  name: redis-restore-7.0.4
+  name: 'redis-restore-7.0.5'
+  labels:
+    {{- include "stash-catalog.labels" . | nindent 4 }}
 spec:
   args:
   - restore-redis
@@ -17,12 +20,13 @@ spec:
   - --max-connections=${MAX_CONNECTIONS:=0}
   - --hostname=${HOSTNAME:=}
   - --source-hostname=${SOURCE_HOSTNAME:=}
-  - --redis-args=${args:=}
-  - --wait-timeout=${waitTimeout:=300}
+  - --redis-args=${args:={{ .Values.redis.restore.args }}}
+  - --wait-timeout=${waitTimeout:={{ .Values.waitTimeout}}}
   - --namespace=${NAMESPACE:=default}
   - --appbinding=${TARGET_NAME:=}
   - --appbinding-namespace=${TARGET_NAMESPACE:=}
   - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: stashed/stash-redis:7.0.4
+  image: '{{ include "catalog.registry" (merge (dict "_reg" "" "_repo" "stashed") .Values) }}/stash-redis:7.0.5'
+{{ end }}

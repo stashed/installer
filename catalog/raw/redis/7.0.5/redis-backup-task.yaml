@@ -1,13 +1,10 @@
-{{ if .Values.redis.enabled }}
 apiVersion: stash.appscode.com/v1beta1
 kind: Task
 metadata:
-  name: 'redis-restore-7.0.4'
-  labels:
-    {{- include "stash-catalog.labels" . | nindent 4 }}
+  name: redis-backup-7.0.5
 spec:
   steps:
-  - name: redis-restore-7.0.4
+  - name: redis-backup-7.0.5
     params:
     - name: outputDir
       value: /tmp/output
@@ -15,4 +12,3 @@ spec:
     params:
     - name: outputDir
       value: /tmp/output
-{{ end }}
