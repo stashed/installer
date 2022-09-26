@@ -36,7 +36,6 @@ rules:
   resources:
   - daemonsets
   - deployments
-  - replicasets
   - statefulsets
   verbs: ["get", "list", "watch", "patch"]
 - apiGroups:
@@ -49,7 +48,6 @@ rules:
   - ""
   resources:
   - namespaces
-  - replicationcontrollers
   verbs: ["get", "list", "watch", "patch"]
 - apiGroups:
   - ""
@@ -139,13 +137,7 @@ rules:
   resources:
   - daemonsets/finalizers
   - deployments/finalizers
-  - replicasets/finalizers
   - statefulsets/finalizers
-  verbs: ["update"]
-- apiGroups:
-  - ""
-  resources:
-  - replicationcontrollers/finalizers
   verbs: ["update"]
 - apiGroups:
   - apps.openshift.io
