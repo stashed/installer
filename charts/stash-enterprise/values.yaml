@@ -47,7 +47,7 @@ crdInstaller:
   # Name of CRD crd installer image. Default `stash-crd-installer`
   repository: stash-crd-installer
   # Tag of the CRD installer image. By default, it will use the same tag as the operator.
-  tag: ""
+  tag: v0.23.0
   # Use crd-installer job to install the Stash CRDs. Default is `true`.
   enabled: true
 pushgateway:
