@@ -12,6 +12,7 @@ rules:
 - apiGroups:
   - stash.appscode.com
   - repositories.stash.appscode.com
+  - appcatalog.appscode.com
   resources:
   - "*"
   verbs: ["*"]
@@ -29,6 +30,7 @@ rules:
 - apiGroups:
   - stash.appscode.com
   - repositories.stash.appscode.com
+  - appcatalog.appscode.com
   resources:
   - "*"
   verbs: ["get", "list", "watch"]
