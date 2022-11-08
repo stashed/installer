@@ -147,3 +147,8 @@ rules:
   resources:
   - deploymentconfigs/finalizers
   verbs: ["update"]
+- apiGroups:
+  - kubevault.com
+  resources:
+  - "*"
+  verbs: ["*"]
