@@ -133,13 +133,3 @@ kubedump:
     labelSelector: ""
     # Specify whether to include the dependants resources along with it's parent
     includeDependants: false
-vault:
-  # If true, deploys Vault addon
-  enabled: true
-  # Optional arguments to pass to the backup process
-  backup:
-    # Arguments to pass to `vault operator raft snapshot save` command during backup process
-    args: ""
-  restore:
-    # Arguments to pass to `vault operator raft snapshot restore` command during restore process
-    args: ""
