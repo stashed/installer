@@ -150,5 +150,5 @@ rules:
 - apiGroups:
   - kubevault.com
   resources:
-  - "*"
-  verbs: ["*"]
+  - "vaultservers"
+  verbs: ["get"]
