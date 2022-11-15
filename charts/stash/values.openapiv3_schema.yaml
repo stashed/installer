@@ -281,6 +281,27 @@ properties:
         type: object
       registryFQDN:
         type: string
+      vault:
+        properties:
+          backup:
+            properties:
+              args:
+                type: string
+            type: object
+          enabled:
+            type: boolean
+          restore:
+            properties:
+              args:
+                type: string
+              force:
+                type: boolean
+            type: object
+        required:
+        - backup
+        - enabled
+        - restore
+        type: object
       waitTimeout:
         format: int64
         type: integer
@@ -297,6 +318,7 @@ properties:
     - postgres
     - redis
     - registryFQDN
+    - vault
     - waitTimeout
     type: object
   stash-community:
