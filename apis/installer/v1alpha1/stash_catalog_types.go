@@ -254,6 +254,8 @@ type StashVaultSpec struct {
 type StashVaultBackup struct {
 	// +optional
 	Args string `json:"args"`
+	// +optional
+	KeyPrefix string `json:"keyPrefix"`
 }
 
 type StashVaultRestore struct {
@@ -261,6 +263,10 @@ type StashVaultRestore struct {
 	Args string `json:"args"`
 	// +optional
 	Force bool `json:"force"`
+	// +optional
+	KeyPrefix string `json:"keyPrefix"`
+	// +optional
+	OldKeyPrefix string `json:"oldKeyPrefix"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

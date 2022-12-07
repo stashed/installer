@@ -287,6 +287,8 @@ properties:
             properties:
               args:
                 type: string
+              keyPrefix:
+                type: string
             type: object
           enabled:
             type: boolean
@@ -296,6 +298,10 @@ properties:
                 type: string
               force:
                 type: boolean
+              keyPrefix:
+                type: string
+              oldKeyPrefix:
+                type: string
             type: object
         required:
         - backup

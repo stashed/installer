@@ -30,5 +30,7 @@ spec:
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
   - --force=${force:=false}
+  - --key-prefix=${keyPrefix:=}
+  - --old-key-prefix=${oldKeyPrefix:=}
   image: '{{ include "catalog.registry" (merge (dict "_reg" "" "_repo" "stashed") .Values) }}/stash-vault:1.10.3'
 {{ end }}
