@@ -133,3 +133,21 @@ kubedump:
     labelSelector: ""
     # Specify whether to include the dependants resources along with it's parent
     includeDependants: false
+vault:
+  # If true, deploys vault addon
+  enabled: true
+  # Optional argument to send to the backup or restore process
+  backup:
+    # Arguments to pass to `vault operator raft snapshot save` command during backup process
+    args: ""
+    # Prefix that will be appended with the root-token & unseal-keys
+    keyPrefix: ""
+  restore:
+    # Arguments to pass to `vault operator raft snapshot restore` command during restore process
+    args: ""
+    # Specify whether to apply `-force` flag to restore vault snapshot
+    force: false
+    # Prefix that will be appended with the root-token & unseal-keys
+    keyPrefix: ""
+    # Prefix that was appended with the root-token & unseal-keys
+    oldKeyPrefix: ""

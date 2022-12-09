@@ -1,0 +1,32 @@
+apiVersion: stash.appscode.com/v1beta1
+kind: Function
+metadata:
+  name: vault-restore-1.10.3
+spec:
+  args:
+  - restore-vault
+  - --provider=${REPOSITORY_PROVIDER:=}
+  - --bucket=${REPOSITORY_BUCKET:=}
+  - --endpoint=${REPOSITORY_ENDPOINT:=}
+  - --region=${REPOSITORY_REGION:=}
+  - --path=${REPOSITORY_PREFIX:=}
+  - --storage-secret-name=${REPOSITORY_SECRET_NAME:=}
+  - --storage-secret-namespace=${REPOSITORY_SECRET_NAMESPACE:=}
+  - --scratch-dir=/tmp
+  - --enable-cache=${ENABLE_CACHE:=true}
+  - --max-connections=${MAX_CONNECTIONS:=0}
+  - --wait-timeout=${waitTimeout:=300}
+  - --hostname=${HOSTNAME:=}
+  - --source-hostname=${SOURCE_HOSTNAME:=}
+  - --interim-data-dir=${INTERIM_DATA_DIR}
+  - --namespace=${NAMESPACE:=default}
+  - --appbinding=${TARGET_NAME:=}
+  - --appbinding-namespace=${TARGET_NAMESPACE:=}
+  - --snapshot=${RESTORE_SNAPSHOTS:=}
+  - --vault-args=${args:=}
+  - --output-dir=${outputDir:=}
+  - --license-apiservice=${LICENSE_APISERVICE:=}
+  - --force=${force:=false}
+  - --key-prefix=${keyPrefix:=}
+  - --old-key-prefix=${oldKeyPrefix:=}
+  image: stashed/stash-vault:1.10.3
