@@ -93,6 +93,13 @@ The following table lists the configurable parameters of the `stash-catalog` cha
 | kubedump.backup.sanitize                | Specify whether to remove the decorator                                                                                                | <code>true</code>              |
 | kubedump.backup.labelSelector           | Specify label selector to filter resources                                                                                             | <code>""</code>                |
 | kubedump.backup.includeDependants       | Specify whether to include the dependants resources along with it's parent                                                             | <code>false</code>             |
+| vault.enabled                           | If true, deploys vault addon                                                                                                           | <code>true</code>              |
+| vault.backup.args                       | Arguments to pass to `vault operator raft snapshot save` command during backup process                                                 | <code>""</code>                |
+| vault.backup.keyPrefix                  | Prefix that will be appended with the root-token & unseal-keys                                                                         | <code>""</code>                |
+| vault.restore.args                      | Arguments to pass to `vault operator raft snapshot restore` command during restore process                                             | <code>""</code>                |
+| vault.restore.force                     | Specify whether to apply `-force` flag to restore vault snapshot                                                                       | <code>false</code>             |
+| vault.restore.keyPrefix                 | Prefix that will be appended with the root-token & unseal-keys                                                                         | <code>""</code>                |
+| vault.restore.oldKeyPrefix              | Prefix that was appended with the root-token & unseal-keys                                                                             | <code>""</code>                |
 
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm upgrade -i`. For example:

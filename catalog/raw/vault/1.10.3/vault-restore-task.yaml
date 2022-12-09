@@ -1,0 +1,14 @@
+apiVersion: stash.appscode.com/v1beta1
+kind: Task
+metadata:
+  name: vault-restore-1.10.3
+spec:
+  steps:
+  - name: vault-restore-1.10.3
+    params:
+    - name: outputDir
+      value: /tmp/output
+  - name: update-status
+    params:
+    - name: outputDir
+      value: /tmp/output

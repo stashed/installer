@@ -241,6 +241,33 @@ properties:
     type: object
   registryFQDN:
     type: string
+  vault:
+    properties:
+      backup:
+        properties:
+          args:
+            type: string
+          keyPrefix:
+            type: string
+        type: object
+      enabled:
+        type: boolean
+      restore:
+        properties:
+          args:
+            type: string
+          force:
+            type: boolean
+          keyPrefix:
+            type: string
+          oldKeyPrefix:
+            type: string
+        type: object
+    required:
+    - backup
+    - enabled
+    - restore
+    type: object
   waitTimeout:
     format: int64
     type: integer
@@ -257,5 +284,6 @@ required:
 - postgres
 - redis
 - registryFQDN
+- vault
 - waitTimeout
 type: object

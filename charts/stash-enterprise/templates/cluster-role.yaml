@@ -147,3 +147,5 @@ rules:
   resources:
   - deploymentconfigs/finalizers
   verbs: ["update"]
+
+  
