@@ -7,8 +7,8 @@ spec:
   - name: mysql-backup-8.0.21
     params:
     - name: outputDir
-      value: /tmp/output
+      value: /stash-tmp/output
   - name: update-status
     params:
     - name: outputDir
-      value: /tmp/output
+      value: /stash-tmp/output
