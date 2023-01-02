@@ -7,8 +7,8 @@ spec:
   - name: redis-restore-5.0.13
     params:
     - name: outputDir
-      value: /tmp/output
+      value: /stash-tmp/output
   - name: update-status
     params:
     - name: outputDir
-      value: /tmp/output
+      value: /stash-tmp/output
