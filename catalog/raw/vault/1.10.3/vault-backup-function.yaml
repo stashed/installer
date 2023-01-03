@@ -35,4 +35,4 @@ spec:
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
   - --key-prefix=${keyPrefix:=}
-  image: stashed/stash-vault:1.10.3
+  image: stashed/stash-vault:1.10.3-v1
