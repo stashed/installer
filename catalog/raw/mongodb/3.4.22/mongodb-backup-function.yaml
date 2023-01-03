@@ -12,7 +12,7 @@ spec:
   - --path=${REPOSITORY_PREFIX:=}
   - --storage-secret-name=${REPOSITORY_SECRET_NAME:=}
   - --storage-secret-namespace=${REPOSITORY_SECRET_NAMESPACE:=}
-  - --scratch-dir=/tmp
+  - --scratch-dir=/stash-tmp
   - --enable-cache=${ENABLE_CACHE:=true}
   - --max-connections=${MAX_CONNECTIONS:=0}
   - --hostname=${HOSTNAME:=}

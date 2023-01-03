@@ -10,9 +10,9 @@ spec:
   - name: mysql-restore-8.0.14
     params:
     - name: outputDir
-      value: /tmp/output
+      value: /stash-tmp/output
   - name: update-status
     params:
     - name: outputDir
-      value: /tmp/output
+      value: /stash-tmp/output
 {{ end }}

@@ -7,8 +7,8 @@ spec:
   - name: elasticsearch-restore-7.2.0
     params:
     - name: outputDir
-      value: /tmp/output
+      value: /stash-tmp/output
   - name: update-status
     params:
     - name: outputDir
-      value: /tmp/output
+      value: /stash-tmp/output
