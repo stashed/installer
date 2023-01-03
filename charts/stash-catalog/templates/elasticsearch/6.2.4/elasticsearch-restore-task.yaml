@@ -10,9 +10,9 @@ spec:
   - name: elasticsearch-restore-6.2.4
     params:
     - name: outputDir
-      value: /tmp/output
+      value: /stash-tmp/output
   - name: update-status
     params:
     - name: outputDir
-      value: /tmp/output
+      value: /stash-tmp/output
 {{ end }}

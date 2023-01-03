@@ -10,9 +10,9 @@ spec:
   - name: postgres-backup-9.6.19
     params:
     - name: outputDir
-      value: /tmp/output
+      value: /stash-tmp/output
   - name: update-status
     params:
     - name: outputDir
-      value: /tmp/output
+      value: /stash-tmp/output
 {{ end }}

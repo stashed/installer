@@ -10,9 +10,9 @@ spec:
   - name: kubedump-backup-0.1.0
     params:
     - name: outputDir
-      value: /tmp/output
+      value: /stash-tmp/output
   - name: update-status
     params:
     - name: outputDir
-      value: /tmp/output
+      value: /stash-tmp/output
 {{ end }}
