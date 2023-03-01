@@ -36,4 +36,4 @@ spec:
   - --retention-dry-run=${RETENTION_DRY_RUN:=false}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: stashed/stash-nats:2.8.2-v4
+  image: stashed/stash-nats:2.8.2-v5
