@@ -26,4 +26,4 @@ spec:
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
   - --user=${user:=}
-  image: stashed/stash-postgres:14.0-v9
+  image: stashed/stash-postgres:14.0-v10
