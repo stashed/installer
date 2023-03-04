@@ -9,7 +9,7 @@ require (
 	gomodules.xyz/semvers v0.0.0-20220316103017-cfbe8c37b63d
 	k8s.io/api v0.25.1
 	k8s.io/apimachinery v0.25.1
-	kmodules.xyz/client-go v0.25.0
+	kmodules.xyz/client-go v0.25.10
 	kmodules.xyz/schema-checker v0.4.1
 	sigs.k8s.io/yaml v1.3.0
 )
@@ -39,10 +39,9 @@ require (
 	github.com/spf13/cast v1.3.1 // indirect
 	github.com/yudai/gojsondiff v1.0.0 // indirect
 	github.com/yudai/golcs v0.0.0-20170316035057-ecda9a501e82 // indirect
-	golang.org/x/crypto v0.0.0-20220315160706-3147a52a75dd // indirect
-	golang.org/x/net v0.0.0-20220909164309-bea034e7d591 // indirect
-	golang.org/x/sys v0.0.0-20220811171246-fbc7d0a398ab // indirect
-	golang.org/x/text v0.3.7 // indirect
+	golang.org/x/crypto v0.6.0 // indirect
+	golang.org/x/net v0.7.0 // indirect
+	golang.org/x/text v0.7.0 // indirect
 	google.golang.org/protobuf v1.28.0 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
