@@ -25,4 +25,4 @@ spec:
   - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: stashed/stash-redis:7.0.5-v3
+  image: stashed/stash-redis:7.0.5-v4
