@@ -29,5 +29,5 @@ spec:
   - --es-args=${args:={{ .Values.elasticsearch.restore.args }}}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: '{{ include "catalog.registry" (merge (dict "_reg" "" "_repo" "stashed") .Values) }}/stash-elasticsearch:5.6.4-v23'
+  image: '{{ include "catalog.registry" (merge (dict "_reg" "" "_repo" "stashed") .Values) }}/stash-elasticsearch:5.6.4-v24'
 {{ end }}
