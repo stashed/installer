@@ -26,4 +26,4 @@ spec:
   - --es-args=${args:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: stashed/stash-elasticsearch:5.6.4-v23
+  image: ghcr.io/stashed/stash-elasticsearch:5.6.4-v24
