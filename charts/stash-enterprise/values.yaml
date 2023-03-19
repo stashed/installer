@@ -21,7 +21,7 @@ license: ""
 licenseApiService: v1beta1.admission.stash.appscode.com
 # Docker registry fqdn used to pull Stash related images.
 # Set this to use docker registry hosted at ${registryFQDN}/${registry}/${image}
-registryFQDN: ""
+registryFQDN: ghcr.io
 operator:
   # Docker registry used to pull operator image
   registry: stashed
@@ -47,7 +47,7 @@ crdInstaller:
   # Name of CRD crd installer image. Default `stash-crd-installer`
   repository: stash-crd-installer
   # Tag of the CRD installer image. By default, it will use the same tag as the operator.
-  tag: v0.23.0
+  tag: ""
   # Use crd-installer job to install the Stash CRDs. Default is `true`.
   enabled: true
 pushgateway:
@@ -77,7 +77,7 @@ cleaner:
   # Webhook cleaner container image
   repository: kubectl
   # Webhook cleaner container image tag
-  tag: v1.16
+  tag: v1.22
   # Skip generating cleaner YAML
   skip: false
 # Specify an array of imagePullSecrets.
