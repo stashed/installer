@@ -7,8 +7,8 @@
 ```bash
 $ helm repo add appscode https://charts.appscode.com/stable/
 $ helm repo update
-$ helm search repo appscode/stash-ui-server --version=v0.9.0
-$ helm upgrade -i stash-ui-server appscode/stash-ui-server -n kubeops --create-namespace --version=v0.9.0
+$ helm search repo appscode/stash-ui-server --version=v0.10.0
+$ helm upgrade -i stash-ui-server appscode/stash-ui-server -n kubeops --create-namespace --version=v0.10.0
 ```
 
 ## Introduction
@@ -24,7 +24,7 @@ This chart deploys a KubeDB UI Server on a [Kubernetes](http://kubernetes.io) cl
 To install/upgrade the chart with the release name `stash-ui-server`:
 
 ```bash
-$ helm upgrade -i stash-ui-server appscode/stash-ui-server -n kubeops --create-namespace --version=v0.9.0
+$ helm upgrade -i stash-ui-server appscode/stash-ui-server -n kubeops --create-namespace --version=v0.10.0
 ```
 
 The command deploys a KubeDB UI Server on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
@@ -50,7 +50,7 @@ The following table lists the configurable parameters of the `stash-ui-server` c
 | nameOverride                         | Overrides name template                                                                                                                                                                                                                                                                                                                                       | <code>""</code>                |
 | fullnameOverride                     | Overrides fullname template                                                                                                                                                                                                                                                                                                                                   | <code>""</code>                |
 | replicaCount                         | Number of UI Server replicas to create (only 1 is supported)                                                                                                                                                                                                                                                                                                  | <code>1</code>                 |
-| registryFQDN                         | Docker registry fqdn used to pull docker images. Set this to use docker registry hosted at ${registryFQDN}/${registry}/${image}                                                                                                                                                                                                                               | <code>""</code>                |
+| registryFQDN                         | Docker registry fqdn used to pull docker images. Set this to use docker registry hosted at ${registryFQDN}/${registry}/${image}                                                                                                                                                                                                                               | <code>ghcr.io</code>           |
 | image.registry                       | Docker registry used to pull operator image                                                                                                                                                                                                                                                                                                                   | <code>stashed</code>           |
 | image.repository                     | Name of operator container image                                                                                                                                                                                                                                                                                                                              | <code>stash-ui-server</code>   |
 | image.tag                            | Operator container image tag                                                                                                                                                                                                                                                                                                                                  | <code>""</code>                |
@@ -84,12 +84,12 @@ The following table lists the configurable parameters of the `stash-ui-server` c
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm upgrade -i`. For example:
 
 ```bash
-$ helm upgrade -i stash-ui-server appscode/stash-ui-server -n kubeops --create-namespace --version=v0.9.0 --set replicaCount=1
+$ helm upgrade -i stash-ui-server appscode/stash-ui-server -n kubeops --create-namespace --version=v0.10.0 --set replicaCount=1
 ```
 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while
 installing the chart. For example:
 
 ```bash
-$ helm upgrade -i stash-ui-server appscode/stash-ui-server -n kubeops --create-namespace --version=v0.9.0 --values values.yaml
+$ helm upgrade -i stash-ui-server appscode/stash-ui-server -n kubeops --create-namespace --version=v0.10.0 --values values.yaml
 ```

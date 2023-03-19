@@ -7,8 +7,8 @@
 ```bash
 $ helm repo add appscode https://charts.appscode.com/stable/
 $ helm repo update
-$ helm search repo appscode/stash-catalog --version=v2023.03.13
-$ helm upgrade -i stash-catalog appscode/stash-catalog -n stash --create-namespace --version=v2023.03.13
+$ helm search repo appscode/stash-catalog --version=v2023.03.20
+$ helm upgrade -i stash-catalog appscode/stash-catalog -n stash --create-namespace --version=v2023.03.20
 ```
 
 ## Introduction
@@ -24,7 +24,7 @@ This chart deploys Stash catalog on a [Kubernetes](http://kubernetes.io) cluster
 To install/upgrade the chart with the release name `stash-catalog`:
 
 ```bash
-$ helm upgrade -i stash-catalog appscode/stash-catalog -n stash --create-namespace --version=v2023.03.13
+$ helm upgrade -i stash-catalog appscode/stash-catalog -n stash --create-namespace --version=v2023.03.20
 ```
 
 The command deploys Stash catalog on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
@@ -105,12 +105,12 @@ The following table lists the configurable parameters of the `stash-catalog` cha
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm upgrade -i`. For example:
 
 ```bash
-$ helm upgrade -i stash-catalog appscode/stash-catalog -n stash --create-namespace --version=v2023.03.13 --set waitTimeout=300
+$ helm upgrade -i stash-catalog appscode/stash-catalog -n stash --create-namespace --version=v2023.03.20 --set waitTimeout=300
 ```
 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while
 installing the chart. For example:
 
 ```bash
-$ helm upgrade -i stash-catalog appscode/stash-catalog -n stash --create-namespace --version=v2023.03.13 --values values.yaml
+$ helm upgrade -i stash-catalog appscode/stash-catalog -n stash --create-namespace --version=v2023.03.20 --values values.yaml
 ```
