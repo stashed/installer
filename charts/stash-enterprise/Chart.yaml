@@ -2,7 +2,7 @@ apiVersion: v1
 description: Enterprise features for Stash by AppsCode
 name: stash-enterprise
 version: v0.28.0
-appVersion: v0.28.0
+appVersion: v0.28.1
 home: https://stash.run
 icon: https://cdn.appscode.com/images/products/stash/stash-enterprise-icon.png
 sources:
