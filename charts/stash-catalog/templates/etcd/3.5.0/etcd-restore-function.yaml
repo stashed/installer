@@ -37,5 +37,5 @@ spec:
   - --image=${ADDON_IMAGE:=}
   - --secret-name=${REPOSITORY_SECRET_NAME:=}
   - --snapshots=${RESTORE_SNAPSHOTS:=}
-  image: '{{ include "catalog.registry" (merge (dict "_reg" "ghcr.io" "_repo" "stashed") .Values) }}/stash-etcd:3.5.0-v11'
+  image: '{{ include "catalog.registry" (merge (dict "_reg" "ghcr.io" "_repo" "stashed") .Values) }}/stash-etcd:3.5.0-v12'
 {{ end }}
