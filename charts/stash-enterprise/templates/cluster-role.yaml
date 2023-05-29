@@ -147,5 +147,11 @@ rules:
   resources:
   - deploymentconfigs/finalizers
   verbs: ["update"]
-
-  
+- apiGroups:
+  - kubedb.com
+  - catalog.kubedb.com
+  resources:
+  - elasticsearches
+  - elasticsearchversions
+  verbs:
+  - get
