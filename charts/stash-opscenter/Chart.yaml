@@ -2,8 +2,8 @@ apiVersion: v2
 name: stash-opscenter
 description: Stash Opscenter by AppsCode
 type: application
-version: v2023.04.30
-appVersion: v2023.04.30
+version: v2023.05.31
+appVersion: v2023.05.31
 home: https://stash.run
 icon: https://cdn.appscode.com/images/products/stash/stash-icon.png
 sources:
@@ -15,12 +15,12 @@ dependencies:
 - name: stash-ui-server
   repository: file://../stash-ui-server
   condition: stash-ui-server.enabled
-  version: v0.11.0
+  version: v0.12.0
 - name: stash-metrics
   repository: file://../stash-metrics
   condition: stash-metrics.enabled
-  version: v2023.04.30
+  version: v2023.05.31
 - name: stash-grafana-dashboards
   repository: file://../stash-grafana-dashboards
   condition: stash-grafana-dashboards.enabled
-  version: v2023.04.30
+  version: v2023.05.31
