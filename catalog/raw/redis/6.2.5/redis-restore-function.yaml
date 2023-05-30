@@ -25,4 +25,4 @@ spec:
   - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: ghcr.io/stashed/stash-redis:6.2.5-v13
+  image: ghcr.io/stashed/stash-redis:6.2.5-v14

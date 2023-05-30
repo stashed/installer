@@ -38,5 +38,5 @@ spec:
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
   - --user=${user:=}
-  image: '{{ include "catalog.registry" (merge (dict "_reg" "ghcr.io" "_repo" "stashed") .Values) }}/stash-postgres:11.9-v24'
+  image: '{{ include "catalog.registry" (merge (dict "_reg" "ghcr.io" "_repo" "stashed") .Values) }}/stash-postgres:11.9-v25'
 {{ end }}
