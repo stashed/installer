@@ -22,5 +22,7 @@ spec:
           args:
             - --enterprise=true
           imagePullPolicy: {{ .Values.imagePullPolicy }}
+          securityContext:
+            {{- toYaml .Values.crdInstaller.securityContext | nindent 12 }}
       restartPolicy: Never
 {{ end }}

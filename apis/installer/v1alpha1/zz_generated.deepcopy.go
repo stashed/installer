@@ -46,6 +46,11 @@ func (in *ApparmorSpec) DeepCopy() *ApparmorSpec {
 func (in *CRDInstallerRef) DeepCopyInto(out *CRDInstallerRef) {
 	*out = *in
 	out.ImageRef = in.ImageRef
+	if in.SecurityContext != nil {
+		in, out := &in.SecurityContext, &out.SecurityContext
+		*out = new(v1.SecurityContext)
+		(*in).DeepCopyInto(*out)
+	}
 	return
 }
 
@@ -63,6 +68,11 @@ func (in *CRDInstallerRef) DeepCopy() *CRDInstallerRef {
 func (in *CleanerRef) DeepCopyInto(out *CleanerRef) {
 	*out = *in
 	out.ImageRef = in.ImageRef
+	if in.SecurityContext != nil {
+		in, out := &in.SecurityContext, &out.SecurityContext
+		*out = new(v1.SecurityContext)
+		(*in).DeepCopyInto(*out)
+	}
 	return
 }
 
@@ -949,9 +959,9 @@ func (in *StashCommunityList) DeepCopyObject() runtime.Object {
 func (in *StashCommunitySpec) DeepCopyInto(out *StashCommunitySpec) {
 	*out = *in
 	in.Operator.DeepCopyInto(&out.Operator)
-	out.CRDInstaller = in.CRDInstaller
+	in.CRDInstaller.DeepCopyInto(&out.CRDInstaller)
 	in.Pushgateway.DeepCopyInto(&out.Pushgateway)
-	out.Cleaner = in.Cleaner
+	in.Cleaner.DeepCopyInto(&out.Cleaner)
 	if in.ImagePullSecrets != nil {
 		in, out := &in.ImagePullSecrets, &out.ImagePullSecrets
 		*out = make([]string, len(*in))
@@ -1134,9 +1144,9 @@ func (in *StashEnterpriseList) DeepCopyObject() runtime.Object {
 func (in *StashEnterpriseSpec) DeepCopyInto(out *StashEnterpriseSpec) {
 	*out = *in
 	in.Operator.DeepCopyInto(&out.Operator)
-	out.CRDInstaller = in.CRDInstaller
+	in.CRDInstaller.DeepCopyInto(&out.CRDInstaller)
 	in.Pushgateway.DeepCopyInto(&out.Pushgateway)
-	out.Cleaner = in.Cleaner
+	in.Cleaner.DeepCopyInto(&out.Cleaner)
 	if in.ImagePullSecrets != nil {
 		in, out := &in.ImagePullSecrets, &out.ImagePullSecrets
 		*out = make([]string, len(*in))
