@@ -34,13 +34,15 @@ operator:
     requests:
       cpu: "100m"
   # Security options the operator container should run with
-  securityContext: {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
+  securityContext: # +doc-gen:break
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop: ["ALL"]
+    readOnlyRootFilesystem: true
+    runAsNonRoot: true
+    runAsUser: 65534
+    seccompProfile:
+      type: RuntimeDefault
 crdInstaller:
   # Docker registry of the CRD installer image. By default, it will use the same registry as the operator.
   registry: ""
@@ -50,6 +52,16 @@ crdInstaller:
   tag: ""
   # Use crd-installer job to install the Stash CRDs. Default is `true`.
   enabled: true
+  # Security options the Prometheus pushgateway container should run with
+  securityContext: # +doc-gen:break
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop: ["ALL"]
+    readOnlyRootFilesystem: true
+    runAsNonRoot: true
+    runAsUser: 65534
+    seccompProfile:
+      type: RuntimeDefault
 pushgateway:
   # Docker registry used to pull Prometheus pushgateway image
   registry: prom
@@ -60,14 +72,15 @@ pushgateway:
   # Compute Resources required by the Prometheus pushgateway container
   resources: {}
   # Security options the Prometheus pushgateway container should run with
-  securityContext: {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
-
+  securityContext: # +doc-gen:break
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop: ["ALL"]
+    readOnlyRootFilesystem: true
+    runAsNonRoot: true
+    runAsUser: 65534
+    seccompProfile:
+      type: RuntimeDefault
   # If you want to use a custom Pushgatway, specify its URL.
   # Stash will not inject pushgatway sidecar if you set this field.
   customURL: ""
@@ -80,6 +93,16 @@ cleaner:
   tag: v1.22
   # Skip generating cleaner YAML
   skip: false
+  # Security options the Prometheus pushgateway container should run with
+  securityContext: # +doc-gen:break
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop: ["ALL"]
+    readOnlyRootFilesystem: true
+    runAsNonRoot: true
+    runAsUser: 65534
+    seccompProfile:
+      type: RuntimeDefault
 # Specify an array of imagePullSecrets.
 # Secrets must be manually created in the namespace.
 #
