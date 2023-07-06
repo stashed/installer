@@ -49,6 +49,9 @@ type Pushgateway struct {
 type CleanerRef struct {
 	ImageRef `json:",inline"`
 	Skip     bool `json:"skip"`
+	// Security options the pod should run with.
+	// +optional
+	SecurityContext *core.SecurityContext `json:"securityContext"`
 }
 
 type ServiceAccountSpec struct {
@@ -166,4 +169,7 @@ type CRDInstallerRef struct {
 	// Specify whether to use crd-installer job to install Stash CRDs. Default is "true".
 	//+optional
 	Enabled bool `json:"enabled"`
+	// Security options the pod should run with.
+	// +optional
+	SecurityContext *core.SecurityContext `json:"securityContext"`
 }

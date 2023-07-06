@@ -27,5 +27,7 @@ spec:
            kubectl delete functions.stash.appscode.com update-status pvc-backup pvc-restore || true; \
            kubectl delete tasks.stash.appscode.com pvc-backup pvc-restore || true;"
         imagePullPolicy: {{ .Values.imagePullPolicy }}
+        securityContext:
+          {{- toYaml .Values.cleaner.securityContext | nindent 10 }}
       restartPolicy: Never
 {{ end }}
