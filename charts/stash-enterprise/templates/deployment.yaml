@@ -100,6 +100,8 @@ spec:
         volumeMounts:
         - mountPath: /var/serving-cert
           name: serving-cert
+        - mountPath: /tmp
+          name: stash-scratchdir
         {{- if include "appscode.license" . }}
         - mountPath: /var/run/secrets/appscode/license
           name: license
