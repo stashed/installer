@@ -126,8 +126,9 @@ type EASMonitoring struct {
 }
 
 type SecuritySpec struct {
-	Apparmor ApparmorSpec `json:"apparmor"`
-	Seccomp  SeccompSpec  `json:"seccomp"`
+	CopyAuthenticationConfigMap bool         `json:"copyAuthenticationConfigMap"`
+	Apparmor                    ApparmorSpec `json:"apparmor"`
+	Seccomp                     SeccompSpec  `json:"seccomp"`
 	//+optional
 	PodSecurityPolicies []string      `json:"podSecurityPolicies"`
 	CreatePSPs          CreatePSPSpec `json:"createPSPs"`
