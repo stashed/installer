@@ -1739,6 +1739,8 @@ properties:
           enabled:
             type: boolean
         type: object
+      copyAuthenticationConfigMap:
+        type: boolean
       createPSPs:
         properties:
           baseline:
@@ -1760,6 +1762,7 @@ properties:
         type: object
     required:
     - apparmor
+    - copyAuthenticationConfigMap
     - createPSPs
     - seccomp
     type: object

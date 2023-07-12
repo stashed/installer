@@ -48,6 +48,7 @@ spec:
         - --image-pull-secrets={{ include "image-pull-secrets" . }}
         {{- end }}
         - --secure-port=8443
+        - --authentication-configmap-namespace={{ ternary .Release.Namespace "kube-system" .Values.security.copyAuthenticationConfigMap }}
         - --audit-log-path=-
         - --tls-cert-file=/var/serving-cert/tls.crt
         - --tls-private-key-file=/var/serving-cert/tls.key
