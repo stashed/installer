@@ -82,7 +82,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: {{ include "stash-enterprise.fullname" . }}-apiserver-extension-server-authentication-reader
-  namespace: kube-system
+  namespace: {{ ternary .Release.Namespace "kube-system" .Values.security.copyAuthenticationConfigMap }}
   labels:
     {{- include "stash-enterprise.labels" . | nindent 4 }}
 roleRef:
@@ -93,6 +93,15 @@ subjects:
 - kind: ServiceAccount
   name: {{ include "stash-enterprise.serviceAccountName" . }}
   namespace: {{ .Release.Namespace }}
+---
+# copy kube-system/extension-apiserver-authentication into stash operator namespace
+{{- if .Values.security.copyAuthenticationConfigMap }}
+
+{{ $obj := lookup "v1" "ConfigMap" "kube-system" "extension-apiserver-authentication" }}
+{{ $obj = mergeOverwrite $obj (dict "metadata" (dict "namespace" .Release.Namespace )) }}
+{{ toYaml $obj }}
+
+{{- end }}
 ---
 # to delegate authentication and authorization
 apiVersion: rbac.authorization.k8s.io/v1

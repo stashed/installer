@@ -184,6 +184,7 @@ monitoring:
     # Only usable when monitoring agent is `prometheus.io/operator`.
     labels: {}
 security:
+  copyAuthenticationConfigMap: true
   apparmor:
     # `Optional:` Allows the default AppArmor profile, requires setting the default.
     enabled: false
