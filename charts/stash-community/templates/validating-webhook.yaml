@@ -30,7 +30,7 @@ webhooks:
     resources:
     - restics
   admissionReviewVersions: ["v1beta1"]
-  failurePolicy: Fail
+  failurePolicy: {{ .Values.apiserver.webhook.failurePolicy }}
 {{- if and (ge $major 1) (ge $minor 12) }}
   sideEffects: None
 {{- end }}
@@ -52,7 +52,7 @@ webhooks:
     resources:
     - recoveries
   admissionReviewVersions: ["v1beta1"]
-  failurePolicy: Fail
+  failurePolicy: {{ .Values.apiserver.webhook.failurePolicy }}
 {{- if and (ge $major 1) (ge $minor 12) }}
   sideEffects: None
 {{- end }}
@@ -74,7 +74,7 @@ webhooks:
     resources:
     - repositories
   admissionReviewVersions: ["v1beta1"]
-  failurePolicy: Fail
+  failurePolicy: {{ .Values.apiserver.webhook.failurePolicy }}
 {{- if and (ge $major 1) (ge $minor 12) }}
   sideEffects: None
 {{- end }}
@@ -96,7 +96,7 @@ webhooks:
     resources:
     - restoresessions
   admissionReviewVersions: ["v1beta1"]
-  failurePolicy: Fail
+  failurePolicy: {{ .Values.apiserver.webhook.failurePolicy }}
 {{- if and (ge $major 1) (ge $minor 12) }}
   sideEffects: None
 {{- end }}
@@ -118,7 +118,7 @@ webhooks:
       resources:
         - backupconfigurations
   admissionReviewVersions: ["v1beta1"]
-  failurePolicy: Fail
+  failurePolicy: {{ .Values.apiserver.webhook.failurePolicy }}
 {{- if and (ge $major 1) (ge $minor 12) }}
   sideEffects: None
 {{- end }}
