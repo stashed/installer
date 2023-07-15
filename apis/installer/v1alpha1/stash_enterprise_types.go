@@ -78,7 +78,7 @@ type StashEnterpriseSpec struct {
 	// +optional
 	PodSecurityContext *core.PodSecurityContext `json:"podSecurityContext"`
 	ServiceAccount     ServiceAccountSpec       `json:"serviceAccount"`
-	Apiserver          WebHookSpec              `json:"apiserver"`
+	Apiserver          WebhookAPIServerSpec     `json:"apiserver"`
 	Monitoring         Monitoring               `json:"monitoring"`
 	Security           SecuritySpec             `json:"security"`
 	//+optional

@@ -62,7 +62,7 @@ type ServiceAccountSpec struct {
 	Annotations map[string]string `json:"annotations"`
 }
 
-type WebHookSpec struct {
+type WebhookAPIServerSpec struct {
 	GroupPriorityMinimum    int32  `json:"groupPriorityMinimum"`
 	VersionPriority         int32  `json:"versionPriority"`
 	EnableMutatingWebhook   bool   `json:"enableMutatingWebhook"`
@@ -73,6 +73,11 @@ type WebHookSpec struct {
 	UseKubeapiserverFqdnForAks  bool            `json:"useKubeapiserverFqdnForAks"`
 	Healthcheck                 HealthcheckSpec `json:"healthcheck"`
 	ServingCerts                ServingCerts    `json:"servingCerts"`
+	Webhook                     WebhookSpec     `json:"webhook"`
+}
+
+type WebhookSpec struct {
+	FailurePolicy string `json:"failurePolicy"`
 }
 
 type ServingCerts struct {
