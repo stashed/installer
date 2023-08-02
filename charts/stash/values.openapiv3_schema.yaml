@@ -1521,6 +1521,8 @@ properties:
         type: string
       licenseApiService:
         type: string
+      licenseSecretName:
+        type: string
       logLevel:
         format: int32
         type: integer
@@ -3413,6 +3415,8 @@ properties:
       license:
         type: string
       licenseApiService:
+        type: string
+      licenseSecretName:
         type: string
       logLevel:
         format: int32

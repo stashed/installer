@@ -3,7 +3,7 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: {{ include "stash-community.fullname" . }}-license
+  name: {{ include "appscode.licenseSecretName" . }}
   namespace: {{ .Release.Namespace }}
   labels:
   {{- include "stash-community.labels" . | nindent 4 }}
