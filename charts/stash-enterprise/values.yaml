@@ -17,6 +17,8 @@ replicaCount: 1
 # helm install appscode/stash-enterprise \
 #   --set license=<license file content>
 license: ""
+# Name of Secret with the license as key.txt key
+licenseSecretName: ""
 # Name of the ApiService to use by the addon to identify the respective service and certificate for license verification request
 licenseApiService: v1beta1.admission.stash.appscode.com
 # Docker registry fqdn used to pull Stash related images.

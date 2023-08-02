@@ -88,6 +88,8 @@ type StashEnterpriseSpec struct {
 	// +optional
 	License string `json:"license"`
 	// +optional
+	LicenseSecretName string `json:"licenseSecretName"`
+	// +optional
 	LicenseApiService string `json:"licenseApiService"`
 }
 
