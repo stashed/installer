@@ -67,7 +67,7 @@ spec:
         - --restore-job-psp={{ .Values.security.podSecurityPolicies | join "," }}
         - --nva-psp={{ include "netvol-accessor-psp" .}}
         {{- end }}
-        {{- if include "appscode.license" . }}
+        {{- if or (include "appscode.license" .) (include "appscode.licenseSecretName" .) }}
         - --license-file=/var/run/secrets/appscode/license/key.txt
         - --license-apiservice={{ .Values.licenseApiService }}
         {{- end }}
@@ -103,7 +103,7 @@ spec:
           name: serving-cert
         - mountPath: /tmp
           name: stash-scratchdir
-        {{- if include "appscode.license" . }}
+        {{- if or (include "appscode.license" .) (include "appscode.licenseSecretName" .) }}
         - mountPath: /var/run/secrets/appscode/license
           name: license
         {{- end }}
@@ -135,11 +135,11 @@ spec:
         secret:
           defaultMode: 420
           secretName: {{ include "stash-enterprise.fullname" . }}-apiserver-cert
-      {{- if include "appscode.license" . }}
+      {{- if or (include "appscode.license" .) (include "appscode.licenseSecretName" .) }}
       - name: license
         secret:
           defaultMode: 420
-          secretName: {{ include "stash-enterprise.fullname" . }}-license
+          secretName: {{ include "appscode.licenseSecretName" . }}
       {{- end }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
