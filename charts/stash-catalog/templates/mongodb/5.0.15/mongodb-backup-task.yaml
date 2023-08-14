@@ -1,0 +1,18 @@
+{{ if .Values.mongodb.enabled }}
+apiVersion: stash.appscode.com/v1beta1
+kind: Task
+metadata:
+  name: 'mongodb-backup-5.0.15'
+  labels:
+    {{- include "stash-catalog.labels" . | nindent 4 }}
+spec:
+  steps:
+  - name: mongodb-backup-5.0.15
+    params:
+    - name: outputDir
+      value: /stash-tmp/output
+  - name: update-status
+    params:
+    - name: outputDir
+      value: /stash-tmp/output
+{{ end }}
