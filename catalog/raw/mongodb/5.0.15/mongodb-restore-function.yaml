@@ -1,0 +1,31 @@
+apiVersion: stash.appscode.com/v1beta1
+kind: Function
+metadata:
+  name: mongodb-restore-5.0.15
+spec:
+  args:
+  - restore-mongo
+  - --provider=${REPOSITORY_PROVIDER:=}
+  - --bucket=${REPOSITORY_BUCKET:=}
+  - --endpoint=${REPOSITORY_ENDPOINT:=}
+  - --region=${REPOSITORY_REGION:=}
+  - --path=${REPOSITORY_PREFIX:=}
+  - --storage-secret-name=${REPOSITORY_SECRET_NAME:=}
+  - --storage-secret-namespace=${REPOSITORY_SECRET_NAMESPACE:=}
+  - --scratch-dir=/stash-tmp
+  - --enable-cache=false
+  - --max-connections=${MAX_CONNECTIONS:=0}
+  - --hostname=${HOSTNAME:=}
+  - --source-hostname=${SOURCE_HOSTNAME:=}
+  - --mongo-args=${args:=}
+  - --max-concurrency=${MAX_CONCURRENCY:=3}
+  - --wait-timeout=${waitTimeout:=300}
+  - --namespace=${NAMESPACE:=default}
+  - --appbinding=${TARGET_NAME:=}
+  - --appbinding-namespace=${TARGET_NAMESPACE:=}
+  - --restoresession=${RESTORE_SESSION:=}
+  - --snapshot=${RESTORE_SNAPSHOTS:=}
+  - --output-dir=${outputDir:=}
+  - --license-apiservice=${LICENSE_APISERVICE:=}
+  - --authentication-database=${authenticationDatabase:=admin}
+  image: ghcr.io/stashed/stash-mongodb:5.0.15-v1
