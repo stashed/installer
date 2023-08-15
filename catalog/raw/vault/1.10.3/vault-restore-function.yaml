@@ -29,4 +29,4 @@ spec:
   - --force=${force:=false}
   - --key-prefix=${keyPrefix:=}
   - --old-key-prefix=${oldKeyPrefix:=}
-  image: ghcr.io/stashed/stash-vault:1.10.3-v6
+  image: ghcr.io/stashed/stash-vault:1.10.3-v7
