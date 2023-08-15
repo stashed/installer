@@ -35,4 +35,4 @@ spec:
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
   - --authentication-database=${authenticationDatabase:=admin}
-  image: ghcr.io/stashed/stash-mongodb:6.0.5-v2
+  image: ghcr.io/stashed/stash-mongodb:6.0.5-v3

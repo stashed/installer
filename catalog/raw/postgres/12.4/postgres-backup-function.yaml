@@ -35,4 +35,4 @@ spec:
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
   - --user=${user:=}
-  image: ghcr.io/stashed/stash-postgres:12.4-v25
+  image: ghcr.io/stashed/stash-postgres:12.4-v26
