@@ -25,6 +25,8 @@ properties:
         type: array
       license:
         type: string
+      licenseSecretName:
+        type: string
       registry:
         type: string
       registryFQDN:
