@@ -68,9 +68,11 @@ type StashEnterpriseValues struct {
 }
 
 type GlobalValues struct {
-	License      string `json:"license"`
-	Registry     string `json:"registry"`
-	RegistryFQDN string `json:"registryFQDN"`
+	License string `json:"license"`
+	// +optional
+	LicenseSecretName string `json:"licenseSecretName"`
+	Registry          string `json:"registry"`
+	RegistryFQDN      string `json:"registryFQDN"`
 	//+optional
 	ImagePullSecrets []core.LocalObjectReference `json:"imagePullSecrets"`
 	SkipCleaner      bool                        `json:"skipCleaner"`
