@@ -12,6 +12,8 @@ global:
   # helm install appscode/stash \
   #   --set global.license=<license file content>
   license: ""
+  # Name of Secret with the license as key.txt key
+  licenseSecretName: ""
   # Docker registry used to pull Stash operator image
   registry: ""
   # Docker registry fqdn used to pull Stash related images.
