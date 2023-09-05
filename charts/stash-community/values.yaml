@@ -43,8 +43,8 @@ operator:
     readOnlyRootFilesystem: true
     runAsNonRoot: true
     runAsUser: 65534
-    seccompProfile:
-      type: RuntimeDefault
+    # seccompProfile:
+    #   type: RuntimeDefault
 crdInstaller:
   # Docker registry of the CRD installer image. By default, it will use the same registry as the operator.
   registry: ""
@@ -62,8 +62,8 @@ crdInstaller:
     readOnlyRootFilesystem: true
     runAsNonRoot: true
     runAsUser: 65534
-    seccompProfile:
-      type: RuntimeDefault
+    # seccompProfile:
+    #   type: RuntimeDefault
 pushgateway:
   # Docker registry used to pull Prometheus pushgateway image
   registry: prom
@@ -81,8 +81,8 @@ pushgateway:
     readOnlyRootFilesystem: true
     runAsNonRoot: true
     runAsUser: 65534
-    seccompProfile:
-      type: RuntimeDefault
+    # seccompProfile:
+    #   type: RuntimeDefault
   # If you want to use a custom Pushgatway, specify its URL.
   # Stash will not inject pushgatway sidecar if you set this field.
   customURL: ""
@@ -103,8 +103,8 @@ cleaner:
     readOnlyRootFilesystem: true
     runAsNonRoot: true
     runAsUser: 65534
-    seccompProfile:
-      type: RuntimeDefault
+    # seccompProfile:
+    #   type: RuntimeDefault
 # Specify an array of imagePullSecrets.
 # Secrets must be manually created in the namespace.
 #
