@@ -362,7 +362,6 @@ ct: $(BUILD_DIRS)
 	@docker run                                                 \
 	    -i                                                      \
 	    --rm                                                    \
-	    -u $$(id -u):$$(id -g)                                  \
 	    -v $$(pwd):/src                                         \
 	    -w /src                                                 \
 	    --net=host                                              \
@@ -372,14 +371,15 @@ ct: $(BUILD_DIRS)
 	    -v $$(pwd)/.go/bin/$(OS)_$(ARCH):/go/bin                \
 	    -v $$(pwd)/.go/bin/$(OS)_$(ARCH):/go/bin/$(OS)_$(ARCH)  \
 	    -v $$(pwd)/.go/cache:/.cache                            \
-	    -v $$(which helm):/usr/local/bin/helm                   \
 	    --env HTTP_PROXY=$(HTTP_PROXY)                          \
 	    --env HTTPS_PROXY=$(HTTPS_PROXY)                        \
 	    --env KUBECONFIG=$(subst $(HOME),,$(KUBECONFIG))        \
 	    $(CHART_TEST_IMAGE)                                     \
 	    /bin/sh -c "                                            \
-	        kubectl delete crds --selector=app.kubernetes.io/name=stash; \
-	        ct $(CT_COMMAND) --debug --validate-maintainers=false $(CT_ARGS) \
+	      set -x; \
+	      kubectl delete crds --all; \
+	      ./hack/scripts/update-chart-dependencies.sh; \
+	      ct $(CT_COMMAND) --debug --validate-maintainers=false $(CT_ARGS) \
 	    "
 
 ADDTL_LINTERS   := goconst,gofmt,goimports,unparam
