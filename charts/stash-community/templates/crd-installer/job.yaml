@@ -15,6 +15,7 @@ spec:
   ttlSecondsAfterFinished: 10
   template:
     spec:
+      {{- include "appscode.imagePullSecrets" . | nindent 6 }}
       serviceAccountName: {{ include "stash-community.serviceAccountName" . }}-crd-installer
       containers:
         - name: installer
