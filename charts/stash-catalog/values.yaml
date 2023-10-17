@@ -49,6 +49,8 @@ mysql:
   backup:
     # Arguments to pass to `mysqldump` command  during bakcup process
     args: "--all-databases"
+    # Arguments to pass to `mysqldump` command  during MySQL 5.7.x bakcup process
+    args5_7: ""
   restore:
     # Arguments to pass to `mysql` command during restore process
     args: ""
