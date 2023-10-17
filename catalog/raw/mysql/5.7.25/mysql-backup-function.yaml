@@ -16,7 +16,7 @@ spec:
   - --enable-cache=${ENABLE_CACHE:=true}
   - --max-connections=${MAX_CONNECTIONS:=0}
   - --hostname=${HOSTNAME:=}
-  - --mysql-args=${args:=--all-databases}
+  - --mysql-args=${args:=}
   - --wait-timeout=${waitTimeout:=300}
   - --namespace=${NAMESPACE:=default}
   - --appbinding=${TARGET_NAME:=}
@@ -33,4 +33,4 @@ spec:
   - --retention-dry-run=${RETENTION_DRY_RUN:=false}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: ghcr.io/stashed/stash-mysql:5.7.25-v28
+  image: ghcr.io/stashed/stash-mysql:5.7.25-v29
