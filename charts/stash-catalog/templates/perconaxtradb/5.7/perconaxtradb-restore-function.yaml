@@ -21,7 +21,8 @@ spec:
   - --hostname=${HOSTNAME:=}
   - --source-hostname=${SOURCE_HOSTNAME:=}
   - --xtradb-args=${args:={{ .Values.perconaxtradb.restore.args }}}
-  - --target-app-replicas=${TARGET_APP_REPLICAS:={{ .Values.perconaxtradb.restore.targetAppReplicas }}}
+  - --target-app-replicas=${TARGET_APP_REPLICAS:={{ .Values.perconaxtradb.restore.targetAppReplicas
+    }}}
   - --wait-timeout=${waitTimeout:={{ .Values.waitTimeout}}}
   - --namespace=${NAMESPACE:=default}
   - --appbinding=${TARGET_NAME:=}
@@ -29,5 +30,6 @@ spec:
   - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: '{{ include "catalog.registry" (merge (dict "_reg" "ghcr.io" "_repo" "stashed") .Values) }}/stash-percona-xtradb:5.7-v12'
+  image: '{{ include "catalog.registry" (merge (dict "_reg" "ghcr.io" "_repo" "stashed")
+    .Values) }}/stash-percona-xtradb:5.7-v12'
 {{ end }}
