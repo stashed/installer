@@ -155,3 +155,8 @@ rules:
   - elasticsearchversions
   verbs:
   - get
+- apiGroups:
+  - elasticsearch.kubedb.com
+  resources:
+    - elasticsearchdashboards
+  verbs: ["list"]
