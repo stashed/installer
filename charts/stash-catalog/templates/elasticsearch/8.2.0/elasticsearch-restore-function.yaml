@@ -29,6 +29,7 @@ spec:
   - --es-args=${args:={{ .Values.elasticsearch.restore.args }}}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
+  - --enable-dashboard-restore=${ENABLE_DASHBOARD_RESTORE:=false}
   image: '{{ include "catalog.registry" (merge (dict "_reg" "ghcr.io" "_repo" "stashed")
     .Values) }}/stash-elasticsearch:8.2.0-v11'
 {{ end }}
