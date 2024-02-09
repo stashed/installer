@@ -11,6 +11,7 @@ spec:
   - --provider=${REPOSITORY_PROVIDER:=}
   - --bucket=${REPOSITORY_BUCKET:=}
   - --endpoint=${REPOSITORY_ENDPOINT:=}
+  - --insecure-tls=${REPOSITORY_INSECURE_TLS:=}
   - --region=${REPOSITORY_REGION:=}
   - --path=${REPOSITORY_PREFIX:=}
   - --storage-secret-name=${REPOSITORY_SECRET_NAME:=}
