@@ -26,4 +26,4 @@ spec:
   - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: ghcr.io/stashed/stash-mariadb:10.5.8-v21
+  image: ghcr.io/stashed/stash-mariadb:10.5.8-v23
