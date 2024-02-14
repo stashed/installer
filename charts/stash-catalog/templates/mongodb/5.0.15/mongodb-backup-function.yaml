@@ -40,5 +40,5 @@ spec:
   - --license-apiservice=${LICENSE_APISERVICE:=}
   - --authentication-database=${authenticationDatabase:=admin}
   image: '{{ include "catalog.registry" (merge (dict "_reg" "ghcr.io" "_repo" "stashed")
-    .Values) }}/stash-mongodb:5.0.15-v2'
+    .Values) }}/stash-mongodb:5.0.15-v3'
 {{ end }}
