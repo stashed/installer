@@ -28,4 +28,4 @@ spec:
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
   - --enable-dashboard-restore=${ENABLE_DASHBOARD_RESTORE:=false}
-  image: ghcr.io/stashed/stash-elasticsearch:7.14.0-v15
+  image: ghcr.io/stashed/stash-elasticsearch:7.14.0-v16

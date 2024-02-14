@@ -1,15 +1,15 @@
 dependencies:
 - name: stash-community
   repository: file://../stash-community
-  version: v0.33.0-rc.0
+  version: v0.33.0
 - name: stash-enterprise
   repository: file://../stash-enterprise
-  version: v0.33.0-rc.0
+  version: v0.33.0
 - name: stash-catalog
   repository: file://../stash-catalog
-  version: v2024.2.9-rc.0
+  version: v2024.2.13
 - name: stash-metrics
   repository: file://../stash-metrics
-  version: v2024.2.9-rc.0
-digest: sha256:3ac06fa30e0eb81e34e6979e4469659a785cc6efa7395fc622ab5d71943b880a
-generated: "2024-02-10T01:37:48.805217579Z"
+  version: v2024.2.13
+digest: sha256:034c57b1d2a62f22a16c1ebbc47c4449cefba7db5e8dfffa8ce1b39a3e1dcf38
+generated: "2024-02-14T00:22:01.216485358Z"
