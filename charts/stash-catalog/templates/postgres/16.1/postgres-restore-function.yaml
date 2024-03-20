@@ -1,0 +1,35 @@
+{{ if .Values.postgres.enabled }}
+apiVersion: stash.appscode.com/v1beta1
+kind: Function
+metadata:
+  name: 'postgres-restore-16.1'
+  labels:
+    {{- include "stash-catalog.labels" . | nindent 4 }}
+spec:
+  args:
+  - restore-pg
+  - --provider=${REPOSITORY_PROVIDER:=}
+  - --bucket=${REPOSITORY_BUCKET:=}
+  - --endpoint=${REPOSITORY_ENDPOINT:=}
+  - --insecure-tls=${REPOSITORY_INSECURE_TLS:=}
+  - --region=${REPOSITORY_REGION:=}
+  - --path=${REPOSITORY_PREFIX:=}
+  - --storage-secret-name=${REPOSITORY_SECRET_NAME:=}
+  - --storage-secret-namespace=${REPOSITORY_SECRET_NAMESPACE:=}
+  - --scratch-dir=/stash-tmp
+  - --enable-cache=${ENABLE_CACHE:=true}
+  - --max-connections=${MAX_CONNECTIONS:=0}
+  - --hostname=${HOSTNAME:=}
+  - --source-hostname=${SOURCE_HOSTNAME:=}
+  - --pg-args=${args:={{ .Values.postgres.restore.args }}}
+  - --wait-timeout=${waitTimeout:={{ .Values.waitTimeout}}}
+  - --namespace=${NAMESPACE:=default}
+  - --appbinding=${TARGET_NAME:=}
+  - --appbinding-namespace=${TARGET_NAMESPACE:=}
+  - --snapshot=${RESTORE_SNAPSHOTS:=}
+  - --output-dir=${outputDir:=}
+  - --license-apiservice=${LICENSE_APISERVICE:=}
+  - --user=${user:=}
+  image: '{{ include "catalog.registry" (merge (dict "_reg" "ghcr.io" "_repo" "stashed")
+    .Values) }}/stash-postgres:16.1'
+{{ end }}
