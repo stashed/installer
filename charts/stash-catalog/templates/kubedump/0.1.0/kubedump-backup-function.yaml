@@ -28,6 +28,7 @@ spec:
   - --target-name=${TARGET_NAME:=}
   - --target-namespace=${TARGET_NAMESPACE:=}
   - --sanitize=${sanitize:=true}
+  - --ignore-groupkinds=${ignoreGroupKinds:=}
   - --label-selector=${labelSelector:=}
   - --include-dependants=${includeDependants:=false}
   - --retention-keep-last=${RETENTION_KEEP_LAST:=0}
