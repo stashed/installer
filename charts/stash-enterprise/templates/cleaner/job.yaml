@@ -30,4 +30,19 @@ spec:
         securityContext:
           {{- toYaml .Values.cleaner.securityContext | nindent 10 }}
       restartPolicy: Never
+    {{- if .Values.cleaner.tolerations }}
+      tolerations:
+      {{- with .Values.cleaner.tolerations }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    {{- end -}}
+    {{- with .Values.cleaner.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.cleaner.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+
 {{ end }}

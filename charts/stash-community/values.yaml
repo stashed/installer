@@ -45,6 +45,7 @@ operator:
     runAsUser: 65534
     # seccompProfile:
     #   type: RuntimeDefault
+
 crdInstaller:
   # Docker registry of the CRD installer image. By default, it will use the same registry as the operator.
   registry: ""
@@ -64,6 +65,14 @@ crdInstaller:
     runAsUser: 65534
     # seccompProfile:
     #   type: RuntimeDefault
+  # Node labels for pod assignment
+  nodeSelector: # +doc-gen:break
+    kubernetes.io/os: linux
+  # Tolerations for pod assignment
+  tolerations: []
+  # Affinity rules for pod assignment
+  affinity: {}
+
 pushgateway:
   # Docker registry used to pull Prometheus pushgateway image
   registry: prom
@@ -86,6 +95,7 @@ pushgateway:
   # If you want to use a custom Pushgatway, specify its URL.
   # Stash will not inject pushgatway sidecar if you set this field.
   customURL: ""
+
 cleaner:
   # Docker registry used to pull Webhook cleaner image
   registry: appscode
@@ -105,6 +115,14 @@ cleaner:
     runAsUser: 65534
     # seccompProfile:
     #   type: RuntimeDefault
+  # Node labels for pod assignment
+  nodeSelector: # +doc-gen:break
+    kubernetes.io/os: linux
+  # Tolerations for pod assignment
+  tolerations: []
+  # Affinity rules for pod assignment
+  affinity: {}
+
 # Specify an array of imagePullSecrets.
 # Secrets must be manually created in the namespace.
 #

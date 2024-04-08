@@ -26,4 +26,18 @@ spec:
           securityContext:
             {{- toYaml .Values.crdInstaller.securityContext | nindent 12 }}
       restartPolicy: Never
+    {{- if .Values.crdInstaller.tolerations }}
+      tolerations:
+      {{- with .Values.crdInstaller.tolerations }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    {{- end -}}
+    {{- with .Values.crdInstaller.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.crdInstaller.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
 {{ end }}

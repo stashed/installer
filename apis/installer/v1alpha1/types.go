@@ -52,6 +52,14 @@ type CleanerRef struct {
 	// Security options the pod should run with.
 	// +optional
 	SecurityContext *core.SecurityContext `json:"securityContext"`
+	//+optional
+	NodeSelector map[string]string `json:"nodeSelector"`
+	// If specified, the pod's tolerations.
+	// +optional
+	Tolerations []core.Toleration `json:"tolerations"`
+	// If specified, the pod's scheduling constraints
+	// +optional
+	Affinity *core.Affinity `json:"affinity"`
 }
 
 type ServiceAccountSpec struct {
@@ -178,4 +186,12 @@ type CRDInstallerRef struct {
 	// Security options the pod should run with.
 	// +optional
 	SecurityContext *core.SecurityContext `json:"securityContext"`
+	//+optional
+	NodeSelector map[string]string `json:"nodeSelector"`
+	// If specified, the pod's tolerations.
+	// +optional
+	Tolerations []core.Toleration `json:"tolerations"`
+	// If specified, the pod's scheduling constraints
+	// +optional
+	Affinity *core.Affinity `json:"affinity"`
 }
