@@ -29,7 +29,7 @@ spec:
   - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  - --user=${user:=}
+  - --user=${user:=postgres}
   image: '{{ include "catalog.registry" (merge (dict "_reg" "ghcr.io" "_repo" "stashed")
     .Values) }}/stash-postgres:10.14-v30'
 {{ end }}

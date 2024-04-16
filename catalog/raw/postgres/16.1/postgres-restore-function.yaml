@@ -26,5 +26,5 @@ spec:
   - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  - --user=${user:=}
+  - --user=${user:=postgres}
   image: ghcr.io/stashed/stash-postgres:16.1

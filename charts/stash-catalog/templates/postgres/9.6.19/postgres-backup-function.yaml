@@ -38,7 +38,7 @@ spec:
   - --retention-dry-run=${RETENTION_DRY_RUN:=false}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  - --user=${user:=}
+  - --user=${user:=postgres}
   image: '{{ include "catalog.registry" (merge (dict "_reg" "ghcr.io" "_repo" "stashed")
     .Values) }}/stash-postgres:9.6.19-v30'
 {{ end }}
