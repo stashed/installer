@@ -26,7 +26,7 @@ mariadb:
   # optional argument to send mariadbdump or mariadb command
   backup:
     # Arguments to pass to `mariadbdump` command  during bakcup process
-    args: "--all-databases"
+    args: "--all-databases --ignore-database=mysql"
   restore:
     # Arguments to pass to `mariadb` command during restore process
     args: ""
