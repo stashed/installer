@@ -1,0 +1,41 @@
+# https://github.com/helm/charts/blob/master/test/README.md#providing-custom-test-values
+global:
+  license: ""
+stash-community:
+  operator:
+    securityContext:
+      seccompProfile:
+        type: RuntimeDefault
+  crdInstaller:
+    registry: appscodeci
+    tag: latest
+    securityContext:
+      seccompProfile:
+        type: RuntimeDefault
+  pushgateway:
+    securityContext:
+      seccompProfile:
+        type: RuntimeDefault
+  cleaner:
+    securityContext:
+      seccompProfile:
+        type: RuntimeDefault
+stash-enterprise:
+  operator:
+    securityContext:
+      seccompProfile:
+        type: RuntimeDefault
+  crdInstaller:
+    registry: appscodeci
+    tag: latest
+    securityContext:
+      seccompProfile:
+        type: RuntimeDefault
+  pushgateway:
+    securityContext:
+      seccompProfile:
+        type: RuntimeDefault
+  cleaner:
+    securityContext:
+      seccompProfile:
+        type: RuntimeDefault
