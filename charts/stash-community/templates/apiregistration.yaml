@@ -74,6 +74,7 @@ metadata:
     {{- include "stash-community.labels" . | nindent 4 }}
 type: Opaque
 data:
+  ca.crt: {{ $caCrt }}
   tls.crt: {{ $serverCrt }}
   tls.key: {{ $serverKey }}
 ---
