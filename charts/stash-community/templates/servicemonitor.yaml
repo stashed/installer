@@ -32,7 +32,7 @@ spec:
       ca:
         secret:
           name: {{ include "stash-community.fullname" . }}-apiserver-cert
-          key: tls.crt
+          key: ca.crt
       serverName: "{{ include "stash-community.fullname" . }}.{{ .Release.Namespace }}.svc"
   {{- end }}
 {{- end }}
