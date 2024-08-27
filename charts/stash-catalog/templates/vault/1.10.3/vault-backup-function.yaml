@@ -40,5 +40,5 @@ spec:
   - --license-apiservice=${LICENSE_APISERVICE:=}
   - --key-prefix=${keyPrefix:=}
   image: '{{ include "catalog.registry" (merge (dict "_reg" "ghcr.io" "_repo" "stashed")
-    .Values) }}/stash-vault:1.10.3-v11'
+    .Values) }}/stash-vault:1.10.3-v12'
 {{ end }}
