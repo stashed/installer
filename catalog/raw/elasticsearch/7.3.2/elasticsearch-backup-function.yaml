@@ -36,4 +36,4 @@ spec:
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
   - --enable-dashboard-backup=${ENABLE_DASHBOARD_BACKUP:=false}
-  image: ghcr.io/stashed/stash-elasticsearch:7.3.2-v31
+  image: ghcr.io/stashed/stash-elasticsearch:7.3.2-v32

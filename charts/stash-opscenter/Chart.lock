@@ -1,12 +1,12 @@
 dependencies:
 - name: stash-ui-server
   repository: file://../stash-ui-server
-  version: v0.15.0
+  version: v0.16.0
 - name: stash-metrics
   repository: file://../stash-metrics
-  version: v2024.4.8
+  version: v2024.8.27
 - name: stash-grafana-dashboards
   repository: file://../stash-grafana-dashboards
-  version: v2024.4.8
-digest: sha256:6e7fe5ad1db24171a205a4e25c02f8b56053bf278b703bbba820c6d0439b44f8
-generated: "2024-04-09T01:02:52.947222678Z"
+  version: v2024.8.27
+digest: sha256:0bdb21bbaeac0678bda24a14998447432791a4835eccb11fa0f976a7d3b87d5f
+generated: "2024-08-27T23:03:25.866876236Z"
