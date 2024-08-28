@@ -2,8 +2,8 @@ apiVersion: v2
 name: stash-catalog
 description: Stash Catalog by AppsCode - Catalog of Stash Addons
 type: application
-version: v2024.4.8
-appVersion: v2024.4.8
+version: v2024.8.27
+appVersion: v2024.8.27
 home: https://stash.run
 icon: https://cdn.appscode.com/images/products/stash/stash-community-icon.png
 sources:
