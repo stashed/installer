@@ -28,8 +28,8 @@ image:
     readOnlyRootFilesystem: true
     runAsNonRoot: true
     runAsUser: 65534
-    # seccompProfile:
-    #   type: RuntimeDefault
+    seccompProfile:
+      type: RuntimeDefault
 # Specify an array of imagePullSecrets.
 # Secrets must be manually created in the namespace.
 #
