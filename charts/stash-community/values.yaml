@@ -43,8 +43,8 @@ operator:
     readOnlyRootFilesystem: true
     runAsNonRoot: true
     runAsUser: 65534
-    # seccompProfile:
-    #   type: RuntimeDefault
+    seccompProfile:
+      type: RuntimeDefault
 
 crdInstaller:
   # Docker registry of the CRD installer image. By default, it will use the same registry as the operator.
@@ -63,8 +63,8 @@ crdInstaller:
     readOnlyRootFilesystem: true
     runAsNonRoot: true
     runAsUser: 65534
-    # seccompProfile:
-    #   type: RuntimeDefault
+    seccompProfile:
+      type: RuntimeDefault
   # Node labels for pod assignment
   nodeSelector: # +doc-gen:break
     kubernetes.io/os: linux
@@ -90,8 +90,8 @@ pushgateway:
     readOnlyRootFilesystem: true
     runAsNonRoot: true
     runAsUser: 65534
-    # seccompProfile:
-    #   type: RuntimeDefault
+    seccompProfile:
+      type: RuntimeDefault
   # If you want to use a custom Pushgatway, specify its URL.
   # Stash will not inject pushgatway sidecar if you set this field.
   customURL: ""
@@ -113,8 +113,8 @@ cleaner:
     readOnlyRootFilesystem: true
     runAsNonRoot: true
     runAsUser: 65534
-    # seccompProfile:
-    #   type: RuntimeDefault
+    seccompProfile:
+      type: RuntimeDefault
   # Node labels for pod assignment
   nodeSelector: # +doc-gen:break
     kubernetes.io/os: linux
