@@ -7,8 +7,8 @@
 ```bash
 $ helm repo add appscode https://charts.appscode.com/stable/
 $ helm repo update
-$ helm search repo appscode/stash-grafana-dashboards --version=v2024.8.27
-$ helm upgrade -i stash-grafana-dashboards appscode/stash-grafana-dashboards -n kubeops --create-namespace --version=v2024.8.27
+$ helm search repo appscode/stash-grafana-dashboards --version=v2024.9.30
+$ helm upgrade -i stash-grafana-dashboards appscode/stash-grafana-dashboards -n kubeops --create-namespace --version=v2024.9.30
 ```
 
 ## Introduction
@@ -24,7 +24,7 @@ This chart deploys a Stash Grafana Dashboards on a [Kubernetes](http://kubernete
 To install/upgrade the chart with the release name `stash-grafana-dashboards`:
 
 ```bash
-$ helm upgrade -i stash-grafana-dashboards appscode/stash-grafana-dashboards -n kubeops --create-namespace --version=v2024.8.27
+$ helm upgrade -i stash-grafana-dashboards appscode/stash-grafana-dashboards -n kubeops --create-namespace --version=v2024.9.30
 ```
 
 The command deploys a Stash Grafana Dashboards on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
@@ -61,12 +61,12 @@ The following table lists the configurable parameters of the `stash-grafana-dash
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm upgrade -i`. For example:
 
 ```bash
-$ helm upgrade -i stash-grafana-dashboards appscode/stash-grafana-dashboards -n kubeops --create-namespace --version=v2024.8.27 --set resources=["stash"]
+$ helm upgrade -i stash-grafana-dashboards appscode/stash-grafana-dashboards -n kubeops --create-namespace --version=v2024.9.30 --set resources=["stash"]
 ```
 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while
 installing the chart. For example:
 
 ```bash
-$ helm upgrade -i stash-grafana-dashboards appscode/stash-grafana-dashboards -n kubeops --create-namespace --version=v2024.8.27 --values values.yaml
+$ helm upgrade -i stash-grafana-dashboards appscode/stash-grafana-dashboards -n kubeops --create-namespace --version=v2024.9.30 --values values.yaml
 ```

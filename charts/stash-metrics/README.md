@@ -7,8 +7,8 @@
 ```bash
 $ helm repo add appscode https://charts.appscode.com/stable/
 $ helm repo update
-$ helm search repo appscode/stash-metrics --version=v2024.8.27
-$ helm upgrade -i stash-metrics appscode/stash-metrics -n stash --create-namespace --version=v2024.8.27
+$ helm search repo appscode/stash-metrics --version=v2024.9.30
+$ helm upgrade -i stash-metrics appscode/stash-metrics -n stash --create-namespace --version=v2024.9.30
 ```
 
 ## Introduction
@@ -24,7 +24,7 @@ This chart deploys Stash metrics configurations on a [Kubernetes](http://kuberne
 To install/upgrade the chart with the release name `stash-metrics`:
 
 ```bash
-$ helm upgrade -i stash-metrics appscode/stash-metrics -n stash --create-namespace --version=v2024.8.27
+$ helm upgrade -i stash-metrics appscode/stash-metrics -n stash --create-namespace --version=v2024.9.30
 ```
 
 The command deploys Stash metrics configurations on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
