@@ -9,4 +9,5 @@ image-packer list --root-dir=charts --output-dir=catalog
 
 image-packer generate-scripts --output-dir=catalog \
     --src=catalog/imagelist.yaml
+make add-license fmt
 ```
