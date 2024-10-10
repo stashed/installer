@@ -98,9 +98,9 @@ cleaner:
   # Docker registry used to pull Webhook cleaner image
   registry: appscode
   # Webhook cleaner container image
-  repository: kubectl
+  repository: kubectl-nonroot
   # Webhook cleaner container image tag
-  tag: v1.22
+  tag: "1.25"
   # Skip generating cleaner YAML
   skip: false
   # Security options the Prometheus pushgateway container should run with
