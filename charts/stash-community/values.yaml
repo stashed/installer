@@ -102,7 +102,7 @@ cleaner:
   # Webhook cleaner container image
   repository: kubectl-nonroot
   # Webhook cleaner container image tag
-  tag: "1.25"
+  tag: "1.31"
   # Skip generating cleaner YAML
   skip: false
   # Security options the Prometheus pushgateway container should run with
