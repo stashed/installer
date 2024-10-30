@@ -1,7 +1,6 @@
 # CVE Report
 |                                                         IMAGE REF                                                         |      OS       | CRITICAL<BR>(OS, OTHER) | HIGH<BR>(OS, OTHER) | MEDIUM<BR>(OS, OTHER) | LOW<BR>(OS, OTHER) | UNKNOWN<BR>(OS, OTHER) |
 |---------------------------------------------------------------------------------------------------------------------------|---------------|-------------------------|---------------------|-----------------------|--------------------|------------------------|
-| ghcr.io/stashed/kubedump:0.1.0-v15<br>sha256:1acb5e8eae445302100f76e6f2e82f4cab4f495f0ce16c259686872348fdaf1c             |               | 0, 3                    | 0, 43               | 0, 31                 | 0, 1               | 0, 0                   |
 | ghcr.io/stashed/stash-crd-installer:v0.36.0<br>sha256:5f083012e72926b70dd19cd8f3f1473c3096c3bc3090dd6ef34db98c0dea36b8    | debian 12.7   | 0, 0                    | 0, 0                | 0, 0                  | 0, 0               | 0, 0                   |
 | ghcr.io/stashed/stash-elasticsearch:5.6.4-v32<br>sha256:6b44b626ca6bd0e7a207edda90cdb380bf590828836976f61518c76d8c415c6b  | alpine 3.17.3 | **3**, 3                | **5**, 48           | 38, 36                | 6, 2               | 0, 0                   |
 | ghcr.io/stashed/stash-elasticsearch:6.2.4-v32<br>sha256:b8bfbca7f258baf75b79526bbc40b5d45945e99c885776dc254b7837965066b4  | alpine 3.17.3 | **3**, 3                | **5**, 48           | 38, 36                | 6, 2               | 0, 0                   |
