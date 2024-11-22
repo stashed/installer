@@ -63,7 +63,7 @@ $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-mo
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-mongodb:5.0.15-v6 images/stashed-stash-mongodb-5.0.15-v6.tar
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-mongodb:5.0.3-v21 images/stashed-stash-mongodb-5.0.3-v21.tar
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-mongodb:6.0.5-v9 images/stashed-stash-mongodb-6.0.5-v9.tar
-$CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-mysql:5.7.25-v32 images/stashed-stash-mysql-5.7.25-v32.tar
+$CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-mysql:5.7.25-v33 images/stashed-stash-mysql-5.7.25-v33.tar
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-mysql:8.0.14-v32 images/stashed-stash-mysql-8.0.14-v32.tar
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-mysql:8.0.21-v26 images/stashed-stash-mysql-8.0.21-v26.tar
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-mysql:8.0.3-v32 images/stashed-stash-mysql-8.0.3-v32.tar

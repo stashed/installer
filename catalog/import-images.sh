@@ -57,7 +57,7 @@ $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-mon
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-mongodb-5.0.15-v6.tar $IMAGE_REGISTRY/stashed/stash-mongodb:5.0.15-v6
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-mongodb-5.0.3-v21.tar $IMAGE_REGISTRY/stashed/stash-mongodb:5.0.3-v21
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-mongodb-6.0.5-v9.tar $IMAGE_REGISTRY/stashed/stash-mongodb:6.0.5-v9
-$CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-mysql-5.7.25-v32.tar $IMAGE_REGISTRY/stashed/stash-mysql:5.7.25-v32
+$CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-mysql-5.7.25-v33.tar $IMAGE_REGISTRY/stashed/stash-mysql:5.7.25-v33
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-mysql-8.0.14-v32.tar $IMAGE_REGISTRY/stashed/stash-mysql:8.0.14-v32
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-mysql-8.0.21-v26.tar $IMAGE_REGISTRY/stashed/stash-mysql:8.0.21-v26
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-mysql-8.0.3-v32.tar $IMAGE_REGISTRY/stashed/stash-mysql:8.0.3-v32

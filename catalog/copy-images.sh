@@ -66,7 +66,7 @@ $CMD cp --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-mong
 $CMD cp --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-mongodb:5.0.15-v6 $IMAGE_REGISTRY/stashed/stash-mongodb:5.0.15-v6
 $CMD cp --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-mongodb:5.0.3-v21 $IMAGE_REGISTRY/stashed/stash-mongodb:5.0.3-v21
 $CMD cp --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-mongodb:6.0.5-v9 $IMAGE_REGISTRY/stashed/stash-mongodb:6.0.5-v9
-$CMD cp --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-mysql:5.7.25-v32 $IMAGE_REGISTRY/stashed/stash-mysql:5.7.25-v32
+$CMD cp --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-mysql:5.7.25-v33 $IMAGE_REGISTRY/stashed/stash-mysql:5.7.25-v33
 $CMD cp --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-mysql:8.0.14-v32 $IMAGE_REGISTRY/stashed/stash-mysql:8.0.14-v32
 $CMD cp --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-mysql:8.0.21-v26 $IMAGE_REGISTRY/stashed/stash-mysql:8.0.21-v26
 $CMD cp --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-mysql:8.0.3-v32 $IMAGE_REGISTRY/stashed/stash-mysql:8.0.3-v32
