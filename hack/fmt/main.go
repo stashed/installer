@@ -197,11 +197,7 @@ func main() {
 
 						case "mysql":
 							if strings.HasPrefix(args[i], "--mysql-args=") {
-								if r.Resource.GetName() == "mysql-backup-5.7.25" {
-									args[i] = fmt.Sprintf(`--mysql-args=${args:={{ .Values.%s.%s.args5_7 }}}`, loc.App, r.Type)
-								} else {
-									args[i] = fmt.Sprintf(`--mysql-args=${args:={{ .Values.%s.%s.args }}}`, loc.App, r.Type)
-								}
+								args[i] = fmt.Sprintf(`--mysql-args=${args:={{ .Values.%s.%s.args }}}`, loc.App, r.Type)
 							}
 
 						case "perconaxtradb":

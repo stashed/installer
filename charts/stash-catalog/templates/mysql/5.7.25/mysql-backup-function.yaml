@@ -20,7 +20,7 @@ spec:
   - --enable-cache=${ENABLE_CACHE:=true}
   - --max-connections=${MAX_CONNECTIONS:=0}
   - --hostname=${HOSTNAME:=}
-  - --mysql-args=${args:={{ .Values.mysql.backup.args5_7 }}}
+  - --mysql-args=${args:={{ .Values.mysql.backup.args }}}
   - --wait-timeout=${waitTimeout:={{ .Values.waitTimeout}}}
   - --namespace=${NAMESPACE:=default}
   - --appbinding=${TARGET_NAME:=}

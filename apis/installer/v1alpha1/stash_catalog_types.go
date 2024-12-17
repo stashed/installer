@@ -121,8 +121,6 @@ type StashMysqlSpec struct {
 type MySQLBackup struct {
 	// +optional
 	Args string `json:"args"`
-	// +optional
-	Args57 string `json:"args5_7"`
 }
 
 type MySQLRestore struct {
