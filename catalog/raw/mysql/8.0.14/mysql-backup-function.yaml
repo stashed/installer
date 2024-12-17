@@ -18,6 +18,7 @@ spec:
   - --max-connections=${MAX_CONNECTIONS:=0}
   - --hostname=${HOSTNAME:=}
   - --mysql-args=${args:=--all-databases}
+  - --multi-dump-args=${multiDumpArgs:=}
   - --wait-timeout=${waitTimeout:=300}
   - --namespace=${NAMESPACE:=default}
   - --appbinding=${TARGET_NAME:=}
