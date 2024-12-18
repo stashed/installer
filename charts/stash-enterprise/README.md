@@ -7,8 +7,8 @@
 ```bash
 $ helm repo add appscode https://charts.appscode.com/stable/
 $ helm repo update
-$ helm search repo appscode/stash-enterprise --version=v0.36.0
-$ helm upgrade -i stash-enterprise appscode/stash-enterprise -n stash --create-namespace --version=v0.36.0
+$ helm search repo appscode/stash-enterprise --version=v0.37.0
+$ helm upgrade -i stash-enterprise appscode/stash-enterprise -n stash --create-namespace --version=v0.37.0
 ```
 
 ## Introduction
@@ -24,7 +24,7 @@ This chart deploys a Stash Enterprise operator on a [Kubernetes](http://kubernet
 To install/upgrade the chart with the release name `stash-enterprise`:
 
 ```bash
-$ helm upgrade -i stash-enterprise appscode/stash-enterprise -n stash --create-namespace --version=v0.36.0
+$ helm upgrade -i stash-enterprise appscode/stash-enterprise -n stash --create-namespace --version=v0.37.0
 ```
 
 The command deploys a Stash Enterprise operator on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
@@ -53,7 +53,7 @@ The following table lists the configurable parameters of the `stash-enterprise` 
 | license                               | License for the product. Get a license by following the steps from [here](https://stash.run/docs/latest/setup/install/enterprise#get-a-trial-license). <br> Example: <br> `helm install appscode/stash-enterprise \` <br> `--set-file license=/path/to/license/file` <br> `or` <br> `helm install appscode/stash-enterprise \` <br> `--set license=<license file content>` | <code>""</code>                                                                                                                                                                                |
 | licenseSecretName                     | Name of Secret with the license as key.txt key                                                                                                                                                                                                                                                                                                                             | <code>""</code>                                                                                                                                                                                |
 | licenseApiService                     | Name of the ApiService to use by the addon to identify the respective service and certificate for license verification request                                                                                                                                                                                                                                             | <code>v1beta1.admission.stash.appscode.com</code>                                                                                                                                              |
-| registryFQDN                          | Docker registry fqdn used to pull Stash related images. Set this to use docker registry hosted at ${registryFQDN}/${registry}/${image}                                                                                                                                                                                                                                     | <code>""</code>                                                                                                                                                                                |
+| registryFQDN                          | Docker registry fqdn used to pull Stash related images. Set this to use docker registry hosted at ${registryFQDN}/${registry}/${image}                                                                                                                                                                                                                                     | <code>ghcr.io</code>                                                                                                                                                                           |
 | operator.registry                     | Docker registry used to pull operator image                                                                                                                                                                                                                                                                                                                                | <code>stashed</code>                                                                                                                                                                           |
 | operator.repository                   | Name of operator container image                                                                                                                                                                                                                                                                                                                                           | <code>stash-enterprise</code>                                                                                                                                                                  |
 | operator.tag                          | Operator container image tag                                                                                                                                                                                                                                                                                                                                               | <code>""</code>                                                                                                                                                                                |
@@ -127,12 +127,12 @@ The following table lists the configurable parameters of the `stash-enterprise` 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm upgrade -i`. For example:
 
 ```bash
-$ helm upgrade -i stash-enterprise appscode/stash-enterprise -n stash --create-namespace --version=v0.36.0 --set replicaCount=1
+$ helm upgrade -i stash-enterprise appscode/stash-enterprise -n stash --create-namespace --version=v0.37.0 --set replicaCount=1
 ```
 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while
 installing the chart. For example:
 
 ```bash
-$ helm upgrade -i stash-enterprise appscode/stash-enterprise -n stash --create-namespace --version=v0.36.0 --values values.yaml
+$ helm upgrade -i stash-enterprise appscode/stash-enterprise -n stash --create-namespace --version=v0.37.0 --values values.yaml
 ```
