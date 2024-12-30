@@ -80,6 +80,7 @@ $CMD cp --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-post
 $CMD cp --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-postgres:14.0-v21 $IMAGE_REGISTRY/stashed/stash-postgres:14.0-v21
 $CMD cp --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-postgres:15.1-v13 $IMAGE_REGISTRY/stashed/stash-postgres:15.1-v13
 $CMD cp --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-postgres:16.1-v2 $IMAGE_REGISTRY/stashed/stash-postgres:16.1-v2
+$CMD cp --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-postgres:17.2 $IMAGE_REGISTRY/stashed/stash-postgres:17.2
 $CMD cp --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-postgres:9.6.19-v32 $IMAGE_REGISTRY/stashed/stash-postgres:9.6.19-v32
 $CMD cp --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-redis:5.0.13-v21 $IMAGE_REGISTRY/stashed/stash-redis:5.0.13-v21
 $CMD cp --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-redis:6.2.5-v21 $IMAGE_REGISTRY/stashed/stash-redis:6.2.5-v21

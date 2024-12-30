@@ -1,0 +1,14 @@
+apiVersion: stash.appscode.com/v1beta1
+kind: Task
+metadata:
+  name: postgres-backup-17.2
+spec:
+  steps:
+  - name: postgres-backup-17.2
+    params:
+    - name: outputDir
+      value: /stash-tmp/output
+  - name: update-status
+    params:
+    - name: outputDir
+      value: /stash-tmp/output
