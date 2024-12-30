@@ -77,6 +77,7 @@ $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-po
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-postgres:14.0-v21 images/stashed-stash-postgres-14.0-v21.tar
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-postgres:15.1-v13 images/stashed-stash-postgres-15.1-v13.tar
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-postgres:16.1-v2 images/stashed-stash-postgres-16.1-v2.tar
+$CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-postgres:17.2 images/stashed-stash-postgres-17.2.tar
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-postgres:9.6.19-v32 images/stashed-stash-postgres-9.6.19-v32.tar
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-redis:5.0.13-v21 images/stashed-stash-redis-5.0.13-v21.tar
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-redis:6.2.5-v21 images/stashed-stash-redis-6.2.5-v21.tar

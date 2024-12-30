@@ -71,6 +71,7 @@ $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-pos
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-postgres-14.0-v21.tar $IMAGE_REGISTRY/stashed/stash-postgres:14.0-v21
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-postgres-15.1-v13.tar $IMAGE_REGISTRY/stashed/stash-postgres:15.1-v13
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-postgres-16.1-v2.tar $IMAGE_REGISTRY/stashed/stash-postgres:16.1-v2
+$CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-postgres-17.2.tar $IMAGE_REGISTRY/stashed/stash-postgres:17.2
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-postgres-9.6.19-v32.tar $IMAGE_REGISTRY/stashed/stash-postgres:9.6.19-v32
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-redis-5.0.13-v21.tar $IMAGE_REGISTRY/stashed/stash-redis:5.0.13-v21
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-redis-6.2.5-v21.tar $IMAGE_REGISTRY/stashed/stash-redis:6.2.5-v21
