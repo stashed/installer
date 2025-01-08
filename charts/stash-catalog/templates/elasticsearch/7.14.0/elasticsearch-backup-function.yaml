@@ -40,5 +40,5 @@ spec:
   - --license-apiservice=${LICENSE_APISERVICE:=}
   - --enable-dashboard-backup=${ENABLE_DASHBOARD_BACKUP:=false}
   image: '{{ include "catalog.registry" (merge (dict "_reg" "ghcr.io" "_repo" "stashed")
-    .Values) }}/stash-elasticsearch:7.14.0-v19'
+    .Values) }}/stash-elasticsearch:7.14.0-v20'
 {{ end }}

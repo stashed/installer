@@ -30,4 +30,4 @@ spec:
   - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: ghcr.io/stashed/stash-nats:2.6.1-v21
+  image: ghcr.io/stashed/stash-nats:2.6.1-v22

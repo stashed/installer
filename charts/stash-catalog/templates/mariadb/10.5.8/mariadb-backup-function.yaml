@@ -38,5 +38,5 @@ spec:
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
   image: '{{ include "catalog.registry" (merge (dict "_reg" "ghcr.io" "_repo" "stashed")
-    .Values) }}/stash-mariadb:10.5.8-v27'
+    .Values) }}/stash-mariadb:10.5.8-v28'
 {{ end }}
