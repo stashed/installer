@@ -474,7 +474,7 @@ kmodules.xyz/image-packer/pkg/lib
 # kmodules.xyz/schema-checker v0.4.1
 ## explicit; go 1.17
 kmodules.xyz/schema-checker
-# kubeops.dev/installer v0.0.0-20250131085809-dbf8b46bec27
+# kubeops.dev/installer v0.0.0-20250131122006-8354eb35b627
 ## explicit; go 1.22.7
 kubeops.dev/installer/apis/installer
 kubeops.dev/installer/apis/installer/v1alpha1

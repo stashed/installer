@@ -7,6 +7,7 @@ ace-user-roles:
     cert-manager: false
     kubedb-ui: false
     kubestash: false
+    kubevault: false
     license-proxyserver: false
     metrics: true
     prometheus: false

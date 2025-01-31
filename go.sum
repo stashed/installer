@@ -280,8 +280,8 @@ kmodules.xyz/image-packer v0.0.0-20241213044824-5b4eb7f75cf4 h1:DZJnNJuZH9bjAffw
 kmodules.xyz/image-packer v0.0.0-20241213044824-5b4eb7f75cf4/go.mod h1:/Cczw1rp9SkQBY6i0ziHZ/KIq08yrx8QGefg09KvhXo=
 kmodules.xyz/schema-checker v0.4.1 h1:V5UEjR6UMAXf307lTgw+9rDRfHLTNA8g/q9DngqYI9M=
 kmodules.xyz/schema-checker v0.4.1/go.mod h1:BRXLB3Osuc9raHRJxHOgZFGecZ2aZumLXCHAOa5NPdA=
-kubeops.dev/installer v0.0.0-20250131085809-dbf8b46bec27 h1:ePMxSxbTliCyCm1keXwXQcjiNDYdi7GxyOoJ571cPxY=
-kubeops.dev/installer v0.0.0-20250131085809-dbf8b46bec27/go.mod h1:7Jc6/7UyPCDUE0CC5B93K2lr1bHJZ51rxKgPp76BrNE=
+kubeops.dev/installer v0.0.0-20250131122006-8354eb35b627 h1:Lox/QR6RSJ1CogZ/NMsL3xHaBX2pvuctZuL2kOqm+Ew=
+kubeops.dev/installer v0.0.0-20250131122006-8354eb35b627/go.mod h1:7Jc6/7UyPCDUE0CC5B93K2lr1bHJZ51rxKgPp76BrNE=
 kubeops.dev/scanner v0.0.19 h1:J8C94k4j3NY3Y8UGHcG4nCZtmpSqPneCmkuvGNUOv4s=
 kubeops.dev/scanner v0.0.19/go.mod h1:FAKPsS+FhrOPwsbwXJOE1vLvIFWBcBcSXpaAztezvu4=
 sigs.k8s.io/json v0.0.0-20221116044647-bc3834ca7abd h1:EDPBXCAspyGV4jQlpZSudPeMmr1bNJefnuqLsRAsHZo=

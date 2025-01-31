@@ -51,6 +51,7 @@ ace-user-roles:
     kubedb: false
     kubedb-ui: false
     kubestash: false
+    kubevault: false
     license-proxyserver: true
     metrics: false
     prometheus: false
