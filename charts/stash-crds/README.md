@@ -54,6 +54,7 @@ The following table lists the configurable parameters of the `stash-crds` chart 
 | ace-user-roles.enableClusterRoles.cert-manager        |             | <code>false</code> |
 | ace-user-roles.enableClusterRoles.kubedb-ui           |             | <code>false</code> |
 | ace-user-roles.enableClusterRoles.kubestash           |             | <code>false</code> |
+| ace-user-roles.enableClusterRoles.kubevault           |             | <code>false</code> |
 | ace-user-roles.enableClusterRoles.license-proxyserver |             | <code>false</code> |
 | ace-user-roles.enableClusterRoles.metrics             |             | <code>true</code>  |
 | ace-user-roles.enableClusterRoles.prometheus          |             | <code>false</code> |

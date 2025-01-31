@@ -14,7 +14,7 @@ require (
 	kmodules.xyz/client-go v0.30.44
 	kmodules.xyz/image-packer v0.0.0-20241213044824-5b4eb7f75cf4
 	kmodules.xyz/schema-checker v0.4.1
-	kubeops.dev/installer v0.0.0-20250131085809-dbf8b46bec27
+	kubeops.dev/installer v0.0.0-20250131122006-8354eb35b627
 	sigs.k8s.io/yaml v1.4.0
 )
 
