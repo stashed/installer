@@ -11,5 +11,8 @@ dependencies:
 - name: stash-metrics
   repository: file://../stash-metrics
   version: v2025.1.9
-digest: sha256:a7517480492c18857596a0aa7cf5fe3a58230c0b58ec391763ce9ed343164e1d
-generated: "2025-01-08T17:38:16.234227308Z"
+- name: ace-user-roles
+  repository: oci://ghcr.io/appscode-charts
+  version: v2024.9.30
+digest: sha256:f106af2ce3108ad619279f3e99a1075f8214b018b996212ad5eabc17946f8c96
+generated: "2025-01-31T15:34:47.824708+06:00"

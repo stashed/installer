@@ -14,6 +14,7 @@ require (
 	kmodules.xyz/client-go v0.30.44
 	kmodules.xyz/image-packer v0.0.0-20241213044824-5b4eb7f75cf4
 	kmodules.xyz/schema-checker v0.4.1
+	kubeops.dev/installer v0.0.0-20250131085809-dbf8b46bec27
 	sigs.k8s.io/yaml v1.4.0
 )
 
@@ -49,14 +50,12 @@ require (
 	github.com/klauspost/compress v1.17.4 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
-	github.com/mattn/go-isatty v0.0.18 // indirect
 	github.com/mitchellh/copystructure v1.2.0 // indirect
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
 	github.com/mitchellh/reflectwalk v1.0.2 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822 // indirect
-	github.com/nxadm/tail v1.4.11 // indirect
 	github.com/opencontainers/go-digest v1.0.0 // indirect
 	github.com/opencontainers/image-spec v1.1.0-rc6 // indirect
 	github.com/pkg/errors v0.9.1 // indirect

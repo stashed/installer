@@ -40,3 +40,18 @@ stash-community: {}
 stash-catalog: {}
 # Pass values to stash-enterprise chart
 stash-enterprise: {}
+ace-user-roles:
+  # If enabled, installs the ace-user-roles chart
+  enabled: true
+  enableClusterRoles:
+    ace: false
+    appcatalog: true
+    catalog: false
+    cert-manager: false
+    kubedb: false
+    kubedb-ui: false
+    kubestash: false
+    license-proxyserver: true
+    metrics: false
+    prometheus: false
+    stash: true

@@ -153,8 +153,6 @@ github.com/mailru/easyjson/jlexer
 github.com/mailru/easyjson/jwriter
 # github.com/mattn/go-colorable v0.1.13
 ## explicit; go 1.15
-# github.com/mattn/go-isatty v0.0.18
-## explicit; go 1.15
 # github.com/mitchellh/copystructure v1.2.0
 ## explicit; go 1.15
 github.com/mitchellh/copystructure
@@ -173,8 +171,6 @@ github.com/modern-go/reflect2
 # github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822
 ## explicit
 github.com/munnerz/goautoneg
-# github.com/nxadm/tail v1.4.11
-## explicit; go 1.13
 # github.com/opencontainers/go-digest v1.0.0
 ## explicit; go 1.13
 github.com/opencontainers/go-digest
@@ -478,6 +474,10 @@ kmodules.xyz/image-packer/pkg/lib
 # kmodules.xyz/schema-checker v0.4.1
 ## explicit; go 1.17
 kmodules.xyz/schema-checker
+# kubeops.dev/installer v0.0.0-20250131085809-dbf8b46bec27
+## explicit; go 1.22.7
+kubeops.dev/installer/apis/installer
+kubeops.dev/installer/apis/installer/v1alpha1
 # kubeops.dev/scanner v0.0.19
 ## explicit; go 1.22.1
 kubeops.dev/scanner/apis/trivy
