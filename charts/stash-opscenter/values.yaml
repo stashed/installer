@@ -11,3 +11,18 @@ stash-metrics:
 stash-grafana-dashboards:
   # If enabled, installs the stash-grafana-dashboards chart
   enabled: true
+ace-user-roles:
+  # If enabled, installs the kace-user-roles chart
+  enabled: true
+  enableClusterRoles:
+    ace: false
+    appcatalog: false
+    catalog: false
+    cert-manager: false
+    kubedb: false
+    kubedb-ui: false
+    kubestash: false
+    license-proxyserver: false
+    metrics: true
+    prometheus: false
+    stash: false

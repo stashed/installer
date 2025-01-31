@@ -17,4 +17,6 @@
 set -e
 
 helm dependency update charts/stash
+helm dependency update charts/stash-community
+helm dependency update charts/stash-enterprise
 helm dependency update charts/stash-opscenter

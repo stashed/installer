@@ -19,6 +19,7 @@ package v1alpha1
 import (
 	core "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	kubeopsinstaller "kubeops.dev/installer/apis/installer/v1alpha1"
 )
 
 const (
@@ -53,6 +54,9 @@ type StashSpec struct {
 
 	//+optional
 	Enterprise StashEnterpriseValues `json:"stash-enterprise"`
+
+	//+optional
+	AceUserRoles AceUserRolesValues `json:"ace-user-roles"`
 }
 
 type StashCommunityValues struct {
@@ -65,6 +69,11 @@ type StashCatalogValues struct {
 
 type StashEnterpriseValues struct {
 	*StashEnterpriseSpec `json:",inline"`
+}
+
+type AceUserRolesValues struct {
+	Enabled            bool                               `json:"enabled"`
+	EnableClusterRoles *kubeopsinstaller.UserClusterRoles `json:"enableClusterRoles,omitempty"`
 }
 
 type GlobalValues struct {

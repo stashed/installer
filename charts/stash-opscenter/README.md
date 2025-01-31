@@ -45,11 +45,23 @@ The command removes all the Kubernetes components associated with the chart and 
 
 The following table lists the configurable parameters of the `stash-opscenter` chart and their default values.
 
-|            Parameter             |                       Description                       |      Default      |
-|----------------------------------|---------------------------------------------------------|-------------------|
-| stash-ui-server.enabled          | If enabled, installs the stash-ui-server chart          | <code>true</code> |
-| stash-metrics.enabled            | If enabled, installs the stash-metrics chart            | <code>true</code> |
-| stash-grafana-dashboards.enabled | If enabled, installs the stash-grafana-dashboards chart | <code>true</code> |
+|                       Parameter                       |                       Description                       |      Default       |
+|-------------------------------------------------------|---------------------------------------------------------|--------------------|
+| stash-ui-server.enabled                               | If enabled, installs the stash-ui-server chart          | <code>true</code>  |
+| stash-metrics.enabled                                 | If enabled, installs the stash-metrics chart            | <code>true</code>  |
+| stash-grafana-dashboards.enabled                      | If enabled, installs the stash-grafana-dashboards chart | <code>true</code>  |
+| ace-user-roles.enabled                                | If enabled, installs the kace-user-roles chart          | <code>true</code>  |
+| ace-user-roles.enableClusterRoles.ace                 |                                                         | <code>false</code> |
+| ace-user-roles.enableClusterRoles.appcatalog          |                                                         | <code>false</code> |
+| ace-user-roles.enableClusterRoles.catalog             |                                                         | <code>false</code> |
+| ace-user-roles.enableClusterRoles.cert-manager        |                                                         | <code>false</code> |
+| ace-user-roles.enableClusterRoles.kubedb              |                                                         | <code>false</code> |
+| ace-user-roles.enableClusterRoles.kubedb-ui           |                                                         | <code>false</code> |
+| ace-user-roles.enableClusterRoles.kubestash           |                                                         | <code>false</code> |
+| ace-user-roles.enableClusterRoles.license-proxyserver |                                                         | <code>false</code> |
+| ace-user-roles.enableClusterRoles.metrics             |                                                         | <code>true</code>  |
+| ace-user-roles.enableClusterRoles.prometheus          |                                                         | <code>false</code> |
+| ace-user-roles.enableClusterRoles.stash               |                                                         | <code>false</code> |
 
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm upgrade -i`. For example:
