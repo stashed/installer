@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: v2
 description: Free community features for Stash by AppsCode
 name: stash-community
 version: v0.38.0

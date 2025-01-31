@@ -1,0 +1,13 @@
+ace-user-roles:
+  enabled: true
+  enableClusterRoles:
+    ace: false
+    appcatalog: false
+    catalog: false
+    cert-manager: false
+    kubedb-ui: false
+    kubestash: false
+    license-proxyserver: false
+    metrics: true
+    prometheus: false
+    stash: false

@@ -8,5 +8,8 @@ dependencies:
 - name: stash-grafana-dashboards
   repository: file://../stash-grafana-dashboards
   version: v2025.1.9
-digest: sha256:9acf3540b51eca1aaa2ac8b8769e9a3958bf412f2d08e39ab1756bd862bf09e7
-generated: "2025-01-08T17:38:16.314177679Z"
+- name: ace-user-roles
+  repository: oci://ghcr.io/appscode-charts
+  version: v2024.9.30
+digest: sha256:235651d27aead971e4cae73a0ff406e7433b2e1a1f589e6e1653e7baca57a6fa
+generated: "2025-01-31T15:34:51.43566+06:00"
