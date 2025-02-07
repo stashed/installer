@@ -1,8 +1,8 @@
 apiVersion: v2
 description: Free community features for Stash by AppsCode
 name: stash-community
-version: v0.38.0
-appVersion: v0.38.0
+version: v0.39.0
+appVersion: v0.39.0
 home: https://stash.run
 icon: https://cdn.appscode.com/images/products/stash/stash-community-icon.png
 sources:

@@ -26,4 +26,4 @@ spec:
   - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: ghcr.io/stashed/stash-mysql:8.0.14-v34
+  image: ghcr.io/stashed/stash-mysql:8.0.14-v35
