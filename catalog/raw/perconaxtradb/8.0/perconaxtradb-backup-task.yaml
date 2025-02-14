@@ -1,0 +1,14 @@
+apiVersion: stash.appscode.com/v1beta1
+kind: Task
+metadata:
+  name: perconaxtradb-backup-8.0
+spec:
+  steps:
+  - name: perconaxtradb-backup-8.0
+    params:
+    - name: outputDir
+      value: /stash-tmp/output
+  - name: update-status
+    params:
+    - name: outputDir
+      value: /stash-tmp/output

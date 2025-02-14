@@ -74,7 +74,9 @@
     {
       "name": "perconaxtradb",
       "versions": [
-        "5.7-v26"
+        "5.7-v26",
+        "8.0",
+        "8.4"
       ]
     },
     {
