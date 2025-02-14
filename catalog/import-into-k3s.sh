@@ -62,6 +62,8 @@ k3s ctr images import images/stashed-stash-mysql-8.0.3-v35.tar
 k3s ctr images import images/stashed-stash-nats-2.6.1-v23.tar
 k3s ctr images import images/stashed-stash-nats-2.8.2-v18.tar
 k3s ctr images import images/stashed-stash-percona-xtradb-5.7-v26.tar
+k3s ctr images import images/stashed-stash-percona-xtradb-8.0.tar
+k3s ctr images import images/stashed-stash-percona-xtradb-8.4.tar
 k3s ctr images import images/stashed-stash-postgres-10.14-v34.tar
 k3s ctr images import images/stashed-stash-postgres-11.9-v34.tar
 k3s ctr images import images/stashed-stash-postgres-12.4-v34.tar

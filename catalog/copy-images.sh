@@ -73,6 +73,8 @@ $CMD cp --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-mysq
 $CMD cp --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-nats:2.6.1-v23 $IMAGE_REGISTRY/stashed/stash-nats:2.6.1-v23
 $CMD cp --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-nats:2.8.2-v18 $IMAGE_REGISTRY/stashed/stash-nats:2.8.2-v18
 $CMD cp --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-percona-xtradb:5.7-v26 $IMAGE_REGISTRY/stashed/stash-percona-xtradb:5.7-v26
+$CMD cp --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-percona-xtradb:8.0 $IMAGE_REGISTRY/stashed/stash-percona-xtradb:8.0
+$CMD cp --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-percona-xtradb:8.4 $IMAGE_REGISTRY/stashed/stash-percona-xtradb:8.4
 $CMD cp --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-postgres:10.14-v34 $IMAGE_REGISTRY/stashed/stash-postgres:10.14-v34
 $CMD cp --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-postgres:11.9-v34 $IMAGE_REGISTRY/stashed/stash-postgres:11.9-v34
 $CMD cp --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-postgres:12.4-v34 $IMAGE_REGISTRY/stashed/stash-postgres:12.4-v34

@@ -64,6 +64,8 @@ $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-mys
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-nats-2.6.1-v23.tar $IMAGE_REGISTRY/stashed/stash-nats:2.6.1-v23
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-nats-2.8.2-v18.tar $IMAGE_REGISTRY/stashed/stash-nats:2.8.2-v18
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-percona-xtradb-5.7-v26.tar $IMAGE_REGISTRY/stashed/stash-percona-xtradb:5.7-v26
+$CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-percona-xtradb-8.0.tar $IMAGE_REGISTRY/stashed/stash-percona-xtradb:8.0
+$CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-percona-xtradb-8.4.tar $IMAGE_REGISTRY/stashed/stash-percona-xtradb:8.4
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-postgres-10.14-v34.tar $IMAGE_REGISTRY/stashed/stash-postgres:10.14-v34
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-postgres-11.9-v34.tar $IMAGE_REGISTRY/stashed/stash-postgres:11.9-v34
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-postgres-12.4-v34.tar $IMAGE_REGISTRY/stashed/stash-postgres:12.4-v34

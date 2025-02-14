@@ -34,6 +34,7 @@ _testmain.go
 /bin
 /.go
 /.crds
-/charts/stash/charts
+/charts/stash-crds/charts
 /charts/stash-opscenter/charts
+/charts/stash/charts
 .DS_Store

@@ -70,6 +70,8 @@ $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-my
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-nats:2.6.1-v23 images/stashed-stash-nats-2.6.1-v23.tar
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-nats:2.8.2-v18 images/stashed-stash-nats-2.8.2-v18.tar
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-percona-xtradb:5.7-v26 images/stashed-stash-percona-xtradb-5.7-v26.tar
+$CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-percona-xtradb:8.0 images/stashed-stash-percona-xtradb-8.0.tar
+$CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-percona-xtradb:8.4 images/stashed-stash-percona-xtradb-8.4.tar
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-postgres:10.14-v34 images/stashed-stash-postgres-10.14-v34.tar
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-postgres:11.9-v34 images/stashed-stash-postgres-11.9-v34.tar
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-postgres:12.4-v34 images/stashed-stash-postgres-12.4-v34.tar

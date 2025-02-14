@@ -53,6 +53,8 @@ func Test_CheckImageArchitectures(t *testing.T) {
 		"ghcr.io/stashed/stash-mysql:8.0.21-v29",
 		"ghcr.io/stashed/stash-mysql:8.0.3-v35",
 		"ghcr.io/stashed/stash-percona-xtradb:5.7-v26",
+		"ghcr.io/stashed/stash-percona-xtradb:8.0",
+		"ghcr.io/stashed/stash-percona-xtradb:8.4",
 		"ghcr.io/stashed/stash-vault:1.10.3-v15",
 	}); err != nil {
 		t.Errorf("CheckImageArchitectures() error = %v", err)
