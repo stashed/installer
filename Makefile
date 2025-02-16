@@ -437,7 +437,7 @@ add-license:
 		--env HTTP_PROXY=$(HTTP_PROXY)                   \
 		--env HTTPS_PROXY=$(HTTPS_PROXY)                 \
 		$(BUILD_IMAGE)                                   \
-		ltag -t "./hack/license" --excludes ".go vendor contrib libbuild" -v
+		ltag -t "./hack/license" --excludes ".go .go vendor contrib libbuild" -v
 
 .PHONY: check-license
 check-license:
@@ -450,7 +450,7 @@ check-license:
 		--env HTTP_PROXY=$(HTTP_PROXY)                   \
 		--env HTTPS_PROXY=$(HTTPS_PROXY)                 \
 		$(BUILD_IMAGE)                                   \
-		ltag -t "./hack/license" --excludes ".go vendor contrib libbuild" --check -v
+		ltag -t "./hack/license" --excludes ".go .go vendor contrib libbuild" --check -v
 
 .PHONY: ci
 ci: verify check-license lint build unit-tests #cover
