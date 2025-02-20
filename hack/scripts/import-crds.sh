@@ -45,7 +45,11 @@ if [ "$#" -ne 1 ]; then
     crd_dir=${tmp_dir}/${repo_dir}/crds
 fi
 
+KMODULES_CUSTOM_RESOURCES_TAG=${KMODULES_CUSTOM_RESOURCES_TAG:-v0.30.1}
+OPEN_VIZ_APIMACHINERY_TAG=${OPEN_VIZ_APIMACHINERY_TAG:-v0.0.8}
+
 crd-importer \
+    --no-description \
     --input=${crd_dir} \
     --out=./charts/stash-crds/crds \
     --gk=BackupConfiguration.stash.appscode.com \
@@ -72,6 +76,7 @@ crd-importer \
     --gk=RestoreBatch.stash.appscode.com
 
 crd-importer --v=v1 \
+    --no-description \
     --input=${crd_dir} \
     --out=./charts/stash-catalog/crds \
     --gk=Function.stash.appscode.com \
@@ -84,9 +89,11 @@ crd-importer --v=v1 \
     --gk=Task.stash.appscode.com
 
 crd-importer \
-    --input=https://github.com/kmodules/custom-resources/raw/v0.24.0/crds/metrics.appscode.com_metricsconfigurations.yaml \
+    --no-description \
+    --input=https://github.com/kmodules/custom-resources/raw/${KMODULES_CUSTOM_RESOURCES_TAG}/crds/metrics.appscode.com_metricsconfigurations.yaml \
     --out=./charts/stash-metrics/crds
 
 crd-importer \
-    --input=https://github.com/open-viz/grafana-tools/raw/v0.0.1/crds/openviz.dev_grafanadashboards.yaml \
+    --no-description \
+    --input=https://github.com/open-viz/grafana-tools/raw/${OPEN_VIZ_APIMACHINERY_TAG}/crds/openviz.dev_grafanadashboards.yaml \
     --out=./charts/stash-grafana-dashboards/crds
