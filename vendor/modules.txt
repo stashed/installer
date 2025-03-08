@@ -464,17 +464,17 @@ k8s.io/utils/clock/testing
 k8s.io/utils/internal/third_party/forked/golang/net
 k8s.io/utils/net
 k8s.io/utils/strings/slices
-# kmodules.xyz/client-go v0.30.45
+# kmodules.xyz/client-go v0.30.46
 ## explicit; go 1.22.0
 kmodules.xyz/client-go/api/v1
 kmodules.xyz/client-go/tools/parser
-# kmodules.xyz/image-packer v0.0.0-20250215070631-0dc6bed037c5
+# kmodules.xyz/image-packer v0.0.0-20250302004653-f7cd2db94159
 ## explicit; go 1.22.7
 kmodules.xyz/image-packer/pkg/lib
 # kmodules.xyz/schema-checker v0.4.1
 ## explicit; go 1.17
 kmodules.xyz/schema-checker
-# kubeops.dev/installer v0.0.0-20250131122006-8354eb35b627
+# kubeops.dev/installer v0.0.0-20250308094117-b6235d8d47ff
 ## explicit; go 1.22.7
 kubeops.dev/installer/apis/installer
 kubeops.dev/installer/apis/installer/v1alpha1

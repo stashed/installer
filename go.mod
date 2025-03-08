@@ -11,10 +11,10 @@ require (
 	gomodules.xyz/semvers v0.0.2
 	k8s.io/api v0.30.2
 	k8s.io/apimachinery v0.30.2
-	kmodules.xyz/client-go v0.30.45
-	kmodules.xyz/image-packer v0.0.0-20250215070631-0dc6bed037c5
+	kmodules.xyz/client-go v0.30.46
+	kmodules.xyz/image-packer v0.0.0-20250302004653-f7cd2db94159
 	kmodules.xyz/schema-checker v0.4.1
-	kubeops.dev/installer v0.0.0-20250131122006-8354eb35b627
+	kubeops.dev/installer v0.0.0-20250308094117-b6235d8d47ff
 	sigs.k8s.io/yaml v1.4.0
 )
 

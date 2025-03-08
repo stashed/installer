@@ -48,11 +48,13 @@ ace-user-roles:
     appcatalog: true
     catalog: false
     cert-manager: false
-    kubedb: false
     kubedb-ui: false
+    kubedb: false
     kubestash: false
     kubevault: false
     license-proxyserver: true
     metrics: false
     prometheus: false
+    secrets-store: false
     stash: true
+    virtual-secrets: false
