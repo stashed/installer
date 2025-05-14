@@ -26,7 +26,7 @@ tar -zxvf $TARBALL
 
 k3s ctr images import images/appscode-kubectl-nonroot-1.31.tar
 k3s ctr images import images/stashed-kubedump-0.2.0-v3.tar
-k3s ctr images import images/stashed-stash-crd-installer-v0.39.0.tar
+k3s ctr images import images/stashed-stash-crd-installer-v0.39.1.tar
 k3s ctr images import images/stashed-stash-elasticsearch-5.6.4-v35.tar
 k3s ctr images import images/stashed-stash-elasticsearch-6.2.4-v35.tar
 k3s ctr images import images/stashed-stash-elasticsearch-6.3.0-v35.tar
@@ -78,5 +78,5 @@ k3s ctr images import images/stashed-stash-redis-6.2.5-v23.tar
 k3s ctr images import images/stashed-stash-redis-7.0.5-v16.tar
 k3s ctr images import images/stashed-stash-ui-server-v0.20.0.tar
 k3s ctr images import images/stashed-stash-vault-1.10.3-v15.tar
-k3s ctr images import images/stashed-stash-v0.39.0.tar
+k3s ctr images import images/stashed-stash-v0.39.1.tar
 k3s ctr images import images/prom-pushgateway-v1.4.2.tar

@@ -28,7 +28,7 @@ CMD="./crane"
 
 $CMD push --allow-nondistributable-artifacts --insecure images/appscode-kubectl-nonroot-1.31.tar $IMAGE_REGISTRY/appscode/kubectl-nonroot:1.31
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-kubedump-0.2.0-v3.tar $IMAGE_REGISTRY/stashed/kubedump:0.2.0-v3
-$CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-crd-installer-v0.39.0.tar $IMAGE_REGISTRY/stashed/stash-crd-installer:v0.39.0
+$CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-crd-installer-v0.39.1.tar $IMAGE_REGISTRY/stashed/stash-crd-installer:v0.39.1
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-elasticsearch-5.6.4-v35.tar $IMAGE_REGISTRY/stashed/stash-elasticsearch:5.6.4-v35
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-elasticsearch-6.2.4-v35.tar $IMAGE_REGISTRY/stashed/stash-elasticsearch:6.2.4-v35
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-elasticsearch-6.3.0-v35.tar $IMAGE_REGISTRY/stashed/stash-elasticsearch:6.3.0-v35
@@ -80,5 +80,5 @@ $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-red
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-redis-7.0.5-v16.tar $IMAGE_REGISTRY/stashed/stash-redis:7.0.5-v16
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-ui-server-v0.20.0.tar $IMAGE_REGISTRY/stashed/stash-ui-server:v0.20.0
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-vault-1.10.3-v15.tar $IMAGE_REGISTRY/stashed/stash-vault:1.10.3-v15
-$CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-v0.39.0.tar $IMAGE_REGISTRY/stashed/stash:v0.39.0
+$CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-v0.39.1.tar $IMAGE_REGISTRY/stashed/stash:v0.39.1
 $CMD push --allow-nondistributable-artifacts --insecure images/prom-pushgateway-v1.4.2.tar $IMAGE_REGISTRY/prom/pushgateway:v1.4.2
