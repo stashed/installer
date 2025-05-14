@@ -34,7 +34,7 @@ CMD="./images/crane"
 
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/appscode/kubectl-nonroot:1.31 images/appscode-kubectl-nonroot-1.31.tar
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/kubedump:0.2.0-v3 images/stashed-kubedump-0.2.0-v3.tar
-$CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-crd-installer:v0.39.0 images/stashed-stash-crd-installer-v0.39.0.tar
+$CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-crd-installer:v0.39.1 images/stashed-stash-crd-installer-v0.39.1.tar
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-elasticsearch:5.6.4-v35 images/stashed-stash-elasticsearch-5.6.4-v35.tar
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-elasticsearch:6.2.4-v35 images/stashed-stash-elasticsearch-6.2.4-v35.tar
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-elasticsearch:6.3.0-v35 images/stashed-stash-elasticsearch-6.3.0-v35.tar
@@ -45,7 +45,7 @@ $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-el
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-elasticsearch:7.2.0-v35 images/stashed-stash-elasticsearch-7.2.0-v35.tar
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-elasticsearch:7.3.2-v35 images/stashed-stash-elasticsearch-7.3.2-v35.tar
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-elasticsearch:8.2.0-v18 images/stashed-stash-elasticsearch-8.2.0-v18.tar
-$CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-enterprise:v0.39.0 images/stashed-stash-enterprise-v0.39.0.tar
+$CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-enterprise:v0.39.1 images/stashed-stash-enterprise-v0.39.1.tar
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-etcd:3.5.0-v22 images/stashed-stash-etcd-3.5.0-v22.tar
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-mariadb:10.5.8-v29 images/stashed-stash-mariadb-10.5.8-v29.tar
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-mongodb:3.4.17-v36 images/stashed-stash-mongodb-3.4.17-v36.tar
@@ -86,7 +86,7 @@ $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-re
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-redis:7.0.5-v16 images/stashed-stash-redis-7.0.5-v16.tar
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-ui-server:v0.20.0 images/stashed-stash-ui-server-v0.20.0.tar
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-vault:1.10.3-v15 images/stashed-stash-vault-1.10.3-v15.tar
-$CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash:v0.39.0 images/stashed-stash-v0.39.0.tar
+$CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash:v0.39.1 images/stashed-stash-v0.39.1.tar
 $CMD pull --allow-nondistributable-artifacts --insecure prom/pushgateway:v1.4.2 images/prom-pushgateway-v1.4.2.tar
 
 tar -czvf images.tar.gz images
