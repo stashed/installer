@@ -39,7 +39,7 @@ $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-ela
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-elasticsearch-7.2.0-v35.tar $IMAGE_REGISTRY/stashed/stash-elasticsearch:7.2.0-v35
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-elasticsearch-7.3.2-v35.tar $IMAGE_REGISTRY/stashed/stash-elasticsearch:7.3.2-v35
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-elasticsearch-8.2.0-v18.tar $IMAGE_REGISTRY/stashed/stash-elasticsearch:8.2.0-v18
-$CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-enterprise-v0.39.0.tar $IMAGE_REGISTRY/stashed/stash-enterprise:v0.39.0
+$CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-enterprise-v0.39.1.tar $IMAGE_REGISTRY/stashed/stash-enterprise:v0.39.1
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-etcd-3.5.0-v22.tar $IMAGE_REGISTRY/stashed/stash-etcd:3.5.0-v22
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-mariadb-10.5.8-v29.tar $IMAGE_REGISTRY/stashed/stash-mariadb:10.5.8-v29
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-mongodb-3.4.17-v36.tar $IMAGE_REGISTRY/stashed/stash-mongodb:3.4.17-v36

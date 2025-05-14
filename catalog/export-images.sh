@@ -45,7 +45,7 @@ $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-el
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-elasticsearch:7.2.0-v35 images/stashed-stash-elasticsearch-7.2.0-v35.tar
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-elasticsearch:7.3.2-v35 images/stashed-stash-elasticsearch-7.3.2-v35.tar
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-elasticsearch:8.2.0-v18 images/stashed-stash-elasticsearch-8.2.0-v18.tar
-$CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-enterprise:v0.39.0 images/stashed-stash-enterprise-v0.39.0.tar
+$CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-enterprise:v0.39.1 images/stashed-stash-enterprise-v0.39.1.tar
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-etcd:3.5.0-v22 images/stashed-stash-etcd-3.5.0-v22.tar
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-mariadb:10.5.8-v29 images/stashed-stash-mariadb-10.5.8-v29.tar
 $CMD pull --allow-nondistributable-artifacts --insecure ghcr.io/stashed/stash-mongodb:3.4.17-v36 images/stashed-stash-mongodb-3.4.17-v36.tar
