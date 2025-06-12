@@ -160,3 +160,8 @@ rules:
   resources:
     - elasticsearchdashboards
   verbs: ["list"]
+- apiGroups:
+  - batch.k8s.appscode.com
+  resources:
+    - pendingtasks
+  verbs: [ "create", "get", "list", "watch", "patch" ]

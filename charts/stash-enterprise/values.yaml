@@ -24,6 +24,11 @@ licenseApiService: v1beta1.admission.stash.appscode.com
 # Docker registry fqdn used to pull Stash related images.
 # Set this to use docker registry hosted at ${registryFQDN}/${registry}/${image}
 registryFQDN: ghcr.io
+# Enable Task Queue feature maintains a concurrent Queue pool of BackupSessions,
+# User can provide a predefined number of max concurrent BackupSessions can run at a time.
+enableTaskQueue: false
+# It'll be applicable only If the EnableTaskQueue=true. It defines the Max concurrent BackupSessions that can run at a time.
+maxConcurrentBackupSessions: 10
 # cleanerRegistryFQDN: ghcr.io
 operator:
   # Docker registry used to pull operator image

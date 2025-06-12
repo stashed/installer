@@ -1,0 +1,14 @@
+{{- if .Values.enableTaskQueue }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: appscode:task-queue
+  labels:
+    {{- include "stash-enterprise.labels" . | nindent 4 }}
+rules:
+  - apiGroups:
+      - batch.k8s.appscode.com
+    resources:
+      - pendingtasks
+    verbs: ["create", "get", "list", "watch", "patch"]
+{{- end }}
