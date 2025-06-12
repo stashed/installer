@@ -8053,6 +8053,8 @@ properties:
         type: object
       criticalAddon:
         type: boolean
+      enableTaskQueue:
+        type: boolean
       fullnameOverride:
         type: string
       imagePullPolicy:
@@ -8068,6 +8070,9 @@ properties:
       licenseSecretName:
         type: string
       logLevel:
+        format: int32
+        type: integer
+      maxConcurrentBackupSessions:
         format: int32
         type: integer
       monitoring:

@@ -85,6 +85,10 @@ type StashEnterpriseSpec struct {
 	Platform Platform `json:"platform"`
 	//+optional
 	NetVolAccessor NetVolAccessor `json:"netVolAccessor"`
+	//+optional
+	EnableTaskQueue bool `json:"enableTaskQueue"`
+	//+optional
+	MaxConcurrentBackupSessions int32 `json:"maxConcurrentBackupSessions"`
 	// +optional
 	License string `json:"license"`
 	// +optional
