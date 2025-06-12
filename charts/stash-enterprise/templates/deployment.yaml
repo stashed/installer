@@ -67,6 +67,7 @@ spec:
         - --restore-job-psp={{ .Values.security.podSecurityPolicies | join "," }}
         - --nva-psp={{ include "netvol-accessor-psp" .}}
         {{- end }}
+        - --enable-task-queue={{ .Values.enableTaskQueue }}
         {{- if include "appscode.licenseSecretName" . }}
         - --license-file=/var/run/secrets/appscode/license/key.txt
         {{- end }}
