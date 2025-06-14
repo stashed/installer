@@ -1,0 +1,21 @@
+{{- if .Values.enableTaskQueue }}
+apiVersion: batch.k8s.appscode.com/v1alpha1
+kind: TaskQueue
+metadata:
+  name: appscode-stash-task-queue
+  labels:
+    {{- include "stash-enterprise.labels" . | nindent 4 }}
+spec:
+  maxConcurrentTasks: {{.Values.maxConcurrentBackupSessions}}
+  tasks:
+    - type:
+        kind: BackupSession
+        apiGroup: stash.appscode.com
+      rules:
+        success: "has(self.status.phase) && self.status.phase == 'Succeeded'"
+        inProgress: "has(self.status.phase) && self.status.phase == 'Running'"
+        failed: "has(self.status.phase) && self.status.phase == 'Failed'"
+{{- end }}
+
+
+
