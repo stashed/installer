@@ -1,0 +1,13 @@
+apiVersion: v2
+name: taskqueue
+description: A Helm chart for TaskQueue
+type: application
+version: v2025.5.30
+appVersion: v0.0.1
+home: https://github.com/appscode-cloud
+icon: https://cdn.appscode.com/images/products/bytebuilders/icons/android-icon-192x192.png
+sources:
+- https://github.com/appscode-cloud
+maintainers:
+- name: appscode
+  email: support@appscode.com

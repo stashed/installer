@@ -1,0 +1,15 @@
+{{- if .Values.networkPolicy.enabled }}
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ include "taskqueue.fullname" . }}-egress
+  namespace: {{ .Release.Namespace }}
+spec:
+  podSelector:
+    matchLabels:
+      {{- include "taskqueue.selectorLabels" . | nindent 6 }}
+  egress:
+  - {}
+  policyTypes:
+  - Egress
+{{- end }}

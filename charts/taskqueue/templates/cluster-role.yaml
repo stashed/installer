@@ -1,0 +1,73 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "taskqueue.fullname" . }}
+  labels:
+    {{- include "taskqueue.labels" . | nindent 4 }}
+rules:
+- apiGroups:
+  - batch.k8s.appscode.com
+  resources:
+  - taskqueues
+  - taskqueues/finalizers
+  - taskqueues/status
+  - pendingtasks
+  - pendingtasks/finalizers
+  - pendingtasks/status
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - "*"
+  resources:
+  - "*"
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: {{ include "taskqueue.fullname" . }}:leader-election
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "taskqueue.labels" . | nindent 4 }}
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - coordination.k8s.io
+  resources:
+  - leases
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - ""
+  resources:
+  - events
+  verbs:
+  - create
+  - patch

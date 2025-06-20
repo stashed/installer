@@ -1,0 +1,45 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ include "taskqueue.fullname" . }}
+  labels:
+    {{- include "taskqueue.labels" . | nindent 4 }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ include "taskqueue.fullname" . }}
+subjects:
+- kind: ServiceAccount
+  name: {{ include "taskqueue.serviceAccountName" . }}
+  namespace: {{ .Release.Namespace }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ include "taskqueue.fullname" . }}-auth-delegator
+  labels:
+    {{- include "taskqueue.labels" . | nindent 4 }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:auth-delegator
+subjects:
+- kind: ServiceAccount
+  name: {{ include "taskqueue.serviceAccountName" . }}
+  namespace: {{ .Release.Namespace }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ include "taskqueue.fullname" . }}:leader-election
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "taskqueue.labels" . | nindent 4 }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: {{ include "taskqueue.fullname" . }}:leader-election
+subjects:
+- kind: ServiceAccount
+  name: {{ include "taskqueue.serviceAccountName" . }}
+  namespace: {{ .Release.Namespace }}
