@@ -71,15 +71,18 @@ Returns the appscode license
 {{/*
 Returns if the TaskQueue feature enabled or not
 */}}
-{{- define "service.enableTaskQueue" -}}
-{{- default .Values.global.enableTaskQueue .Values.enableTaskQueue }}
+{{- define "operator.enableTaskQueue" -}}
+{{- default .Values.global.taskQueue.enabled .Values.taskQueue.enabled }}
+{{- end }}
+
+{{/*
 {{- end }}
 
 {{/*
 Returns the maximum number of concurrent backupsessions
 */}}
-{{- define "service.maxConcurrentBackupSessions" -}}
-{{- default .Values.global.maxConcurrentBackupSessions .Values.maxConcurrentBackupSessions }}
+{{- define "operator.maxConcurrentSessions" -}}
+{{- default .Values.global.taskQueue.maxConcurrentSessions .Values.taskQueue.enabled }}
 {{- end }}
 
 {{/*

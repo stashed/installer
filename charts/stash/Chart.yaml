@@ -35,4 +35,5 @@ dependencies:
 - name: taskqueue
   version: v2025.5.30
   condition: global.enableTaskQueue
-  repository: oci://ghcr.io/appscode-charts
+#  repository: oci://ghcr.io/appscode-charts
+  repository: file://../taskqueue

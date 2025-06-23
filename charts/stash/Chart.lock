@@ -14,5 +14,8 @@ dependencies:
 - name: ace-user-roles
   repository: oci://ghcr.io/appscode-charts
   version: v2025.3.14
-digest: sha256:34f2a60fab7ad1c3f315c789a1db17d4ec545f01b09ea97ff1d013e5a8a06306
-generated: "2025-03-08T01:48:52.551253-08:00"
+- name: taskqueue
+  repository: file://../taskqueue
+  version: v2025.5.30
+digest: sha256:a2d1d293da4f42865b6caafde4b2b47fb3bc95446859408124dae76277a24661
+generated: "2025-06-23T15:43:07.553798248+06:00"
