@@ -28,7 +28,7 @@ registryFQDN: ghcr.io
 # User can provide a predefined number of max concurrent BackupSessions can run at a time.
 enableTaskQueue: false
 # It'll be applicable only If the EnableTaskQueue=true. It defines the Max concurrent BackupSessions that can run at a time.
-maxConcurrentBackupSessions: 10
+maxConcurrentBackupSessions: 0
 # cleanerRegistryFQDN: ghcr.io
 operator:
   # Docker registry used to pull operator image

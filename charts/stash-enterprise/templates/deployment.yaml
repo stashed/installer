@@ -67,11 +67,12 @@ spec:
         - --restore-job-psp={{ .Values.security.podSecurityPolicies | join "," }}
         - --nva-psp={{ include "netvol-accessor-psp" .}}
         {{- end }}
-        - --enable-task-queue={{ .Values.enableTaskQueue }}
+        - --enable-task-queue={{- include "service.enableTaskQueue" . }}
         {{- if include "appscode.licenseSecretName" . }}
         - --license-file=/var/run/secrets/appscode/license/key.txt
         {{- end }}
         - --license-apiservice={{ .Values.licenseApiService }}
+        - --max-concurrent-backup-sessions={{ include "service.maxConcurrentBackupSessions" . }}
         ports:
         - containerPort: 8443
         env:

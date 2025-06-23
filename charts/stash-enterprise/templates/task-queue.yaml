@@ -1,4 +1,4 @@
-{{- if .Values.enableTaskQueue }}
+{{- if eq (include "service.enableTaskQueue" . | trim) "true" }}
 apiVersion: batch.k8s.appscode.com/v1alpha1
 kind: TaskQueue
 metadata:
@@ -6,7 +6,7 @@ metadata:
   labels:
     {{- include "stash-enterprise.labels" . | nindent 4 }}
 spec:
-  maxConcurrentTasks: {{.Values.maxConcurrentBackupSessions}}
+  maxConcurrentTasks: {{ default 10 (include "service.maxConcurrentBackupSessions" . | int ) }}
   tasks:
     - type:
         kind: BackupSession
