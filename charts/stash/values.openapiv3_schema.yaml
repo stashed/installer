@@ -8053,8 +8053,6 @@ properties:
         type: object
       criticalAddon:
         type: boolean
-      enableTaskQueue:
-        type: boolean
       fullnameOverride:
         type: string
       imagePullPolicy:
@@ -8070,9 +8068,6 @@ properties:
       licenseSecretName:
         type: string
       logLevel:
-        format: int32
-        type: integer
-      maxConcurrentBackupSessions:
         format: int32
         type: integer
       monitoring:
@@ -8835,14 +8830,13 @@ properties:
         type: object
       taskQueue:
         properties:
-          enable:
+          enabled:
             description: Enable Task Queue feature maintains a concurrent Queue pool
-              of BackupSessions, User can provide a predefined number of max concurrent
-              BackupSessions can run at a time.
+              of Backup or restore sessions,
             type: boolean
           maxConcurrentSessions:
-            description: It'll be applicable only If the EnableTaskQueue=true. It
-              defines the Max concurrent BackupSessions that can run at a time.
+            description: It'll be applicable only If the Enabled=true. It defines
+              the Max concurrent sessions that can run at a time.
             type: integer
         type: object
       tolerations:
@@ -8898,14 +8892,13 @@ properties:
     type: object
   taskQueue:
     properties:
-      enable:
+      enabled:
         description: Enable Task Queue feature maintains a concurrent Queue pool of
-          BackupSessions, User can provide a predefined number of max concurrent BackupSessions
-          can run at a time.
+          Backup or restore sessions,
         type: boolean
       maxConcurrentSessions:
-        description: It'll be applicable only If the EnableTaskQueue=true. It defines
-          the Max concurrent BackupSessions that can run at a time.
+        description: It'll be applicable only If the Enabled=true. It defines the
+          Max concurrent sessions that can run at a time.
         type: integer
     type: object
 required:

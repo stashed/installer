@@ -82,7 +82,7 @@ Returns if the TaskQueue feature enabled or not
 Returns the maximum number of concurrent backupsessions
 */}}
 {{- define "operator.maxConcurrentSessions" -}}
-{{- default .Values.global.taskQueue.maxConcurrentSessions .Values.taskQueue.enabled }}
+{{- default .Values.global.taskQueue.maxConcurrentSessions .Values.taskQueue.maxConcurrentSessions }}
 {{- end }}
 
 {{/*

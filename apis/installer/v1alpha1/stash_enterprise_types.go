@@ -85,10 +85,6 @@ type StashEnterpriseSpec struct {
 	Platform Platform `json:"platform"`
 	//+optional
 	NetVolAccessor NetVolAccessor `json:"netVolAccessor"`
-	//+optional
-	EnableTaskQueue bool `json:"enableTaskQueue"`
-	//+optional
-	MaxConcurrentBackupSessions int32 `json:"maxConcurrentBackupSessions"`
 	// +optional
 	TaskQueue TaskQueue `json:"taskQueue,omitempty"`
 	// +optional
@@ -100,12 +96,11 @@ type StashEnterpriseSpec struct {
 }
 
 type TaskQueue struct {
-	// Enable Task Queue feature maintains a concurrent Queue pool of BackupSessions,
-	// User can provide a predefined number of max concurrent BackupSessions can run at a time.
+	// Enable Task Queue feature maintains a concurrent Queue pool of Backup or restore sessions,
 	//+optional
-	Enable bool `json:"enable"`
+	Enabled bool `json:"enabled"`
 	//+optional
-	// It'll be applicable only If the EnableTaskQueue=true. It defines the Max concurrent BackupSessions that can run at a time.
+	// It'll be applicable only If the Enabled=true. It defines the Max concurrent sessions that can run at a time.
 	MaxConcurrentSessions int `json:"maxConcurrentSessions"`
 }
 
