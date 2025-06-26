@@ -1455,6 +1455,7 @@ func (in *StashSpec) DeepCopyInto(out *StashSpec) {
 	*out = *in
 	in.Global.DeepCopyInto(&out.Global)
 	out.Features = in.Features
+	out.TaskQueue = in.TaskQueue
 	in.Community.DeepCopyInto(&out.Community)
 	in.Catalog.DeepCopyInto(&out.Catalog)
 	in.Enterprise.DeepCopyInto(&out.Enterprise)

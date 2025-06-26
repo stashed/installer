@@ -46,6 +46,9 @@ type StashSpec struct {
 
 	Features Features `json:"features"`
 
+	// +optional
+	TaskQueue TaskQueue `json:"taskQueue,omitempty"`
+
 	//+optional
 	Community StashCommunityValues `json:"stash-community"`
 
