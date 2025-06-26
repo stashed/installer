@@ -34,5 +34,5 @@ spec:
   - --key-prefix=${keyPrefix:=}
   - --old-key-prefix=${oldKeyPrefix:=}
   image: '{{ include "catalog.registry" (merge (dict "_reg" "ghcr.io" "_repo" "stashed")
-    .Values) }}/stash-vault:1.10.3-v15'
+    .Values) }}/stash-vault:1.10.3-v16'
 {{ end }}

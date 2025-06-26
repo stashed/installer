@@ -41,5 +41,5 @@ spec:
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
   image: '{{ include "catalog.registry" (merge (dict "_reg" "ghcr.io" "_repo" "stashed")
-    .Values) }}/stash-nats:2.8.2-v18'
+    .Values) }}/stash-nats:2.8.2-v19'
 {{ end }}
