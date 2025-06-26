@@ -29,6 +29,13 @@ global:
   imagePullSecrets: []
   # Skip generating cleaner job YAML
   skipCleaner: false
+  # TaskQueue feature maintains a concurrent Queue pool of Backup or restore sessions
+  taskQueue:
+    ## Enable Task Queue feature maintains a concurrent Queue pool of BackupSessions,
+    ## User can provide a predefined number of max concurrent BackupSessions can run at a time.
+    enabled: false
+    # It'll be applicable only If the EnableTaskQueue=true. It defines the Max concurrent BackupSessions that can run at a time.
+    maxConcurrentSessions: 10
 features:
   # If true, installs the stash-community chart
   community: false

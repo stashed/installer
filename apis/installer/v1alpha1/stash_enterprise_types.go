@@ -86,11 +86,22 @@ type StashEnterpriseSpec struct {
 	//+optional
 	NetVolAccessor NetVolAccessor `json:"netVolAccessor"`
 	// +optional
+	TaskQueue TaskQueue `json:"taskQueue,omitempty"`
+	// +optional
 	License string `json:"license"`
 	// +optional
 	LicenseSecretName string `json:"licenseSecretName"`
 	// +optional
 	LicenseApiService string `json:"licenseApiService"`
+}
+
+type TaskQueue struct {
+	// Enable Task Queue feature maintains a concurrent Queue pool of Backup or restore sessions,
+	//+optional
+	Enabled bool `json:"enabled"`
+	//+optional
+	// It'll be applicable only If the Enabled=true. It defines the Max concurrent sessions that can run at a time.
+	MaxConcurrentSessions int `json:"maxConcurrentSessions"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

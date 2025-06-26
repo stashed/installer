@@ -4074,6 +4074,17 @@ properties:
     required:
     - create
     type: object
+  taskQueue:
+    properties:
+      enabled:
+        description: Enable Task Queue feature maintains a concurrent Queue pool of
+          Backup or restore sessions,
+        type: boolean
+      maxConcurrentSessions:
+        description: It'll be applicable only If the Enabled=true. It defines the
+          Max concurrent sessions that can run at a time.
+        type: integer
+    type: object
   tolerations:
     description: If specified, the pod's tolerations.
     items:

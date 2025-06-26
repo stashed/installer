@@ -85,6 +85,8 @@ type GlobalValues struct {
 	//+optional
 	ImagePullSecrets []core.LocalObjectReference `json:"imagePullSecrets"`
 	SkipCleaner      bool                        `json:"skipCleaner"`
+	// +optional
+	TaskQueue TaskQueue `json:"taskQueue,omitempty"`
 }
 
 type Features struct {
