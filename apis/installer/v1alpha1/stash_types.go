@@ -46,9 +46,6 @@ type StashSpec struct {
 
 	Features Features `json:"features"`
 
-	// +optional
-	TaskQueue TaskQueue `json:"taskQueue,omitempty"`
-
 	//+optional
 	Community StashCommunityValues `json:"stash-community"`
 
@@ -88,6 +85,8 @@ type GlobalValues struct {
 	//+optional
 	ImagePullSecrets []core.LocalObjectReference `json:"imagePullSecrets"`
 	SkipCleaner      bool                        `json:"skipCleaner"`
+	// +optional
+	TaskQueue TaskQueue `json:"taskQueue,omitempty"`
 }
 
 type Features struct {

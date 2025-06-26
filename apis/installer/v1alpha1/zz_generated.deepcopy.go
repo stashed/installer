@@ -328,6 +328,7 @@ func (in *GlobalValues) DeepCopyInto(out *GlobalValues) {
 		*out = make([]v1.LocalObjectReference, len(*in))
 		copy(*out, *in)
 	}
+	out.TaskQueue = in.TaskQueue
 	return
 }
 
@@ -1455,7 +1456,6 @@ func (in *StashSpec) DeepCopyInto(out *StashSpec) {
 	*out = *in
 	in.Global.DeepCopyInto(&out.Global)
 	out.Features = in.Features
-	out.TaskQueue = in.TaskQueue
 	in.Community.DeepCopyInto(&out.Community)
 	in.Catalog.DeepCopyInto(&out.Catalog)
 	in.Enterprise.DeepCopyInto(&out.Enterprise)
