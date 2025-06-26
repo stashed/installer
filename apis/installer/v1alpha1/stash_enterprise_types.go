@@ -90,11 +90,23 @@ type StashEnterpriseSpec struct {
 	//+optional
 	MaxConcurrentBackupSessions int32 `json:"maxConcurrentBackupSessions"`
 	// +optional
+	TaskQueue TaskQueue `json:"taskQueue,omitempty"`
+	// +optional
 	License string `json:"license"`
 	// +optional
 	LicenseSecretName string `json:"licenseSecretName"`
 	// +optional
 	LicenseApiService string `json:"licenseApiService"`
+}
+
+type TaskQueue struct {
+	// Enable Task Queue feature maintains a concurrent Queue pool of BackupSessions,
+	// User can provide a predefined number of max concurrent BackupSessions can run at a time.
+	//+optional
+	Enable bool `json:"enable"`
+	//+optional
+	// It'll be applicable only If the EnableTaskQueue=true. It defines the Max concurrent BackupSessions that can run at a time.
+	MaxConcurrentSessions int `json:"maxConcurrentSessions"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

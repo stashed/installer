@@ -72,7 +72,6 @@ spec:
         - --license-file=/var/run/secrets/appscode/license/key.txt
         {{- end }}
         - --license-apiservice={{ .Values.licenseApiService }}
-        - --max-concurrent-backup-sessions={{ include "operator.maxConcurrentSessions" . }}
         ports:
         - containerPort: 8443
         env:
