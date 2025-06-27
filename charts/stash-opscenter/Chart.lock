@@ -1,15 +1,15 @@
 dependencies:
 - name: stash-ui-server
   repository: file://../stash-ui-server
-  version: v0.20.0
+  version: v0.21.0
 - name: stash-metrics
   repository: file://../stash-metrics
-  version: v2025.2.10
+  version: v2025.6.30
 - name: stash-grafana-dashboards
   repository: file://../stash-grafana-dashboards
-  version: v2025.2.10
+  version: v2025.6.30
 - name: ace-user-roles
   repository: oci://ghcr.io/appscode-charts
   version: v2024.9.30
-digest: sha256:898dfca66ac7c35998b636e9978262c4dc991d2ece68d32f461bc5452dfe1256
-generated: "2025-02-07T17:27:33.655109399Z"
+digest: sha256:c530145a772988ba273bfed9c4ea1e860be8ff2b0c0d0f640ce8557e53e36693
+generated: "2025-06-26T19:49:22.648424829Z"

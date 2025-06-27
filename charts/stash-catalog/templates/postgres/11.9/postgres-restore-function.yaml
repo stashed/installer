@@ -31,5 +31,5 @@ spec:
   - --license-apiservice=${LICENSE_APISERVICE:=}
   - --user=${user:=}
   image: '{{ include "catalog.registry" (merge (dict "_reg" "ghcr.io" "_repo" "stashed")
-    .Values) }}/stash-postgres:11.9-v34'
+    .Values) }}/stash-postgres:11.9-v35'
 {{ end }}

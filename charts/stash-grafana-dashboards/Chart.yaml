@@ -2,8 +2,8 @@ apiVersion: v2
 name: stash-grafana-dashboards
 description: A Helm chart for stash-grafana-dashboards by AppsCode
 type: application
-version: v2025.2.10
-appVersion: v2025.2.10
+version: v2025.6.30
+appVersion: v2025.6.30
 home: https://github.com/stashed
 icon: https://cdn.appscode.com/images/products/stash/stash-icon.png
 sources:
