@@ -6,11 +6,11 @@ metadata:
   labels:
     {{- include "stash-enterprise.labels" . | nindent 4 }}
 spec:
-  maxConcurrentTasks: {{ default 10 (include "operator.maxConcurrentSessions" . | int ) }}
+  maxConcurrentTasks: {{ include "operator.maxConcurrentSessions" . }}
   tasks:
     - type:
         kind: BackupSession
-        apiGroup: stash.appscode.com
+        group: stash.appscode.com
       rules:
         success: "has(self.status.phase) && self.status.phase == 'Succeeded'"
         inProgress: "has(self.status.phase) && self.status.phase == 'Running'"
