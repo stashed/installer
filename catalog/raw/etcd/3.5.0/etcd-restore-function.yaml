@@ -35,4 +35,4 @@ spec:
   - --image=${ADDON_IMAGE:=}
   - --secret-name=${REPOSITORY_SECRET_NAME:=}
   - --snapshots=${RESTORE_SNAPSHOTS:=}
-  image: ghcr.io/stashed/stash-etcd:3.5.0-v23
+  image: ghcr.io/stashed/stash-etcd:3.5.0-v24

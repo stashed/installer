@@ -12,7 +12,7 @@ require (
 	k8s.io/api v0.32.3
 	k8s.io/apimachinery v0.32.3
 	kmodules.xyz/client-go v0.32.6
-	kmodules.xyz/image-packer v0.0.0-20250618195635-2d28be8a47e3
+	kmodules.xyz/image-packer v0.0.0-20250709183414-f93633723666
 	kmodules.xyz/schema-checker v0.4.2
 	kubeops.dev/installer v0.0.0-20250626172234-cb808f4756d8
 	sigs.k8s.io/yaml v1.4.0
