@@ -43,5 +43,5 @@ spec:
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
   image: '{{ include "catalog.registry" (merge (dict "_reg" "ghcr.io" "_repo" "stashed")
-    .Values) }}/kubedump:0.2.0-v4'
+    .Values) }}/kubedump:0.2.0-v5'
 {{ end }}

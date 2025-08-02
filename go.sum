@@ -266,8 +266,8 @@ k8s.io/utils v0.0.0-20241210054802-24370beab758 h1:sdbE21q2nlQtFh65saZY+rRM6x6aJ
 k8s.io/utils v0.0.0-20241210054802-24370beab758/go.mod h1:OLgZIPagt7ERELqWJFomSt595RzquPNLL48iOWgYOg0=
 kmodules.xyz/client-go v0.32.6 h1:/V9T0aLfe38PsyF+5FeU5QaC3GcqD8hQoWSCZw/uOpI=
 kmodules.xyz/client-go v0.32.6/go.mod h1:ZwLnc7UqEXUNSe43n/SnER6+7YAQCu38L2te6YefoHU=
-kmodules.xyz/image-packer v0.0.0-20250618195635-2d28be8a47e3 h1:7rjSg1FPlBXDfZOgcUFP2tEuZyo/FPUrudrnfWcqYTQ=
-kmodules.xyz/image-packer v0.0.0-20250618195635-2d28be8a47e3/go.mod h1:Gmcxcxg13UUQZHvTZ93vNuDL9UiLCKS/AzxzmHUY/t0=
+kmodules.xyz/image-packer v0.0.0-20250709183414-f93633723666 h1:5zhuHqkwefhXe6+oZLoXa8HWeamqMBTAEXyaFk9ph1g=
+kmodules.xyz/image-packer v0.0.0-20250709183414-f93633723666/go.mod h1:ECSqiDyoEYczj9Zz4Chqdr/F3ZgizeXmFVaEi7wsBng=
 kmodules.xyz/schema-checker v0.4.2 h1:tAbxEtM759GxDM/3sQi/+OKKwUsEF+Ih4KReV3Eb/Xw=
 kmodules.xyz/schema-checker v0.4.2/go.mod h1:N7ETPwfY4LbTHbydC9jjssPmYKKgZ8DC0IuLCU55wwc=
 kubeops.dev/installer v0.0.0-20250626172234-cb808f4756d8 h1:LSYn38Kp3z+W9+MAsDgUWG5KzQm35y573jDMSIHwapA=

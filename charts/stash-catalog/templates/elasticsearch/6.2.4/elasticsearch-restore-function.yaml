@@ -31,5 +31,5 @@ spec:
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
   image: '{{ include "catalog.registry" (merge (dict "_reg" "ghcr.io" "_repo" "stashed")
-    .Values) }}/stash-elasticsearch:6.2.4-v36'
+    .Values) }}/stash-elasticsearch:6.2.4-v37'
 {{ end }}
