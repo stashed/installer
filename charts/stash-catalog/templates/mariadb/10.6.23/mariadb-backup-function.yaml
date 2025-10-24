@@ -1,7 +1,10 @@
+{{ if .Values.mariadb.enabled }}
 apiVersion: stash.appscode.com/v1beta1
 kind: Function
 metadata:
-  name: mariadb-backup-10.5.8
+  name: 'mariadb-backup-10.6.23'
+  labels:
+    {{- include "stash-catalog.labels" . | nindent 4 }}
 spec:
   args:
   - backup-mariadb
@@ -17,8 +20,8 @@ spec:
   - --enable-cache=${ENABLE_CACHE:=true}
   - --max-connections=${MAX_CONNECTIONS:=0}
   - --hostname=${HOSTNAME:=}
-  - --mariadb-args=${args:=--all-databases --ignore-database=mysql}
-  - --wait-timeout=${waitTimeout:=300}
+  - --mariadb-args=${args:={{ .Values.mariadb.backup.args }}}
+  - --wait-timeout=${waitTimeout:={{ .Values.waitTimeout}}}
   - --namespace=${NAMESPACE:=default}
   - --appbinding=${TARGET_NAME:=}
   - --appbinding-namespace=${TARGET_NAMESPACE:=}
@@ -34,4 +37,6 @@ spec:
   - --retention-dry-run=${RETENTION_DRY_RUN:=false}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
-  image: ghcr.io/stashed/stash-mariadb:10.5.8-v31
+  image: '{{ include "catalog.registry" (merge (dict "_reg" "ghcr.io" "_repo" "stashed")
+    .Values) }}/stash-mariadb:10.6.23-v1'
+{{ end }}

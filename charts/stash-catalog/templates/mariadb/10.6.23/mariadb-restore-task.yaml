@@ -2,12 +2,12 @@
 apiVersion: stash.appscode.com/v1beta1
 kind: Task
 metadata:
-  name: 'mariadb-restore-10.5.8'
+  name: 'mariadb-restore-10.6.23'
   labels:
     {{- include "stash-catalog.labels" . | nindent 4 }}
 spec:
   steps:
-  - name: mariadb-restore-10.5.8
+  - name: mariadb-restore-10.6.23
     params:
     - name: outputDir
       value: /stash-tmp/output
