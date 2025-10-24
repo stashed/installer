@@ -2,8 +2,8 @@ apiVersion: v2
 name: stash-metrics
 description: Stash State Metrics
 type: application
-version: v2025.7.31
-appVersion: v2025.7.31
+version: v2025.10.17
+appVersion: v2025.10.17
 home: https://stash.run
 icon: https://cdn.appscode.com/images/products/stash/stash-community-icon.png
 sources:

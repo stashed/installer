@@ -1,21 +1,21 @@
 dependencies:
 - name: stash-community
   repository: file://../stash-community
-  version: v0.41.0
+  version: v0.42.0
 - name: stash-enterprise
   repository: file://../stash-enterprise
-  version: v0.41.0
+  version: v0.42.0
 - name: stash-catalog
   repository: file://../stash-catalog
-  version: v2025.7.31
+  version: v2025.10.17
 - name: stash-metrics
   repository: file://../stash-metrics
-  version: v2025.7.31
+  version: v2025.10.17
 - name: ace-user-roles
   repository: oci://ghcr.io/appscode-charts
   version: v2025.3.14
 - name: taskqueue
   repository: oci://ghcr.io/appscode-charts
   version: v2025.6.30
-digest: sha256:4acbc9c2fa4245c81c839b2ca9bcb8c2a68df0738b2af07c27d81d709bcb898c
-generated: "2025-08-02T08:07:14.063544534Z"
+digest: sha256:2733d2c13122cee034f4f4d872fb04f6e565d6cfac9e72935fa3cd5fe1799bfb
+generated: "2025-10-24T16:54:26.675647596Z"
