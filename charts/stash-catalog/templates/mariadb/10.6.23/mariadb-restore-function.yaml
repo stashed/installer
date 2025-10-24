@@ -2,12 +2,12 @@
 apiVersion: stash.appscode.com/v1beta1
 kind: Function
 metadata:
-  name: 'mariadb-backup-10.5.8'
+  name: 'mariadb-restore-10.6.23'
   labels:
     {{- include "stash-catalog.labels" . | nindent 4 }}
 spec:
   args:
-  - backup-mariadb
+  - restore-mariadb
   - --provider=${REPOSITORY_PROVIDER:=}
   - --bucket=${REPOSITORY_BUCKET:=}
   - --endpoint=${REPOSITORY_ENDPOINT:=}
@@ -20,23 +20,15 @@ spec:
   - --enable-cache=${ENABLE_CACHE:=true}
   - --max-connections=${MAX_CONNECTIONS:=0}
   - --hostname=${HOSTNAME:=}
-  - --mariadb-args=${args:={{ .Values.mariadb.backup.args }}}
+  - --source-hostname=${SOURCE_HOSTNAME:=}
+  - --mariadb-args=${args:={{ .Values.mariadb.restore.args }}}
   - --wait-timeout=${waitTimeout:={{ .Values.waitTimeout}}}
   - --namespace=${NAMESPACE:=default}
   - --appbinding=${TARGET_NAME:=}
   - --appbinding-namespace=${TARGET_NAMESPACE:=}
-  - --backupsession=${BACKUP_SESSION:=}
-  - --retention-keep-last=${RETENTION_KEEP_LAST:=0}
-  - --retention-keep-hourly=${RETENTION_KEEP_HOURLY:=0}
-  - --retention-keep-daily=${RETENTION_KEEP_DAILY:=0}
-  - --retention-keep-weekly=${RETENTION_KEEP_WEEKLY:=0}
-  - --retention-keep-monthly=${RETENTION_KEEP_MONTHLY:=0}
-  - --retention-keep-yearly=${RETENTION_KEEP_YEARLY:=0}
-  - --retention-keep-tags=${RETENTION_KEEP_TAGS:=}
-  - --retention-prune=${RETENTION_PRUNE:=false}
-  - --retention-dry-run=${RETENTION_DRY_RUN:=false}
+  - --snapshot=${RESTORE_SNAPSHOTS:=}
   - --output-dir=${outputDir:=}
   - --license-apiservice=${LICENSE_APISERVICE:=}
   image: '{{ include "catalog.registry" (merge (dict "_reg" "ghcr.io" "_repo" "stashed")
-    .Values) }}/stash-mariadb:10.5.8-v31'
+    .Values) }}/stash-mariadb:10.6.23-v1'
 {{ end }}

@@ -1,13 +1,10 @@
-{{ if .Values.mariadb.enabled }}
 apiVersion: stash.appscode.com/v1beta1
 kind: Task
 metadata:
-  name: 'mariadb-backup-10.5.8'
-  labels:
-    {{- include "stash-catalog.labels" . | nindent 4 }}
+  name: mariadb-backup-10.6.23
 spec:
   steps:
-  - name: mariadb-backup-10.5.8
+  - name: mariadb-backup-10.6.23
     params:
     - name: outputDir
       value: /stash-tmp/output
@@ -15,4 +12,3 @@ spec:
     params:
     - name: outputDir
       value: /stash-tmp/output
-{{ end }}
