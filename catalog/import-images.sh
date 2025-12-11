@@ -29,6 +29,7 @@ CMD="./crane"
 $CMD push --allow-nondistributable-artifacts --insecure images/appscode-kubectl-nonroot-1.31.tar $IMAGE_REGISTRY/appscode/kubectl-nonroot:1.31
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-kubedump-0.2.0-v6.tar $IMAGE_REGISTRY/stashed/kubedump:0.2.0-v6
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-crd-installer-v0.42.0.tar $IMAGE_REGISTRY/stashed/stash-crd-installer:v0.42.0
+$CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-crd-installer-v0.42.1.tar $IMAGE_REGISTRY/stashed/stash-crd-installer:v0.42.1
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-elasticsearch-5.6.4-v38.tar $IMAGE_REGISTRY/stashed/stash-elasticsearch:5.6.4-v38
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-elasticsearch-6.2.4-v38.tar $IMAGE_REGISTRY/stashed/stash-elasticsearch:6.2.4-v38
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-elasticsearch-6.3.0-v38.tar $IMAGE_REGISTRY/stashed/stash-elasticsearch:6.3.0-v38
@@ -39,7 +40,7 @@ $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-ela
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-elasticsearch-7.2.0-v38.tar $IMAGE_REGISTRY/stashed/stash-elasticsearch:7.2.0-v38
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-elasticsearch-7.3.2-v38.tar $IMAGE_REGISTRY/stashed/stash-elasticsearch:7.3.2-v38
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-elasticsearch-8.2.0-v21.tar $IMAGE_REGISTRY/stashed/stash-elasticsearch:8.2.0-v21
-$CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-enterprise-v0.42.0.tar $IMAGE_REGISTRY/stashed/stash-enterprise:v0.42.0
+$CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-enterprise-v0.42.1.tar $IMAGE_REGISTRY/stashed/stash-enterprise:v0.42.1
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-etcd-3.5.0-v25.tar $IMAGE_REGISTRY/stashed/stash-etcd:3.5.0-v25
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-mariadb-10.6.23-v1.tar $IMAGE_REGISTRY/stashed/stash-mariadb:10.6.23-v1
 $CMD push --allow-nondistributable-artifacts --insecure images/stashed-stash-mongodb-3.4.17-v39.tar $IMAGE_REGISTRY/stashed/stash-mongodb:3.4.17-v39

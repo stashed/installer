@@ -1,6 +1,7 @@
 - ghcr.io/appscode/kubectl-nonroot:1.31
 - ghcr.io/stashed/kubedump:0.2.0-v6
 - ghcr.io/stashed/stash-crd-installer:v0.42.0
+- ghcr.io/stashed/stash-crd-installer:v0.42.1
 - ghcr.io/stashed/stash-elasticsearch:5.6.4-v38
 - ghcr.io/stashed/stash-elasticsearch:6.2.4-v38
 - ghcr.io/stashed/stash-elasticsearch:6.3.0-v38
@@ -11,7 +12,7 @@
 - ghcr.io/stashed/stash-elasticsearch:7.2.0-v38
 - ghcr.io/stashed/stash-elasticsearch:7.3.2-v38
 - ghcr.io/stashed/stash-elasticsearch:8.2.0-v21
-- ghcr.io/stashed/stash-enterprise:v0.42.0
+- ghcr.io/stashed/stash-enterprise:v0.42.1
 - ghcr.io/stashed/stash-etcd:3.5.0-v25
 - ghcr.io/stashed/stash-mariadb:10.6.23-v1
 - ghcr.io/stashed/stash-mongodb:3.4.17-v39
