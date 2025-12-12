@@ -1,0 +1,289 @@
+properties:
+  elasticsearch:
+    description: StashElasticsearchSpec is the schema for Stash Elasticsearch values
+      file
+    properties:
+      backup:
+        properties:
+          args:
+            type: string
+        type: object
+      enabled:
+        type: boolean
+      restore:
+        properties:
+          args:
+            type: string
+        type: object
+    required:
+    - backup
+    - enabled
+    - restore
+    type: object
+  etcd:
+    description: StashETCDSpec is the schema for Stash ETCD values file
+    properties:
+      backup:
+        properties:
+          args:
+            type: string
+        type: object
+      enabled:
+        type: boolean
+      restore:
+        properties:
+          args:
+            type: string
+          dataDir:
+            type: string
+          initialCluster:
+            type: string
+          initialClusterToken:
+            type: string
+          workloadKind:
+            type: string
+          workloadName:
+            type: string
+        type: object
+    required:
+    - backup
+    - enabled
+    - restore
+    type: object
+  image:
+    properties:
+      registry:
+        type: string
+    required:
+    - registry
+    type: object
+  kubedump:
+    properties:
+      backup:
+        properties:
+          includeDependants:
+            type: boolean
+          labelSelector:
+            type: string
+          sanitize:
+            type: boolean
+        required:
+        - includeDependants
+        - labelSelector
+        - sanitize
+        type: object
+      enabled:
+        type: boolean
+    required:
+    - backup
+    - enabled
+    type: object
+  mariadb:
+    description: StashMariadbSpec is the schema for Stash MariaDB values file
+    properties:
+      backup:
+        properties:
+          args:
+            type: string
+        type: object
+      enabled:
+        type: boolean
+      restore:
+        properties:
+          args:
+            type: string
+        type: object
+    required:
+    - backup
+    - enabled
+    - restore
+    type: object
+  mongodb:
+    description: StashMongodbSpec is the schema for Stash MongoDB values file
+    properties:
+      backup:
+        properties:
+          args:
+            type: string
+        type: object
+      enabled:
+        type: boolean
+      maxConcurrency:
+        format: int32
+        type: integer
+      restore:
+        properties:
+          args:
+            type: string
+        type: object
+    required:
+    - backup
+    - enabled
+    - maxConcurrency
+    - restore
+    type: object
+  mysql:
+    description: StashMysqlSpec is the schema for Stash MySQL values file
+    properties:
+      backup:
+        properties:
+          args:
+            type: string
+        type: object
+      enabled:
+        type: boolean
+      restore:
+        properties:
+          args:
+            type: string
+        type: object
+    required:
+    - backup
+    - enabled
+    - restore
+    type: object
+  nats:
+    description: StashNATSSpec is the schema for Stash NATS values file
+    properties:
+      backup:
+        properties:
+          args:
+            type: string
+          streams:
+            type: string
+        type: object
+      enabled:
+        type: boolean
+      restore:
+        properties:
+          args:
+            type: string
+          overwrite:
+            type: boolean
+          streams:
+            type: string
+        type: object
+    required:
+    - backup
+    - enabled
+    - restore
+    type: object
+  perconaxtradb:
+    description: StashPerconaXtraDBSpec is the schema for Stash Percona XtraDB values
+      file
+    properties:
+      backup:
+        properties:
+          args:
+            type: string
+          socatRetry:
+            format: int32
+            type: integer
+        type: object
+      enabled:
+        type: boolean
+      restore:
+        properties:
+          args:
+            type: string
+          targetAppReplicas:
+            format: int32
+            type: integer
+        required:
+        - targetAppReplicas
+        type: object
+    required:
+    - backup
+    - enabled
+    - restore
+    type: object
+  postgres:
+    description: StashPostgresSpec is the schema for Stash Postgres values file
+    properties:
+      backup:
+        properties:
+          args:
+            type: string
+          cmd:
+            type: string
+        type: object
+      enabled:
+        type: boolean
+      restore:
+        properties:
+          args:
+            type: string
+        type: object
+    required:
+    - backup
+    - enabled
+    - restore
+    type: object
+  redis:
+    description: StashRedisSpec is the schema for Stash Redis values file
+    properties:
+      backup:
+        properties:
+          args:
+            type: string
+        type: object
+      enabled:
+        type: boolean
+      restore:
+        properties:
+          args:
+            type: string
+        type: object
+    required:
+    - backup
+    - enabled
+    - restore
+    type: object
+  registryFQDN:
+    type: string
+  vault:
+    properties:
+      backup:
+        properties:
+          args:
+            type: string
+          keyPrefix:
+            type: string
+        type: object
+      enabled:
+        type: boolean
+      restore:
+        properties:
+          args:
+            type: string
+          force:
+            type: boolean
+          keyPrefix:
+            type: string
+          oldKeyPrefix:
+            type: string
+        type: object
+    required:
+    - backup
+    - enabled
+    - restore
+    type: object
+  waitTimeout:
+    format: int64
+    type: integer
+required:
+- elasticsearch
+- etcd
+- image
+- kubedump
+- mariadb
+- mongodb
+- mysql
+- nats
+- perconaxtradb
+- postgres
+- redis
+- registryFQDN
+- vault
+- waitTimeout
+type: object
