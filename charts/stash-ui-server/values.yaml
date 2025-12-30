@@ -21,7 +21,7 @@ image:
   # Compute Resources required by the operator container
   resources: {}
   # Security options the operator container should run with
-  securityContext: # +doc-gen:break
+  securityContext:  # +doc-gen:break
     allowPrivilegeEscalation: false
     capabilities:
       drop: ["ALL"]
@@ -55,7 +55,7 @@ tolerations: []
 # Affinity rules for pod assignment
 affinity: {}
 # Security options the operator pod should run with.
-podSecurityContext: # +doc-gen:break
+podSecurityContext:  # +doc-gen:break
   fsGroup: 65535
 serviceAccount:
   # Specifies whether a service account should be created
