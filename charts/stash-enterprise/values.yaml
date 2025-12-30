@@ -37,11 +37,11 @@ operator:
   # Operator container image tag
   tag: ""
   # Compute Resources required by the operator container
-  resources: # +doc-gen:break
+  resources:  # +doc-gen:break
     requests:
       cpu: "100m"
   # Security options the operator container should run with
-  securityContext: # +doc-gen:break
+  securityContext:  # +doc-gen:break
     allowPrivilegeEscalation: false
     capabilities:
       drop: ["ALL"]
@@ -60,7 +60,7 @@ crdInstaller:
   # Use crd-installer job to install the Stash CRDs. Default is `true`.
   enabled: true
   # Security options the Prometheus pushgateway container should run with
-  securityContext: # +doc-gen:break
+  securityContext:  # +doc-gen:break
     allowPrivilegeEscalation: false
     capabilities:
       drop: ["ALL"]
@@ -70,7 +70,7 @@ crdInstaller:
     seccompProfile:
       type: RuntimeDefault
   # Node labels for pod assignment
-  nodeSelector: # +doc-gen:break
+  nodeSelector:  # +doc-gen:break
     kubernetes.io/os: linux
   # Tolerations for pod assignment
   tolerations: []
@@ -87,7 +87,7 @@ pushgateway:
   # Compute Resources required by the Prometheus pushgateway container
   resources: {}
   # Security options the Prometheus pushgateway container should run with
-  securityContext: # +doc-gen:break
+  securityContext:  # +doc-gen:break
     allowPrivilegeEscalation: false
     capabilities:
       drop: ["ALL"]
@@ -109,7 +109,7 @@ cleaner:
   # Skip generating cleaner YAML
   skip: false
   # Security options the Prometheus pushgateway container should run with
-  securityContext: # +doc-gen:break
+  securityContext:  # +doc-gen:break
     allowPrivilegeEscalation: false
     capabilities:
       drop: ["ALL"]
@@ -119,7 +119,7 @@ cleaner:
     seccompProfile:
       type: RuntimeDefault
   # Node labels for pod assignment
-  nodeSelector: # +doc-gen:break
+  nodeSelector:  # +doc-gen:break
     kubernetes.io/os: linux
   # Tolerations for pod assignment
   tolerations: []
@@ -146,14 +146,14 @@ annotations: {}
 # Annotations passed to operator pod(s).
 podAnnotations: {}
 # Node labels for pod assignment
-nodeSelector: # +doc-gen:break
+nodeSelector:  # +doc-gen:break
   kubernetes.io/os: linux
 # Tolerations for pod assignment
 tolerations: []
 # Affinity rules for pod assignment
 affinity: {}
 # Security options the operator pod should run with.
-podSecurityContext: # +doc-gen:break
+podSecurityContext:  # +doc-gen:break
   fsGroup: 65535
 serviceAccount:
   # Specifies whether a service account should be created
@@ -224,7 +224,7 @@ security:
   # helm install appscode/stash \
   #   --set podSecurityPolicies[0]=abc \
   #   --set podSecurityPolicies[1]=xyz
-  podSecurityPolicies: # +doc-gen:break
+  podSecurityPolicies:  # +doc-gen:break
   - baseline
   # PSPs are cluster-scoped resources and can't be duplicated.
   # Many clusters may already include well known PSPs like "privileged" and "baseline".
