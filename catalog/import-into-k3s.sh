@@ -73,6 +73,7 @@ k3s ctr images import images/stashed-stash-postgres-14.0-v26.tar
 k3s ctr images import images/stashed-stash-postgres-15.1-v18.tar
 k3s ctr images import images/stashed-stash-postgres-16.1-v7.tar
 k3s ctr images import images/stashed-stash-postgres-17.2-v5.tar
+k3s ctr images import images/stashed-stash-postgres-18.2.tar
 k3s ctr images import images/stashed-stash-postgres-9.6.19-v37.tar
 k3s ctr images import images/stashed-stash-redis-5.0.13-v26.tar
 k3s ctr images import images/stashed-stash-redis-6.2.5-v26.tar
