@@ -19,7 +19,11 @@ spec:
       {{- include "stash-ui-server.selectorLabels" . | nindent 6 }}
   endpoints:
   - port: api
-    bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+    authorization:
+      type: Bearer
+      credentials:
+        name: {{ include "stash-ui-server.fullname" . }}-metrics-token
+        key: token
     scheme: https
     tlsConfig:
       ca:

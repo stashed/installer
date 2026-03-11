@@ -26,7 +26,11 @@ spec:
   {{- end }}
   {{- if .Values.monitoring.operator }}
   - port: api
-    bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+    authorization:
+      type: Bearer
+      credentials:
+        name: {{ include "stash-enterprise.fullname" . }}-metrics-token
+        key: token
     scheme: https
     tlsConfig:
       ca:
