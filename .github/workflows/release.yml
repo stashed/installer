@@ -21,19 +21,14 @@ jobs:
           fetch-depth: 1
           fetch-tags: true
 
-      - name: Install GitHub CLI
-        run: |
-          curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
-          sudo mv bin/hub /usr/local/bin
-
       - name: Install Helm 3
         run: |
           pushd /usr/local/bin && sudo curl -fsSLO https://github.com/x-helm/helm/releases/latest/download/helm && sudo chmod +x helm && popd
 
       - name: Clone charts repository
         env:
-          GITHUB_USER: ${{ github.actor }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_USER: 1gtm
+          GITHUB_TOKEN: ${{ secrets.LGTM_GITHUB_TOKEN }}
           CHART_REPOSITORY: ${{ secrets.CHART_REPOSITORY }}
         run: |
           url="https://${GITHUB_USER}:${GITHUB_TOKEN}@${CHART_REPOSITORY}.git"
@@ -45,8 +40,7 @@ jobs:
 
       - name: Package
         env:
-          GITHUB_USER: ${{ github.actor }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.LGTM_GITHUB_TOKEN }}
           CHART_REPOSITORY: ${{ secrets.CHART_REPOSITORY }}
         run: |
           ./hack/scripts/update-chart-dependencies.sh
