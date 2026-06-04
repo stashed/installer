@@ -50,6 +50,7 @@ The following table lists the configurable parameters of the `stash-crds` chart 
 | ace-user-roles.enabled                                |             | <code>true</code>  |
 | ace-user-roles.enableClusterRoles.ace                 |             | <code>false</code> |
 | ace-user-roles.enableClusterRoles.appcatalog          |             | <code>false</code> |
+| ace-user-roles.enableClusterRoles.audit               |             | <code>false</code> |
 | ace-user-roles.enableClusterRoles.catalog             |             | <code>false</code> |
 | ace-user-roles.enableClusterRoles.cert-manager        |             | <code>false</code> |
 | ace-user-roles.enableClusterRoles.kubedb-ui           |             | <code>false</code> |
