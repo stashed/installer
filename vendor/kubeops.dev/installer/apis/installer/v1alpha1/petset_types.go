@@ -19,6 +19,7 @@ package v1alpha1
 import (
 	core "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"kmodules.xyz/resource-metadata/apis/shared"
 )
 
 const (
@@ -77,10 +78,65 @@ type PetsetSpec struct {
 	PodSecurityContext *core.PodSecurityContext `json:"podSecurityContext"`
 	ServiceAccount     ServiceAccountSpec       `json:"serviceAccount"`
 	// +optional
-	Apiserver  SupervisorApiserver `json:"apiserver"`
-	Monitoring Monitoring          `json:"monitoring"`
+	Apiserver  PetsetApiserver `json:"apiserver"`
+	Monitoring Monitoring      `json:"monitoring"`
 	// +optional
-	NetworkPolicy NetworkPolicy `json:"networkPolicy"`
+	NetworkPolicy NetworkPolicySpec `json:"networkPolicy"`
+	// +optional
+	Features PetsetFeatures `json:"features"`
+	// +optional
+	Distro shared.DistroSpec `json:"distro"`
+	// +optional
+	MaxConcurrentReconciles int `json:"maxConcurrentReconciles"`
+}
+
+type PetsetFeatures struct {
+	// +optional
+	Ocm OCMSpec `json:"ocm"`
+}
+
+type PetsetApiserver struct {
+	EnableMutatingWebhook   bool               `json:"enableMutatingWebhook"`
+	EnableValidatingWebhook bool               `json:"enableValidatingWebhook"`
+	Healthcheck             HealthcheckSpec    `json:"healthcheck"`
+	ServingCerts            PetsetServingCerts `json:"servingCerts"`
+}
+
+type PetsetServingCerts struct {
+	Generate bool `json:"generate"`
+	//+optional
+	CertManager PetsetCertManagerCerts `json:"certManager"`
+	//+optional
+	CaCrt string `json:"caCrt"`
+	//+optional
+	ServerCrt string `json:"serverCrt"`
+	//+optional
+	ServerKey string `json:"serverKey"`
+}
+
+type PetsetCertManagerCerts struct {
+	Enabled bool `json:"enabled"`
+	//+optional
+	IssuerRef PetsetCertManagerIssuerRef `json:"issuerRef"`
+}
+
+type PetsetCertManagerIssuerRef struct {
+	//+optional
+	Name string `json:"name"`
+	//+optional
+	Kind string `json:"kind"`
+	//+optional
+	Group string `json:"group"`
+}
+
+type OCMSpec struct {
+	Enabled   bool         `json:"enabled"`
+	Placement OCMPlacement `json:"placement"`
+}
+
+type OCMPlacement struct {
+	Create bool   `json:"create"`
+	Name   string `json:"name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

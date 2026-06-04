@@ -19,6 +19,7 @@ package v1alpha1
 import (
 	core "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"kmodules.xyz/resource-metadata/apis/shared"
 )
 
 const (
@@ -35,7 +36,7 @@ const (
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // +kubebuilder:object:root=true
-// +kubebuilder:resource:path=aceshifters,singular=aceshifter,categories={kubeops,appscode}
+// +kubebuilder:resource:path=fargocds,singular=fargocd,categories={kubeops,appscode}
 type Fargocd struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
@@ -75,13 +76,85 @@ type FargocdSpec struct {
 	Tolerations []core.Toleration `json:"tolerations"`
 	// If specified, the pod's scheduling constraints
 	// +optional
-	Affinity       *core.Affinity      `json:"affinity"`
-	ServiceAccount ServiceAccountSpec  `json:"serviceAccount"`
-	Apiserver      SupervisorApiserver `json:"apiserver"`
-	Monitoring     Monitoring          `json:"monitoring"`
-
+	Affinity       *core.Affinity     `json:"affinity"`
+	ServiceAccount ServiceAccountSpec `json:"serviceAccount"`
+	Apiserver      FargocdApiserver   `json:"apiserver"`
+	Monitoring     Monitoring         `json:"monitoring"`
 	// +optional
-	NetworkPolicy NetworkPolicy `json:"networkPolicy"`
+	NetworkPolicy NetworkPolicySpec `json:"networkPolicy"`
+	// +optional
+	Distro shared.DistroSpec `json:"distro"`
+	Argocd FargocdArgocd     `json:"argocd"`
+}
+
+// FargocdArgocd configures how the controller talks to Argo CD. It
+// mirrors the `fargocd run` flags.
+type FargocdArgocd struct {
+	// Mode is one of "in-cluster", "autonomous", or "managed".
+	// +kubebuilder:validation:Enum=in-cluster;autonomous;managed
+	Mode string `json:"mode"`
+	// Namespace overrides argocd-server namespace auto-discovery.
+	// +optional
+	Namespace string `json:"namespace"`
+	// DestServer is written into Application.spec.destination.server.
+	// +optional
+	DestServer string `json:"destServer"`
+	// DestName is written into Application.spec.destination.name; used
+	// when Argo CD references the workload cluster by symbolic name.
+	// +optional
+	DestName string `json:"destName"`
+	// Project is the Argo CD Project assigned to generated Applications.
+	// +optional
+	Project string `json:"project"`
+	// ClusterName is the symbolic name of the workload cluster.
+	// Required in managed mode.
+	// +optional
+	ClusterName string `json:"clusterName"`
+	// KubeconfigSecret is the name of a Secret (in the release namespace)
+	// whose key `kubeconfig` holds the kubeconfig for the Argo CD
+	// principal cluster. Required in managed mode if Kubeconfig is empty.
+	// +optional
+	KubeconfigSecret string `json:"kubeconfigSecret"`
+	// Kubeconfig is the raw kubeconfig content for the Argo CD principal
+	// cluster. When set, the chart creates a Secret containing this
+	// kubeconfig and mounts it into the operator pod. Either Kubeconfig
+	// or KubeconfigSecret is required in managed mode.
+	// +optional
+	Kubeconfig string `json:"kubeconfig"`
+}
+
+type FargocdApiserver struct {
+	EnableMutatingWebhook   bool                `json:"enableMutatingWebhook"`
+	EnableValidatingWebhook bool                `json:"enableValidatingWebhook"`
+	Healthcheck             HealthcheckSpec     `json:"healthcheck"`
+	ServingCerts            FargocdServingCerts `json:"servingCerts"`
+}
+
+type FargocdServingCerts struct {
+	Generate bool `json:"generate"`
+	//+optional
+	CertManager FargocdCertManagerCerts `json:"certManager"`
+	//+optional
+	CaCrt string `json:"caCrt"`
+	//+optional
+	ServerCrt string `json:"serverCrt"`
+	//+optional
+	ServerKey string `json:"serverKey"`
+}
+
+type FargocdCertManagerCerts struct {
+	Enabled bool `json:"enabled"`
+	//+optional
+	IssuerRef FargocdCertManagerIssuerRef `json:"issuerRef"`
+}
+
+type FargocdCertManagerIssuerRef struct {
+	//+optional
+	Name string `json:"name"`
+	//+optional
+	Kind string `json:"kind"`
+	//+optional
+	Group string `json:"group"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

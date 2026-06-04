@@ -19,6 +19,7 @@ package v1alpha1
 import (
 	core "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"kmodules.xyz/resource-metadata/apis/shared"
 )
 
 const (
@@ -75,13 +76,48 @@ type TaskqueueSpec struct {
 	Tolerations []core.Toleration `json:"tolerations"`
 	// If specified, the pod's scheduling constraints
 	// +optional
-	Affinity       *core.Affinity      `json:"affinity"`
-	ServiceAccount ServiceAccountSpec  `json:"serviceAccount"`
-	Apiserver      SupervisorApiserver `json:"apiserver"`
-	Monitoring     Monitoring          `json:"monitoring"`
-
+	Affinity       *core.Affinity     `json:"affinity"`
+	ServiceAccount ServiceAccountSpec `json:"serviceAccount"`
+	Apiserver      TaskqueueApiserver `json:"apiserver"`
+	Monitoring     Monitoring         `json:"monitoring"`
 	// +optional
-	NetworkPolicy NetworkPolicy `json:"networkPolicy"`
+	NetworkPolicy NetworkPolicySpec `json:"networkPolicy"`
+	// +optional
+	Distro shared.DistroSpec `json:"distro"`
+}
+
+type TaskqueueApiserver struct {
+	EnableMutatingWebhook   bool                  `json:"enableMutatingWebhook"`
+	EnableValidatingWebhook bool                  `json:"enableValidatingWebhook"`
+	Healthcheck             HealthcheckSpec       `json:"healthcheck"`
+	ServingCerts            TaskqueueServingCerts `json:"servingCerts"`
+}
+
+type TaskqueueServingCerts struct {
+	Generate bool `json:"generate"`
+	//+optional
+	CertManager TaskqueueCertManagerCerts `json:"certManager"`
+	//+optional
+	CaCrt string `json:"caCrt"`
+	//+optional
+	ServerCrt string `json:"serverCrt"`
+	//+optional
+	ServerKey string `json:"serverKey"`
+}
+
+type TaskqueueCertManagerCerts struct {
+	Enabled bool `json:"enabled"`
+	//+optional
+	IssuerRef TaskqueueCertManagerIssuerRef `json:"issuerRef"`
+}
+
+type TaskqueueCertManagerIssuerRef struct {
+	//+optional
+	Name string `json:"name"`
+	//+optional
+	Kind string `json:"kind"`
+	//+optional
+	Group string `json:"group"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -19,6 +19,7 @@ package v1alpha1
 import (
 	core "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"kmodules.xyz/resource-metadata/apis/shared"
 )
 
 const (
@@ -73,15 +74,16 @@ type KubeUiServerSpec struct {
 	// PodSecurityContext holds pod-level security attributes and common container settings.
 	// Optional: Defaults to empty.  See type description for default values of each field.
 	// +optional
-	PodSecurityContext   *core.PodSecurityContext `json:"podSecurityContext"`
-	ServiceAccount       ServiceAccountSpec       `json:"serviceAccount"`
-	Apiserver            ApiserverSpec            `json:"apiserver"`
-	Monitoring           Monitoring               `json:"monitoring"`
-	Prometheus           PrometheusConfig         `json:"prometheus"`
-	HelmRepositories     HelmRepositories         `json:"helmRepositories"`
-	KubeconfigSecretName string                   `json:"kubeconfigSecretName"`
-	Platform             AcePlatformSpec          `json:"platform"`
-	AceUserRoles         AceUserRolesValues       `json:"ace-user-roles"`
+	PodSecurityContext *core.PodSecurityContext `json:"podSecurityContext"`
+	ServiceAccount     ServiceAccountSpec       `json:"serviceAccount"`
+	Apiserver          ApiserverSpec            `json:"apiserver"`
+	Monitoring         Monitoring               `json:"monitoring"`
+	Prometheus         PrometheusConfig         `json:"prometheus"`
+	// +optional
+	Distro           shared.DistroSpec  `json:"distro"`
+	HelmRepositories HelmRepositories   `json:"helmRepositories"`
+	Platform         AcePlatformSpec    `json:"platform"`
+	AceUserRoles     AceUserRolesValues `json:"ace-user-roles"`
 }
 
 type AceUserRolesValues struct {
