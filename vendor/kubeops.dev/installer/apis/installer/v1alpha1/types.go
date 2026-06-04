@@ -121,6 +121,6 @@ type TLSConfig struct {
 	InsecureSkipTLSVerify bool   `json:"insecureSkipTLSVerify"`
 }
 
-type NetworkPolicy struct {
+type NetworkPolicySpec struct {
 	Enabled bool `json:"enabled"`
 }
