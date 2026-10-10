@@ -26,7 +26,8 @@ import (
 )
 
 func TestDefaultValues(t *testing.T) {
-	checker := schemachecker.New(os.DirFS("../../.."),
+	checker := schemachecker.New(
+		os.DirFS("../../.."),
 		schemachecker.TestCase{Obj: v1alpha1.StashCatalogSpec{}},
 		schemachecker.TestCase{Obj: v1alpha1.StashCommunitySpec{}},
 		schemachecker.TestCase{Obj: v1alpha1.StashEnterpriseSpec{}},
